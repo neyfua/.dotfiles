@@ -1041,6 +1041,19 @@
                 ],
                 "path": "/home/neyfua/Pictures/Wallpapers/train_station.jpg",
                 "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/snow_stairs.jpg",
+                "useWallpaperColors": false
             }
         ],
         "fillColor": "#000000",
