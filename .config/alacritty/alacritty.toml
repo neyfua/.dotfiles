@@ -11,8 +11,8 @@ decorations = "Full"
 history = 100000
 
 [font]
-normal = { family = "MapleMono" }
-size = 23.5
+normal = { family = "RecMonoCasual Nerd Font Propo" }
+size = 24.5
 
 [cursor]
 style = { shape = "Block", blinking = "Off" }
@@ -27,7 +27,7 @@ bindings = [
   { key = "C", mods = "Control", action = "Copy" },
   { key = "V", mods = "Control", action = "Paste" },
   { key = "C", mods = "Control|Shift", chars = "\u0003" },
-  { key = "Up", mods = "Control", action = "ScrollPageUp" },
-  { key = "Down", mods = "Control", action = "ScrollPageDown" },
+  { key = "Up", mods = "Control|Shift", action = "ScrollPageUp" },
+  { key = "Down", mods = "Control|Shift", action = "ScrollPageDown" },
   { key = "?", mods = "Control|Shift", action = "SearchForward" },
 ]

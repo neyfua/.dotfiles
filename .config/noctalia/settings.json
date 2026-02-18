@@ -167,7 +167,9 @@
                     "hidePassive": false,
                     "id": "Tray",
                     "pinned": [
-                        "Fcitx"
+                        "Fcitx",
+                        "Keyboard - English (US)",
+                        "Vmk"
                     ]
                 },
                 {
@@ -457,6 +459,7 @@
         "lockScreenMonitors": [
         ],
         "lockScreenTint": 0.4,
+        "passwordChars": true,
         "radiusRatio": 1,
         "reverseScroll": false,
         "scaleRatio": 1,
@@ -467,7 +470,7 @@
         "showChangelogOnStartup": true,
         "showHibernateOnLockScreen": false,
         "showScreenCorners": false,
-        "showSessionButtonsOnLockScreen": true,
+        "showSessionButtonsOnLockScreen": false,
         "telemetryEnabled": true
     },
     "hooks": {
@@ -665,7 +668,7 @@
         "fontDefaultScale": 1,
         "fontFixed": "Noto Sans Mono",
         "fontFixedScale": 1.05,
-        "networkPanelView": "wifi",
+        "networkPanelView": "ethernet",
         "panelBackgroundOpacity": 1,
         "panelsAttachedToBar": true,
         "settingsPanelMode": "attached",
