@@ -5,7 +5,7 @@ window-rule {
 }
 
 window-rule {
-	match app-id="^firefox-nightly$"
+	match app-id="^(firefox)(.*)$"
 	match app-id="^Tor Browser$"
 	match app-id="^vesktop$"
 	match app-id="^steam$" title="Steam"
@@ -74,7 +74,7 @@ window-rule {
 }
 
 window-rule {
-	match app-id=r#"firefox-nightly$"# title="^Picture-in-Picture$"
+	match app-id="^(firefox)(.*)$" title="^Picture-in-Picture$"
 
 	default-column-width { fixed 354; }
 	default-window-height { fixed 200; }

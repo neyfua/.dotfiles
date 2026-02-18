@@ -14,7 +14,7 @@
     "states": {
         "27ae3a:slowbongo": {
             "enabled": true,
-            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
+            "sourceUrl": "https://github.com/tuibird/slowbongo"
         },
         "assistant-panel": {
             "enabled": true,
