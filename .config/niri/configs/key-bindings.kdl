@@ -1,9 +1,9 @@
 binds {
 	// Terminal
-	Mod+Q repeat=false	{ spawn "foot"; }
+	Mod+Q repeat=false	{ spawn "alacritty"; }
 
 	// File managers
-	Mod+E repeat=false	{ spawn "nemo"; }
+	Mod+E repeat=false	{ spawn "nautilus"; }
 
 	// Control center & settings
 	Mod+S repeat=false	{ spawn "qs" "-c" "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }

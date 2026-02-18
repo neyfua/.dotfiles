@@ -42,7 +42,6 @@ window-rule {
 
 window-rule {
 	match app-id="^vesktop$" title="vesktop"
-	match app-id="^xdg-desktop-portal-gnome$"
 	match app-id="^zenity$"
 
 	match title="^splash$"
@@ -59,6 +58,8 @@ window-rule {
 }
 
 window-rule {
+	match app-id="^xdg-desktop-portal-gtk$"
+
 	match title="^dialog$"
 	match title="^confirm$"
 	match title="^(Save As)(.*)$"
@@ -68,6 +69,7 @@ window-rule {
 	match title="^(File Upload)(.*)$"
 	match title="^(Select a File)(.*)$"
 	match title="^(Choose wallpaper)(.*)$"
+	match title="^(Choose an image)(.*)$"
 
 	default-column-width { proportion 0.8; }
 	default-window-height { proportion 0.8; }

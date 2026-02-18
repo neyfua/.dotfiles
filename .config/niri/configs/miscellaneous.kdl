@@ -2,7 +2,8 @@ spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
 spawn-at-startup "kdeconnect"
 spawn-at-startup "fcitx5"
 spawn-at-startup "quickshell" "-c" "noctalia-shell" "-n"
-// spawn-sh-at-startup "gsettings set org.gnome.desktop.interface text-scaling-factor 1.25"
+// gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+// gsettings set org.gnome.desktop.wm.preferences button-layout ':'
 
 prefer-no-csd
 
@@ -30,13 +31,9 @@ environment {
 	SDL_IM_MODULE "fcitx"
 	GLFW_IM_MODULE "ibus"
 
-	// GTK
-	GTK_THEME "Rosepine-BL-MB-Dark"
-	ICON_THEME "RoséPine"
-
 	// QT
 	QT_QPA_PLATFORM "wayland"
-	QT_QPA_PLATFORMTHEME "gtk3"
+	QT_QPA_PLATFORMTHEME "qt6ct"
 	QT_MEDIA_BACKEND "gstreamer"
 	// QS_ICON_THEME "RoséPine"
 	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
