@@ -1,13 +1,14 @@
+// gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+// gsettings set org.gnome.desktop.wm.preferences button-layout ':'
+
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
 spawn-at-startup "kdeconnect"
 spawn-at-startup "fcitx5"
 spawn-at-startup "quickshell" "-c" "noctalia-shell" "-n"
-// gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
-// gsettings set org.gnome.desktop.wm.preferences button-layout ':'
 
 prefer-no-csd
 
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d-%A %H-%M-%S-%p.png"
+screenshot-path "~/Pictures/Screenshots/Screenshot from %A, %B %d, %Y | %H-%M-%S-%p.png"
 
 environment {
 	MOZ_ENABLE_WAYLAND "1"
@@ -20,25 +21,27 @@ environment {
 	GDK_BACKEND "wayland"
 	CLUTTER_BACKEND "wayland"
 
-	// Java
+		// Java
 	_JAVA_AWT_WM_NONREPARENTING "1"
 	NO_AT_BRIDGE "1"
 
-	// Fcitx
+		// Fcitx
 	GTK_IM_MODULE "fcitx"
 	QT_IM_MODULE "fcitx"
 	XMODIFIERS "@im=fcitx"
 	SDL_IM_MODULE "fcitx"
 	GLFW_IM_MODULE "ibus"
 
-	// QT
+		// QT
 	QT_QPA_PLATFORM "wayland"
 	QT_QPA_PLATFORMTHEME "qt6ct"
 	QT_MEDIA_BACKEND "gstreamer"
-	// QS_ICON_THEME "RoséPine"
 	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 	QT_SCALE_FACTOR "1.25"
-	// QT_SCALE_FACTOR_ROUNDING_POLICY "RoundPreferFloor"
+	QT_SCALE_FACTOR_ROUNDING_POLICY "RoundPreferFloor"
+
+		// Quickshell
+	// QS_ICON_THEME "RoséPine"
 }
 
 cursor {

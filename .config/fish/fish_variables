@@ -3,3 +3,4 @@
 SETUVAR --export DOTNET_ROOT:/home/neyfua/\x2edotnet
 SETUVAR --export EDITOR:nvim
 SETUVAR __fish_initialized:4300
+SETUVAR fish_user_paths:/home/neyfua/\x2espicetify

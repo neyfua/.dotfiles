@@ -1,22 +1,16 @@
 [general]
 import = ["themes/rose-pine.toml"]
 
-[env]
-
 [window]
 padding = { x = 20, y = 20 }
-decorations = "Full"
-
-[scrolling]
-history = 100000
 
 [font]
 normal = { family = "RecMonoCasual Nerd Font Propo" }
-size = 24.5
+size = 24
 
 [cursor]
 style = { shape = "Block", blinking = "Off" }
-unfocused_hollow = true
+unfocused_hollow = false
 thickness = 0.05
 
 [mouse]
