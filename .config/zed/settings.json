@@ -1,0 +1,123 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+      "git_panel": {},
+      "active_pane_modifiers": {
+            "border_size": 0.0,
+      },
+      "status_bar": {
+            "active_language_button": true,
+      },
+      "use_smartcase_search": true,
+      "prettier": {
+            "allowed": true,
+      },
+      "tab_size": 6,
+      "vim": {
+            "use_smartcase_find": true,
+            "toggle_relative_line_numbers": true,
+      },
+      "cursor_blink": false,
+      "agent_buffer_font_size": 15.0,
+      "agent_ui_font_size": 18.0,
+      "ui_font_family": ".ZedSans",
+      "window_decorations": "server",
+      "use_system_window_tabs": false,
+      "title_bar": {
+            "show_user_menu": true,
+            "show_menus": false,
+      },
+      "session": {
+            "trust_all_worktrees": true,
+      },
+      "telemetry": {
+            "diagnostics": true,
+            "metrics": false,
+      },
+      "vim_mode": true,
+      "terminal": {
+            "max_scroll_history_lines": 10000,
+            "dock": "bottom",
+            "font_size": 15.0,
+            "font_family": "Maple Mono",
+      },
+      "project_panel": {
+            "indent_guides": {
+                  "show": "never",
+            },
+            "scrollbar": {
+                  "show": "auto",
+            },
+            "bold_folder_labels": true,
+            "indent_size": 10.0,
+            "default_width": 200.0,
+            "dock": "left",
+            "button": true,
+            "git_status": true,
+            "auto_fold_dirs": false,
+      },
+      "outline_panel": {
+            "default_width": 280.0,
+            "dock": "left",
+            "git_status": false,
+      },
+      "base_keymap": "VSCode",
+      "preview_tabs": {
+            "enabled": false,
+            "enable_preview_from_file_finder": false,
+      },
+      "tab_bar": {
+            "show": true,
+            "show_tab_bar_buttons": false,
+      },
+      "tabs": {
+            "close_position": "right",
+            "git_status": false,
+      },
+      "multi_cursor_modifier": "cmd_or_ctrl",
+      "relative_line_numbers": "enabled",
+      "sticky_scroll": {
+            "enabled": false,
+      },
+      "gutter": {
+            "line_numbers": true,
+      },
+      "minimap": {
+            "show": "never",
+      },
+      "hover_popover_delay": 1500,
+      "selection_highlight": false,
+      "cursor_shape": "block",
+      "buffer_font_fallbacks": ["RecMonoCasual", "monospace"],
+      "buffer_font_family": "Maple Mono",
+      "file_types": {
+            "php": [".php_cs", ".php_cs.dist"],
+      },
+      "show_whitespaces": "none",
+      "show_edit_predictions": false,
+      "ensure_final_newline_on_save": true,
+      "indent_guides": {
+            "background_coloring": "disabled",
+            "coloring": "fixed",
+            "enabled": true,
+      },
+      "soft_wrap": "editor_width",
+      "icon_theme": {
+            "mode": "dark",
+            "light": "Zed (Default)",
+            "dark": "Material Icon Theme",
+      },
+      "ui_font_size": 18.0,
+      "buffer_font_size": 20.0,
+      "theme": {
+            "mode": "system",
+            "light": "One Dark",
+            "dark": "Rosé Pine",
+      },
+}

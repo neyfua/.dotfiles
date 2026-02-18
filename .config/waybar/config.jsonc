@@ -1,0 +1,32 @@
+{
+	"layer": "top",
+	"width": 40,
+	"position": "left",
+	"exclusive": true,
+	"passthrough": false,
+	"gtk-layer-shell": true,
+	"reload_style_on_change": true,
+	"spacing": 0,
+	"include": [
+		"$HOME/.config/waybar/modules.json"
+	],
+	"modules-left": [
+		"clock",
+		"cpu",
+		"memory"
+	],
+	"modules-center": [
+		"mpris",
+		"niri/workspaces",
+		"sway/workspaces"
+	],
+	"modules-right": [
+		"group/extra",
+		"privacy",
+		"network",
+		"bluetooth",
+		"backlight",
+		"pulseaudio",
+		"battery"
+	]
+}

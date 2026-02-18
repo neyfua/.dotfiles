@@ -1,0 +1,17 @@
+{
+	"layer": "overlay",
+	"width": 40,
+	"position": "top",
+	"exclusive": true,
+	"passthrough": false,
+	"gtk-layer-shell": true,
+	"reload_style_on_change": true,
+	"spacing": 0,
+	"modules-left": [],
+	"modules-center": [],
+	"modules-right": [],
+	"niri/workspaces": {
+		"on-click": "activate",
+		"format": "<span size='13pt'>{value}</span>"
+	},
+}

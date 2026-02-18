@@ -1,0 +1,3 @@
+# Acer Aspire 5 A515-58GM microphone mute key
+evdev:atkbd:dmi:bvnINSYDECorp.:bvr*:bd*:svnAcer:pnAspireA515-58GM:pvr*
+ KEYBOARD_KEY_66=micmute

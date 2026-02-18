@@ -1,0 +1,10 @@
+debug {
+	// disable-cursor-plane
+	render-drm-device "/dev/dri/renderD128"
+	ignore-drm-device "/dev/dri/renderD129"
+	// emulate-zero-presentation-time
+	// disable-resize-throttling
+	// disable-transactions
+	// skip-cursor-only-updates-during-vrr
+	// honor-xdg-activation-with-invalid-serial
+}

@@ -1,0 +1,5 @@
+[General]
+theme=rose-pine-rose
+
+[Applications]
+Default=org.kde.kdeconnect.app, org.kde.filelight

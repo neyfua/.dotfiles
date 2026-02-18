@@ -1,0 +1,47 @@
+body.rose-pine {
+  --accent: #ebbcba;
+  --accent-overlay: #ebbcba;
+  --navbar-accent: #e0def4;
+  --background: #191724;
+  --body-background: var(--background);
+  --background-darker: var(--body-background);
+  --current-background: var(--body-background);
+  --navbar-background: #1f1d2e;
+  --navbar-active-background: #191724;
+  --gradient-body-background: linear-gradient(
+    90deg,
+    var(--background-darker) -32px,
+    var(--body-background) 64px,
+    var(--body-background) 100%
+  );
+  --input-background: #26233a;
+  --modal-background: var(--body-background);
+  --modal-border: var(--body-background);
+  --success: #9ccfd8;
+  --success-hover: #56949f;
+  --primary: #ebbcba;
+  --primary-hover: #d7827e;
+  --danger: #eb6f92;
+  --danger-hover: #b4637a;
+  --text-title: #e0def4;
+  --text-default: #e0def4;
+  --text-secondary: #908caa;
+  --icons-background: #21202e;
+  --icon-disabled: #eb6f92;
+  --osk-background: var(--body-background);
+  --osk-button-background: var(--input-background);
+  --osk-button-border: var(--navbar-background);
+  --search-bar-background: #1f1d2e;
+  --search-bar-border: #26233a;
+  --action-icon: #ebbcba;
+  --action-icon-hover: var(--accent-overlay);
+  --action-icon-active: var(--text-default);
+  --download-button: var(--brand-primary);
+  --success-button: #9ccfd8;
+  --secondary-button: #9ccfd8;
+  --anticheat-denied: #eb6f92;
+  --anticheat-broken: #524f67;
+  --anticheat-running: #31748f;
+  --anticheat-supported: #ebbcba;
+  --anticheat-planned: #c4a7e7;
+}

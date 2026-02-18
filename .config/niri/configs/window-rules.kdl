@@ -1,0 +1,147 @@
+window-rule {
+	geometry-corner-radius 12
+	draw-border-with-background false
+	clip-to-geometry true
+}
+
+window-rule {
+	match app-id="^firefox-nightly$"
+	match app-id="^Tor Browser$"
+	match app-id="^vesktop$"
+	match app-id="^steam$" title="Steam"
+	match app-id="^com.heroicgameslauncher.hgl$"
+	match app-id="^spotify$"
+	match app-id="^org.telegram.desktop$"
+	match app-id="^code$"
+	match app-id="^dev.zed.Zed$"
+	match app-id="^org.kde.kdenlive$" title="^(Untitled)(.*)$"
+	match app-id="sober" title="Sober"
+
+	match title="^(OBS)(.*)$"
+
+	default-column-width { proportion 1.0; }
+}
+
+window-rule {
+	match app-id="com-sun-tools-javac-launcher-SourceLauncher"
+	match app-id="^zenity$"
+
+	match title="^About$"
+	match title="^Library$"
+	match title="^Pushbullet$"
+	match title="^splash$"
+	match title="^(zoom)(.*)$"
+	match title="^(.*)(Properties)$"
+	match title="^(Calculator)(.*)$"
+	match title="^(Warning)(.*)$"
+	match title="^(Splash)(.*)$"
+	match title="^(Project Settings)(.*)$"
+
+	open-floating true
+}
+
+window-rule {
+	match app-id="^vesktop$" title="vesktop"
+	match app-id="^xdg-desktop-portal-gnome$"
+	match app-id="^zenity$"
+
+	match title="^splash$"
+	match title="^zoom$"
+	match title="^LibreOffice$"
+	match title="^(Updater)(.*)$"
+	match title="^(Sign in)(.*)$"
+	match title="^(Starting Apache)(.*)$"
+	match title="^(Warning)(.*)$"
+	match title="^(Select)(.*)$"
+	match title="^(Splash)(.*)$"
+
+	focus-ring { off; }
+}
+
+window-rule {
+	match title="^dialog$"
+	match title="^confirm$"
+	match title="^(Save As)(.*)$"
+	match title="^(Save Image)(.*)$"
+	match title="^(Open File)(.*)$"
+	match title="^(Open Folder)(.*)$"
+	match title="^(File Upload)(.*)$"
+	match title="^(Select a File)(.*)$"
+	match title="^(Choose wallpaper)(.*)$"
+
+	default-column-width { proportion 0.8; }
+	default-window-height { proportion 0.8; }
+}
+
+window-rule {
+	match app-id=r#"firefox-nightly$"# title="^Picture-in-Picture$"
+
+	default-column-width { fixed 354; }
+	default-window-height { fixed 200; }
+
+	default-floating-position x=20 y=20 relative-to="bottom-right"
+
+	open-focused false
+	open-floating true
+
+	focus-ring { off; }
+}
+
+window-rule {
+	match app-id="^org.pulseaudio.pavucontrol$"
+	match app-id="^pavucontrol-qt$"
+
+	default-column-width { proportion 0.5; }
+	default-window-height { proportion 0.7; }
+
+	open-floating true
+}
+
+window-rule {
+	match app-id="^mpv$"
+
+	default-column-width { fixed 1160; }
+	default-window-height { fixed 653; }
+
+	open-floating true
+}
+
+window-rule {
+	match title="^(Media viewer)(.*)$"
+
+	default-column-width { proportion 0.9; }
+	default-window-height { proportion 0.9; }
+
+	open-fullscreen false
+	open-floating true
+
+	focus-ring { off; }
+}
+
+window-rule {
+	match title="^Welcome to Android Studio$"
+
+	default-column-width { proportion 1.0; }
+	default-window-height { proportion 1.0; }
+}
+
+window-rule {
+	match app-id="^(libreoffice-)(.*)$"
+
+	open-maximized false
+	open-maximized-to-edges false
+	open-fullscreen false
+
+	default-column-width { proportion 1.0; }
+}
+
+window-rule {
+	match app-id="^(.*)(FileRoller)$"
+
+	default-column-width { fixed 850; }
+	default-window-height { fixed 500; }
+
+	open-floating true
+
+	focus-ring { off; }
+}

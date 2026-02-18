@@ -1,0 +1,33 @@
+[general]
+import = ["themes/rose-pine.toml"]
+
+[env]
+
+[window]
+padding = { x = 20, y = 20 }
+decorations = "Full"
+
+[scrolling]
+history = 100000
+
+[font]
+normal = { family = "MapleMono" }
+size = 23.5
+
+[cursor]
+style = { shape = "Block", blinking = "Off" }
+unfocused_hollow = true
+thickness = 0.05
+
+[mouse]
+hide_when_typing = true
+
+[keyboard]
+bindings = [
+  { key = "C", mods = "Control", action = "Copy" },
+  { key = "V", mods = "Control", action = "Paste" },
+  { key = "C", mods = "Control|Shift", chars = "\u0003" },
+  { key = "Up", mods = "Control", action = "ScrollPageUp" },
+  { key = "Down", mods = "Control", action = "ScrollPageDown" },
+  { key = "?", mods = "Control|Shift", action = "SearchForward" },
+]

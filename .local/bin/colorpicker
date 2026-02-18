@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# Pick color
+output="$(niri msg pick-color 2>/dev/null)"
+hex="$(echo "$output" | grep 'Hex:' | awk '{print $2}')"
+
+# Cancel if no color picked
+if [ -z "$hex" ]; then
+    exit 0
+fi
+
+# Copy to clipboard
+printf "%s" "$hex" | wl-copy
+
+# Create /tmp/colors directory
+tmp_dir="/tmp/colors"
+mkdir -p "$tmp_dir"
+
+# Delete files older than 60 minutes
+find "$tmp_dir" -type f -name "niri-color-*.png" -mmin +3600 -delete
+
+# Generate a unique temp file inside /tmp/colors
+icon="$(mktemp "$tmp_dir/niri-color-XXXXXX.png")"
+
+# Generate the color icon
+magick -size 128x128 xc:"$hex" \
+    -alpha on \
+    \( -size 128x128 xc:none -fill "$hex" -draw "circle 64,64 64,5" \) \
+    -compose src-in -composite \
+    "$icon"
+
+# Send notification
+notify-send -i "$icon" "Color copied" "$hex"

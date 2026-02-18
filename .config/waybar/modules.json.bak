@@ -1,0 +1,221 @@
+{
+  "niri/workspaces": {
+    "on-click": "activate",
+    "format": "<span size='13pt'>{value}</span>"
+  },
+  "sway/workspaces": {
+    "on-click": "activate",
+    "format": "<span size='13pt'>{value}</span>",
+    "disable-scroll": true
+  },
+  "mpris": {
+    "format": "<span size='14pt'>󰐎</span>",
+    "interval": 1,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl previous",
+    "tooltip": true,
+    "tooltip-format": "[{album}] {title} | {artist}",
+    "ignored-players": ["firefox"]
+  },
+  "clock": {
+    "interval": 1,
+    "format": "{:%I\n%M\n%p}",
+    "tooltip-format": "<b>{:%a, %b %d %Y}</b>\n\n<tt>{calendar}</tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "on-scroll": 0,
+      "format": {
+        "weekdays": "<span color='#9ccfd8'><b>{}</b></span>",
+        "today": "<span color='#eb6f92'><b>{}</b></span>"
+      }
+    }
+  },
+  "cpu": {
+    "format": "{icon}",
+    "format-icons": [
+      "<span size='15pt'>⠁</span>",
+      "<span size='15pt'>⠉</span>",
+      "<span size='15pt'>⠙</span>",
+      "<span size='15pt'>⠛</span>",
+      "<span size='15pt'>⠟</span>",
+      "<span size='15pt'>⠿</span>"
+    ],
+    "interval": 1,
+    "tooltip": true,
+    "on-click": "xfce4-taskmanager"
+  },
+  "memory": {
+    "format": "{icon}",
+    "format-icons": [
+      "<span size='15pt'>⠁</span>",
+      "<span size='15pt'>⠉</span>",
+      "<span size='15pt'>⠙</span>",
+      "<span size='15pt'>⠛</span>",
+      "<span size='15pt'>⠟</span>",
+      "<span size='15pt'>⠿</span>"
+    ],
+    "interval": 1,
+    "tooltip": true,
+    "tooltip-format": "Memory: {total} GiB\nUsed: {used:0.1f} GiB\nSwap: {swapTotal} GiB\nUsed: {swapUsed} GiB\nFree: {avail} GiB",
+    "on-click": "xfce4-taskmanager"
+  },
+  "network": {
+    "format-icons": {
+      "wifi": [
+        "<span size='13pt'>󰤯</span>",
+        "<span size='13pt'>󰤟</span>",
+        "<span size='13pt'>󰤢</span>",
+        "<span size='13pt'>󰤥</span>",
+        "<span size='13pt'>󰤨</span>"
+      ],
+      "ethernet": "<span size='13pt'></span>",
+      "disabled": "<span size='13pt'>󰤭</span>",
+      "disconnected": "<span size='13pt'>󰤫</span>"
+    },
+    "format-wifi": "{icon}",
+    "format-ethernet": "{icon}",
+    "format-disconnected": "{icon}",
+    "format-disabled": "{icon}",
+    "interval": 5,
+    "tooltip-format": "{gwaddr}",
+    "on-click": "foot -a=foot_nmtui fish -c nmtui-connect",
+    "on-click-right": "/usr/sbin/rfkill toggle wifi",
+    "tooltip": true,
+    "max-length": 20
+  },
+  "bluetooth": {
+    "interval": 5,
+    "format-on": "<span size='15pt'>󰂯</span>",
+    "format-off": "<span size='15pt'>󰂲</span>",
+    "format-disabled": "<span size='15pt'>󰂲</span>",
+    "format-connected": "<span size='15pt'>󰂱</span>",
+    "tooltip": true,
+    "tooltip-format": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_address}",
+    "tooltip-format-enumerate-connected-battery": "Battery: {device_battery_percentage}%\n{device_alias}",
+    "on-click": "foot -a=foot_bluetui -e bluetui",
+    "on-click-right": "/usr/sbin/rfkill toggle bluetooth"
+  },
+  "group/extra": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "extras",
+      "transition-left-to-right": false,
+      "click-to-reveal": true
+    },
+    "modules": ["custom/menu", "tray"]
+  },
+  "custom/menu": {
+    "format": "<span size='15pt'>󰅃</span>",
+    "tooltip": false
+  },
+  "tray": {
+    "spacing": 12,
+    "reverse-direction": true,
+    "icon-size": 16
+  },
+  "pulseaudio": {
+    "interval": 1,
+    "states": {
+      "normal": 40,
+      "warning": 100,
+      "critical": 150
+    },
+    "on-click": "pamixer -t; mute=$(pamixer --get-mute); if [ \"$mute\" = \"true\" ]; then state='Muted'; icon='/usr/share/icons/RoséPine-Moon/16x16/actions/audio-volume-muted.svg'; else state='Unmuted'; icon='/usr/share/icons/RoséPine-Moon/16x16/actions/audio-volume-medium.svg'; fi; notify-send -t 4000 -r 1001 -h string:x-canonical-private-synchronous:volume -i \"$icon\" \"Audio: ${state}\"",
+    "on-click-right": "pavucontrol",
+    "format": "{icon}",
+    "format-bluetooth": "<span size='13pt'></span>",
+    "format-icons": {
+      "headphone": "<span size='14pt'>󰋋</span>",
+      "default": [
+        "<span size='12pt'></span>",
+        "<span size='12pt'></span>",
+        "<span size='12pt'></span>",
+        "<span size='12pt'></span>",
+        "<span size='12pt'></span>",
+        "<span size='12pt'></span>",
+        "<span size='12pt'></span>",
+        "<span size='12pt'></span>",
+        "<span size='12pt'></span>",
+        "<span size='12pt'></span>"
+      ]
+    },
+    "format-muted": "<span size='12pt'></span>",
+    "scroll-step": 2.0,
+    "max-volume": 150,
+    "reverse-scrolling": true,
+    "tooltip": true,
+    "tooltip-format": "Volume: {volume}%",
+    "ignored-sinks": ["Easy Effects Sink"]
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}",
+    "format-icons": [
+      "<span size='14pt'></span>",
+      "<span size='14pt'></span>",
+      "<span size='14pt'></span>",
+      "<span size='14pt'></span>",
+      "<span size='14pt'></span>",
+      "<span size='14pt'></span>",
+      "<span size='14pt'></span>",
+      "<span size='14pt'></span>",
+      "<span size='14pt'></span>",
+      "<span size='14pt'></span>",
+      "<span size='14pt'></span>",
+      "<span size='14pt'></span>",
+      "<span size='14pt'></span>",
+      "<span size='14pt'></span>",
+      "<span size='14pt'></span>"
+    ],
+    "on-click": "brightnessctl set +5%; bright=$(brightnessctl get); max=$(brightnessctl max); pct=$((100 * bright / max)); icon='/usr/share/icons/RoséPine-Moon/16x16/actions/brightnesssettings.svg'; notify-send -t 4000 -r 1002 -h string:x-canonical-private-synchronous:brightness -i \"$icon\" \"Brightness: ${pct}% | +5%\"",
+    "on-click-right": "brightnessctl set 5%-; bright=$(brightnessctl get); max=$(brightnessctl max); pct=$((100 * bright / max)); icon='/usr/share/icons/RoséPine-Moon/16x16/actions/lighttable.svg'; notify-send -t 4000 -r 1002 -h string:x-canonical-private-synchronous:brightness -i \"$icon\" \"Brightness: ${pct}% | -5%\"",
+    "reverse-scrolling": true,
+    "smooth-scrolling-threshold": 0.2,
+    "scroll-step": 5.0,
+    "tooltip": true,
+    "tooltip-format": "Brightness: {percent}%"
+  },
+  "battery": {
+    "full-at": 99,
+    "interval": 5,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}",
+    "format-icons": [
+      "<span size='16pt'>󰂎</span>",
+      "<span size='16pt'>󰁺</span>",
+      "<span size='16pt'>󰁻</span>",
+      "<span size='16pt'>󰁼</span>",
+      "<span size='16pt'>󰁽</span>",
+      "<span size='16pt'>󰁾</span>",
+      "<span size='16pt'>󰁿</span>",
+      "<span size='16pt'>󰂀</span>",
+      "<span size='16pt'>󰂁</span>",
+      "<span size='16pt'>󰂂</span>",
+      "<span size='16pt'>󰁹</span>"
+    ],
+    "format-charging": "<span size='16pt'>󰚥</span>",
+    "format-plugged": "<span size='16pt'>󰚥</span>",
+    "tooltip": true,
+    "tooltip-format": "Battery: {capacity}%",
+    "tooltip-format-charging": "Charging: {capacity}%"
+  },
+  "privacy": {
+    "icon-size": 15,
+    "transition-duration": 150,
+    "modules": [
+      {
+        "type": "screenshare",
+        "tooltip": true,
+        "tooltip-icon-size": 20
+      }
+    ],
+    "expand": true
+  }
+}

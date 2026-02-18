@@ -1,0 +1,66 @@
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
+spawn-at-startup "kdeconnect"
+spawn-at-startup "fcitx5"
+spawn-at-startup "quickshell" "-c" "noctalia-shell" "-n"
+// spawn-sh-at-startup "gsettings set org.gnome.desktop.interface text-scaling-factor 1.25"
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d-%A %H-%M-%S-%p.png"
+
+environment {
+	MOZ_ENABLE_WAYLAND "1"
+	PROTON_ENABLE_WAYLAND "1"
+	ELECTRON_OZONE_PLATFORM_HINT "auto"
+
+	ECORE_EVAS_ENGINE "wayland-egl"
+	ELM_ENGINE "wayland_egl"
+	SDL_VIDEODRIVER "wayland"
+	GDK_BACKEND "wayland"
+	CLUTTER_BACKEND "wayland"
+
+	// Java
+	_JAVA_AWT_WM_NONREPARENTING "1"
+	NO_AT_BRIDGE "1"
+
+	// Fcitx
+	GTK_IM_MODULE "fcitx"
+	QT_IM_MODULE "fcitx"
+	XMODIFIERS "@im=fcitx"
+	SDL_IM_MODULE "fcitx"
+	GLFW_IM_MODULE "ibus"
+
+	// GTK
+	GTK_THEME "Rosepine-BL-MB-Dark"
+	ICON_THEME "RoséPine"
+
+	// QT
+	QT_QPA_PLATFORM "wayland"
+	QT_QPA_PLATFORMTHEME "gtk3"
+	QT_MEDIA_BACKEND "gstreamer"
+	// QS_ICON_THEME "RoséPine"
+	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+	QT_SCALE_FACTOR "1.25"
+	// QT_SCALE_FACTOR_ROUNDING_POLICY "RoundPreferFloor"
+}
+
+cursor {
+	xcursor-theme "BreezeX-RosePineDawn-Linux"
+	xcursor-size 50
+	hide-when-typing
+}
+
+overview {
+	zoom 1.0
+	backdrop-color "#191724"
+	workspace-shadow {
+		softness 40
+		spread 10
+		offset x=0 y=0
+		color "#0007"
+	}
+}
+
+hotkey-overlay {
+	skip-at-startup
+}

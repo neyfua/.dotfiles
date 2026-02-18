@@ -1,0 +1,44 @@
+set selection-clipboard clipboard
+
+# Theme
+set default-bg                  "rgba(25, 23, 36, 0.9)"
+set default-fg                  "#e0def4"
+
+set statusbar-bg                "#191724"
+set statusbar-fg                "#e0def4"
+
+set inputbar-bg                 "#191724"
+set inputbar-fg                 "#e0def4"
+
+set notification-bg             "#191724"
+set notification-fg             "#ebbcba"
+
+set notification-error-bg       "#191724"
+set notification-error-fg       "#eb6f92"
+
+set notification-warning-bg     "#191724"
+set notification-warning-fg     "#f6c177"
+
+set index-bg                		"rgba(0,0,0,0)"
+set index-fg                		"#e0def4"
+
+set index-active-bg         		"#ebbcba"
+set index-active-fg         		"#191724"
+
+set highlight-color         		"rgba(144, 140, 170, 0.3)"
+set highlight-active-color  		"rgba(235, 188, 186, 0.5)"
+
+set completion-bg               "#191724"
+set completion-fg               "#ebbcba"
+
+set completion-highlight-fg     "#191724"
+set completion-highlight-bg     "#ebbcba"
+
+set completion-group-bg     		"#191724"
+set completion-group-fg     		"#ebbcba"
+
+set recolor-lightcolor          "rgba(0,0,0,0)"
+set recolor-darkcolor           "#e0def4"
+
+# set recolor                     "true"
+# set recolor-keephue             "true"

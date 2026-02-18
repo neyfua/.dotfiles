@@ -1,0 +1,36 @@
+display_mode = "keystroke"
+position = "bottomleft"
+display_timeout_ms = 1218
+max_keys = 5
+margin = 20
+show_modifiers = true
+all_keyboards = true
+font_scale = 1.0
+opacity = 0.9
+font_family = "Poppins"
+font_size = 0.9028132992327366
+keystroke_theme = "dark"
+keystroke_draggable = false
+keystroke_hotkey = "<Shift><Control><Alt>braceright"
+pause_hotkey = "<Alt>p"
+toggle_focus_hotkey = "<Control>b"
+auto_detect_layout = true
+
+[bubble]
+font_family = "Adobe Courier"
+font_size = 1.0
+color = "#3584e4"
+position = "topright"
+draggable = false
+hotkey = "<Shift><Control>b"
+timeout_ms = 10000
+
+[bubble.audio]
+enabled = false
+volume = 1.0
+sound_pack = "default"
+
+[audio]
+enabled = false
+volume = 1.0
+sound_pack = "default"

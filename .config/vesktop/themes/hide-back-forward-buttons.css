@@ -1,0 +1,4 @@
+/* hide back/forward buttons */
+[class^="backForwardButtons_"] {
+  display: none;
+}

@@ -1,0 +1,12 @@
+Type=X-GNOME-Metatheme
+[Desktop Entry]
+Name=Rosepine-BL-LB-Dark
+Comment=An Flat Gtk+ theme based on Elegant Design
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Rosepine-BL-LB-Dark
+MetacityTheme=Rosepine-BL-LB-Dark
+IconTheme=Tela-circle-Dark
+CursorTheme=Rosepine-BL-LB-cursors
+ButtonLayout=close,minimize,maximize:menu
