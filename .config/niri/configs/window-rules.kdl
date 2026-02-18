@@ -30,6 +30,7 @@ window-rule {
 	match title="^Library$"
 	match title="^Pushbullet$"
 	match title="^splash$"
+	match title="^Android Studio Setup Wizard$"
 	match title="^(zoom)(.*)$"
 	match title="^(.*)(Properties)$"
 	match title="^(Calculator)(.*)$"
@@ -54,7 +55,7 @@ window-rule {
 	match title="^(Select)(.*)$"
 	match title="^(Splash)(.*)$"
 
-	focus-ring { off; }
+	border { off; }
 }
 
 window-rule {
@@ -86,7 +87,7 @@ window-rule {
 	open-focused false
 	open-floating true
 
-	focus-ring { off; }
+	border { off; }
 }
 
 window-rule {
@@ -117,11 +118,11 @@ window-rule {
 	open-fullscreen false
 	open-floating true
 
-	focus-ring { off; }
+	border { off; }
 }
 
 window-rule {
-	match title="^Welcome to Android Studio$"
+	match title="^(Welcome to)(.*)$"
 
 	default-column-width { proportion 1.0; }
 	default-window-height { proportion 1.0; }
@@ -145,5 +146,5 @@ window-rule {
 
 	open-floating true
 
-	focus-ring { off; }
+	border { off; }
 }
