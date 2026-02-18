@@ -13,9 +13,6 @@ style = { shape = "Block", blinking = "Off" }
 unfocused_hollow = false
 thickness = 0.05
 
-[mouse]
-hide_when_typing = true
-
 [keyboard]
 bindings = [
   { key = "C", mods = "Control", action = "Copy" },
