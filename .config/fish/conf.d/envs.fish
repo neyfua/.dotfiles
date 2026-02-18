@@ -1,5 +1,4 @@
 # Environment variables
-set -Ux TERMINAL foot
 set -Ux EDITOR nvim
 
 # Paths
