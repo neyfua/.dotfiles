@@ -11,6 +11,7 @@ window-rule {
 	match app-id="^steam$" title="Steam"
 	match app-id="^com.heroicgameslauncher.hgl$"
 	match app-id="^spotify$"
+	match app-id="^Spotify$"
 	match app-id="^org.telegram.desktop$"
 	match app-id="^code$"
 	match app-id="^dev.zed.Zed$"
