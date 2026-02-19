@@ -15,8 +15,8 @@
     "backend": "google",
     "deeplApiKey": "",
     "realTimeTranslation": true,
-    "sourceLanguage": "vi",
-    "targetLanguage": "en"
+    "sourceLanguage": "en",
+    "targetLanguage": "vi"
   },
   "maxHistoryLength": 500,
   "panelDetached": false,

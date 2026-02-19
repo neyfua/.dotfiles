@@ -38,6 +38,7 @@ window-rule {
 	match title="^(Warning)(.*)$"
 	match title="^(Splash)(.*)$"
 	match title="^(Project Settings)(.*)$"
+	match title="^(.*)(KDE Connect Daemon)$"
 
 	open-floating true
 }
@@ -73,8 +74,8 @@ window-rule {
 	match title="^(Choose wallpaper)(.*)$"
 	match title="^(Choose an image)(.*)$"
 
-	default-column-width { proportion 0.8; }
-	default-window-height { proportion 0.8; }
+	default-column-width { proportion 0.7; }
+	default-window-height { proportion 0.7; }
 }
 
 window-rule {
