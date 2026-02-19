@@ -440,7 +440,7 @@
         "lockOnSuspend": true,
         "lockScreenAnimations": true,
         "lockScreenBlur": 0.4,
-        "lockScreenCountdownDuration": 3000,
+        "lockScreenCountdownDuration": 10000,
         "lockScreenMonitors": [
         ],
         "lockScreenTint": 0.6,
@@ -453,9 +453,9 @@
         "shadowOffsetX": 0,
         "shadowOffsetY": 0,
         "showChangelogOnStartup": true,
-        "showHibernateOnLockScreen": false,
+        "showHibernateOnLockScreen": true,
         "showScreenCorners": false,
-        "showSessionButtonsOnLockScreen": true,
+        "showSessionButtonsOnLockScreen": false,
         "telemetryEnabled": true
     },
     "hooks": {
