@@ -340,37 +340,24 @@
                 "name": "eDP-1",
                 "widgets": [
                     {
-                        "clockColor": "none",
-                        "clockStyle": "analog",
-                        "customFont": "",
-                        "format": "hh:mm AP\\nddd, MMMM d yyyy",
-                        "id": "Clock",
-                        "roundedCorners": true,
-                        "scale": 1,
-                        "showBackground": true,
-                        "useCustomFont": false,
-                        "x": 69,
-                        "y": 23
-                    },
-                    {
                         "hideMode": "hidden",
                         "id": "MediaPlayer",
                         "roundedCorners": true,
                         "scale": 1,
                         "showAlbumArt": true,
                         "showBackground": true,
-                        "showButtons": true,
+                        "showButtons": false,
                         "showVisualizer": true,
                         "visualizerType": "wave",
                         "x": 72,
-                        "y": 744
+                        "y": 648
                     },
                     {
                         "id": "Weather",
                         "scale": 1,
                         "showBackground": true,
                         "x": 72,
-                        "y": 192
+                        "y": 744
                     }
                 ]
             }
@@ -386,6 +373,7 @@
         "enabled": false,
         "floatingRatio": 1,
         "inactiveIndicators": false,
+        "launcherPosition": "end",
         "monitors": [
         ],
         "onlySameOutput": true,
@@ -394,6 +382,7 @@
         "pinnedStatic": false,
         "position": "right",
         "showFrameIndicator": false,
+        "showLauncherIcon": false,
         "sitOnFrame": false,
         "size": 1
     },
@@ -489,7 +478,7 @@
         "bluetoothHideUnnamedDevices": true,
         "bluetoothRssiPollIntervalMs": 10000,
         "bluetoothRssiPollingEnabled": true,
-        "disableDiscoverability": true,
+        "disableDiscoverability": false,
         "wifiDetailsViewMode": "grid",
         "wifiEnabled": false
     },
@@ -610,7 +599,7 @@
             }
         ],
         "showHeader": false,
-        "showKeybinds": true
+        "showKeybinds": false
     },
     "settingsVersion": 53,
     "systemMonitor": {
