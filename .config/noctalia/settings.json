@@ -638,10 +638,6 @@
     },
     "templates": {
         "activeTemplates": [
-            {
-                "enabled": true,
-                "id": "zenBrowser"
-            }
         ],
         "enableUserTheming": false
     },
