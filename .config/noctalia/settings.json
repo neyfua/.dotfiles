@@ -301,7 +301,17 @@
             ],
             "right": [
                 {
-                    "id": "PowerProfile"
+                    "defaultSettings": {
+                        "cursorPosition": 0,
+                        "filePath": "",
+                        "fontSize": 14,
+                        "panelHeight": 400,
+                        "panelWidth": 600,
+                        "scratchpadContent": "",
+                        "scrollPositionX": 0,
+                        "scrollPositionY": 0
+                    },
+                    "id": "plugin:notes-scratchpad"
                 },
                 {
                     "id": "KeepAwake"
@@ -389,7 +399,7 @@
     },
     "general": {
         "allowPanelsOnScreenWithoutBar": true,
-        "allowPasswordWithFprintd": false,
+        "allowPasswordWithFprintd": true,
         "animationDisabled": false,
         "animationSpeed": 1,
         "autoStartAuth": false,
@@ -445,7 +455,7 @@
         "showChangelogOnStartup": true,
         "showHibernateOnLockScreen": false,
         "showScreenCorners": false,
-        "showSessionButtonsOnLockScreen": false,
+        "showSessionButtonsOnLockScreen": true,
         "telemetryEnabled": true
     },
     "hooks": {
