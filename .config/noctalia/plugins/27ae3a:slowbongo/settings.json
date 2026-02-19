@@ -3,7 +3,8 @@
     "/dev/input/event13",
     "/dev/input/event14",
     "/dev/input/event0",
-    "/dev/input/event12"
+    "/dev/input/event12",
+    "/dev/input/event24"
   ],
   "catColor": "default",
   "catSize": 1,
