@@ -135,7 +135,7 @@
                     "showCpuTemp": true,
                     "showCpuUsage": true,
                     "showDiskAvailable": false,
-                    "showDiskUsage": true,
+                    "showDiskUsage": false,
                     "showDiskUsageAsPercent": false,
                     "showGpuTemp": true,
                     "showLoadAverage": false,
@@ -171,31 +171,6 @@
                         "Keyboard - English (US)",
                         "Vmk"
                     ]
-                },
-                {
-                    "defaultSettings": {
-                        "completedCount": 0,
-                        "count": 0,
-                        "current_page_id": 0,
-                        "isExpanded": false,
-                        "pages": [
-                            {
-                                "id": 0,
-                                "name": "General"
-                            }
-                        ],
-                        "priorityColors": {
-                            "high": "#f44336",
-                            "low": "#9e9e9e",
-                            "medium": "#2196f3"
-                        },
-                        "showBackground": true,
-                        "showCompleted": true,
-                        "todos": [
-                        ],
-                        "useCustomColors": false
-                    },
-                    "id": "plugin:todo"
                 },
                 {
                     "displayMode": "alwaysHide",
@@ -407,7 +382,7 @@
         "pinnedApps": [
         ],
         "pinnedStatic": false,
-        "position": "left",
+        "position": "right",
         "showFrameIndicator": false,
         "sitOnFrame": false,
         "size": 1
@@ -454,11 +429,11 @@
         "language": "",
         "lockOnSuspend": true,
         "lockScreenAnimations": true,
-        "lockScreenBlur": 0.6,
+        "lockScreenBlur": 0.4,
         "lockScreenCountdownDuration": 3000,
         "lockScreenMonitors": [
         ],
-        "lockScreenTint": 0.4,
+        "lockScreenTint": 0.6,
         "passwordChars": true,
         "radiusRatio": 1,
         "reverseScroll": false,
@@ -470,7 +445,7 @@
         "showChangelogOnStartup": true,
         "showHibernateOnLockScreen": false,
         "showScreenCorners": false,
-        "showSessionButtonsOnLockScreen": true,
+        "showSessionButtonsOnLockScreen": false,
         "telemetryEnabled": true
     },
     "hooks": {
@@ -960,9 +935,9 @@
         "hideWallpaperFilenames": true,
         "monitorDirectories": [
         ],
-        "overviewBlur": 0.6,
+        "overviewBlur": 0.4,
         "overviewEnabled": true,
-        "overviewTint": 0.4,
+        "overviewTint": 0.6,
         "panelPosition": "follow_bar",
         "randomIntervalSec": 300,
         "setWallpaperOnAllMonitors": true,

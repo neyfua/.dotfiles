@@ -68,7 +68,7 @@ window-rule {
 	match title="^(Open File)(.*)$"
 	match title="^(Open Folder)(.*)$"
 	match title="^(File Upload)(.*)$"
-	match title="^(Select a File)(.*)$"
+	match title="^(Select)(.*)$"
 	match title="^(Choose wallpaper)(.*)$"
 	match title="^(Choose an image)(.*)$"
 
