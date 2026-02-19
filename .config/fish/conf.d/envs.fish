@@ -17,7 +17,7 @@ set -Ux DOTNET_ROOT $HOME/.dotnet
 set -gx PATH $HOME/.dotnet $HOME/.dotnet/tools $PATH
 
 # npm
-set -gx NPM_HOME "$HOME/.local/share/npm"
+set -gx NPM_HOME "$HOME/.local/share/npm/bin"
 if not string match -q -- $NPM_HOME $PATH
   set -gx PATH "$NPM_HOME" $PATH
 end
