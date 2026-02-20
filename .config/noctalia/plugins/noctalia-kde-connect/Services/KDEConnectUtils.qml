@@ -3,34 +3,35 @@ pragma Singleton
 import QtQuick
 
 QtObject {
-  function getIcon(device, daemonAvailable) {
-    if (!daemonAvailable)
-      return "exclamation-circle"
+    function getConnectionStateIcon(device, daemonAvailable) {
+        if (!daemonAvailable)
+            return "exclamation-circle";
 
-    if (device === null || !device.reachable)
-      return "device-mobile-off"
+        if (device === null || !device.reachable)
+            return "device-mobile-off";
 
-    if (device.notificationIds.length > 0)
-      return "device-mobile-message"
-    else if (device.charging)
-      return "device-mobile-charging"
-    else
-      return "device-mobile"
-  }
+        if (device.notificationIds.length > 0)
+            return "device-mobile-message";
+        else if (device.charging)
+            return "device-mobile-charging";
+        else
+            return "device-mobile";
+    }
 
-  function getConnectionState(device, daemonAvailable) {
-    if (!daemonAvailable)
-      return "Unavailable"
+    // Returns raw state keys for translation
+    function getConnectionStateKey(device, daemonAvailable) {
+        if (!daemonAvailable)
+            return "control_center.state.unavailable";
 
-    if (device === null)
-      return "No device"
+        if (device === null)
+            return "control_center.state.no-device";
 
-    if (!device.reachable)
-      return "Disconnected"
+        if (!device.reachable)
+            return "control_center.state.disconnected";
 
-    if (!device.paired)
-      return "Not paired"
+        if (!device.paired)
+            return "control_center.state.not-paired";
 
-    return "Connected"
-  }
+        return "control_center.state.connected";
+    }
 }

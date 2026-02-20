@@ -9,8 +9,8 @@
   ],
   "catColor": "default",
   "catSize": 1,
-  "catOffsetY": 0,
+  "catOffsetY": 0.08000000000000002,
   "raveMode": false,
-  "tappyMode": false,
-  "useMprisFilter": false
+  "tappyMode": true,
+  "useMprisFilter": true
 }

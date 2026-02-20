@@ -2,5 +2,8 @@
 # VERSION: 3.0
 SETUVAR --export DOTNET_ROOT:/home/neyfua/\x2edotnet
 SETUVAR --export EDITOR:nvim
+SETUVAR --export GTK_IM_MODULE:fcitx
+SETUVAR --export QT_IM_MODULE:fcitx
+SETUVAR --export XMODIFIERS:\x40im\x3dfcitx
 SETUVAR __fish_initialized:4300
 SETUVAR fish_user_paths:/home/neyfua/\x2espicetify
