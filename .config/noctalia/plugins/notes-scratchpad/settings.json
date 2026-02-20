@@ -1,11 +1,11 @@
 {
   "scratchpadContent": "",
-  "panelWidth": 600,
-  "panelHeight": 400,
+  "panelWidth": 650,
+  "panelHeight": 450,
   "fontSize": 15,
+  "filePath": "",
+  "useMonospace": false,
   "cursorPosition": 0,
   "scrollPositionX": 0,
-  "scrollPositionY": 0,
-  "filePath": "",
-  "useMonospace": false
+  "scrollPositionY": 0
 }

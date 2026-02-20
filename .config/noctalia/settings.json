@@ -18,7 +18,7 @@
         "pinnedApps": [
         ],
         "position": "follow_bar",
-        "screenshotAnnotationTool": "satty -f -",
+        "screenshotAnnotationTool": "",
         "showCategories": false,
         "showIconBackground": false,
         "sortByMostUsed": true,
@@ -32,8 +32,8 @@
             "firefox",
             "Tor Browser"
         ],
-        "preferredPlayer": "spotify, Spotify",
-        "visualizerType": "wave",
+        "preferredPlayer": "spotify, Spoify",
+        "visualizerType": "linear",
         "volumeFeedback": false,
         "volumeOverdrive": false,
         "volumeStep": 2
@@ -41,7 +41,7 @@
     "bar": {
         "autoHideDelay": 500,
         "autoShowDelay": 150,
-        "backgroundOpacity": 0.93,
+        "backgroundOpacity": 0.9500000000000001,
         "barType": "framed",
         "capsuleColorKey": "none",
         "capsuleOpacity": 1,
@@ -55,13 +55,13 @@
         "marginVertical": 4,
         "monitors": [
         ],
-        "outerCorners": false,
+        "outerCorners": true,
         "position": "left",
         "screenOverrides": [
         ],
         "showCapsule": true,
         "showOutline": false,
-        "useSeparateOpacity": false,
+        "useSeparateOpacity": true,
         "widgets": {
             "center": [
                 {
@@ -80,7 +80,7 @@
                     "pillSize": 0.55,
                     "showApplications": false,
                     "showBadge": true,
-                    "showLabelsOnlyWhenOccupied": false,
+                    "showLabelsOnlyWhenOccupied": true,
                     "unfocusedIconsOpacity": 1
                 },
                 {
@@ -115,7 +115,7 @@
                         "useMprisFilter": false,
                         "waitingTimeout": 30000
                     },
-                    "id": "plugin:27ae3a:slowbongo"
+                    "id": "plugin:805fa1:slowbongo"
                 },
                 {
                     "clockColor": "primary",
@@ -123,7 +123,7 @@
                     "formatHorizontal": "hh:mm AP",
                     "formatVertical": "hh mm AP",
                     "id": "Clock",
-                    "tooltipFormat": "dddd, MMMM dd yyyy",
+                    "tooltipFormat": "ddd, MMM dd yyyy",
                     "useCustomFont": true
                 },
                 {
@@ -145,7 +145,7 @@
                     "showSwapUsage": false,
                     "textColor": "none",
                     "useMonospaceFont": true,
-                    "usePadding": true
+                    "usePadding": false
                 },
                 {
                     "defaultSettings": {
@@ -167,9 +167,7 @@
                     "hidePassive": false,
                     "id": "Tray",
                     "pinned": [
-                        "Fcitx",
-                        "Keyboard - English (US)",
-                        "Vmk"
+                        "Keyboard - English (US)"
                     ]
                 },
                 {
@@ -301,17 +299,7 @@
             ],
             "right": [
                 {
-                    "defaultSettings": {
-                        "cursorPosition": 0,
-                        "filePath": "",
-                        "fontSize": 14,
-                        "panelHeight": 400,
-                        "panelWidth": 600,
-                        "scratchpadContent": "",
-                        "scrollPositionX": 0,
-                        "scrollPositionY": 0
-                    },
-                    "id": "plugin:notes-scratchpad"
+                    "id": "PowerProfile"
                 },
                 {
                     "id": "KeepAwake"
@@ -327,6 +315,7 @@
                     "onClicked": "qs -c noctalia-shell ipc call controlCenter toggle && sleep 0.3 && colorpicker",
                     "onMiddleClicked": "",
                     "onRightClicked": "",
+                    "showExecTooltip": true,
                     "stateChecksJson": "[]"
                 }
             ]
@@ -340,6 +329,13 @@
                 "name": "eDP-1",
                 "widgets": [
                     {
+                        "id": "Weather",
+                        "scale": 1,
+                        "showBackground": true,
+                        "x": 72,
+                        "y": 744
+                    },
+                    {
                         "hideMode": "hidden",
                         "id": "MediaPlayer",
                         "roundedCorners": true,
@@ -351,13 +347,6 @@
                         "visualizerType": "wave",
                         "x": 72,
                         "y": 648
-                    },
-                    {
-                        "id": "Weather",
-                        "scale": 1,
-                        "showBackground": true,
-                        "x": 72,
-                        "y": 744
                     }
                 ]
             }
@@ -372,7 +361,12 @@
         "dockType": "static",
         "enabled": true,
         "floatingRatio": 1,
+        "groupApps": false,
+        "groupClickAction": "cycle",
+        "groupContextMenuMode": "extended",
+        "groupIndicatorStyle": "dots",
         "inactiveIndicators": false,
+        "launcherIconColor": "none",
         "launcherPosition": "end",
         "monitors": [
         ],
@@ -380,22 +374,22 @@
         "pinnedApps": [
         ],
         "pinnedStatic": false,
-        "position": "right",
-        "showFrameIndicator": true,
+        "position": "bottom",
+        "showFrameIndicator": false,
         "showLauncherIcon": false,
-        "sitOnFrame": true,
+        "sitOnFrame": false,
         "size": 1
     },
     "general": {
         "allowPanelsOnScreenWithoutBar": true,
-        "allowPasswordWithFprintd": true,
+        "allowPasswordWithFprintd": false,
         "animationDisabled": false,
         "animationSpeed": 1,
         "autoStartAuth": false,
         "avatarImage": "/home/neyfua/.face",
         "boxRadiusRatio": 1,
-        "clockFormat": "hh\\nmm\\nAP",
-        "clockStyle": "digital",
+        "clockFormat": "hh\\nmm",
+        "clockStyle": "analog",
         "compactLockScreen": false,
         "dimmerOpacity": 0.2,
         "enableLockScreenCountdown": true,
@@ -442,7 +436,7 @@
         "shadowOffsetX": 0,
         "shadowOffsetY": 0,
         "showChangelogOnStartup": true,
-        "showHibernateOnLockScreen": true,
+        "showHibernateOnLockScreen": false,
         "showScreenCorners": false,
         "showSessionButtonsOnLockScreen": false,
         "telemetryEnabled": true
@@ -466,7 +460,7 @@
         "name": "Ho Chi Minh",
         "showCalendarEvents": false,
         "showCalendarWeather": true,
-        "showWeekNumberInCalendar": true,
+        "showWeekNumberInCalendar": false,
         "use12hourFormat": true,
         "useFahrenheit": false,
         "weatherEnabled": true,
@@ -475,10 +469,10 @@
     "network": {
         "airplaneModeEnabled": false,
         "bluetoothDetailsViewMode": "grid",
-        "bluetoothHideUnnamedDevices": true,
-        "bluetoothRssiPollIntervalMs": 10000,
+        "bluetoothHideUnnamedDevices": false,
+        "bluetoothRssiPollIntervalMs": 60000,
         "bluetoothRssiPollingEnabled": true,
-        "disableDiscoverability": false,
+        "disableDiscoverability": true,
         "wifiDetailsViewMode": "grid",
         "wifiEnabled": false
     },
@@ -492,7 +486,7 @@
         "nightTemp": "6000"
     },
     "notifications": {
-        "backgroundOpacity": 0.7000000000000001,
+        "backgroundOpacity": 0.6,
         "clearDismissed": true,
         "criticalUrgencyDuration": 15,
         "density": "compact",
@@ -525,13 +519,13 @@
     },
     "osd": {
         "autoHideMs": 1000,
-        "backgroundOpacity": 0.5,
+        "backgroundOpacity": 0.29,
         "enabled": true,
         "enabledTypes": [
             0,
+            1,
             2,
-            3,
-            1
+            3
         ],
         "location": "bottom",
         "monitors": [
@@ -553,49 +547,49 @@
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": false,
-                "keybind": ""
-            },
-            {
-                "action": "suspend",
-                "command": "",
-                "countdownEnabled": true,
-                "enabled": false,
-                "keybind": ""
-            },
-            {
-                "action": "hibernate",
-                "command": "",
-                "countdownEnabled": true,
-                "enabled": false,
-                "keybind": ""
+                "keybind": "1"
             },
             {
                 "action": "logout",
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": true,
-                "keybind": ""
+                "keybind": "5"
+            },
+            {
+                "action": "suspend",
+                "command": "",
+                "countdownEnabled": true,
+                "enabled": false,
+                "keybind": "2"
+            },
+            {
+                "action": "hibernate",
+                "command": "",
+                "countdownEnabled": true,
+                "enabled": false,
+                "keybind": "3"
             },
             {
                 "action": "reboot",
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": true,
-                "keybind": ""
+                "keybind": "4"
             },
             {
                 "action": "shutdown",
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": true,
-                "keybind": ""
+                "keybind": "6"
             },
             {
                 "action": "rebootToUefi",
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": false,
-                "keybind": ""
+                "keybind": "7"
             }
         ],
         "showHeader": false,
@@ -638,8 +632,8 @@
         "fontDefaultScale": 1,
         "fontFixed": "Noto Sans Mono",
         "fontFixedScale": 1.05,
-        "networkPanelView": "ethernet",
-        "panelBackgroundOpacity": 1,
+        "networkPanelView": "wifi",
+        "panelBackgroundOpacity": 0.9500000000000001,
         "panelsAttachedToBar": true,
         "settingsPanelMode": "attached",
         "tooltipsEnabled": true,
@@ -661,124 +655,7 @@
                     "#31748f",
                     "#eb6f92"
                 ],
-                "path": "/home/neyfua/Pictures/Wallpapers/cat_walking.jpeg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/flowers.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/sky_and_clouds.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/girl.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/snowy.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/cat_and_crow.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/katana.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/girl2.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/store_sign.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/flower3.jpg",
+                "path": "/home/neyfua/Pictures/Wallpapers/snow_stairs.jpg",
                 "useWallpaperColors": false
             },
             {
@@ -804,97 +681,6 @@
                     "#31748f",
                     "#eb6f92"
                 ],
-                "path": "/home/neyfua/Pictures/Wallpapers/butterfly.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/Sub/beach_girl.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/Sub/misato.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/Sub/waguri_kaoruko.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/Sub/belle.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/Sub/pulchra.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/18/pulchra_and_burnice.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
                 "path": "/home/neyfua/Pictures/Wallpapers/priest.jpeg",
                 "useWallpaperColors": false
             },
@@ -908,7 +694,7 @@
                     "#31748f",
                     "#eb6f92"
                 ],
-                "path": "/home/neyfua/Pictures/Wallpapers/train_station.jpg",
+                "path": "/home/neyfua/Pictures/Wallpapers/cat_walking.jpeg",
                 "useWallpaperColors": false
             },
             {
@@ -921,13 +707,52 @@
                     "#31748f",
                     "#eb6f92"
                 ],
-                "path": "/home/neyfua/Pictures/Wallpapers/snow_stairs.jpg",
+                "path": "/home/neyfua/Pictures/Wallpapers/cat_and_crow.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/snow.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/store_sign.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/sky_and_clouds.jpg",
                 "useWallpaperColors": false
             }
         ],
         "fillColor": "#000000",
         "fillMode": "crop",
-        "hideWallpaperFilenames": true,
+        "hideWallpaperFilenames": false,
         "monitorDirectories": [
         ],
         "overviewBlur": 0.4,
@@ -940,22 +765,22 @@
         "skipStartupTransition": false,
         "solidColor": "#1a1a2e",
         "sortOrder": "name",
-        "transitionDuration": 1500,
-        "transitionEdgeSmoothness": 0.05,
+        "transitionDuration": 2500,
+        "transitionEdgeSmoothness": 0.15,
         "transitionType": "disc",
         "useSolidColor": false,
         "useWallhaven": false,
         "viewMode": "single",
-        "wallhavenApiKey": "JlrXKfwvJ0K0invG9WgVdfxeWgwKa10z",
-        "wallhavenCategories": "110",
+        "wallhavenApiKey": "",
+        "wallhavenCategories": "111",
         "wallhavenOrder": "desc",
         "wallhavenPurity": "100",
         "wallhavenQuery": "",
-        "wallhavenRatios": "landscape",
+        "wallhavenRatios": "",
         "wallhavenResolutionHeight": "",
         "wallhavenResolutionMode": "atleast",
         "wallhavenResolutionWidth": "",
-        "wallhavenSorting": "date_added",
+        "wallhavenSorting": "relevance",
         "wallpaperChangeMode": "random"
     }
 }
