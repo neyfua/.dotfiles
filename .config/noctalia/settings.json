@@ -41,7 +41,7 @@
     "bar": {
         "autoHideDelay": 500,
         "autoShowDelay": 150,
-        "backgroundOpacity": 0.9500000000000001,
+        "backgroundOpacity": 0.93,
         "barType": "framed",
         "capsuleColorKey": "none",
         "capsuleOpacity": 1,
@@ -61,7 +61,7 @@
         ],
         "showCapsule": true,
         "showOutline": false,
-        "useSeparateOpacity": true,
+        "useSeparateOpacity": false,
         "widgets": {
             "center": [
                 {
@@ -633,7 +633,7 @@
         "fontFixed": "Noto Sans Mono",
         "fontFixedScale": 1.05,
         "networkPanelView": "wifi",
-        "panelBackgroundOpacity": 0.9500000000000001,
+        "panelBackgroundOpacity": 1,
         "panelsAttachedToBar": true,
         "settingsPanelMode": "attached",
         "tooltipsEnabled": true,
@@ -641,7 +641,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/neyfua/Pictures/Wallpapers",
+        "directory": "/home/neyfua/Pictures/18",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
