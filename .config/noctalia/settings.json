@@ -22,7 +22,7 @@
         "showCategories": false,
         "showIconBackground": false,
         "sortByMostUsed": true,
-        "terminalCommand": "foot -e",
+        "terminalCommand": "alacritty -e",
         "useApp2Unit": true,
         "viewMode": "list"
     },
@@ -36,7 +36,7 @@
         "visualizerType": "wave",
         "volumeFeedback": false,
         "volumeOverdrive": false,
-        "volumeStep": 1
+        "volumeStep": 2
     },
     "bar": {
         "autoHideDelay": 500,
@@ -370,7 +370,7 @@
         "deadOpacity": 0.6,
         "displayMode": "auto_hide",
         "dockType": "static",
-        "enabled": false,
+        "enabled": true,
         "floatingRatio": 1,
         "inactiveIndicators": false,
         "launcherPosition": "end",
@@ -381,9 +381,9 @@
         ],
         "pinnedStatic": false,
         "position": "right",
-        "showFrameIndicator": false,
+        "showFrameIndicator": true,
         "showLauncherIcon": false,
-        "sitOnFrame": false,
+        "sitOnFrame": true,
         "size": 1
     },
     "general": {

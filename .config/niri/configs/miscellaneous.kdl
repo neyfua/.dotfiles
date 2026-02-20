@@ -17,20 +17,13 @@ environment {
 
 	ECORE_EVAS_ENGINE "wayland-egl"
 	ELM_ENGINE "wayland_egl"
-	SDL_VIDEODRIVER "wayland"
+	SDL_VIDEODRIVER "wayland_egl"
 	GDK_BACKEND "wayland"
 	CLUTTER_BACKEND "wayland"
 
 		// Java
 	_JAVA_AWT_WM_NONREPARENTING "1"
 	NO_AT_BRIDGE "1"
-
-		// Fcitx
-	GTK_IM_MODULE "fcitx"
-	QT_IM_MODULE "fcitx"
-	XMODIFIERS "@im=fcitx"
-	SDL_IM_MODULE "fcitx"
-	GLFW_IM_MODULE "ibus"
 
 		// QT
 	QT_QPA_PLATFORM "wayland"
