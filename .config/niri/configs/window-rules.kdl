@@ -1,7 +1,53 @@
 window-rule {
 	geometry-corner-radius 12
-	draw-border-with-background false
 	clip-to-geometry true
+}
+
+window-rule {
+	match is-active=false
+	opacity 0.9
+}
+
+window-rule {
+	match app-id="^code$"
+	match app-id="^dev.zed.Zed$"
+
+	open-on-workspace "code"
+	open-focused true
+}
+
+window-rule {
+	match app-id="^(firefox)(.*)$"
+	match app-id="^Tor Browser$"
+
+	open-on-workspace "web"
+	open-focused true
+}
+
+window-rule {
+	match app-id="^vesktop$"
+	match app-id="^spotify$"
+	match app-id="^Spotify$"
+	match app-id="^org.telegram.desktop$"
+
+	open-on-workspace "chat"
+	open-focused true
+}
+
+window-rule {
+	match title="^(OBS)(.*)$"
+	
+	open-on-workspace "obs"
+	open-focused true
+}
+
+window-rule {
+	match app-id="^steam$" title="Steam"
+	match app-id="^com.heroicgameslauncher.hgl$"
+	match app-id="sober" title="Sober"
+
+	open-on-workspace "game"
+	open-focused true
 }
 
 window-rule {
@@ -147,6 +193,4 @@ window-rule {
 	default-window-height { fixed 500; }
 
 	open-floating true
-
-	border { off; }
 }

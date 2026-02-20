@@ -4,6 +4,7 @@ return {
 		branch = "master",
 		lazy = false,
 		build = ":TSUpdate",
+		cond = not vim.g.vscode,
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = {

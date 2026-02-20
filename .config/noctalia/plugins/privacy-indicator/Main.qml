@@ -33,15 +33,12 @@ Item {
     id: cameraDetectionProcess
     running: false
     command: ["sh", "-c", "for dev in /sys/class/video4linux/video*; do [ -e \"$dev/name\" ] && grep -qv 'Metadata' \"$dev/name\" && dev_name=$(basename \"$dev\") && find /proc/[0-9]*/fd -lname \"/dev/$dev_name\" 2>/dev/null; done | cut -d/ -f3 | xargs -r ps -o comm= -p | sort -u | tr '\\n' ',' | sed 's/,$//'"]
-    onExited: (code, status) => {
-      if (stdout) {
-        var appsString = stdout.trim();
+    stdout: StdioCollector {
+      onStreamFinished: {
+        var appsString = this.text.trim();
         var apps = appsString.length > 0 ? appsString.split(',') : [];
         root.camApps = apps;
         root.camActive = apps.length > 0;
-      } else {
-        root.camApps = [];
-        root.camActive = false;
       }
     }
   }
