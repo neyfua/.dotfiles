@@ -3,6 +3,10 @@ workspace "web"
 workspace "chat"
 workspace "obs"
 workspace "game"
+workspace "edit"
+workspace "7"
+workspace "8"
+workspace "spotify"
 
 window-rule {
 	geometry-corner-radius 12
@@ -32,8 +36,6 @@ window-rule {
 
 window-rule {
 	match app-id="^vesktop$"
-	match app-id="^spotify$"
-	match app-id="^Spotify$"
 	match app-id="^org.telegram.desktop$"
 
 	open-on-workspace "chat"
@@ -57,6 +59,21 @@ window-rule {
 }
 
 window-rule {
+	match app-id="org.kde.kdenlive" title="Kdenlive"
+
+	open-on-workspace "edit"
+	open-focused true
+}
+
+window-rule {
+	match app-id="^spotify$"
+	match app-id="^Spotify$"
+
+	open-on-workspace "spotify"
+	open-focused true
+}
+
+window-rule {
 	match app-id="^(firefox)(.*)$"
 	match app-id="^Tor Browser$"
 	match app-id="^vesktop$"
@@ -67,7 +84,6 @@ window-rule {
 	match app-id="^org.telegram.desktop$"
 	match app-id="^code$"
 	match app-id="^dev.zed.Zed$"
-	match app-id="^org.kde.kdenlive$" title="^(Untitled)(.*)$"
 	match app-id="sober" title="Sober"
 
 	match title="^(OBS)(.*)$"
@@ -78,6 +94,7 @@ window-rule {
 window-rule {
 	match app-id="com-sun-tools-javac-launcher-SourceLauncher"
 	match app-id="^zenity$"
+	match app-id="org.kde.kdenlive" title="Kdenlive"
 
 	match title="^About$"
 	match title="^Library$"
