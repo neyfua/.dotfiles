@@ -18,7 +18,7 @@ Item {
   readonly property var geometryPlaceholder: panelContainer
 
   property real contentPreferredWidth: 440 * Style.uiScaleRatio
-  property real contentPreferredHeight: 360 * Style.uiScaleRatio
+  property real contentPreferredHeight: 360 * Style.uiScaleRatio * Settings.data.ui.fontDefaultScale
 
   readonly property bool allowAttach: true
 
@@ -252,21 +252,22 @@ Item {
             id: deviceStatsWithPhone
 
             RowLayout {
-
-              Item {
-                width: 7 * Style.uiScaleRatio
-              }
+              spacing: Style.marginM
 
               Rectangle {
                 width: 100 * Style.uiScaleRatio
                 color: "transparent"
                 Layout.fillHeight: true
-                Layout.leftMargin: Style.marginL
+                Layout.alignment: Qt.AlignCenter
 
                 PhoneDisplay {
-                  Layout.alignment: Qt.AlignTop
+                  Layout.alignment: Qt.AlignCenter
                   backgroundImage: ""
                 }
+              }
+
+              Item {
+                width: Style.marginL
               }
 
               // Stats Grid

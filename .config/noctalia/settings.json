@@ -297,18 +297,40 @@
                 {
                     "defaultSettings": {
                     },
-                    "id": "plugin:noctalia-kde-connect"
+                    "id": "plugin:kde-connect"
                 }
             ],
             "right": [
-                {
-                    "id": "PowerProfile"
-                },
                 {
                     "id": "KeepAwake"
                 },
                 {
                     "id": "NightLight"
+                },
+                {
+                    "defaultSettings": {
+                        "completedCount": 0,
+                        "count": 0,
+                        "current_page_id": 0,
+                        "isExpanded": false,
+                        "pages": [
+                            {
+                                "id": 0,
+                                "name": "General"
+                            }
+                        ],
+                        "priorityColors": {
+                            "high": "#f44336",
+                            "low": "#9e9e9e",
+                            "medium": "#2196f3"
+                        },
+                        "showBackground": true,
+                        "showCompleted": true,
+                        "todos": [
+                        ],
+                        "useCustomColors": false
+                    },
+                    "id": "plugin:todo"
                 },
                 {
                     "enableOnStateLogic": false,
@@ -353,7 +375,8 @@
                     }
                 ]
             }
-        ]
+        ],
+        "overviewEnabled": false
     },
     "dock": {
         "animationSpeed": 1,
@@ -376,7 +399,7 @@
         "onlySameOutput": true,
         "pinnedApps": [
         ],
-        "pinnedStatic": false,
+        "pinnedStatic": true,
         "position": "bottom",
         "showFrameIndicator": false,
         "showLauncherIcon": false,
@@ -635,7 +658,7 @@
         "fontDefaultScale": 1,
         "fontFixed": "Noto Sans Mono",
         "fontFixedScale": 1.05,
-        "networkPanelView": "ethernet",
+        "networkPanelView": "wifi",
         "panelBackgroundOpacity": 1,
         "panelsAttachedToBar": true,
         "settingsPanelMode": "attached",

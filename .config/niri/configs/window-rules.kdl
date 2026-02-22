@@ -21,6 +21,7 @@ window-rule {
 window-rule {
 	match app-id="^code$"
 	match app-id="^dev.zed.Zed$"
+	match app-id="^jetbrains-studio$"
 
 	open-on-workspace "code"
 	open-focused true
@@ -115,6 +116,7 @@ window-rule {
 window-rule {
 	match app-id="^vesktop$" title="vesktop"
 	match app-id="^zenity$"
+	match app-id="^org.gnome.Nautilus$" title="^(Select)(.*)$"
 
 	match title="^splash$"
 	match title="^zoom$"
@@ -123,7 +125,6 @@ window-rule {
 	match title="^(Sign in)(.*)$"
 	match title="^(Starting Apache)(.*)$"
 	match title="^(Warning)(.*)$"
-	match title="^(Select)(.*)$"
 	match title="^(Splash)(.*)$"
 
 	border { off; }
@@ -131,15 +132,15 @@ window-rule {
 
 window-rule {
 	match app-id="^xdg-desktop-portal-gtk$"
+	match app-id="^org.gnome.Nautilus$" title="^(Open File)(.*)$"
+	match app-id="^org.gnome.Nautilus$" title="^(Select)(.*)$"
 
 	match title="^dialog$"
 	match title="^confirm$"
 	match title="^(Save As)(.*)$"
 	match title="^(Save Image)(.*)$"
-	match title="^(Open File)(.*)$"
 	match title="^(Open Folder)(.*)$"
 	match title="^(File Upload)(.*)$"
-	match title="^(Select)(.*)$"
 	match title="^(Choose wallpaper)(.*)$"
 	match title="^(Choose an image)(.*)$"
 
