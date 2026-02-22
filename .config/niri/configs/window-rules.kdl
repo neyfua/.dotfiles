@@ -51,9 +51,12 @@ window-rule {
 }
 
 window-rule {
-	match app-id="^steam$" title="Steam"
+	match app-id="^steam$"
 	match app-id="^com.heroicgameslauncher.hgl$"
-	match app-id="sober" title="Sober"
+	match app-id="^sober$"
+	match app-id="^PolyMC$"
+
+	match app-id="^(Minecraft)(.*)$"
 
 	open-on-workspace "game"
 	open-focused true
