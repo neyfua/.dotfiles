@@ -2,11 +2,12 @@
   "inputDevices": [
     "/dev/input/event12",
     "/dev/input/event14",
-    "/dev/input/event0"
+    "/dev/input/event0",
+    "/dev/input/event13"
   ],
   "catColor": "default",
-  "catSize": 1,
-  "catOffsetY": 0.08000000000000002,
+  "catSize": 0.5,
+  "catOffsetY": 0.03999999999999998,
   "raveMode": false,
   "tappyMode": true,
   "useMprisFilter": true
