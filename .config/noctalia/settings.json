@@ -359,8 +359,8 @@
                         "id": "Weather",
                         "scale": 1,
                         "showBackground": true,
-                        "x": 72,
-                        "y": 744
+                        "x": 24,
+                        "y": 720
                     },
                     {
                         "hideMode": "hidden",
@@ -372,8 +372,8 @@
                         "showButtons": false,
                         "showVisualizer": true,
                         "visualizerType": "wave",
-                        "x": 72,
-                        "y": 648
+                        "x": 24,
+                        "y": 624
                     }
                 ]
             }
