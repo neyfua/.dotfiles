@@ -1,12 +1,9 @@
 workspace "code"
 workspace "web"
 workspace "chat"
-workspace "obs"
 workspace "game"
-workspace "edit"
-workspace "7"
-workspace "8"
-workspace "spotify"
+workspace "music"
+workspace "misc"
 
 window-rule {
 	geometry-corner-radius 12
@@ -38,15 +35,9 @@ window-rule {
 window-rule {
 	match app-id="^vesktop$"
 	match app-id="^org.telegram.desktop$"
+	match app-id="^fluxer_app$"
 
 	open-on-workspace "chat"
-	open-focused true
-}
-
-window-rule {
-	match title="^(OBS)(.*)$"
-	
-	open-on-workspace "obs"
 	open-focused true
 }
 
@@ -55,7 +46,6 @@ window-rule {
 	match app-id="^com.heroicgameslauncher.hgl$"
 	match app-id="^sober$"
 	match app-id="^PolyMC$"
-
 	match app-id="^(Minecraft)(.*)$"
 
 	open-on-workspace "game"
@@ -63,17 +53,18 @@ window-rule {
 }
 
 window-rule {
-	match app-id="org.kde.kdenlive" title="Kdenlive"
+	match app-id="^spotify$"
+	match app-id="^Spotify$"
 
-	open-on-workspace "edit"
+	open-on-workspace "music"
 	open-focused true
 }
 
 window-rule {
-	match app-id="^spotify$"
-	match app-id="^Spotify$"
+	match title="^(OBS)(.*)$"
+	match app-id="org.kde.kdenlive" title="Kdenlive"
 
-	open-on-workspace "spotify"
+	open-on-workspace "misc"
 	open-focused true
 }
 
@@ -81,6 +72,7 @@ window-rule {
 	match app-id="^(firefox)(.*)$"
 	match app-id="^Tor Browser$"
 	match app-id="^vesktop$"
+	match app-id="^fluxer_app$"
 	match app-id="^steam$" title="Steam"
 	match app-id="^com.heroicgameslauncher.hgl$"
 	match app-id="^spotify$"
@@ -146,6 +138,7 @@ window-rule {
 	match title="^(File Upload)(.*)$"
 	match title="^(Choose wallpaper)(.*)$"
 	match title="^(Choose an image)(.*)$"
+	match title="^(blob.)(.*)$"
 
 	default-column-width { proportion 0.7; }
 	default-window-height { proportion 0.7; }
