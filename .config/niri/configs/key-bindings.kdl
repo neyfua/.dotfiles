@@ -25,10 +25,6 @@ binds {
 
 	// Wallpaper selector
 	Alt+W repeat=false	{ spawn "qs" "-c" "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
-
-	// WiFi, Bluetooth panels, toggle WiFi, Bluetooth on/off
-	Alt+Shift+W repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "network" "togglePanel"; }
-	Alt+Shift+B repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "bluetooth" "togglePanel"; }
 	
 	// Plugins
 	Alt+Shift+C repeat=false	{ spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
