@@ -6,7 +6,7 @@ padding = { x = 20, y = 20 }
 
 [font]
 normal = { family = "RecMonoCasual Nerd Font Propo" }
-size = 25.5
+size = 25
 
 [cursor]
 style = { shape = "Block", blinking = "Off" }
