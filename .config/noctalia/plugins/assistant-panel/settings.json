@@ -13,8 +13,8 @@
     "backend": "google",
     "deeplApiKey": "",
     "realTimeTranslation": true,
-    "sourceLanguage": "en",
-    "targetLanguage": "vi"
+    "sourceLanguage": "vi",
+    "targetLanguage": "en"
   },
   "maxHistoryLength": 500,
   "panelDetached": false,
