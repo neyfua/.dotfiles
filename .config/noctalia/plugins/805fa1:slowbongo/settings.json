@@ -1,9 +1,11 @@
 {
   "inputDevices": [
     "/dev/input/event12",
-    "/dev/input/event14",
     "/dev/input/event0",
-    "/dev/input/event13"
+    "/dev/input/event13",
+    "/dev/input/event30",
+    "/dev/input/event23",
+    "/dev/input/event24"
   ],
   "catColor": "default",
   "catSize": 0.5,

@@ -12,7 +12,9 @@
   "translator": {
     "backend": "google",
     "deeplApiKey": "",
-    "realTimeTranslation": true
+    "realTimeTranslation": true,
+    "sourceLanguage": "en",
+    "targetLanguage": "vi"
   },
   "maxHistoryLength": 500,
   "panelDetached": false,

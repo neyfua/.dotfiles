@@ -180,7 +180,7 @@
                 },
                 {
                     "deviceNativePath": "__default__",
-                    "displayMode": "graphic-clean",
+                    "displayMode": "graphic",
                     "hideIfIdle": false,
                     "hideIfNotDetected": true,
                     "id": "Battery",
@@ -451,7 +451,7 @@
         "lockOnSuspend": true,
         "lockScreenAnimations": true,
         "lockScreenBlur": 0.4,
-        "lockScreenCountdownDuration": 10000,
+        "lockScreenCountdownDuration": 3000,
         "lockScreenMonitors": [
         ],
         "lockScreenTint": 0.6,
@@ -466,7 +466,7 @@
         "showChangelogOnStartup": true,
         "showHibernateOnLockScreen": false,
         "showScreenCorners": false,
-        "showSessionButtonsOnLockScreen": false,
+        "showSessionButtonsOnLockScreen": true,
         "telemetryEnabled": true
     },
     "hooks": {
@@ -503,7 +503,7 @@
         "disableDiscoverability": true,
         "networkPanelView": "wifi",
         "wifiDetailsViewMode": "grid",
-        "wifiEnabled": false
+        "wifiEnabled": true
     },
     "nightLight": {
         "autoSchedule": true,
