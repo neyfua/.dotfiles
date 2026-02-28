@@ -18,7 +18,7 @@
   },
   "maxHistoryLength": 500,
   "panelDetached": false,
-  "panelPosition": "top",
+  "panelPosition": "right",
   "panelHeightRatio": 0.85,
   "panelWidth": 750,
   "attachmentStyle": "connected",

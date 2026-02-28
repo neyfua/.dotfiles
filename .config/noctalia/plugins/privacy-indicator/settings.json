@@ -3,5 +3,6 @@
   "iconSpacing": 4,
   "removeMargins": false,
   "activeColor": "primary",
-  "inactiveColor": "none"
+  "inactiveColor": "none",
+  "enableToast": true
 }

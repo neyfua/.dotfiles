@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
+# Toggle control center and wait for it to open
+qs -c noctalia-shell ipc call controlCenter toggle
+sleep 0.3
+
 # Pick color
 output="$(niri msg pick-color 2>/dev/null)"
 hex="$(echo "$output" | grep 'Hex:' | awk '{print $2}')"
 
 # Cancel if no color picked
 if [ -z "$hex" ]; then
+    qs -c noctalia-shell ipc call controlCenter toggle
     exit 0
 fi
 
@@ -28,6 +33,9 @@ magick -size 128x128 xc:"$hex" \
     \( -size 128x128 xc:none -fill "$hex" -draw "circle 64,64 64,5" \) \
     -compose src-in -composite \
     "$icon"
+
+# Toggle control center closed before notifying
+qs -c noctalia-shell ipc call controlCenter toggle
 
 # Send notification
 notify-send -i "$icon" "Color copied" "$hex"

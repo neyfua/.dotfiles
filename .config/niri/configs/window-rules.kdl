@@ -91,6 +91,7 @@ window-rule {
 	match app-id="com-sun-tools-javac-launcher-SourceLauncher"
 	match app-id="^zenity$"
 	match app-id="org.kde.kdenlive" title="Kdenlive"
+	match app-id="^org.vinegarhq.Sober$" title="^Servers$"
 
 	match title="^About$"
 	match title="^Library$"
@@ -213,4 +214,12 @@ window-rule {
 	default-window-height { fixed 500; }
 
 	open-floating true
+}
+
+window-rule {
+	match app-id="^sober$"
+
+	open-fullscreen false
+	open-maximized false
+	open-maximized-to-edges false
 }
