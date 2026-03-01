@@ -1,5 +1,5 @@
 // gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
-// gsettings set org.gnome.desktop.wm.preferences button-layout ':'
+// gsettings set org.gnome.desktop.wm.preferences button-layout ''
 
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
 spawn-at-startup "kdeconnect"

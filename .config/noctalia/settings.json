@@ -430,10 +430,11 @@
         "avatarImage": "/home/neyfua/.face",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
-        "clockStyle": "analog",
+        "clockStyle": "digital",
         "compactLockScreen": false,
         "dimmerOpacity": 0.2,
         "enableLockScreenCountdown": true,
+        "enableLockScreenMediaControls": true,
         "enableShadows": true,
         "forceBlackScreenCorners": false,
         "iRadiusRatio": 1,
@@ -442,7 +443,8 @@
                 "Down"
             ],
             "keyEnter": [
-                "Return"
+                "Return",
+                "Enter"
             ],
             "keyEscape": [
                 "Esc"
@@ -477,9 +479,9 @@
         "shadowOffsetX": 0,
         "shadowOffsetY": 0,
         "showChangelogOnStartup": true,
-        "showHibernateOnLockScreen": false,
+        "showHibernateOnLockScreen": true,
         "showScreenCorners": false,
-        "showSessionButtonsOnLockScreen": true,
+        "showSessionButtonsOnLockScreen": false,
         "telemetryEnabled": true
     },
     "hooks": {
@@ -495,11 +497,11 @@
     },
     "idle": {
         "customCommands": "[]",
-        "enabled": false,
-        "fadeDuration": 5,
-        "lockTimeout": 660,
-        "screenOffTimeout": 600,
-        "suspendTimeout": 1800
+        "enabled": true,
+        "fadeDuration": 3,
+        "lockTimeout": 420,
+        "screenOffTimeout": 720,
+        "suspendTimeout": 0
     },
     "location": {
         "analogClockInCalendar": false,
@@ -645,7 +647,7 @@
         "showHeader": false,
         "showKeybinds": false
     },
-    "settingsVersion": 53,
+    "settingsVersion": 54,
     "systemMonitor": {
         "batteryCriticalThreshold": 5,
         "batteryWarningThreshold": 20,

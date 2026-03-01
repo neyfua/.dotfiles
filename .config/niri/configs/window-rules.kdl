@@ -223,3 +223,9 @@ window-rule {
 	open-maximized false
 	open-maximized-to-edges false
 }
+
+window-rule {
+	match app-id="^org.vinegarhq.Sober$" title="^Servers$"
+
+	open-focused true
+}
