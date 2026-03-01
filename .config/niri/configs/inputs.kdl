@@ -11,7 +11,7 @@ input {
 		natural-scroll
 		accel-speed 0.5
 		accel-profile "flat"
-		scroll-factor 0.4
+		scroll-factor 0.2
 		scroll-method "two-finger"
 		// disabled-on-external-mouse
 	}
