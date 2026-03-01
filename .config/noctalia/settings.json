@@ -346,17 +346,6 @@
                         "useCustomColors": false
                     },
                     "id": "plugin:todo"
-                },
-                {
-                    "enableOnStateLogic": false,
-                    "generalTooltipText": "",
-                    "icon": "heart",
-                    "id": "CustomButton",
-                    "onClicked": "",
-                    "onMiddleClicked": "",
-                    "onRightClicked": "",
-                    "showExecTooltip": true,
-                    "stateChecksJson": "[]"
                 }
             ]
         }
@@ -526,7 +515,7 @@
         "disableDiscoverability": true,
         "networkPanelView": "wifi",
         "wifiDetailsViewMode": "grid",
-        "wifiEnabled": false
+        "wifiEnabled": true
     },
     "nightLight": {
         "autoSchedule": true,
