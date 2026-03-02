@@ -9,7 +9,7 @@
         "density": "comfortable",
         "enableClipPreview": true,
         "enableClipboardHistory": true,
-        "enableSessionSearch": false,
+        "enableSessionSearch": true,
         "enableSettingsSearch": false,
         "enableWindowsSearch": false,
         "iconMode": "tabler",
@@ -58,15 +58,18 @@
         "marginVertical": 4,
         "monitors": [
         ],
+        "mouseWheelAction": "none",
+        "mouseWheelWrap": true,
         "outerCorners": true,
         "position": "left",
+        "reverseScroll": false,
         "screenOverrides": [
         ],
         "showCapsule": true,
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
         "useSeparateOpacity": false,
-        "widgetSpacing": 6,
+        "widgetSpacing": 4,
         "widgets": {
             "center": [
                 {
@@ -90,14 +93,11 @@
                 },
                 {
                     "compactMode": true,
-                    "compactShowAlbumArt": true,
-                    "compactShowVisualizer": false,
                     "hideMode": "hidden",
                     "hideWhenIdle": false,
                     "id": "MediaMini",
                     "maxWidth": 145,
                     "panelShowAlbumArt": true,
-                    "panelShowVisualizer": true,
                     "scrollingMode": "hover",
                     "showAlbumArt": true,
                     "showArtistFirst": false,
@@ -174,7 +174,8 @@
                     "hidePassive": false,
                     "id": "Tray",
                     "pinned": [
-                        "Keyboard - English (US)"
+                        "Keyboard - English (US)",
+                        "Lotus"
                     ]
                 },
                 {
@@ -272,6 +273,7 @@
             }
         ],
         "diskPath": "/",
+        "openAtMouseOnBarRightClick": true,
         "position": "close_to_bar_button",
         "shortcuts": {
             "left": [
@@ -396,6 +398,9 @@
         "groupContextMenuMode": "extended",
         "groupIndicatorStyle": "dots",
         "inactiveIndicators": false,
+        "indicatorColor": "primary",
+        "indicatorOpacity": 0.6,
+        "indicatorThickness": 3,
         "launcherIconColor": "none",
         "launcherPosition": "end",
         "monitors": [
@@ -404,8 +409,8 @@
         "pinnedApps": [
         ],
         "pinnedStatic": true,
-        "position": "bottom",
-        "showFrameIndicator": false,
+        "position": "top",
+        "showDockIndicator": false,
         "showLauncherIcon": false,
         "sitOnFrame": false,
         "size": 1
@@ -452,7 +457,7 @@
             ]
         },
         "language": "",
-        "lockOnSuspend": true,
+        "lockOnSuspend": false,
         "lockScreenAnimations": true,
         "lockScreenBlur": 0.4,
         "lockScreenCountdownDuration": 3000,
@@ -487,9 +492,15 @@
     "idle": {
         "customCommands": "[]",
         "enabled": true,
-        "fadeDuration": 3,
+        "fadeDuration": 2,
+        "lockCommand": "",
         "lockTimeout": 420,
+        "resumeLockCommand": "",
+        "resumeScreenOffCommand": "",
+        "resumeSuspendCommand": "",
+        "screenOffCommand": "",
         "screenOffTimeout": 720,
+        "suspendCommand": "",
         "suspendTimeout": 0
     },
     "location": {
@@ -512,7 +523,7 @@
         "bluetoothHideUnnamedDevices": true,
         "bluetoothRssiPollIntervalMs": 60000,
         "bluetoothRssiPollingEnabled": true,
-        "disableDiscoverability": true,
+        "disableDiscoverability": false,
         "networkPanelView": "wifi",
         "wifiDetailsViewMode": "grid",
         "wifiEnabled": true
@@ -530,7 +541,7 @@
         "backgroundOpacity": 0.6,
         "clearDismissed": true,
         "criticalUrgencyDuration": 15,
-        "density": "compact",
+        "density": "default",
         "enableBatteryToast": true,
         "enableKeyboardLayoutToast": false,
         "enableMarkdown": false,
@@ -683,110 +694,6 @@
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/snow_stairs.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/flower2.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/priest.jpeg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/cat_walking.jpeg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/cat_and_crow.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/snow.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/store_sign.jpg",
-                "useWallpaperColors": false
-            },
-            {
-                "colorScheme": "Rose Pine",
-                "darkMode": true,
-                "generationMethod": "tonal-spot",
-                "paletteColors": [
-                    "#ebbcba",
-                    "#9ccfd8",
-                    "#31748f",
-                    "#eb6f92"
-                ],
-                "path": "/home/neyfua/Pictures/Wallpapers/sky_and_clouds.jpg",
-                "useWallpaperColors": false
-            }
         ],
         "fillColor": "#000000",
         "fillMode": "crop",
@@ -800,11 +707,11 @@
         "randomIntervalSec": 300,
         "setWallpaperOnAllMonitors": true,
         "showHiddenFiles": false,
-        "skipStartupTransition": false,
+        "skipStartupTransition": true,
         "solidColor": "#1a1a2e",
         "sortOrder": "name",
-        "transitionDuration": 2500,
-        "transitionEdgeSmoothness": 0.15,
+        "transitionDuration": 1500,
+        "transitionEdgeSmoothness": 0.05,
         "transitionType": "disc",
         "useSolidColor": false,
         "useWallhaven": false,
