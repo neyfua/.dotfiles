@@ -9,7 +9,7 @@
         "density": "comfortable",
         "enableClipPreview": true,
         "enableClipboardHistory": true,
-        "enableSessionSearch": true,
+        "enableSessionSearch": false,
         "enableSettingsSearch": false,
         "enableWindowsSearch": false,
         "iconMode": "tabler",
@@ -20,7 +20,7 @@
         "position": "follow_bar",
         "screenshotAnnotationTool": "satty -f -",
         "showCategories": false,
-        "showIconBackground": false,
+        "showIconBackground": true,
         "sortByMostUsed": true,
         "terminalCommand": "alacritty -e",
         "useApp2Unit": true,
@@ -69,7 +69,7 @@
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
         "useSeparateOpacity": false,
-        "widgetSpacing": 4,
+        "widgetSpacing": 6,
         "widgets": {
             "center": [
                 {
@@ -136,6 +136,7 @@
                     "diskPath": "/",
                     "iconColor": "none",
                     "id": "SystemMonitor",
+                    "showCpuCores": false,
                     "showCpuFreq": false,
                     "showCpuTemp": true,
                     "showCpuUsage": true,
@@ -168,7 +169,7 @@
                 {
                     "blacklist": [
                     ],
-                    "chevronColor": "primary",
+                    "chevronColor": "none",
                     "colorizeIcons": false,
                     "drawerEnabled": true,
                     "hidePassive": false,
@@ -390,10 +391,10 @@
         "colorizeIcons": false,
         "deadOpacity": 0.6,
         "displayMode": "auto_hide",
-        "dockType": "static",
-        "enabled": true,
+        "dockType": "floating",
+        "enabled": false,
         "floatingRatio": 0.8,
-        "groupApps": true,
+        "groupApps": false,
         "groupClickAction": "list",
         "groupContextMenuMode": "extended",
         "groupIndicatorStyle": "dots",
@@ -408,8 +409,8 @@
         "onlySameOutput": true,
         "pinnedApps": [
         ],
-        "pinnedStatic": true,
-        "position": "top",
+        "pinnedStatic": false,
+        "position": "bottom",
         "showDockIndicator": false,
         "showLauncherIcon": false,
         "sitOnFrame": false,
@@ -508,10 +509,10 @@
         "firstDayOfWeek": 1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
-        "name": "HCMC",
+        "name": "Ho Chi Minh",
         "showCalendarEvents": false,
         "showCalendarWeather": true,
-        "showWeekNumberInCalendar": false,
+        "showWeekNumberInCalendar": true,
         "use12hourFormat": true,
         "useFahrenheit": false,
         "weatherEnabled": true,
@@ -519,11 +520,12 @@
     },
     "network": {
         "airplaneModeEnabled": false,
+        "bluetoothAutoConnect": false,
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": true,
         "bluetoothRssiPollIntervalMs": 60000,
         "bluetoothRssiPollingEnabled": true,
-        "disableDiscoverability": false,
+        "disableDiscoverability": true,
         "networkPanelView": "wifi",
         "wifiDetailsViewMode": "grid",
         "wifiEnabled": true
@@ -680,7 +682,7 @@
         "boxBorderEnabled": false,
         "fontDefault": "Inter Medium",
         "fontDefaultScale": 1,
-        "fontFixed": "Noto Sans Mono",
+        "fontFixed": "RecMonoSmCasual Nerd Font",
         "fontFixedScale": 1.05,
         "panelBackgroundOpacity": 1,
         "panelsAttachedToBar": true,
@@ -694,6 +696,110 @@
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/cat_and_crow.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/cat_walking.jpeg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/flower2.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/priest.jpeg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/snow_stairs.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/sky_and_clouds.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/snowy.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/snow.jpg",
+                "useWallpaperColors": false
+            }
         ],
         "fillColor": "#000000",
         "fillMode": "crop",
