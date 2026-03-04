@@ -61,10 +61,8 @@ window-rule {
 }
 
 window-rule {
-	match app-id="org.kde.kdenlive" title="Kdenlive"
-	match app-id="^(libreoffice-)(.*)$"
-
 	match title="^(OBS)(.*)$"
+	match app-id="org.kde.kdenlive" title="Kdenlive"
 
 	open-on-workspace "misc"
 	open-focused true
