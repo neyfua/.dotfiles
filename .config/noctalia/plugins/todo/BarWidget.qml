@@ -115,7 +115,7 @@ Item {
         // Open panel on left click
         if (pluginApi) {
           Logger.i("Todo", "Opening Todo panel");
-          pluginApi.openPanel(root.screen);
+          pluginApi.openPanel(root.screen, this);
         }
       }
     }
