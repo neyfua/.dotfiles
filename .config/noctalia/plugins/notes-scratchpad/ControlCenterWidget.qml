@@ -3,15 +3,11 @@ import Quickshell
 import qs.Widgets
 
 NIconButtonHot {
-    property ShellScreen screen
-    property var pluginApi: null
+		property ShellScreen screen
+		property var pluginApi: null
 
-    icon: "file-text"
-    tooltipText: pluginApi?.tr("bar_widget.tooltip") || "Scratchpad"
+		icon: "file-text"
+		tooltipText: pluginApi?.tr("bar_widget.tooltip") || "Scratchpad"
 
-    onClicked: {
-        if (pluginApi) {
-            pluginApi.togglePanel(screen);
-        }
-    }
+		onClicked: pluginApi?.togglePanel(screen, this)
 }
