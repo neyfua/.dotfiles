@@ -13,10 +13,14 @@
     ],
     "states": {
         "805fa1:slowbongo": {
-            "enabled": true,
+            "enabled": false,
             "sourceUrl": "https://github.com/tuibird/slowbongo.git"
         },
         "assistant-panel": {
+            "enabled": true,
+            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
+        },
+        "catwalk": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },

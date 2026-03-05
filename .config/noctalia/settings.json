@@ -56,6 +56,9 @@
         "hideOnOverview": true,
         "marginHorizontal": 4,
         "marginVertical": 4,
+        "middleClickAction": "none",
+        "middleClickCommand": "",
+        "middleClickFollowMouse": false,
         "monitors": [
         ],
         "mouseWheelAction": "none",
@@ -63,6 +66,9 @@
         "outerCorners": true,
         "position": "left",
         "reverseScroll": false,
+        "rightClickAction": "settings",
+        "rightClickCommand": "",
+        "rightClickFollowMouse": false,
         "screenOverrides": [
         ],
         "showCapsule": true,
@@ -111,16 +117,10 @@
             "left": [
                 {
                     "defaultSettings": {
-                        "catColor": "default",
-                        "catOffsetY": 0,
-                        "catSize": 1,
-                        "idleTimeout": 150,
-                        "raveMode": false,
-                        "tappyMode": false,
-                        "useMprisFilter": false,
-                        "waitingTimeout": 30000
+                        "hideBackground": false,
+                        "minimumThreshold": 10
                     },
-                    "id": "plugin:805fa1:slowbongo"
+                    "id": "plugin:catwalk"
                 },
                 {
                     "clockColor": "primary",
@@ -274,7 +274,6 @@
             }
         ],
         "diskPath": "/",
-        "openAtMouseOnBarRightClick": true,
         "position": "close_to_bar_button",
         "shortcuts": {
             "left": [
@@ -525,7 +524,7 @@
     },
     "network": {
         "airplaneModeEnabled": false,
-        "bluetoothAutoConnect": true,
+        "bluetoothAutoConnect": false,
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": true,
         "bluetoothRssiPollIntervalMs": 60000,
@@ -592,7 +591,7 @@
         "overlayLayer": true
     },
     "plugins": {
-        "autoUpdate": false
+        "autoUpdate": true
     },
     "sessionMenu": {
         "countdownDuration": 3000,
@@ -661,7 +660,7 @@
         "showHeader": false,
         "showKeybinds": false
     },
-    "settingsVersion": 54,
+    "settingsVersion": 56,
     "systemMonitor": {
         "batteryCriticalThreshold": 5,
         "batteryWarningThreshold": 20,
@@ -694,7 +693,7 @@
         "boxBorderEnabled": false,
         "fontDefault": "Inter Medium",
         "fontDefaultScale": 1,
-        "fontFixed": "Maple Mono",
+        "fontFixed": "Noto Sans Mono",
         "fontFixedScale": 1.05,
         "panelBackgroundOpacity": 1,
         "panelsAttachedToBar": true,
