@@ -2,7 +2,8 @@
   "inputDevices": [
     "/dev/input/event14",
     "/dev/input/event10",
-    "/dev/input/event0"
+    "/dev/input/event0",
+    "/dev/input/event22"
   ],
   "catColor": "default",
   "catSize": 1,
