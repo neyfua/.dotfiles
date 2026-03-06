@@ -66,7 +66,7 @@
         "outerCorners": true,
         "position": "left",
         "reverseScroll": false,
-        "rightClickAction": "settings",
+        "rightClickAction": "controlCenter",
         "rightClickCommand": "",
         "rightClickFollowMouse": false,
         "screenOverrides": [
@@ -707,10 +707,127 @@
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/cat_and_crow.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/cat_walking.jpeg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/flower2.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/priest.jpeg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/sky_and_clouds.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/snow_stairs.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/snowy.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/snow.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/store_sign.jpg",
+                "useWallpaperColors": false
+            }
         ],
         "fillColor": "#000000",
         "fillMode": "crop",
-        "hideWallpaperFilenames": false,
+        "hideWallpaperFilenames": true,
         "monitorDirectories": [
         ],
         "overviewBlur": 0.4,
@@ -730,15 +847,15 @@
         "useWallhaven": false,
         "viewMode": "single",
         "wallhavenApiKey": "",
-        "wallhavenCategories": "111",
+        "wallhavenCategories": "110",
         "wallhavenOrder": "desc",
-        "wallhavenPurity": "100",
+        "wallhavenPurity": "110",
         "wallhavenQuery": "",
-        "wallhavenRatios": "",
+        "wallhavenRatios": "landscape",
         "wallhavenResolutionHeight": "",
         "wallhavenResolutionMode": "atleast",
         "wallhavenResolutionWidth": "",
-        "wallhavenSorting": "relevance",
+        "wallhavenSorting": "date_added",
         "wallpaperChangeMode": "random"
     }
 }
