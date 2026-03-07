@@ -1,4 +1,3 @@
-alias ls="eza --icons always"
 alias grep="grep --color=auto"
 
 alias nv="nvim"

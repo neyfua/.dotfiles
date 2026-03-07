@@ -12,5 +12,6 @@
   "copyToClipboard": false,
   "audioSource": "default_output",
   "videoSource": "portal",
-  "resolution": "original"
+  "resolution": "original",
+  "customFrameRate": "60"
 }
