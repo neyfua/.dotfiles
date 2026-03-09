@@ -1,5 +1,5 @@
 layout {
-	gaps 20
+	gaps 10
 	center-focused-column "never"
 	always-center-single-column
 	background-color "transparent"
@@ -21,7 +21,7 @@ layout {
 
 	border {
 		on
-		width 5
+		width 4
 		active-color "#ebbcba"
 		inactive-color "#1f1d2e"
 		urgent-color "#eb6f92"

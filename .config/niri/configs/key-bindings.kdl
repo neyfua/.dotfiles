@@ -28,8 +28,9 @@ binds {
 
 	// Plugins
 	Alt+Shift+C repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
-	Alt+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:assistant-panel" "toggle"; }
-	Alt+Z repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin" "togglePanel" "notes-scratchpad"; }
+	Alt+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle" "" ""; }
+	Alt+Shift+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle" "vi" ""; }
+	Alt+Z repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
 	Alt+T repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:todo" "togglePanel"; }
 	Alt+I repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:ip-monitor" "toggle"; }
 
