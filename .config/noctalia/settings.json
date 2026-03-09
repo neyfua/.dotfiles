@@ -54,7 +54,7 @@
         "frameRadius": 12,
         "frameThickness": 8,
         "hideOnOverview": true,
-        "marginHorizontal": 350,
+        "marginHorizontal": 400,
         "marginVertical": 10,
         "middleClickAction": "none",
         "middleClickCommand": "",
@@ -94,7 +94,7 @@
                     "hideMode": "hidden",
                     "hideWhenIdle": false,
                     "id": "MediaMini",
-                    "maxWidth": 300,
+                    "maxWidth": 230,
                     "panelShowAlbumArt": true,
                     "scrollingMode": "hover",
                     "showAlbumArt": true,
@@ -167,7 +167,7 @@
                     "iconColor": "none",
                     "id": "NotificationHistory",
                     "showUnreadBadge": true,
-                    "unreadBadgeColor": "primary"
+                    "unreadBadgeColor": "error"
                 }
             ]
         }
@@ -427,7 +427,7 @@
         ],
         "lockScreenTint": 0.6,
         "passwordChars": true,
-        "radiusRatio": 1,
+        "radiusRatio": 1.3,
         "reverseScroll": false,
         "scaleRatio": 1,
         "screenRadiusRatio": 1,
@@ -816,7 +816,7 @@
         "sortOrder": "name",
         "transitionDuration": 1500,
         "transitionEdgeSmoothness": 0.05,
-        "transitionType": "disc",
+        "transitionType": "fade",
         "useSolidColor": false,
         "useWallhaven": false,
         "viewMode": "single",
