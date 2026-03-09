@@ -2,7 +2,7 @@
   "hideInactive": false,
   "iconColor": "none",
   "directory": "/home/neyfua/Videos/Records",
-  "filenamePattern": "recording_yyyy/MM/dd_HH:mm:ss",
+  "filenamePattern": "recording_yyyyMMdd_HHmmss",
   "frameRate": "60",
   "audioCodec": "opus",
   "videoCodec": "h264",

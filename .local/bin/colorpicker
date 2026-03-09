@@ -10,7 +10,6 @@ hex="$(echo "$output" | grep 'Hex:' | awk '{print $2}')"
 
 # Cancel if no color picked
 if [ -z "$hex" ]; then
-    qs -c noctalia-shell ipc call controlCenter toggle
     exit 0
 fi
 
