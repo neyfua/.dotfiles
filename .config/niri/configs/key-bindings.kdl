@@ -33,6 +33,7 @@ binds {
 	Alt+Z repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
 	Alt+T repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:todo" "togglePanel"; }
 	Alt+I repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:ip-monitor" "toggle"; }
+	Alt+G repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:github-feed" "toggle"; }
 
 	// Noctalia's system controls
 	XF86AudioRaiseVolume allow-when-locked=true          { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
