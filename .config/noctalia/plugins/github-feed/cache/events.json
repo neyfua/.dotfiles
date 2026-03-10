@@ -1,6 +1,57 @@
 {
   "events": [
     {
+      "id": "star_bashbunni_nikopueringer/CorridorKey_2026-03-09T18:53:06Z",
+      "type": "WatchEvent",
+      "created_at": "2026-03-09T18:53:06Z",
+      "actor": {
+        "login": "bashbunni",
+        "avatar_url": "https://avatars.githubusercontent.com/u/15822994?u=4dc317f060a8cd55e5f7805f89d8b1631c03a737&v=4"
+      },
+      "repo": {
+        "name": "nikopueringer/CorridorKey"
+      },
+      "isFollowedUserEvent": true,
+      "payload": {
+        "action": "started"
+      },
+      "description": "Perfect Green Screen Keys"
+    },
+    {
+      "id": "star_bashbunni_usrbinkat/youwee_2026-03-09T18:51:10Z",
+      "type": "WatchEvent",
+      "created_at": "2026-03-09T18:51:10Z",
+      "actor": {
+        "login": "bashbunni",
+        "avatar_url": "https://avatars.githubusercontent.com/u/15822994?u=4dc317f060a8cd55e5f7805f89d8b1631c03a737&v=4"
+      },
+      "repo": {
+        "name": "usrbinkat/youwee"
+      },
+      "isFollowedUserEvent": true,
+      "payload": {
+        "action": "started"
+      },
+      "description": "A beautiful, cross-platform downloader for YouTube, TikTok, Instagram, and 1800+ sites (yt-dlp GUI) with AI video summaries and post-processing"
+    },
+    {
+      "id": "star_bashbunni_samuelgursky/davinci-resolve-mcp_2026-03-09T18:50:02Z",
+      "type": "WatchEvent",
+      "created_at": "2026-03-09T18:50:02Z",
+      "actor": {
+        "login": "bashbunni",
+        "avatar_url": "https://avatars.githubusercontent.com/u/15822994?u=4dc317f060a8cd55e5f7805f89d8b1631c03a737&v=4"
+      },
+      "repo": {
+        "name": "samuelgursky/davinci-resolve-mcp"
+      },
+      "isFollowedUserEvent": true,
+      "payload": {
+        "action": "started"
+      },
+      "description": "MCP server integration for DaVinci Resolve"
+    },
+    {
       "id": "star_ItsLemmy_noctalia-dev/noctalia-shell_2026-03-07T20:39:58Z",
       "type": "WatchEvent",
       "created_at": "2026-03-07T20:39:58Z",
@@ -733,23 +784,6 @@
       "description": ""
     },
     {
-      "id": "star_bashbunni_sorah/envchain_2026-01-27T22:37:27Z",
-      "type": "WatchEvent",
-      "created_at": "2026-01-27T22:37:27Z",
-      "actor": {
-        "login": "bashbunni",
-        "avatar_url": "https://avatars.githubusercontent.com/u/15822994?u=4dc317f060a8cd55e5f7805f89d8b1631c03a737&v=4"
-      },
-      "repo": {
-        "name": "sorah/envchain"
-      },
-      "isFollowedUserEvent": true,
-      "payload": {
-        "action": "started"
-      },
-      "description": "Environment variables meet macOS Keychain and gnome-keyring <3"
-    },
-    {
       "id": "pr_LeVraiArdox_AxOS-project/axctl_2026-01-27T09:49:58Z",
       "type": "PullRequestEvent",
       "created_at": "2026-01-27T09:49:58Z",
@@ -1372,7 +1406,7 @@
       "description": "Mac OS Safari theme for Firefox on Linux"
     },
     {
-      "id": "repo_KhanhTran-IT_KhanhTran-IT/vtc_271025_webql",
+      "id": "repo_KhanhTran-IT_KhanhTran-IT/Newspaper-Website",
       "type": "CreateEvent",
       "created_at": "2025-11-19T02:10:12Z",
       "actor": {
@@ -1380,30 +1414,13 @@
         "avatar_url": "https://avatars.githubusercontent.com/u/217476710?v=4"
       },
       "repo": {
-        "name": "KhanhTran-IT/vtc_271025_webql"
+        "name": "KhanhTran-IT/Newspaper-Website"
       },
       "isFollowedUserEvent": true,
       "payload": {
         "ref_type": "repository"
       },
       "description": ""
-    },
-    {
-      "id": "star_bashbunni_0xatrilla/Apple-AI-CLI_2025-11-17T06:19:11Z",
-      "type": "WatchEvent",
-      "created_at": "2025-11-17T06:19:11Z",
-      "actor": {
-        "login": "bashbunni",
-        "avatar_url": "https://avatars.githubusercontent.com/u/15822994?u=4dc317f060a8cd55e5f7805f89d8b1631c03a737&v=4"
-      },
-      "repo": {
-        "name": "0xatrilla/Apple-AI-CLI"
-      },
-      "isFollowedUserEvent": true,
-      "payload": {
-        "action": "started"
-      },
-      "description": "🍎 Apple Code Assistant - Professional CLI tool powered by Apple Intelligence for on-device code generation. Features modern terminal UI, real-time streaming, multi-language support, and conversation management."
     },
     {
       "id": "star_elkowar_iMike78/home-mini-v1-drop-in-pcb_2025-11-16T21:16:10Z",
@@ -1463,23 +1480,6 @@
         }
       },
       "description": "Release v0.3.5"
-    },
-    {
-      "id": "star_bashbunni_seaweedfs/seaweedfs_2025-11-07T02:35:24Z",
-      "type": "WatchEvent",
-      "created_at": "2025-11-07T02:35:24Z",
-      "actor": {
-        "login": "bashbunni",
-        "avatar_url": "https://avatars.githubusercontent.com/u/15822994?u=4dc317f060a8cd55e5f7805f89d8b1631c03a737&v=4"
-      },
-      "repo": {
-        "name": "seaweedfs/seaweedfs"
-      },
-      "isFollowedUserEvent": true,
-      "payload": {
-        "action": "started"
-      },
-      "description": "SeaweedFS is a fast distributed storage system for blobs, objects, files, and data lake, for billions of files! Blob store has O(1) disk seek, cloud tiering. Filer supports Cloud Drive, xDC replication, Kubernetes, POSIX FUSE mount, S3 API, S3 Gateway, Hadoop, WebDAV, encryption, Erasure Coding. Enterprise version is at seaweedfs.com."
     },
     {
       "id": "fork_YaLTeR_YaLTeR/DankMaterialShell",
@@ -2576,5 +2576,5 @@
     "pewdiepie-archdaemon",
     "niri-wm"
   ],
-  "timestamp": 1773043806
+  "timestamp": 1773108482
 }
