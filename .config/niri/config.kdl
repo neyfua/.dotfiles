@@ -106,7 +106,7 @@ recent-windows {
 // gsettings set org.gnome.desktop.wm.preferences button-layout ''
 
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
-spawn-at-startup "kdeconnect"
+spawn-at-startup "kdeconnectd"
 spawn-at-startup "fcitx5"
 spawn-at-startup "quickshell" "-c" "noctalia-shell" "-n"
 
@@ -524,19 +524,19 @@ binds {
 	Alt+Z repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
 	Alt+T repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:todo" "togglePanel"; }
 	Alt+I repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:ip-monitor" "toggle"; }
-	Alt+G repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:github-feed" "toggle"; }
 
-	// Noctalia's system controls
-	XF86AudioRaiseVolume allow-when-locked=true          { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
-	XF86AudioLowerVolume allow-when-locked=true          { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
-	XF86AudioMute allow-when-locked=true repeat=false    { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
-	XF86AudioMicMute allow-when-locked=true repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
-	XF86MonBrightnessUp allow-when-locked=true           {	spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-	XF86MonBrightnessDown allow-when-locked=true         { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+	// System controls
+	XF86AudioRaiseVolume allow-when-locked=true cooldown-ms=100  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
+	XF86AudioLowerVolume allow-when-locked=true cooldown-ms=100  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+	XF86AudioMute allow-when-locked=true repeat=false            { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
+	XF86AudioMicMute allow-when-locked=true repeat=false         { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
+	XF86MonBrightnessUp allow-when-locked=true cooldown-ms=100   {	spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+	XF86MonBrightnessDown allow-when-locked=true cooldown-ms=100 { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+
+	// Close window
+	Mod+C repeat=false { close-window; }
 
 	Mod+W repeat=false { toggle-overview; }
-
-	Mod+C repeat=false { close-window; }
 
 	Mod+Left repeat=false       { focus-column-left; }
 	Mod+Shift+Down repeat=false { focus-window-down; }

@@ -49,6 +49,7 @@
         "contentPadding": 0,
         "density": "spacious",
         "displayMode": "always_visible",
+        "enableExclusionZoneInset": true,
         "floating": false,
         "fontScale": 1,
         "frameRadius": 12,
@@ -351,9 +352,9 @@
                         "id": "Weather",
                         "roundedCorners": true,
                         "scale": 1,
-                        "showBackground": false,
-                        "x": 912,
-                        "y": 696
+                        "showBackground": true,
+                        "x": 72,
+                        "y": 24
                     }
                 ]
             }
@@ -442,7 +443,7 @@
         ],
         "lockScreenTint": 0.6,
         "passwordChars": true,
-        "radiusRatio": 1.3,
+        "radiusRatio": 1,
         "reverseScroll": false,
         "scaleRatio": 1,
         "screenRadiusRatio": 1,
