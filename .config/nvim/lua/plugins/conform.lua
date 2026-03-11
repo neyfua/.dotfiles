@@ -11,7 +11,6 @@ return {
 				lua = { "stylua" },
 				html = { "prettierd" },
 				css = { "prettierd" },
-				cshtml = { "prettierd", "csharpier" },
 				scss = { "prettierd" },
 				python = { "black", "autoflake", stop_after_first = true },
 				c = { "clang-format" },

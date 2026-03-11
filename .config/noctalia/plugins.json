@@ -4,31 +4,14 @@
             "enabled": true,
             "name": "Noctalia Plugins",
             "url": "https://github.com/noctalia-dev/noctalia-plugins"
-        },
-        {
-            "enabled": true,
-            "name": "Slow Bongo",
-            "url": "https://github.com/tuibird/slowbongo.git"
         }
     ],
     "states": {
-        "805fa1:slowbongo": {
-            "enabled": false,
-            "sourceUrl": "https://github.com/tuibird/slowbongo.git"
-        },
         "catwalk": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
-        "github-feed": {
-            "enabled": true,
-            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
-        },
         "ip-monitor": {
-            "enabled": true,
-            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
-        },
-        "kde-connect": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },

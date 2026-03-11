@@ -1,11 +1,642 @@
-include "./configs/inputs.kdl"
-include "./configs/outputs.kdl"
-include "./configs/key-bindings.kdl"
-include "./configs/layouts.kdl"
-include "./configs/miscellaneous.kdl"
-include "./configs/window-rules.kdl"
-include "./configs/layer-rules.kdl"
-include "./configs/animations.kdl"
-include "./configs/gestures.kdl"
-include "./configs/recent-windows.kdl"
-include "./configs/debug-options.kdl"
+input {
+	keyboard {
+		repeat-delay 200
+		repeat-rate 40
+		// numlock
+	}
+
+	touchpad {
+		tap
+		dwt
+		natural-scroll
+		accel-speed 0.5
+		accel-profile "flat"
+		scroll-factor 0.2
+		scroll-method "two-finger"
+		// disabled-on-external-mouse
+	}
+
+	mouse {
+		accel-speed -0.25
+		accel-profile "flat"
+	}
+
+	// workspace-auto-back-and-forth
+}
+
+output "eDP-1" {
+	mode "1920x1080@59.999"
+	scale 1.25
+}
+
+layout {
+	// gaps 12
+	center-focused-column "never"
+	always-center-single-column
+	background-color "transparent"
+
+	preset-column-widths {
+		proportion 0.25
+		proportion 0.5
+		proportion 0.75
+		proportion 1.0
+	}
+
+	default-column-width {
+		proportion 0.5
+	}
+
+	focus-ring {
+		off
+	}
+
+	border {
+		on
+		width 4
+		active-color "#ebbcba"
+		inactive-color "#1f1d2e"
+		urgent-color "#eb6f92"
+	}
+
+	shadow {
+		on
+		draw-behind-window true
+		softness 40
+		spread 5
+		offset x=0 y=0
+		color "#0007"
+	}
+}
+
+gestures {
+	dnd-edge-view-scroll {
+		trigger-width 10
+		max-speed 2000
+	}
+
+	hot-corners {
+		off
+	}
+}
+
+recent-windows {
+	debounce-ms 0
+
+	open-delay-ms 100
+
+	highlight {
+		active-color "#ebbcba"
+		urgent-color "#eb6f92"
+		padding 20
+		corner-radius 0
+	}
+
+	previews {
+		max-height 480
+		max-scale 1.0
+	}
+
+	binds {
+		Alt+Tab         { next-window; }
+		Alt+Shift+Tab   { previous-window; }
+	}
+}
+
+// gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
+// gsettings set org.gnome.desktop.wm.preferences button-layout ''
+
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
+spawn-at-startup "kdeconnect"
+spawn-at-startup "fcitx5"
+spawn-at-startup "quickshell" "-c" "noctalia-shell" "-n"
+
+prefer-no-csd
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+environment {
+	MOZ_ENABLE_WAYLAND "1"
+	PROTON_ENABLE_WAYLAND "1"
+	ELECTRON_OZONE_PLATFORM_HINT "auto"
+
+	ECORE_EVAS_ENGINE "wayland-egl"
+	ELM_ENGINE "wayland_egl"
+	SDL_VIDEODRIVER "wayland"
+	GDK_BACKEND "wayland"
+	CLUTTER_BACKEND "wayland"
+
+		// Java
+	_JAVA_AWT_WM_NONREPARENTING "1"
+	NO_AT_BRIDGE "1"
+
+		// QT
+	QT_QPA_PLATFORM "wayland"
+	QT_QPA_PLATFORMTHEME "qt6ct"
+	// QT_MEDIA_BACKEND "gstreamer"
+	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+	// QT_SCALE_FACTOR_ROUNDING_POLICY "RoundPreferFloor"
+
+		// Quickshell
+	// QS_ICON_THEME "RoséPine"
+}
+
+cursor {
+	xcursor-theme "BreezeX-RosePineDawn-Linux"
+	xcursor-size 35
+	hide-when-typing
+}
+
+overview {
+	zoom 1.0
+	backdrop-color "#191724"
+	workspace-shadow {
+		softness 40
+		spread 10
+		offset x=0 y=0
+		color "#0007"
+	}
+}
+
+hotkey-overlay {
+	skip-at-startup
+}
+
+animations {
+	// off
+	slowdown 0.6
+
+	// workspace-switch { spring damping-ratio=0.92 stiffness=850 epsilon=0.00005; }
+
+	// horizontal-view-movement { spring damping-ratio=1.0 stiffness=550 epsilon=5e-5; }
+
+	// window-open {
+	// 	duration-ms 500
+	// 	curve "ease-out-expo"
+	// }
+
+	// window-close {
+	// 	duration-ms 500
+	// 	curve "ease-out-quad"
+	// }
+
+	// window-open {
+	// 	duration-ms 500
+	// 	curve "ease-out-expo"
+	// 	custom-shader "vec4 fall_from_top(vec3 coords_geo, vec3 size_geo) {
+	// 		float progress = niri_clamped_progress * niri_clamped_progress;
+	// 		vec2 coords = (coords_geo.xy - vec2(0.5, 0.0)) * size_geo.xy;
+	// 		coords.y += (1.0 - progress) * 1440.0;
+	// 		float random = (niri_random_seed - 0.5) / 2.0;
+	// 		random = sign(random) - random;
+	// 		float max_angle = 0.5 * random;
+	// 		float angle = (1.0 - progress) * max_angle;
+	// 		mat2 rotate = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
+	// 		coords = rotate * coords;
+	// 		coords_geo = vec3(coords / size_geo.xy + vec2(0.5, 0.0), 1.0);
+	// 		vec3 coords_tex = niri_geo_to_tex * coords_geo;
+	// 		return texture2D(niri_tex, coords_tex.st); 
+	// 	}
+	// 	vec4 open_color(vec3 coords_geo, vec3 size_geo) {
+	// 		return fall_from_top(coords_geo, size_geo);
+	// 	}"
+	// }
+
+	// window-close {
+	// 	duration-ms 300
+	// 	curve "linear"
+	// 	custom-shader "vec4 fall_and_rotate(vec3 coords_geo, vec3 size_geo) {
+	// 		float progress = niri_clamped_progress * niri_clamped_progress;
+	// 		vec2 coords = (coords_geo.xy - vec2(0.5, 1.0)) * size_geo.xy;
+	// 		coords.y -= progress * 1440.0;
+	// 		float random = (niri_random_seed - 0.5) / 2.0;
+	// 		random = sign(random) - random;
+	// 		float max_angle = 0.5 * random;
+	// 		float angle = progress * max_angle;
+	// 		mat2 rotate = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
+	// 		coords = rotate * coords;
+	// 		coords_geo = vec3(coords / size_geo.xy + vec2(0.5, 1.0), 1.0);
+	// 		vec3 coords_tex = niri_geo_to_tex * coords_geo;
+	// 		vec4 color = texture2D(niri_tex, coords_tex.st);
+	// 		return color;
+	// 	}
+	// 	vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+	// 		return fall_and_rotate(coords_geo, size_geo);
+	// 	}"
+	// }
+
+	// window-open {
+	// 	duration-ms 300
+	// 	curve "ease-out-cubic"
+	// 	custom-shader r#"
+	// 			vec4 open_color(vec3 coords_geo, vec3 size_geo) {
+	// 			float p = niri_clamped_progress;
+	// 			float scale = mix(0.96, 1.0, p);
+	// 			vec2 centered = (coords_geo.xy - 0.5) / scale + 0.5;
+	// 			if (centered.x < 0.0 || centered.x > 1.0 ||
+	// 			centered.y < 0.0 || centered.y > 1.0)
+	// 			return vec4(0.0);
+	// 			vec4 base = niri_texel_at(centered);
+	// 			base.a *= smoothstep(0.0, 1.0, p);
+	// 			return base;
+	// 		}
+	// 	"#
+	// }
+}
+
+layer-rule {
+	match namespace="^noctalia-overview*"
+	place-within-backdrop true
+}
+
+workspace "code"
+workspace "web"
+workspace "chat"
+workspace "game"
+workspace "music"
+workspace "misc"
+
+// window-rule {
+// 	border { off; }
+// 	match is-floating=true
+// }
+
+window-rule {
+	geometry-corner-radius 12
+	clip-to-geometry true
+}
+
+window-rule {
+	match is-active=false
+	opacity 0.9
+}
+
+window-rule {
+	match app-id="^code$"
+	match app-id="^dev.zed.Zed$"
+	match app-id="^jetbrains-studio$"
+
+	open-on-workspace "code"
+	open-focused true
+}
+
+window-rule {
+	match app-id="^(firefox)(.*)$"
+	match app-id="^Tor Browser$"
+
+	open-on-workspace "web"
+	open-focused true
+}
+
+window-rule {
+	match app-id="^vesktop$"
+	match app-id="^org.telegram.desktop$"
+	match app-id="^fluxer_app$"
+
+	open-on-workspace "chat"
+	open-focused true
+}
+
+window-rule {
+	match app-id="^steam$"
+	match app-id="^com.heroicgameslauncher.hgl$"
+	match app-id="^sober$"
+	match app-id="^org.vinegarhq.Sober$" title="^Servers$"
+	match app-id="^PolyMC$"
+	match app-id="^(Minecraft)(.*)$"
+
+	open-on-workspace "game"
+	open-focused true
+}
+
+window-rule {
+	match app-id="^spotify$"
+	match app-id="^Spotify$"
+
+	open-on-workspace "music"
+	open-focused true
+}
+
+window-rule {
+	match app-id="org.kde.kdenlive" title="Kdenlive"
+	match app-id="^(libreoffice-)(.*)$"
+
+	match title="^(OBS)(.*)$"
+
+	open-on-workspace "misc"
+	open-focused true
+}
+
+window-rule {
+	match app-id="^(firefox)(.*)$"
+	match app-id="^Tor Browser$"
+	match app-id="^vesktop$"
+	match app-id="^fluxer_app$"
+	match app-id="^steam$" title="Steam"
+	match app-id="^com.heroicgameslauncher.hgl$"
+	match app-id="^spotify$"
+	match app-id="^Spotify$"
+	match app-id="^org.gnome.Nautilus$" title="Home"
+	match app-id="^org.telegram.desktop$"
+	match app-id="^code$"
+	match app-id="^dev.zed.Zed$"
+	match app-id="sober" title="Sober"
+
+	match title="^(OBS)(.*)$"
+
+	default-column-width { proportion 1.0; }
+}
+
+window-rule {
+	match app-id="com-sun-tools-javac-launcher-SourceLauncher"
+	match app-id="^zenity$"
+	match app-id="org.kde.kdenlive" title="Kdenlive"
+	match app-id="^org.vinegarhq.Sober$" title="^Servers$"
+
+	match title="^About$"
+	match title="^Library$"
+	match title="^Pushbullet$"
+	match title="^splash$"
+	match title="^Android Studio Setup Wizard$"
+	match title="^(zoom)(.*)$"
+	match title="^(.*)(Properties)$"
+	match title="^(Calculator)(.*)$"
+	match title="^(Warning)(.*)$"
+	match title="^(Splash)(.*)$"
+	match title="^(Project Settings)(.*)$"
+	match title="^(.*)(KDE Connect Daemon)$"
+
+	open-floating true
+}
+
+window-rule {
+	match app-id="^vesktop$" title="vesktop"
+	match app-id="^zenity$"
+	match app-id="^org.gnome.Nautilus$" title="^(Select)(.*)$"
+
+	match title="^splash$"
+	match title="^zoom$"
+	match title="^LibreOffice$"
+	match title="^(Updater)(.*)$"
+	match title="^(Sign in)(.*)$"
+	match title="^(Starting Apache)(.*)$"
+	match title="^(Warning)(.*)$"
+	match title="^(Splash)(.*)$"
+
+	border { off; }
+}
+
+window-rule {
+	match app-id="^xdg-desktop-portal-gtk$"
+	match app-id="^org.gnome.Nautilus$" title="^(Open File)(.*)$"
+	match app-id="^org.gnome.Nautilus$" title="^(Select)(.*)$"
+
+	match title="^dialog$"
+	match title="^confirm$"
+	match title="^(Save As)(.*)$"
+	match title="^(Save Image)(.*)$"
+	match title="^(Open Folder)(.*)$"
+	match title="^(File Upload)(.*)$"
+	match title="^(Choose wallpaper)(.*)$"
+	match title="^(Choose an image)(.*)$"
+	match title="^(blob.)(.*)$"
+
+	default-column-width { proportion 0.7; }
+	default-window-height { proportion 0.7; }
+}
+
+window-rule {
+	match app-id="^(firefox)(.*)$" title="^Picture-in-Picture$"
+
+	default-column-width { fixed 354; }
+	default-window-height { fixed 200; }
+
+	default-floating-position x=20 y=20 relative-to="bottom-right"
+
+	open-focused false
+	open-floating true
+
+	border { off; }
+}
+
+window-rule {
+	match app-id="^org.pulseaudio.pavucontrol$"
+	match app-id="^pavucontrol-qt$"
+
+	default-column-width { proportion 0.5; }
+	default-window-height { proportion 0.7; }
+
+	open-floating true
+}
+
+window-rule {
+	match app-id="^mpv$"
+
+	default-column-width { fixed 1160; }
+	default-window-height { fixed 653; }
+
+	open-floating true
+}
+
+window-rule {
+	match title="^(Media viewer)(.*)$"
+
+	default-column-width { proportion 0.9; }
+	default-window-height { proportion 0.9; }
+
+	open-fullscreen false
+	open-floating true
+
+	border { off; }
+}
+
+window-rule {
+	match title="^(Welcome to)(.*)$"
+
+	default-column-width { proportion 1.0; }
+	default-window-height { proportion 1.0; }
+}
+
+window-rule {
+	match app-id="^(libreoffice-)(.*)$"
+
+	open-maximized false
+	open-maximized-to-edges false
+	open-fullscreen false
+
+	default-column-width { proportion 1.0; }
+}
+
+window-rule {
+	match app-id="^(.*)(FileRoller)$"
+
+	default-column-width { fixed 850; }
+	default-window-height { fixed 500; }
+
+	open-floating true
+}
+
+window-rule {
+	match app-id="^sober$"
+
+	open-fullscreen false
+	open-maximized false
+	open-maximized-to-edges false
+}
+
+window-rule {
+	match app-id="^org.vinegarhq.Sober$" title="^Servers$"
+
+	open-focused true
+}
+
+binds {
+	// Terminal
+	Mod+Q repeat=false { spawn "foot"; }
+
+	// File managers
+	Mod+E repeat=false { spawn "nautilus"; }
+
+	// Control center & settings
+	Mod+S repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
+	Alt+S repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "settings" "toggle"; }
+
+	// Lockscreen
+	Mod+L repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+
+	// Launcher, clipboard history and emoji
+	Mod+Return repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+	Alt+C repeat=false      { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
+	Mod+Period repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "emoji"; }
+
+	// Session menu
+	Mod+Shift+E repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
+
+	// Notifications history and notifications clear
+	Alt+Escape repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "notifications" "clear"; }
+
+	// Wallpaper selector
+	Alt+W repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
+
+	// Plugins
+	Alt+Shift+C repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
+	Alt+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle" "" ""; }
+	Alt+Shift+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle" "vi" ""; }
+	Alt+Z repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
+	Alt+T repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:todo" "togglePanel"; }
+	Alt+I repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:ip-monitor" "toggle"; }
+	Alt+G repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:github-feed" "toggle"; }
+
+	// Noctalia's system controls
+	XF86AudioRaiseVolume allow-when-locked=true          { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
+	XF86AudioLowerVolume allow-when-locked=true          { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+	XF86AudioMute allow-when-locked=true repeat=false    { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
+	XF86AudioMicMute allow-when-locked=true repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
+	XF86MonBrightnessUp allow-when-locked=true           {	spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+	XF86MonBrightnessDown allow-when-locked=true         { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+
+	Mod+W repeat=false { toggle-overview; }
+
+	Mod+C repeat=false { close-window; }
+
+	Mod+Left repeat=false       { focus-column-left; }
+	Mod+Shift+Down repeat=false { focus-window-down; }
+	Mod+Shift+Up repeat=false   { focus-window-up; }
+	Mod+Right repeat=false      { focus-column-right; }
+
+	Mod+Ctrl+Left repeat=false  { move-column-left; }
+	Mod+Ctrl+Down repeat=false  { move-window-down; }
+	Mod+Ctrl+Up repeat=false    { move-window-up; }
+	Mod+Ctrl+Right repeat=false { move-column-right; }
+
+	Mod+Down repeat=false { focus-workspace-down; }
+	Mod+Up repeat=false   { focus-workspace-up; }
+
+	Mod+Alt+Down repeat=false { move-column-to-workspace-down; }
+	Mod+Alt+Up repeat=false   { move-column-to-workspace-up; }
+
+	Mod+Shift+WheelScrollDown { focus-workspace-down; }
+	Mod+Shift+WheelScrollUp   { focus-workspace-up; }
+	Mod+Alt+WheelScrollDown   { move-column-to-workspace-down; }
+	Mod+Alt+WheelScrollUp     { move-column-to-workspace-up; }
+
+	Mod+WheelScrollDown      { focus-column-right; }
+	Mod+WheelScrollUp        { focus-column-left; }
+	Mod+Ctrl+WheelScrollDown { move-column-right; }
+	Mod+Ctrl+WheelScrollUp   { move-column-left; }
+
+	Mod+1 repeat=false { focus-workspace 1; }
+	Mod+2 repeat=false { focus-workspace 2; }
+	Mod+3 repeat=false { focus-workspace 3; }
+	Mod+4 repeat=false { focus-workspace 4; }
+	Mod+5 repeat=false { focus-workspace 5; }
+	Mod+6 repeat=false { focus-workspace 6; }
+	Mod+7 repeat=false { focus-workspace 7; }
+	Mod+8 repeat=false { focus-workspace 8; }
+	Mod+9 repeat=false { focus-workspace 9; }
+	Mod+0 repeat=false { focus-workspace 10; }
+
+	// Mod+1 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 1 && sleep 0.15 && niri msg action toggle-overview"; }
+	// Mod+2 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 2 && sleep 0.15 && niri msg action toggle-overview"; }
+	// Mod+3 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 3 && sleep 0.15 && niri msg action toggle-overview"; }
+	// Mod+4 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 4 && sleep 0.15 && niri msg action toggle-overview"; }
+	// Mod+5 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 5 && sleep 0.15 && niri msg action toggle-overview"; }
+	// Mod+6 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 6 && sleep 0.15 && niri msg action toggle-overview"; }
+	// Mod+7 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 7 && sleep 0.15 && niri msg action toggle-overview"; }
+	// Mod+8 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 8 && sleep 0.15 && niri msg action toggle-overview"; }
+	// Mod+9 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 9 && sleep 0.15 && niri msg action toggle-overview"; }
+	// Mod+0 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 10 && sleep 0.15 && niri msg action toggle-overview"; }
+
+	Mod+Ctrl+1 repeat=false { move-column-to-workspace 1; }
+	Mod+Ctrl+2 repeat=false { move-column-to-workspace 2; }
+	Mod+Ctrl+3 repeat=false { move-column-to-workspace 3; }
+	Mod+Ctrl+4 repeat=false { move-column-to-workspace 4; }
+	Mod+Ctrl+5 repeat=false { move-column-to-workspace 5; }
+	Mod+Ctrl+6 repeat=false { move-column-to-workspace 6; }
+	Mod+Ctrl+7 repeat=false { move-column-to-workspace 7; }
+	Mod+Ctrl+8 repeat=false { move-column-to-workspace 8; }
+	Mod+Ctrl+9 repeat=false { move-column-to-workspace 9; }
+	Mod+Ctrl+0 repeat=false { move-column-to-workspace 10; }
+
+	Mod+BracketLeft repeat=false        { consume-or-expel-window-left; }
+	Mod+BracketRight repeat=false       { consume-or-expel-window-right; }
+	Mod+Shift+BracketLeft repeat=false  { consume-window-into-column; }
+	Mod+Shift+BracketRight repeat=false { expel-window-from-column; }
+
+	Mod+R repeat=false       { switch-preset-column-width; }
+	Mod+Ctrl+R repeat=false  { switch-preset-window-height; }
+	Mod+Shift+R repeat=false { reset-window-height; }
+
+	Mod+X repeat=false { maximize-column; }
+	Mod+F repeat=false { fullscreen-window; }
+	Alt+F repeat=false { maximize-window-to-edges; }
+
+	Mod+V repeat=false       { center-column; }
+	Mod+Shift+V repeat=false { center-visible-columns; }
+
+	Mod+Minus       { set-column-width "-10%"; }
+	Mod+Equal       { set-column-width "+10%"; }
+	Mod+Shift+Minus { set-window-height "-10%"; }
+	Mod+Shift+Equal { set-window-height "+10%"; }
+
+	Mod+A repeat=false { toggle-window-floating; }
+	Mod+D repeat=false { switch-focus-between-floating-and-tiling; }
+
+	Mod+J { toggle-column-tabbed-display; }
+
+	Mod+Shift+S repeat=false { screenshot show-pointer=false; }
+	Print repeat=false       { screenshot-screen show-pointer=false; }
+	Mod+Shift+W repeat=false { screenshot-window write-to-disk=false show-pointer=false; }
+
+	Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+}
+
+debug {
+	// disable-cursor-plane
+	render-drm-device "/dev/dri/renderD128"
+	ignore-drm-device "/dev/dri/renderD129"
+	// emulate-zero-presentation-time
+	// disable-resize-throttling
+	// disable-transactions
+	// skip-cursor-only-updates-during-vrr
+	// honor-xdg-activation-with-invalid-serial
+}
