@@ -69,7 +69,7 @@
         "reverseScroll": false,
         "rightClickAction": "controlCenter",
         "rightClickCommand": "",
-        "rightClickFollowMouse": false,
+        "rightClickFollowMouse": true,
         "screenOverrides": [
         ],
         "showCapsule": true,
@@ -93,11 +93,12 @@
                     "id": "Workspace",
                     "labelMode": "index",
                     "occupiedColor": "secondary",
-                    "pillSize": 0.5700000000000001,
+                    "pillSize": 0.6,
                     "showApplications": false,
+                    "showApplicationsHover": false,
                     "showBadge": true,
                     "showLabelsOnlyWhenOccupied": true,
-                    "unfocusedIconsOpacity": 1
+                    "unfocusedIconsOpacity": 0.6
                 },
                 {
                     "compactMode": true,
@@ -202,7 +203,7 @@
                     "hideIfNotDetected": true,
                     "id": "Battery",
                     "showNoctaliaPerformance": true,
-                    "showPowerProfiles": false
+                    "showPowerProfiles": true
                 },
                 {
                     "hideWhenZero": false,
@@ -305,6 +306,13 @@
                     "id": "plugin:screen-recorder"
                 },
                 {
+                    "defaultSettings": {
+                    },
+                    "id": "plugin:kde-connect"
+                }
+            ],
+            "right": [
+                {
                     "enableOnStateLogic": false,
                     "generalTooltipText": "Restart Noctalia",
                     "icon": "reload",
@@ -314,11 +322,6 @@
                     "onRightClicked": "",
                     "showExecTooltip": false,
                     "stateChecksJson": "[]"
-                }
-            ],
-            "right": [
-                {
-                    "id": "PowerProfile"
                 },
                 {
                     "id": "KeepAwake"
@@ -352,9 +355,22 @@
                         "id": "Weather",
                         "roundedCorners": true,
                         "scale": 1,
-                        "showBackground": true,
-                        "x": 72,
-                        "y": 24
+                        "showBackground": false,
+                        "x": 1248,
+                        "y": 768
+                    },
+                    {
+                        "colorName": "primary",
+                        "height": 100,
+                        "hideWhenIdle": true,
+                        "id": "AudioVisualizer",
+                        "roundedCorners": true,
+                        "scale": 1,
+                        "showBackground": false,
+                        "visualizerType": "linear",
+                        "width": 282,
+                        "x": 1170,
+                        "y": 335
                     }
                 ]
             }
@@ -404,9 +420,9 @@
         "clockStyle": "digital",
         "compactLockScreen": false,
         "dimmerOpacity": 0.2,
-        "enableBlurBehind": false,
+        "enableBlurBehind": true,
         "enableLockScreenCountdown": true,
-        "enableLockScreenMediaControls": true,
+        "enableLockScreenMediaControls": false,
         "enableShadows": true,
         "forceBlackScreenCorners": false,
         "iRadiusRatio": 1,
@@ -497,7 +513,7 @@
     },
     "network": {
         "airplaneModeEnabled": false,
-        "bluetoothAutoConnect": false,
+        "bluetoothAutoConnect": true,
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": true,
         "bluetoothRssiPollIntervalMs": 60000,
@@ -517,8 +533,8 @@
         "nightTemp": "6000"
     },
     "noctaliaPerformance": {
-        "disableDesktopWidgets": false,
-        "disableWallpaper": false
+        "disableDesktopWidgets": true,
+        "disableWallpaper": true
     },
     "notifications": {
         "backgroundOpacity": 0.6,
@@ -674,7 +690,7 @@
         "fontFixedScale": 1.1,
         "panelBackgroundOpacity": 1,
         "panelsAttachedToBar": true,
-        "scrollbarAlwaysVisible": false,
+        "scrollbarAlwaysVisible": true,
         "settingsPanelMode": "attached",
         "settingsPanelSideBarCardStyle": false,
         "tooltipsEnabled": true,

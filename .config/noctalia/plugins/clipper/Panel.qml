@@ -293,107 +293,568 @@ Item {
                         Layout.fillWidth: true
                     }
 
+                    // Filter type -> accent color key mapping (mirrors ClipboardCard defaults)
+                    // All/Text/Link/Emoji -> mPrimary, Image/File -> mTertiary, Color/Code -> mSecondary
                     RowLayout {
                         spacing: Style.marginXS
                         Layout.alignment: Qt.AlignVCenter
 
-                        NIconButton {
-                            focus: true
-                            icon: "apps"
-                            tooltipText: pluginApi?.tr("panel.filter-all") || "All"
-                            colorBg: (typeof Color !== "undefined") ? (root.filterType === "" ? Color.mPrimary : Color.mSurfaceVariant) : "#444444"
-                            colorBgHover: (typeof Color !== "undefined") ? (root.filterType === "" ? Color.mPrimary : Color.mHover) : "#666666"
-                            colorFg: (typeof Color !== "undefined") ? (root.filterType === "" ? Color.mOnPrimary : Color.mOnSurface) : "#FFFFFF"
-                            colorFgHover: (typeof Color !== "undefined") ? (root.filterType === "" ? Color.mOnPrimary : Color.mOnSurface) : "#FFFFFF"
-                            onClicked: root.filterType = ""
+                        // --- ALL ---
+                        Item {
+                            readonly property string fType: ""
+                            readonly property color accentColor: (typeof Color !== "undefined") ? Color.mPrimary : "#BB86FC"
+                            readonly property color accentFgColor: (typeof Color !== "undefined") ? Color.mOnPrimary : "#FFFFFF"
+                            readonly property bool isActive: root.filterType === fType
+                            readonly property int itemCount: (pluginApi?.mainInstance?.items || []).length
+                            // Expand slightly so the burst ring has room without clipping
+                            width: btnAll.width + Style.fontSizeXS
+                            height: btnAll.height + Style.fontSizeXS
 
-                            Keys.onTabPressed: {
-                                root.filterType = "";
-                                event.accepted = true;
+                            NIconButton {
+                                id: btnAll
+                                anchors.centerIn: parent
+                                focus: true
+                                icon: "apps"
+                                tooltipText: pluginApi?.tr("panel.filter-all") || "All"
+                                colorBg: (typeof Color !== "undefined") ? (parent.isActive ? Color.mPrimary : Color.mSurfaceVariant) : "#444444"
+                                colorBgHover: (typeof Color !== "undefined") ? (parent.isActive ? Color.mPrimary : Color.mHover) : "#666666"
+                                colorFg: (typeof Color !== "undefined") ? (parent.isActive ? Color.mOnPrimary : Color.mOnSurface) : "#FFFFFF"
+                                colorFgHover: (typeof Color !== "undefined") ? (parent.isActive ? Color.mOnPrimary : Color.mOnSurface) : "#FFFFFF"
+                                onClicked: root.filterType = ""
+                                Keys.onTabPressed: { root.filterType = ""; event.accepted = true; }
+                            }
+
+                            // Active burst ring - matches groupedWorkspaceNumberBurst
+                            Rectangle {
+                                anchors.centerIn: btnAll
+                                width: btnAll.width + 8
+                                height: btnAll.height + 8
+                                radius: Math.min(width, height) / 2
+                                color: "transparent"
+                                border.color: (typeof Color !== "undefined") ? parent.accentColor : "#BB86FC"
+                                border.width: 2
+                                opacity: parent.isActive ? 0.85 : 0
+                                scale: parent.isActive ? 1.0 : 0.7
+                                Behavior on opacity { NumberAnimation { duration: Style.animationFast; easing.type: Easing.InOutCubic } }
+                                Behavior on scale { NumberAnimation { duration: Style.animationFast; easing.type: Easing.OutBack } }
+                            }
+
+                            // Count badge - matches groupedWorkspaceNumberContainer pattern
+                            Item {
+                                visible: parent.itemCount > 0
+                                anchors {
+                                    left: btnAll.left
+                                    top: btnAll.top
+                                    leftMargin: -Style.fontSizeXS * 0.55
+                                    topMargin: -Style.fontSizeXS * 0.25
+                                }
+                                width: Math.max(badgeAll.implicitWidth + Style.margin2XS, Style.fontSizeXXS * 2)
+                                height: Math.max(badgeAll.implicitHeight + Style.marginXS, Style.fontSizeXXS * 2)
+
+                                Rectangle {
+                                    anchors.fill: parent
+                                    radius: Math.min(Style.radiusL, width / 2)
+                                    color: (typeof Color !== "undefined") ? parent.parent.accentColor : "#BB86FC"
+                                    scale: parent.parent.parent.isActive ? 1.0 : 0.85
+                                    Behavior on scale { NumberAnimation { duration: Style.animationNormal; easing.type: Easing.OutBack } }
+                                    Behavior on color { enabled: (typeof Color !== "undefined") && !Color.isTransitioning; ColorAnimation { duration: Style.animationFast; easing.type: Easing.InOutCubic } }
+                                }
+
+                                NText {
+                                    id: badgeAll
+                                    anchors.centerIn: parent
+                                    text: parent.parent.itemCount > 99 ? "99+" : parent.parent.itemCount
+                                    font.pointSize: (typeof Style !== "undefined") ? Style.fontSizeXS * 0.75 : 8
+                                    font.bold: true
+                                    color: (typeof Color !== "undefined") ? parent.parent.accentFgColor : "#FFFFFF"
+                                }
                             }
                         }
 
-                        NIconButton {
-                            focus: true
-                            icon: "align-left"
-                            tooltipText: pluginApi?.tr("panel.filter-text") || "Text"
-                            colorBg: (typeof Color !== "undefined") ? (root.filterType === "Text" ? Color.mPrimary : Color.mSurfaceVariant) : "#444444"
-                            colorBgHover: (typeof Color !== "undefined") ? (root.filterType === "Text" ? Color.mPrimary : Color.mHover) : "#666666"
-                            colorFg: (typeof Color !== "undefined") ? (root.filterType === "Text" ? Color.mOnPrimary : Color.mOnSurface) : "#FFFFFF"
-                            colorFgHover: (typeof Color !== "undefined") ? (root.filterType === "Text" ? Color.mOnPrimary : Color.mOnSurface) : "#FFFFFF"
-                            onClicked: root.filterType = "Text"
+                        // --- TEXT ---
+                        Item {
+                            readonly property string fType: "Text"
+                            readonly property color accentColor: (typeof Color !== "undefined") ? Color.mPrimary : "#BB86FC"
+                            readonly property color accentFgColor: (typeof Color !== "undefined") ? Color.mOnPrimary : "#FFFFFF"
+                            readonly property bool isActive: root.filterType === fType
+                            readonly property int itemCount: {
+                                const all = pluginApi?.mainInstance?.items || [];
+                                return all.filter(i => (pluginApi?.mainInstance?.getItemType(i) || "Text") === "Text").length;
+                            }
+                            width: btnText.width + Style.fontSizeXS
+                            height: btnText.height + Style.fontSizeXS
 
-                            Keys.onTabPressed: {
-                                root.filterType = "Image";
-                                event.accepted = true;
+                            NIconButton {
+                                id: btnText
+                                anchors.centerIn: parent
+                                focus: true
+                                icon: "align-left"
+                                tooltipText: pluginApi?.tr("panel.filter-text") || "Text"
+                                colorBg: (typeof Color !== "undefined") ? (parent.isActive ? Color.mPrimary : Color.mSurfaceVariant) : "#444444"
+                                colorBgHover: (typeof Color !== "undefined") ? (parent.isActive ? Color.mPrimary : Color.mHover) : "#666666"
+                                colorFg: (typeof Color !== "undefined") ? (parent.isActive ? Color.mOnPrimary : Color.mOnSurface) : "#FFFFFF"
+                                colorFgHover: (typeof Color !== "undefined") ? (parent.isActive ? Color.mOnPrimary : Color.mOnSurface) : "#FFFFFF"
+                                onClicked: root.filterType = "Text"
+                                Keys.onTabPressed: { root.filterType = "Image"; event.accepted = true; }
+                            }
+
+                            Rectangle {
+                                anchors.centerIn: btnText
+                                width: btnText.width + 8
+                                height: btnText.height + 8
+                                radius: Math.min(width, height) / 2
+                                color: "transparent"
+                                border.color: (typeof Color !== "undefined") ? parent.accentColor : "#BB86FC"
+                                border.width: 2
+                                opacity: parent.isActive ? 0.85 : 0
+                                scale: parent.isActive ? 1.0 : 0.7
+                                Behavior on opacity { NumberAnimation { duration: Style.animationFast; easing.type: Easing.InOutCubic } }
+                                Behavior on scale { NumberAnimation { duration: Style.animationFast; easing.type: Easing.OutBack } }
+                            }
+
+                            Item {
+                                visible: parent.itemCount > 0
+                                anchors {
+                                    left: btnText.left; top: btnText.top
+                                    leftMargin: -Style.fontSizeXS * 0.55
+                                    topMargin: -Style.fontSizeXS * 0.25
+                                }
+                                width: Math.max(badgeText.implicitWidth + Style.margin2XS, Style.fontSizeXXS * 2)
+                                height: Math.max(badgeText.implicitHeight + Style.marginXS, Style.fontSizeXXS * 2)
+
+                                Rectangle {
+                                    anchors.fill: parent
+                                    radius: Math.min(Style.radiusL, width / 2)
+                                    color: (typeof Color !== "undefined") ? parent.parent.accentColor : "#BB86FC"
+                                    scale: parent.parent.parent.isActive ? 1.0 : 0.85
+                                    Behavior on scale { NumberAnimation { duration: Style.animationNormal; easing.type: Easing.OutBack } }
+                                    Behavior on color { enabled: (typeof Color !== "undefined") && !Color.isTransitioning; ColorAnimation { duration: Style.animationFast; easing.type: Easing.InOutCubic } }
+                                }
+                                NText {
+                                    id: badgeText
+                                    anchors.centerIn: parent
+                                    text: parent.parent.itemCount > 99 ? "99+" : parent.parent.itemCount
+                                    font.pointSize: (typeof Style !== "undefined") ? Style.fontSizeXS * 0.75 : 8
+                                    font.bold: true
+                                    color: (typeof Color !== "undefined") ? parent.parent.accentFgColor : "#FFFFFF"
+                                }
                             }
                         }
 
-                        NIconButton {
-                            focus: true
-                            icon: "photo"
-                            tooltipText: pluginApi?.tr("panel.filter-images") || "Images"
-                            colorBg: (typeof Color !== "undefined") ? (root.filterType === "Image" ? Color.mTertiary : Color.mSurfaceVariant) : "#444444"
-                            colorBgHover: (typeof Color !== "undefined") ? (root.filterType === "Image" ? Color.mTertiary : Color.mHover) : "#666666"
-                            colorFg: (typeof Color !== "undefined") ? (root.filterType === "Image" ? Color.mOnTertiary : Color.mOnSurface) : "#FFFFFF"
-                            colorFgHover: (typeof Color !== "undefined") ? (root.filterType === "Image" ? Color.mOnTertiary : Color.mOnSurface) : "#FFFFFF"
-                            onClicked: root.filterType = "Image"
+                        // --- IMAGE ---
+                        Item {
+                            readonly property string fType: "Image"
+                            readonly property color accentColor: (typeof Color !== "undefined") ? Color.mTertiary : "#03DAC6"
+                            readonly property color accentFgColor: (typeof Color !== "undefined") ? Color.mOnTertiary : "#FFFFFF"
+                            readonly property bool isActive: root.filterType === fType
+                            readonly property int itemCount: {
+                                const all = pluginApi?.mainInstance?.items || [];
+                                return all.filter(i => (pluginApi?.mainInstance?.getItemType(i) || "Text") === "Image").length;
+                            }
+                            width: btnImage.width + Style.fontSizeXS
+                            height: btnImage.height + Style.fontSizeXS
+
+                            NIconButton {
+                                id: btnImage
+                                anchors.centerIn: parent
+                                focus: true
+                                icon: "photo"
+                                tooltipText: pluginApi?.tr("panel.filter-images") || "Images"
+                                colorBg: (typeof Color !== "undefined") ? (parent.isActive ? Color.mTertiary : Color.mSurfaceVariant) : "#444444"
+                                colorBgHover: (typeof Color !== "undefined") ? (parent.isActive ? Color.mTertiary : Color.mHover) : "#666666"
+                                colorFg: (typeof Color !== "undefined") ? (parent.isActive ? Color.mOnTertiary : Color.mOnSurface) : "#FFFFFF"
+                                colorFgHover: (typeof Color !== "undefined") ? (parent.isActive ? Color.mOnTertiary : Color.mOnSurface) : "#FFFFFF"
+                                onClicked: root.filterType = "Image"
+                            }
+
+                            Rectangle {
+                                anchors.centerIn: btnImage
+                                width: btnImage.width + 8
+                                height: btnImage.height + 8
+                                radius: Math.min(width, height) / 2
+                                color: "transparent"
+                                border.color: (typeof Color !== "undefined") ? parent.accentColor : "#03DAC6"
+                                border.width: 2
+                                opacity: parent.isActive ? 0.85 : 0
+                                scale: parent.isActive ? 1.0 : 0.7
+                                Behavior on opacity { NumberAnimation { duration: Style.animationFast; easing.type: Easing.InOutCubic } }
+                                Behavior on scale { NumberAnimation { duration: Style.animationFast; easing.type: Easing.OutBack } }
+                            }
+
+                            Item {
+                                visible: parent.itemCount > 0
+                                anchors {
+                                    left: btnImage.left; top: btnImage.top
+                                    leftMargin: -Style.fontSizeXS * 0.55
+                                    topMargin: -Style.fontSizeXS * 0.25
+                                }
+                                width: Math.max(badgeImage.implicitWidth + Style.margin2XS, Style.fontSizeXXS * 2)
+                                height: Math.max(badgeImage.implicitHeight + Style.marginXS, Style.fontSizeXXS * 2)
+
+                                Rectangle {
+                                    anchors.fill: parent
+                                    radius: Math.min(Style.radiusL, width / 2)
+                                    color: (typeof Color !== "undefined") ? parent.parent.accentColor : "#03DAC6"
+                                    scale: parent.parent.parent.isActive ? 1.0 : 0.85
+                                    Behavior on scale { NumberAnimation { duration: Style.animationNormal; easing.type: Easing.OutBack } }
+                                    Behavior on color { enabled: (typeof Color !== "undefined") && !Color.isTransitioning; ColorAnimation { duration: Style.animationFast; easing.type: Easing.InOutCubic } }
+                                }
+                                NText {
+                                    id: badgeImage
+                                    anchors.centerIn: parent
+                                    text: parent.parent.itemCount > 99 ? "99+" : parent.parent.itemCount
+                                    font.pointSize: (typeof Style !== "undefined") ? Style.fontSizeXS * 0.75 : 8
+                                    font.bold: true
+                                    color: (typeof Color !== "undefined") ? parent.parent.accentFgColor : "#FFFFFF"
+                                }
+                            }
                         }
 
-                        NIconButton {
-                            focus: true
-                            icon: "palette"
-                            tooltipText: pluginApi?.tr("panel.filter-colors") || "Colors"
-                            colorBg: (typeof Color !== "undefined") ? (root.filterType === "Color" ? Color.mSecondary : Color.mSurfaceVariant) : "#444444"
-                            colorBgHover: (typeof Color !== "undefined") ? (root.filterType === "Color" ? Color.mSecondary : Color.mHover) : "#666666"
-                            colorFg: (typeof Color !== "undefined") ? (root.filterType === "Color" ? Color.mOnSecondary : Color.mOnSurface) : "#FFFFFF"
-                            colorFgHover: (typeof Color !== "undefined") ? (root.filterType === "Color" ? Color.mOnSecondary : Color.mOnSurface) : "#FFFFFF"
-                            onClicked: root.filterType = "Color"
+                        // --- COLOR ---
+                        Item {
+                            readonly property string fType: "Color"
+                            readonly property color accentColor: (typeof Color !== "undefined") ? Color.mSecondary : "#CF6679"
+                            readonly property color accentFgColor: (typeof Color !== "undefined") ? Color.mOnSecondary : "#FFFFFF"
+                            readonly property bool isActive: root.filterType === fType
+                            readonly property int itemCount: {
+                                const all = pluginApi?.mainInstance?.items || [];
+                                return all.filter(i => (pluginApi?.mainInstance?.getItemType(i) || "Text") === "Color").length;
+                            }
+                            width: btnColorFilter.width + Style.fontSizeXS
+                            height: btnColorFilter.height + Style.fontSizeXS
+
+                            NIconButton {
+                                id: btnColorFilter
+                                anchors.centerIn: parent
+                                focus: true
+                                icon: "palette"
+                                tooltipText: pluginApi?.tr("panel.filter-colors") || "Colors"
+                                colorBg: (typeof Color !== "undefined") ? (parent.isActive ? Color.mSecondary : Color.mSurfaceVariant) : "#444444"
+                                colorBgHover: (typeof Color !== "undefined") ? (parent.isActive ? Color.mSecondary : Color.mHover) : "#666666"
+                                colorFg: (typeof Color !== "undefined") ? (parent.isActive ? Color.mOnSecondary : Color.mOnSurface) : "#FFFFFF"
+                                colorFgHover: (typeof Color !== "undefined") ? (parent.isActive ? Color.mOnSecondary : Color.mOnSurface) : "#FFFFFF"
+                                onClicked: root.filterType = "Color"
+                            }
+
+                            Rectangle {
+                                anchors.centerIn: btnColorFilter
+                                width: btnColorFilter.width + 8
+                                height: btnColorFilter.height + 8
+                                radius: Math.min(width, height) / 2
+                                color: "transparent"
+                                border.color: (typeof Color !== "undefined") ? parent.accentColor : "#CF6679"
+                                border.width: 2
+                                opacity: parent.isActive ? 0.85 : 0
+                                scale: parent.isActive ? 1.0 : 0.7
+                                Behavior on opacity { NumberAnimation { duration: Style.animationFast; easing.type: Easing.InOutCubic } }
+                                Behavior on scale { NumberAnimation { duration: Style.animationFast; easing.type: Easing.OutBack } }
+                            }
+
+                            Item {
+                                visible: parent.itemCount > 0
+                                anchors {
+                                    left: btnColorFilter.left; top: btnColorFilter.top
+                                    leftMargin: -Style.fontSizeXS * 0.55
+                                    topMargin: -Style.fontSizeXS * 0.25
+                                }
+                                width: Math.max(badgeColorFilter.implicitWidth + Style.margin2XS, Style.fontSizeXXS * 2)
+                                height: Math.max(badgeColorFilter.implicitHeight + Style.marginXS, Style.fontSizeXXS * 2)
+
+                                Rectangle {
+                                    anchors.fill: parent
+                                    radius: Math.min(Style.radiusL, width / 2)
+                                    color: (typeof Color !== "undefined") ? parent.parent.accentColor : "#CF6679"
+                                    scale: parent.parent.parent.isActive ? 1.0 : 0.85
+                                    Behavior on scale { NumberAnimation { duration: Style.animationNormal; easing.type: Easing.OutBack } }
+                                    Behavior on color { enabled: (typeof Color !== "undefined") && !Color.isTransitioning; ColorAnimation { duration: Style.animationFast; easing.type: Easing.InOutCubic } }
+                                }
+                                NText {
+                                    id: badgeColorFilter
+                                    anchors.centerIn: parent
+                                    text: parent.parent.itemCount > 99 ? "99+" : parent.parent.itemCount
+                                    font.pointSize: (typeof Style !== "undefined") ? Style.fontSizeXS * 0.75 : 8
+                                    font.bold: true
+                                    color: (typeof Color !== "undefined") ? parent.parent.accentFgColor : "#FFFFFF"
+                                }
+                            }
                         }
 
-                        NIconButton {
-                            focus: true
-                            icon: "link"
-                            tooltipText: pluginApi?.tr("panel.filter-links") || "Links"
-                            colorBg: (typeof Color !== "undefined") ? (root.filterType === "Link" ? Color.mPrimary : Color.mSurfaceVariant) : "#444444"
-                            colorBgHover: (typeof Color !== "undefined") ? (root.filterType === "Link" ? Color.mPrimary : Color.mHover) : "#666666"
-                            colorFg: (typeof Color !== "undefined") ? (root.filterType === "Link" ? Color.mOnPrimary : Color.mOnSurface) : "#FFFFFF"
-                            colorFgHover: (typeof Color !== "undefined") ? (root.filterType === "Link" ? Color.mOnPrimary : Color.mOnSurface) : "#FFFFFF"
-                            onClicked: root.filterType = "Link"
+                        // --- LINK ---
+                        Item {
+                            readonly property string fType: "Link"
+                            readonly property color accentColor: (typeof Color !== "undefined") ? Color.mPrimary : "#BB86FC"
+                            readonly property color accentFgColor: (typeof Color !== "undefined") ? Color.mOnPrimary : "#FFFFFF"
+                            readonly property bool isActive: root.filterType === fType
+                            readonly property int itemCount: {
+                                const all = pluginApi?.mainInstance?.items || [];
+                                return all.filter(i => (pluginApi?.mainInstance?.getItemType(i) || "Text") === "Link").length;
+                            }
+                            width: btnLink.width + Style.fontSizeXS
+                            height: btnLink.height + Style.fontSizeXS
+
+                            NIconButton {
+                                id: btnLink
+                                anchors.centerIn: parent
+                                focus: true
+                                icon: "link"
+                                tooltipText: pluginApi?.tr("panel.filter-links") || "Links"
+                                colorBg: (typeof Color !== "undefined") ? (parent.isActive ? Color.mPrimary : Color.mSurfaceVariant) : "#444444"
+                                colorBgHover: (typeof Color !== "undefined") ? (parent.isActive ? Color.mPrimary : Color.mHover) : "#666666"
+                                colorFg: (typeof Color !== "undefined") ? (parent.isActive ? Color.mOnPrimary : Color.mOnSurface) : "#FFFFFF"
+                                colorFgHover: (typeof Color !== "undefined") ? (parent.isActive ? Color.mOnPrimary : Color.mOnSurface) : "#FFFFFF"
+                                onClicked: root.filterType = "Link"
+                            }
+
+                            Rectangle {
+                                anchors.centerIn: btnLink
+                                width: btnLink.width + 8
+                                height: btnLink.height + 8
+                                radius: Math.min(width, height) / 2
+                                color: "transparent"
+                                border.color: (typeof Color !== "undefined") ? parent.accentColor : "#BB86FC"
+                                border.width: 2
+                                opacity: parent.isActive ? 0.85 : 0
+                                scale: parent.isActive ? 1.0 : 0.7
+                                Behavior on opacity { NumberAnimation { duration: Style.animationFast; easing.type: Easing.InOutCubic } }
+                                Behavior on scale { NumberAnimation { duration: Style.animationFast; easing.type: Easing.OutBack } }
+                            }
+
+                            Item {
+                                visible: parent.itemCount > 0
+                                anchors {
+                                    left: btnLink.left; top: btnLink.top
+                                    leftMargin: -Style.fontSizeXS * 0.55
+                                    topMargin: -Style.fontSizeXS * 0.25
+                                }
+                                width: Math.max(badgeLink.implicitWidth + Style.margin2XS, Style.fontSizeXXS * 2)
+                                height: Math.max(badgeLink.implicitHeight + Style.marginXS, Style.fontSizeXXS * 2)
+
+                                Rectangle {
+                                    anchors.fill: parent
+                                    radius: Math.min(Style.radiusL, width / 2)
+                                    color: (typeof Color !== "undefined") ? parent.parent.accentColor : "#BB86FC"
+                                    scale: parent.parent.parent.isActive ? 1.0 : 0.85
+                                    Behavior on scale { NumberAnimation { duration: Style.animationNormal; easing.type: Easing.OutBack } }
+                                    Behavior on color { enabled: (typeof Color !== "undefined") && !Color.isTransitioning; ColorAnimation { duration: Style.animationFast; easing.type: Easing.InOutCubic } }
+                                }
+                                NText {
+                                    id: badgeLink
+                                    anchors.centerIn: parent
+                                    text: parent.parent.itemCount > 99 ? "99+" : parent.parent.itemCount
+                                    font.pointSize: (typeof Style !== "undefined") ? Style.fontSizeXS * 0.75 : 8
+                                    font.bold: true
+                                    color: (typeof Color !== "undefined") ? parent.parent.accentFgColor : "#FFFFFF"
+                                }
+                            }
                         }
 
-                        NIconButton {
-                            focus: true
-                            icon: "code"
-                            tooltipText: pluginApi?.tr("panel.filter-code") || "Code"
-                            colorBg: (typeof Color !== "undefined") ? (root.filterType === "Code" ? Color.mSecondary : Color.mSurfaceVariant) : "#444444"
-                            colorBgHover: (typeof Color !== "undefined") ? (root.filterType === "Code" ? Color.mSecondary : Color.mHover) : "#666666"
-                            colorFg: (typeof Color !== "undefined") ? (root.filterType === "Code" ? Color.mOnSecondary : Color.mOnSurface) : "#FFFFFF"
-                            colorFgHover: (typeof Color !== "undefined") ? (root.filterType === "Code" ? Color.mOnSecondary : Color.mOnSurface) : "#FFFFFF"
-                            onClicked: root.filterType = "Code"
+                        // --- CODE ---
+                        Item {
+                            readonly property string fType: "Code"
+                            readonly property color accentColor: (typeof Color !== "undefined") ? Color.mSecondary : "#CF6679"
+                            readonly property color accentFgColor: (typeof Color !== "undefined") ? Color.mOnSecondary : "#FFFFFF"
+                            readonly property bool isActive: root.filterType === fType
+                            readonly property int itemCount: {
+                                const all = pluginApi?.mainInstance?.items || [];
+                                return all.filter(i => (pluginApi?.mainInstance?.getItemType(i) || "Text") === "Code").length;
+                            }
+                            width: btnCode.width + Style.fontSizeXS
+                            height: btnCode.height + Style.fontSizeXS
+
+                            NIconButton {
+                                id: btnCode
+                                anchors.centerIn: parent
+                                focus: true
+                                icon: "code"
+                                tooltipText: pluginApi?.tr("panel.filter-code") || "Code"
+                                colorBg: (typeof Color !== "undefined") ? (parent.isActive ? Color.mSecondary : Color.mSurfaceVariant) : "#444444"
+                                colorBgHover: (typeof Color !== "undefined") ? (parent.isActive ? Color.mSecondary : Color.mHover) : "#666666"
+                                colorFg: (typeof Color !== "undefined") ? (parent.isActive ? Color.mOnSecondary : Color.mOnSurface) : "#FFFFFF"
+                                colorFgHover: (typeof Color !== "undefined") ? (parent.isActive ? Color.mOnSecondary : Color.mOnSurface) : "#FFFFFF"
+                                onClicked: root.filterType = "Code"
+                            }
+
+                            Rectangle {
+                                anchors.centerIn: btnCode
+                                width: btnCode.width + 8
+                                height: btnCode.height + 8
+                                radius: Math.min(width, height) / 2
+                                color: "transparent"
+                                border.color: (typeof Color !== "undefined") ? parent.accentColor : "#CF6679"
+                                border.width: 2
+                                opacity: parent.isActive ? 0.85 : 0
+                                scale: parent.isActive ? 1.0 : 0.7
+                                Behavior on opacity { NumberAnimation { duration: Style.animationFast; easing.type: Easing.InOutCubic } }
+                                Behavior on scale { NumberAnimation { duration: Style.animationFast; easing.type: Easing.OutBack } }
+                            }
+
+                            Item {
+                                visible: parent.itemCount > 0
+                                anchors {
+                                    left: btnCode.left; top: btnCode.top
+                                    leftMargin: -Style.fontSizeXS * 0.55
+                                    topMargin: -Style.fontSizeXS * 0.25
+                                }
+                                width: Math.max(badgeCode.implicitWidth + Style.margin2XS, Style.fontSizeXXS * 2)
+                                height: Math.max(badgeCode.implicitHeight + Style.marginXS, Style.fontSizeXXS * 2)
+
+                                Rectangle {
+                                    anchors.fill: parent
+                                    radius: Math.min(Style.radiusL, width / 2)
+                                    color: (typeof Color !== "undefined") ? parent.parent.accentColor : "#CF6679"
+                                    scale: parent.parent.parent.isActive ? 1.0 : 0.85
+                                    Behavior on scale { NumberAnimation { duration: Style.animationNormal; easing.type: Easing.OutBack } }
+                                    Behavior on color { enabled: (typeof Color !== "undefined") && !Color.isTransitioning; ColorAnimation { duration: Style.animationFast; easing.type: Easing.InOutCubic } }
+                                }
+                                NText {
+                                    id: badgeCode
+                                    anchors.centerIn: parent
+                                    text: parent.parent.itemCount > 99 ? "99+" : parent.parent.itemCount
+                                    font.pointSize: (typeof Style !== "undefined") ? Style.fontSizeXS * 0.75 : 8
+                                    font.bold: true
+                                    color: (typeof Color !== "undefined") ? parent.parent.accentFgColor : "#FFFFFF"
+                                }
+                            }
                         }
 
-                        NIconButton {
-                            focus: true
-                            icon: "mood-smile"
-                            tooltipText: pluginApi?.tr("panel.filter-emoji") || "Emoji"
-                            colorBg: (typeof Color !== "undefined") ? (root.filterType === "Emoji" ? Color.mPrimary : Color.mSurfaceVariant) : "#444444"
-                            colorBgHover: (typeof Color !== "undefined") ? (root.filterType === "Emoji" ? Color.mPrimary : Color.mHover) : "#666666"
-                            colorFg: (typeof Color !== "undefined") ? (root.filterType === "Emoji" ? Color.mOnPrimary : Color.mOnSurface) : "#FFFFFF"
-                            colorFgHover: (typeof Color !== "undefined") ? (root.filterType === "Emoji" ? Color.mOnPrimary : Color.mOnSurface) : "#FFFFFF"
-                            onClicked: root.filterType = "Emoji"
+                        // --- EMOJI ---
+                        Item {
+                            readonly property string fType: "Emoji"
+                            readonly property color accentColor: (typeof Color !== "undefined") ? Color.mPrimary : "#BB86FC"
+                            readonly property color accentFgColor: (typeof Color !== "undefined") ? Color.mOnPrimary : "#FFFFFF"
+                            readonly property bool isActive: root.filterType === fType
+                            readonly property int itemCount: {
+                                const all = pluginApi?.mainInstance?.items || [];
+                                return all.filter(i => (pluginApi?.mainInstance?.getItemType(i) || "Text") === "Emoji").length;
+                            }
+                            width: btnEmoji.width + Style.fontSizeXS
+                            height: btnEmoji.height + Style.fontSizeXS
+
+                            NIconButton {
+                                id: btnEmoji
+                                anchors.centerIn: parent
+                                focus: true
+                                icon: "mood-smile"
+                                tooltipText: pluginApi?.tr("panel.filter-emoji") || "Emoji"
+                                colorBg: (typeof Color !== "undefined") ? (parent.isActive ? Color.mPrimary : Color.mSurfaceVariant) : "#444444"
+                                colorBgHover: (typeof Color !== "undefined") ? (parent.isActive ? Color.mPrimary : Color.mHover) : "#666666"
+                                colorFg: (typeof Color !== "undefined") ? (parent.isActive ? Color.mOnPrimary : Color.mOnSurface) : "#FFFFFF"
+                                colorFgHover: (typeof Color !== "undefined") ? (parent.isActive ? Color.mOnPrimary : Color.mOnSurface) : "#FFFFFF"
+                                onClicked: root.filterType = "Emoji"
+                            }
+
+                            Rectangle {
+                                anchors.centerIn: btnEmoji
+                                width: btnEmoji.width + 8
+                                height: btnEmoji.height + 8
+                                radius: Math.min(width, height) / 2
+                                color: "transparent"
+                                border.color: (typeof Color !== "undefined") ? parent.accentColor : "#BB86FC"
+                                border.width: 2
+                                opacity: parent.isActive ? 0.85 : 0
+                                scale: parent.isActive ? 1.0 : 0.7
+                                Behavior on opacity { NumberAnimation { duration: Style.animationFast; easing.type: Easing.InOutCubic } }
+                                Behavior on scale { NumberAnimation { duration: Style.animationFast; easing.type: Easing.OutBack } }
+                            }
+
+                            Item {
+                                visible: parent.itemCount > 0
+                                anchors {
+                                    left: btnEmoji.left; top: btnEmoji.top
+                                    leftMargin: -Style.fontSizeXS * 0.55
+                                    topMargin: -Style.fontSizeXS * 0.25
+                                }
+                                width: Math.max(badgeEmoji.implicitWidth + Style.margin2XS, Style.fontSizeXXS * 2)
+                                height: Math.max(badgeEmoji.implicitHeight + Style.marginXS, Style.fontSizeXXS * 2)
+
+                                Rectangle {
+                                    anchors.fill: parent
+                                    radius: Math.min(Style.radiusL, width / 2)
+                                    color: (typeof Color !== "undefined") ? parent.parent.accentColor : "#BB86FC"
+                                    scale: parent.parent.parent.isActive ? 1.0 : 0.85
+                                    Behavior on scale { NumberAnimation { duration: Style.animationNormal; easing.type: Easing.OutBack } }
+                                    Behavior on color { enabled: (typeof Color !== "undefined") && !Color.isTransitioning; ColorAnimation { duration: Style.animationFast; easing.type: Easing.InOutCubic } }
+                                }
+                                NText {
+                                    id: badgeEmoji
+                                    anchors.centerIn: parent
+                                    text: parent.parent.itemCount > 99 ? "99+" : parent.parent.itemCount
+                                    font.pointSize: (typeof Style !== "undefined") ? Style.fontSizeXS * 0.75 : 8
+                                    font.bold: true
+                                    color: (typeof Color !== "undefined") ? parent.parent.accentFgColor : "#FFFFFF"
+                                }
+                            }
                         }
 
-                        NIconButton {
-                            focus: true
-                            icon: "file"
-                            tooltipText: pluginApi?.tr("panel.filter-files") || "Files"
-                            colorBg: (typeof Color !== "undefined") ? (root.filterType === "File" ? Color.mTertiary : Color.mSurfaceVariant) : "#444444"
-                            colorBgHover: (typeof Color !== "undefined") ? (root.filterType === "File" ? Color.mTertiary : Color.mHover) : "#666666"
-                            colorFg: (typeof Color !== "undefined") ? (root.filterType === "File" ? Color.mOnTertiary : Color.mOnSurface) : "#FFFFFF"
-                            colorFgHover: (typeof Color !== "undefined") ? (root.filterType === "File" ? Color.mOnTertiary : Color.mOnSurface) : "#FFFFFF"
-                            onClicked: root.filterType = "File"
+                        // --- FILE ---
+                        Item {
+                            readonly property string fType: "File"
+                            readonly property color accentColor: (typeof Color !== "undefined") ? Color.mTertiary : "#03DAC6"
+                            readonly property color accentFgColor: (typeof Color !== "undefined") ? Color.mOnTertiary : "#FFFFFF"
+                            readonly property bool isActive: root.filterType === fType
+                            readonly property int itemCount: {
+                                const all = pluginApi?.mainInstance?.items || [];
+                                return all.filter(i => (pluginApi?.mainInstance?.getItemType(i) || "Text") === "File").length;
+                            }
+                            width: btnFile.width + Style.fontSizeXS
+                            height: btnFile.height + Style.fontSizeXS
+
+                            NIconButton {
+                                id: btnFile
+                                anchors.centerIn: parent
+                                focus: true
+                                icon: "file"
+                                tooltipText: pluginApi?.tr("panel.filter-files") || "Files"
+                                colorBg: (typeof Color !== "undefined") ? (parent.isActive ? Color.mTertiary : Color.mSurfaceVariant) : "#444444"
+                                colorBgHover: (typeof Color !== "undefined") ? (parent.isActive ? Color.mTertiary : Color.mHover) : "#666666"
+                                colorFg: (typeof Color !== "undefined") ? (parent.isActive ? Color.mOnTertiary : Color.mOnSurface) : "#FFFFFF"
+                                colorFgHover: (typeof Color !== "undefined") ? (parent.isActive ? Color.mOnTertiary : Color.mOnSurface) : "#FFFFFF"
+                                onClicked: root.filterType = "File"
+                            }
+
+                            Rectangle {
+                                anchors.centerIn: btnFile
+                                width: btnFile.width + 8
+                                height: btnFile.height + 8
+                                radius: Math.min(width, height) / 2
+                                color: "transparent"
+                                border.color: (typeof Color !== "undefined") ? parent.accentColor : "#03DAC6"
+                                border.width: 2
+                                opacity: parent.isActive ? 0.85 : 0
+                                scale: parent.isActive ? 1.0 : 0.7
+                                Behavior on opacity { NumberAnimation { duration: Style.animationFast; easing.type: Easing.InOutCubic } }
+                                Behavior on scale { NumberAnimation { duration: Style.animationFast; easing.type: Easing.OutBack } }
+                            }
+
+                            Item {
+                                visible: parent.itemCount > 0
+                                anchors {
+                                    left: btnFile.left; top: btnFile.top
+                                    leftMargin: -Style.fontSizeXS * 0.55
+                                    topMargin: -Style.fontSizeXS * 0.25
+                                }
+                                width: Math.max(badgeFile.implicitWidth + Style.margin2XS, Style.fontSizeXXS * 2)
+                                height: Math.max(badgeFile.implicitHeight + Style.marginXS, Style.fontSizeXXS * 2)
+
+                                Rectangle {
+                                    anchors.fill: parent
+                                    radius: Math.min(Style.radiusL, width / 2)
+                                    color: (typeof Color !== "undefined") ? parent.parent.accentColor : "#03DAC6"
+                                    scale: parent.parent.parent.isActive ? 1.0 : 0.85
+                                    Behavior on scale { NumberAnimation { duration: Style.animationNormal; easing.type: Easing.OutBack } }
+                                    Behavior on color { enabled: (typeof Color !== "undefined") && !Color.isTransitioning; ColorAnimation { duration: Style.animationFast; easing.type: Easing.InOutCubic } }
+                                }
+                                NText {
+                                    id: badgeFile
+                                    anchors.centerIn: parent
+                                    text: parent.parent.itemCount > 99 ? "99+" : parent.parent.itemCount
+                                    font.pointSize: (typeof Style !== "undefined") ? Style.fontSizeXS * 0.75 : 8
+                                    font.bold: true
+                                    color: (typeof Color !== "undefined") ? parent.parent.accentFgColor : "#FFFFFF"
+                                }
+                            }
                         }
+
                     }
 
                     Rectangle {

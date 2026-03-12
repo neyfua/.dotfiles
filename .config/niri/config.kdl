@@ -106,7 +106,7 @@ recent-windows {
 // gsettings set org.gnome.desktop.wm.preferences button-layout ''
 
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
-spawn-at-startup "kdeconnectd"
+// spawn-at-startup "kdeconnectd"
 spawn-at-startup "fcitx5"
 spawn-at-startup "quickshell" "-c" "noctalia-shell" "-n"
 
@@ -505,7 +505,7 @@ binds {
 
 	// Launcher, clipboard history and emoji
 	Mod+Return repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-	Alt+C repeat=false      { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
+	Alt+Shift+C repeat=false      { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
 	Mod+Period repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "emoji"; }
 
 	// Session menu
@@ -518,7 +518,7 @@ binds {
 	Alt+W repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
 
 	// Plugins
-	Alt+Shift+C repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
+	Alt+C repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
 	Alt+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle" "" ""; }
 	Alt+Shift+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle" "vi" ""; }
 	Alt+Z repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
