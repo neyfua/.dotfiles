@@ -8,7 +8,9 @@
         "customLaunchPrefixEnabled": false,
         "density": "comfortable",
         "enableClipPreview": true,
+        "enableClipboardChips": true,
         "enableClipboardHistory": true,
+        "enableClipboardSmartIcons": true,
         "enableSessionSearch": false,
         "enableSettingsSearch": false,
         "enableWindowsSearch": false,
@@ -23,7 +25,6 @@
         "showIconBackground": true,
         "sortByMostUsed": true,
         "terminalCommand": "foot -e",
-        "useApp2Unit": true,
         "viewMode": "list"
     },
     "audio": {
@@ -307,8 +308,10 @@
                 },
                 {
                     "defaultSettings": {
+                        "credits": 15,
+                        "showCredits": true
                     },
-                    "id": "plugin:kde-connect"
+                    "id": "plugin:41dd33:slot-machine"
                 }
             ],
             "right": [
@@ -414,7 +417,7 @@
         "animationDisabled": false,
         "animationSpeed": 1,
         "autoStartAuth": false,
-        "avatarImage": "/home/neyfua/.face",
+        "avatarImage": "/home/neyfua/Pictures/Saved/c7abb02c36458e0fd02fd24677c1896f.gif",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
         "clockStyle": "digital",
@@ -466,7 +469,7 @@
         "shadowDirection": "center",
         "shadowOffsetX": 0,
         "shadowOffsetY": 0,
-        "showChangelogOnStartup": true,
+        "showChangelogOnStartup": false,
         "showHibernateOnLockScreen": false,
         "showScreenCorners": false,
         "showSessionButtonsOnLockScreen": false,
@@ -513,7 +516,7 @@
     },
     "network": {
         "airplaneModeEnabled": false,
-        "bluetoothAutoConnect": true,
+        "bluetoothAutoConnect": false,
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": true,
         "bluetoothRssiPollIntervalMs": 60000,
@@ -521,7 +524,7 @@
         "disableDiscoverability": true,
         "networkPanelView": "wifi",
         "wifiDetailsViewMode": "grid",
-        "wifiEnabled": true
+        "wifiEnabled": false
     },
     "nightLight": {
         "autoSchedule": true,
@@ -653,7 +656,7 @@
         "showHeader": false,
         "showKeybinds": false
     },
-    "settingsVersion": 57,
+    "settingsVersion": 58,
     "systemMonitor": {
         "batteryCriticalThreshold": 5,
         "batteryWarningThreshold": 20,
@@ -687,10 +690,10 @@
         "fontDefault": "Inter Medium",
         "fontDefaultScale": 1,
         "fontFixed": "Noto Sans Mono",
-        "fontFixedScale": 1.1,
+        "fontFixedScale": 1.05,
         "panelBackgroundOpacity": 1,
         "panelsAttachedToBar": true,
-        "scrollbarAlwaysVisible": true,
+        "scrollbarAlwaysVisible": false,
         "settingsPanelMode": "attached",
         "settingsPanelSideBarCardStyle": false,
         "tooltipsEnabled": true,

@@ -299,7 +299,7 @@ window-rule {
 window-rule {
 	match app-id="^steam$"
 	match app-id="^com.heroicgameslauncher.hgl$"
-	match app-id="^sober$"
+	match app-id="^org.vinegarhq.Sober$"
 	match app-id="^org.vinegarhq.Sober$" title="^Servers$"
 	match app-id="^PolyMC$"
 	match app-id="^(Minecraft)(.*)$"
@@ -339,7 +339,7 @@ window-rule {
 	match app-id="^org.telegram.desktop$"
 	match app-id="^code$"
 	match app-id="^dev.zed.Zed$"
-	match app-id="sober" title="Sober"
+	match app-id="^org.vinegarhq.Sober$" title="Sober"
 
 	match title="^(OBS)(.*)$"
 
@@ -476,7 +476,7 @@ window-rule {
 }
 
 window-rule {
-	match app-id="^sober$"
+	match app-id="^org.vinegarhq.Sober$"
 
 	open-fullscreen false
 	open-maximized false
@@ -524,6 +524,7 @@ binds {
 	Alt+Z repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
 	Alt+T repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:todo" "togglePanel"; }
 	Alt+I repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:ip-monitor" "toggle"; }
+	Alt+P repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:slot-machine" "spin"; }
 
 	// System controls
 	XF86AudioRaiseVolume allow-when-locked=true cooldown-ms=100  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
