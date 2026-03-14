@@ -21,6 +21,7 @@ return {
 				json = { "clang-format" },
 				php = { "pretty-php" },
 				toml = { "taplo" },
+				xml = { "xmlformatter" },
 			},
 
 			format_on_save = {

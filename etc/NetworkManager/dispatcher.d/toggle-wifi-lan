@@ -1,12 +1,41 @@
 #!/bin/bash
 
-if [ "$1" = "eth0" ]; then
-    case "$2" in
-        up)
-            nmcli radio wifi off
-            ;;
-        down)
-            nmcli radio wifi on
-           ;;
-   esac
+# Toggle WiFi based on Ethernet connection status.
+# Uses NetworkManager (nmcli).
+
+ETHERNET_DEV="${1:-$(nmcli -t -f DEVICE,TYPE device | grep ':ethernet' | head -1 | cut -d: -f1)}"
+
+if [[ -z "$ETHERNET_DEV" ]]; then
+    echo "No ethernet device found." >&2
+    exit 1
 fi
+
+echo "Monitoring ethernet device: $ETHERNET_DEV"
+
+check_and_toggle() {
+    local state
+    state=$(nmcli -t -f DEVICE,STATE device | grep "^${ETHERNET_DEV}:" | cut -d: -f2)
+
+    if [[ "$state" == "connected" ]]; then
+        if nmcli radio wifi | grep -q "enabled"; then
+            echo "$(date): Ethernet connected — disabling WiFi"
+            nmcli radio wifi off
+        fi
+    else
+        if nmcli radio wifi | grep -q "disabled"; then
+            echo "$(date): Ethernet disconnected — enabling WiFi"
+            nmcli radio wifi on
+        fi
+    fi
+}
+
+# Initial check
+check_and_toggle
+
+# Monitor for changes
+nmcli monitor | while read -r line; do
+    if echo "$line" | grep -qi "ethernet\|${ETHERNET_DEV}"; then
+        sleep 1  # let state settle
+        check_and_toggle
+    fi
+done
