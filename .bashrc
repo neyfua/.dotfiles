@@ -6,7 +6,6 @@
 [[ $- != *i* ]] && return
 
 # alias ls='ls --color=auto'
-alias ls='eza --icons always'
 alias grep='grep --color=auto'
 alias nv='nvim'
 alias py='python3'

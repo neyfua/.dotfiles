@@ -4,6 +4,7 @@
   "directory": "/home/neyfua/Videos/Records",
   "filenamePattern": "recording_yyyyMMdd_HHmmss",
   "frameRate": "60",
+  "customFrameRate": "60",
   "audioCodec": "opus",
   "videoCodec": "h264",
   "quality": "very_high",
@@ -13,5 +14,9 @@
   "audioSource": "default_output",
   "videoSource": "portal",
   "resolution": "original",
-  "customFrameRate": "60"
+  "restorePortalSession": true,
+  "replayEnabled": false,
+  "replayDuration": "30",
+  "customReplayDuration": "30",
+  "replayStorage": "ram"
 }

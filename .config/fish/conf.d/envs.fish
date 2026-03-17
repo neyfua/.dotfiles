@@ -33,7 +33,3 @@ set -gx SPICETIFY "$HOME/.spicetify"
 if not string match -q -- $SPICETIFY $PATH
 	set -gx PATH "$SPICETIFY" $PATH
 end
-
-# Etc
-# set -e LS_COLORS
-set -e EZA_COLORS

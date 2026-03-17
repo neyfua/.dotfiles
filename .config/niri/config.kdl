@@ -1,7 +1,7 @@
 input {
 	keyboard {
-		repeat-delay 200
-		repeat-rate 40
+		repeat-delay 250
+		repeat-rate 50
 		// numlock
 	}
 
@@ -17,7 +17,7 @@ input {
 	}
 
 	mouse {
-		accel-speed -0.25
+		accel-speed -0.1
 		accel-profile "flat"
 	}
 
@@ -25,12 +25,12 @@ input {
 }
 
 output "eDP-1" {
-	mode "1920x1080@59.999"
+	mode "1920x1080@60"
 	scale 1.25
 }
 
 layout {
-	// gaps 12
+	// gaps 20
 	center-focused-column "never"
 	always-center-single-column
 	background-color "transparent"
@@ -106,7 +106,6 @@ recent-windows {
 // gsettings set org.gnome.desktop.wm.preferences button-layout ''
 
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
-// spawn-at-startup "kdeconnectd"
 spawn-at-startup "fcitx5"
 spawn-at-startup "quickshell" "-c" "noctalia-shell" "-n"
 
@@ -142,7 +141,7 @@ environment {
 
 cursor {
 	xcursor-theme "BreezeX-RosePineDawn-Linux"
-	xcursor-size 35
+	xcursor-size 40
 	hide-when-typing
 }
 
@@ -163,7 +162,7 @@ hotkey-overlay {
 
 animations {
 	// off
-	slowdown 0.6
+	slowdown 0.3
 
 	// workspace-switch { spring damping-ratio=0.92 stiffness=850 epsilon=0.00005; }
 
@@ -366,6 +365,14 @@ window-rule {
 	match title="^(.*)(KDE Connect Daemon)$"
 
 	open-floating true
+
+	// border {
+	// 	on
+	// 	width 4
+	// 	active-color "#ebbcba"
+	// 	inactive-color "#1f1d2e"
+	// 	urgent-color "#eb6f92"
+	// }
 }
 
 window-rule {
@@ -402,6 +409,14 @@ window-rule {
 
 	default-column-width { proportion 0.7; }
 	default-window-height { proportion 0.7; }
+
+	// border {
+	// 	on
+	// 	width 4
+	// 	active-color "#ebbcba"
+	// 	inactive-color "#1f1d2e"
+	// 	urgent-color "#eb6f92"
+	// }
 }
 
 window-rule {
@@ -426,6 +441,14 @@ window-rule {
 	default-window-height { proportion 0.7; }
 
 	open-floating true
+
+	// border {
+	// 	on
+	// 	width 4
+	// 	active-color "#ebbcba"
+	// 	inactive-color "#1f1d2e"
+	// 	urgent-color "#eb6f92"
+	// }
 }
 
 window-rule {
@@ -473,6 +496,14 @@ window-rule {
 	default-window-height { fixed 500; }
 
 	open-floating true
+
+	// border {
+	// 	on
+	// 	width 4
+	// 	active-color "#ebbcba"
+	// 	inactive-color "#1f1d2e"
+	// 	urgent-color "#eb6f92"
+	// }
 }
 
 window-rule {
@@ -505,7 +536,7 @@ binds {
 
 	// Launcher, clipboard history and emoji
 	Mod+Return repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-	Alt+Shift+C repeat=false      { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
+	Alt+C repeat=false      { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
 	Mod+Period repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "emoji"; }
 
 	// Session menu
@@ -518,13 +549,11 @@ binds {
 	Alt+W repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
 
 	// Plugins
-	Alt+C repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
-	Alt+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle" "" ""; }
-	Alt+Shift+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle" "vi" ""; }
+	Alt+Shift+C repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
+	Alt+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:assistant-panel" "toggle"; }
 	Alt+Z repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
-	Alt+T repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:todo" "togglePanel"; }
 	Alt+I repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:ip-monitor" "toggle"; }
-	Alt+P repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:slot-machine" "spin"; }
+	Alt+P repeat=false { spawn-sh "qs -c noctalia-shell ipc call plugin:slot-machine spin;qs -c noctalia-shell ipc call plugin:slot-machine reset"; }
 
 	// System controls
 	XF86AudioRaiseVolume allow-when-locked=true cooldown-ms=100  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }

@@ -6,4 +6,9 @@ SETUVAR --export GTK_IM_MODULE:fcitx
 SETUVAR --export QT_IM_MODULE:fcitx
 SETUVAR --export XMODIFIERS:\x40im\x3dfcitx
 SETUVAR __fish_initialized:4300
+SETUVAR _fisher_plugins:rose\x2dpine/fish
+SETUVAR _fisher_rose_2D_pine_2F_fish_files:\x7e/\x2econfig/fish/themes/Ros\u00e9\x20Pine\x20Auto\x2etheme\x1e\x7e/\x2econfig/fish/themes/Ros\u00e9\x20Pine\x20Dawn\x2etheme\x1e\x7e/\x2econfig/fish/themes/Ros\u00e9\x20Pine\x20Moon\x20Auto\x2etheme\x1e\x7e/\x2econfig/fish/themes/Ros\u00e9\x20Pine\x20Moon\x2etheme\x1e\x7e/\x2econfig/fish/themes/Ros\u00e9\x20Pine\x2etheme\x1e\x7e/\x2econfig/fish/conf\x2ed/rose\x2dpine\x2dpure\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/rose\x2dpine\x2dtide\x2efish
+SETUVAR _fisher_upgraded_to_4_4:\x1d
+SETUVAR fish_case_sensitive_completions:1
+SETUVAR fish_complete_path_style:menu
 SETUVAR fish_user_paths:/home/neyfua/\x2espicetify

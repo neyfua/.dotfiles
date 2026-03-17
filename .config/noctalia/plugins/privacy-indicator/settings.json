@@ -2,7 +2,7 @@
   "hideInactive": true,
   "enableToast": true,
   "iconSpacing": 4,
-  "removeMargins": false,
+  "removeMargins": true,
   "activeColor": "primary",
   "inactiveColor": "none",
   "micFilterRegex": ""

@@ -1,9 +1,9 @@
 {
-  "scratchpadContent": "",
+  "scratchpadContent": "New behavior = feat\nBug gone = fix\nSame behavior, cleaner code = refactor\nSame behavior, faster code = perf\nOnly whitespace/formatting = style\nOnly markdown/comments = docs\nOnly tests = test\nBuild/deploy config = build or ci\nEverything else = chore",
   "panelWidth": 600,
   "panelHeight": 400,
   "fontSize": 14,
-  "cursorPosition": 0,
+  "cursorPosition": 19,
   "scrollPositionX": 0,
   "scrollPositionY": 0
 }

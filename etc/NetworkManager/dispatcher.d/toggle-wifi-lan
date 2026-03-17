@@ -1,9 +1,7 @@
 #!/bin/bash
 
-# Toggle WiFi based on Ethernet connection status.
-# Uses NetworkManager (nmcli).
-
-ETHERNET_DEV="${1:-$(nmcli -t -f DEVICE,TYPE device | grep ':ethernet' | head -1 | cut -d: -f1)}"
+ETHERNET_DEV="${1:-$(nmcli -t -f DEVICE,TYPE device | awk -F: '$2=="ethernet"{print $1; exit}')}"
+WIFI_DEV="$(nmcli -t -f DEVICE,TYPE device | awk -F: '$2=="wifi"{print $1; exit}')"
 
 if [[ -z "$ETHERNET_DEV" ]]; then
     echo "No ethernet device found." >&2
@@ -12,30 +10,25 @@ fi
 
 echo "Monitoring ethernet device: $ETHERNET_DEV"
 
-check_and_toggle() {
-    local state
-    state=$(nmcli -t -f DEVICE,STATE device | grep "^${ETHERNET_DEV}:" | cut -d: -f2)
+last_state=""
 
-    if [[ "$state" == "connected" ]]; then
-        if nmcli radio wifi | grep -q "enabled"; then
-            echo "$(date): Ethernet connected — disabling WiFi"
-            nmcli radio wifi off
+while true; do
+    state=$(nmcli -t -f GENERAL.STATE device show "$ETHERNET_DEV" | cut -d: -f2)
+
+    if [[ "$state" != "$last_state" ]]; then
+        if [[ "$state" == "100 (connected)" ]]; then
+            if nmcli radio wifi | grep -q enabled; then
+                echo "$(date): Ethernet connected, disabling WiFi"
+                nmcli radio wifi off
+            fi
+        else
+            if nmcli radio wifi | grep -q disabled; then
+                echo "$(date): Ethernet disconnected, enabling WiFi"
+                nmcli radio wifi on
+            fi
         fi
-    else
-        if nmcli radio wifi | grep -q "disabled"; then
-            echo "$(date): Ethernet disconnected — enabling WiFi"
-            nmcli radio wifi on
-        fi
+        last_state="$state"
     fi
-}
 
-# Initial check
-check_and_toggle
-
-# Monitor for changes
-nmcli monitor | while read -r line; do
-    if echo "$line" | grep -qi "ethernet\|${ETHERNET_DEV}"; then
-        sleep 1  # let state settle
-        check_and_toggle
-    fi
+    sleep 2
 done

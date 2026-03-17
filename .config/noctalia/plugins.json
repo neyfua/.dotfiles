@@ -4,17 +4,12 @@
             "enabled": true,
             "name": "Noctalia Plugins",
             "url": "https://github.com/noctalia-dev/noctalia-plugins"
-        },
-        {
-            "enabled": true,
-            "name": "Slot Machine",
-            "url": "https://github.com/neyfua/slot-machine.git"
         }
     ],
     "states": {
-        "41dd33:slot-machine": {
+        "assistant-panel": {
             "enabled": true,
-            "sourceUrl": "https://github.com/neyfua/slot-machine.git"
+            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
         "catwalk": {
             "enabled": true,
@@ -24,15 +19,11 @@
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
-        "hello-world": {
-            "enabled": false,
-            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
-        },
-        "ip-monitor": {
+        "deskvis": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
-        "kde-connect": {
+        "ip-monitor": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
@@ -52,7 +43,11 @@
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
-        "translator": {
+        "slot-machine": {
+            "enabled": true,
+            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
+        },
+        "unicode-picker": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         }
