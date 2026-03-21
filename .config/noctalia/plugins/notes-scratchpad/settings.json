@@ -1,9 +1,9 @@
 {
-  "scratchpadContent": "New behavior = feat\nBug gone = fix\nSame behavior, cleaner code = refactor\nSame behavior, faster code = perf\nOnly whitespace/formatting = style\nOnly markdown/comments = docs\nOnly tests = test\nBuild/deploy config = build or ci\nEverything else = chore",
+  "scratchpadContent": "New behavior = feat\nBug gone = fix\nSame behavior, cleaner code = refactor\nSame behavior, faster code = perf\nOnly whitespace/formatting = style\nOnly markdown/comments = docs\nOnly tests = test\nBuild/deploy config = build or ci\nEverything else = chore\n\nreplayFlash: qs -c noctalia-shell ipc call plugin:slot-machine replayFlash &&\n qs -c noctalia-shell ipc call plugin:slot-machine toggle && sleep 0.32 && niri msg action screenshot",
   "panelWidth": 600,
   "panelHeight": 400,
   "fontSize": 14,
-  "cursorPosition": 19,
+  "cursorPosition": 429,
   "scrollPositionX": 0,
   "scrollPositionY": 0
 }

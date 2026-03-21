@@ -22,6 +22,7 @@ input {
 	}
 
 	// workspace-auto-back-and-forth
+	// focus-follows-mouse
 }
 
 output "eDP-1" {
@@ -255,8 +256,8 @@ workspace "music"
 workspace "misc"
 
 // window-rule {
-// 	border { off; }
 // 	match is-floating=true
+// 	border { off; }
 // }
 
 window-rule {
@@ -507,17 +508,12 @@ window-rule {
 }
 
 window-rule {
-	match app-id="^org.vinegarhq.Sober$"
+	match app-id="^spotify$"
+	match app-id="^Spotify$"
 
 	open-fullscreen false
 	open-maximized false
 	open-maximized-to-edges false
-}
-
-window-rule {
-	match app-id="^org.vinegarhq.Sober$" title="^Servers$"
-
-	open-focused true
 }
 
 binds {
@@ -549,11 +545,13 @@ binds {
 	Alt+W repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
 
 	// Plugins
-	Alt+Shift+C repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
-	Alt+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:assistant-panel" "toggle"; }
+	Alt+Shift+C repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
+	Alt+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle" "vn" ""; }
+	Alt+Shift+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle" "en" ""; }
 	Alt+Z repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
 	Alt+I repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:ip-monitor" "toggle"; }
-	Alt+P repeat=false { spawn-sh "qs -c noctalia-shell ipc call plugin:slot-machine spin;qs -c noctalia-shell ipc call plugin:slot-machine reset"; }
+	Alt+P repeat=false       { spawn-sh "qs -c noctalia-shell ipc call plugin:slot-machine spin;qs -c noctalia-shell ipc call plugin:slot-machine reset"; }
+	Alt+Shift+P repeat=false { spawn-sh "qs -c noctalia-shell ipc call plugin:slot-machine toggle"; }
 
 	// System controls
 	XF86AudioRaiseVolume allow-when-locked=true cooldown-ms=100  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }

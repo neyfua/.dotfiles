@@ -3,6 +3,7 @@
 SETUVAR --export DOTNET_ROOT:/home/neyfua/\x2edotnet
 SETUVAR --export EDITOR:nvim
 SETUVAR --export GTK_IM_MODULE:fcitx
+SETUVAR --export NOCTALIA_AP_GOOGLE_API_KEY:AIzaSyByyCY\x2dot8W4V0rvD0pZurQbn2JHLTLbcc
 SETUVAR --export QT_IM_MODULE:fcitx
 SETUVAR --export XMODIFIERS:\x40im\x3dfcitx
 SETUVAR __fish_initialized:4300

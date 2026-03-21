@@ -34,6 +34,7 @@
         ],
         "preferredPlayer": "Spotify, spotify",
         "spectrumFrameRate": 30,
+        "spectrumMirrored": true,
         "visualizerType": "linear",
         "volumeFeedback": false,
         "volumeFeedbackSoundFile": "",
@@ -46,12 +47,11 @@
         "backgroundOpacity": 0.93,
         "barType": "framed",
         "capsuleColorKey": "none",
-        "capsuleOpacity": 1,
+        "capsuleOpacity": 0.5,
         "contentPadding": 0,
         "density": "spacious",
         "displayMode": "always_visible",
         "enableExclusionZoneInset": false,
-        "floating": false,
         "fontScale": 1,
         "frameRadius": 12,
         "frameThickness": 8,
@@ -63,7 +63,7 @@
         "middleClickFollowMouse": false,
         "monitors": [
         ],
-        "mouseWheelAction": "none",
+        "mouseWheelAction": "content",
         "mouseWheelWrap": true,
         "outerCorners": true,
         "position": "left",
@@ -73,7 +73,7 @@
         "rightClickFollowMouse": true,
         "screenOverrides": [
         ],
-        "showCapsule": false,
+        "showCapsule": true,
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
         "useSeparateOpacity": false,
@@ -312,6 +312,17 @@
                     "id": "plugin:screen-recorder"
                 },
                 {
+                    "defaultSettings": {
+                        "compactMode": false,
+                        "defaultDuration": 0,
+                        "iconColor": "none",
+                        "textColor": "none"
+                    },
+                    "id": "plugin:timer"
+                }
+            ],
+            "right": [
+                {
                     "enableOnStateLogic": false,
                     "generalTooltipText": "Restart Noctalia",
                     "icon": "reload",
@@ -321,11 +332,6 @@
                     "onRightClicked": "",
                     "showExecTooltip": false,
                     "stateChecksJson": "[]"
-                }
-            ],
-            "right": [
-                {
-                    "id": "PowerProfile"
                 },
                 {
                     "id": "KeepAwake"
@@ -349,7 +355,7 @@
     },
     "desktopWidgets": {
         "enabled": true,
-        "gridSnap": false,
+        "gridSnap": true,
         "gridSnapScale": true,
         "monitorWidgets": [
             {
@@ -359,44 +365,35 @@
                         "id": "Weather",
                         "roundedCorners": true,
                         "scale": 1,
-                        "showBackground": false,
-                        "x": 1248,
-                        "y": 768
+                        "showBackground": true,
+                        "x": 240,
+                        "y": 24
                     },
                     {
-                        "barCount": 32,
-                        "customHeight": 100,
-                        "customPrimaryColor": "#6750a4",
-                        "customSecondaryColor": "#625b71",
-                        "customWidth": 280,
-                        "defaultSettings": {
-                            "barCount": 32,
-                            "customHeight": 0,
-                            "customPrimaryColor": "#6750A4",
-                            "customSecondaryColor": "#625B71",
-                            "customWidth": 0,
-                            "direction": "up",
-                            "fadeWhenIdle": true,
-                            "fps": 60,
-                            "mode": "bars",
-                            "sensitivity": 1.5,
-                            "smoothing": 0.18,
-                            "useCustomColors": false,
-                            "useGradient": true
-                        },
-                        "direction": "up",
-                        "fadeWhenIdle": true,
-                        "fps": 60,
-                        "id": "plugin:deskvis",
-                        "mode": "mirror",
+                        "clockColor": "none",
+                        "clockStyle": "digital",
+                        "customFont": "Inter ExtraBold",
+                        "format": "HH:mm\\nd MMMM yyyy",
+                        "id": "Clock",
+                        "roundedCorners": true,
                         "scale": 1,
-                        "sensitivity": 1.5,
                         "showBackground": true,
-                        "smoothing": 0.1,
-                        "useCustomColors": false,
-                        "useGradient": true,
-                        "x": 1171,
-                        "y": 333
+                        "useCustomFont": true,
+                        "x": 72,
+                        "y": 24
+                    },
+                    {
+                        "hideMode": "hidden",
+                        "id": "MediaPlayer",
+                        "roundedCorners": true,
+                        "scale": 1,
+                        "showAlbumArt": true,
+                        "showBackground": true,
+                        "showButtons": false,
+                        "showVisualizer": true,
+                        "visualizerType": "wave",
+                        "x": 72,
+                        "y": 192
                     }
                 ]
             }
@@ -613,7 +610,7 @@
         "overlayLayer": true
     },
     "plugins": {
-        "autoUpdate": false,
+        "autoUpdate": true,
         "notifyUpdates": true
     },
     "sessionMenu": {
@@ -689,7 +686,7 @@
         "batteryWarningThreshold": 20,
         "cpuCriticalThreshold": 90,
         "cpuWarningThreshold": 80,
-        "criticalColor": "",
+        "criticalColor": "#eb6f92",
         "diskAvailCriticalThreshold": 10,
         "diskAvailWarningThreshold": 20,
         "diskCriticalThreshold": 90,
@@ -704,8 +701,8 @@
         "swapWarningThreshold": 80,
         "tempCriticalThreshold": 90,
         "tempWarningThreshold": 80,
-        "useCustomColors": false,
-        "warningColor": ""
+        "useCustomColors": true,
+        "warningColor": "#ebbcba"
     },
     "templates": {
         "activeTemplates": [
@@ -717,7 +714,7 @@
         "fontDefault": "Inter Medium",
         "fontDefaultScale": 1,
         "fontFixed": "Noto Sans Mono",
-        "fontFixedScale": 1.05,
+        "fontFixedScale": 1.1,
         "panelBackgroundOpacity": 1,
         "panelsAttachedToBar": true,
         "scrollbarAlwaysVisible": false,
@@ -735,8 +732,13 @@
         ],
         "fillColor": "#000000",
         "fillMode": "crop",
-        "hideWallpaperFilenames": false,
+        "hideWallpaperFilenames": true,
         "monitorDirectories": [
+            {
+                "directory": "/home/neyfua/Pictures/Wallpapers",
+                "name": "eDP-1",
+                "wallpaper": ""
+            }
         ],
         "overviewBlur": 0.4,
         "overviewEnabled": true,
@@ -754,18 +756,18 @@
             "fade"
         ],
         "useSolidColor": false,
-        "useWallhaven": false,
+        "useWallhaven": true,
         "viewMode": "single",
         "wallhavenApiKey": "",
-        "wallhavenCategories": "111",
+        "wallhavenCategories": "110",
         "wallhavenOrder": "desc",
         "wallhavenPurity": "100",
         "wallhavenQuery": "",
-        "wallhavenRatios": "",
+        "wallhavenRatios": "landscape",
         "wallhavenResolutionHeight": "",
         "wallhavenResolutionMode": "atleast",
         "wallhavenResolutionWidth": "",
-        "wallhavenSorting": "relevance",
+        "wallhavenSorting": "date_added",
         "wallpaperChangeMode": "random"
     }
 }
