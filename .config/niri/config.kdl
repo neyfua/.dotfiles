@@ -31,7 +31,7 @@ output "eDP-1" {
 }
 
 layout {
-	// gaps 20
+	// gaps 0
 	center-focused-column "never"
 	always-center-single-column
 	background-color "transparent"
@@ -255,15 +255,30 @@ workspace "game"
 workspace "music"
 workspace "misc"
 
-// window-rule {
-// 	match is-floating=true
-// 	border { off; }
-// }
-
 window-rule {
 	geometry-corner-radius 12
 	clip-to-geometry true
 }
+
+// window-rule {
+// 	match is-floating=true
+
+// 	geometry-corner-radius 12
+// }
+
+// window-rule {
+// 	match is-floating=false
+
+// 	geometry-corner-radius 0
+// }
+
+// window-rule {
+// 	match is-floating=false
+
+// 	border {
+// 		off
+// 	}
+// }
 
 window-rule {
 	match is-active=false
@@ -300,7 +315,6 @@ window-rule {
 	match app-id="^steam$"
 	match app-id="^com.heroicgameslauncher.hgl$"
 	match app-id="^org.vinegarhq.Sober$"
-	match app-id="^org.vinegarhq.Sober$" title="^Servers$"
 	match app-id="^PolyMC$"
 	match app-id="^(Minecraft)(.*)$"
 
@@ -347,10 +361,23 @@ window-rule {
 }
 
 window-rule {
+	match is-floating=true
+
+	border {
+		on
+		width 4
+		active-color "#ebbcba"
+		inactive-color "#1f1d2e"
+		urgent-color "#eb6f92"
+	}
+}
+
+window-rule {
 	match app-id="com-sun-tools-javac-launcher-SourceLauncher"
 	match app-id="^zenity$"
-	match app-id="org.kde.kdenlive" title="Kdenlive"
+	match app-id="^org.kde.kdenlive$" title="^(Splash Screen)(.*)$"
 	match app-id="^org.vinegarhq.Sober$" title="^Servers$"
+	match app-id="^org.vinegarhq.Sober$" title="^Buy Robux$"
 
 	match title="^About$"
 	match title="^Library$"
@@ -366,14 +393,6 @@ window-rule {
 	match title="^(.*)(KDE Connect Daemon)$"
 
 	open-floating true
-
-	// border {
-	// 	on
-	// 	width 4
-	// 	active-color "#ebbcba"
-	// 	inactive-color "#1f1d2e"
-	// 	urgent-color "#eb6f92"
-	// }
 }
 
 window-rule {
@@ -410,14 +429,6 @@ window-rule {
 
 	default-column-width { proportion 0.7; }
 	default-window-height { proportion 0.7; }
-
-	// border {
-	// 	on
-	// 	width 4
-	// 	active-color "#ebbcba"
-	// 	inactive-color "#1f1d2e"
-	// 	urgent-color "#eb6f92"
-	// }
 }
 
 window-rule {
@@ -442,14 +453,6 @@ window-rule {
 	default-window-height { proportion 0.7; }
 
 	open-floating true
-
-	// border {
-	// 	on
-	// 	width 4
-	// 	active-color "#ebbcba"
-	// 	inactive-color "#1f1d2e"
-	// 	urgent-color "#eb6f92"
-	// }
 }
 
 window-rule {
@@ -497,14 +500,6 @@ window-rule {
 	default-window-height { fixed 500; }
 
 	open-floating true
-
-	// border {
-	// 	on
-	// 	width 4
-	// 	active-color "#ebbcba"
-	// 	inactive-color "#1f1d2e"
-	// 	urgent-color "#eb6f92"
-	// }
 }
 
 window-rule {

@@ -51,11 +51,11 @@
         "contentPadding": 0,
         "density": "spacious",
         "displayMode": "always_visible",
-        "enableExclusionZoneInset": false,
+        "enableExclusionZoneInset": true,
         "fontScale": 1,
         "frameRadius": 12,
         "frameThickness": 8,
-        "hideOnOverview": true,
+        "hideOnOverview": false,
         "marginHorizontal": 4,
         "marginVertical": 4,
         "middleClickAction": "none",
@@ -65,8 +65,8 @@
         ],
         "mouseWheelAction": "content",
         "mouseWheelWrap": true,
-        "outerCorners": true,
-        "position": "left",
+        "outerCorners": false,
+        "position": "bottom",
         "reverseScroll": false,
         "rightClickAction": "controlCenter",
         "rightClickCommand": "",
@@ -77,9 +77,34 @@
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
         "useSeparateOpacity": false,
-        "widgetSpacing": 4,
+        "widgetSpacing": 6,
         "widgets": {
             "center": [
+                {
+                    "compactMode": true,
+                    "hideMode": "hidden",
+                    "hideWhenIdle": false,
+                    "id": "MediaMini",
+                    "maxWidth": 500,
+                    "panelShowAlbumArt": true,
+                    "scrollingMode": "hover",
+                    "showAlbumArt": true,
+                    "showArtistFirst": false,
+                    "showProgressRing": true,
+                    "showVisualizer": true,
+                    "textColor": "none",
+                    "useFixedWidth": false,
+                    "visualizerType": "wave"
+                }
+            ],
+            "left": [
+                {
+                    "defaultSettings": {
+                        "hideBackground": false,
+                        "minimumThreshold": 10
+                    },
+                    "id": "plugin:catwalk"
+                },
                 {
                     "characterCount": 2,
                     "colorizeIcons": false,
@@ -94,46 +119,12 @@
                     "id": "Workspace",
                     "labelMode": "index",
                     "occupiedColor": "secondary",
-                    "pillSize": 0.6,
+                    "pillSize": 0.55,
                     "showApplications": false,
                     "showApplicationsHover": false,
                     "showBadge": true,
                     "showLabelsOnlyWhenOccupied": true,
                     "unfocusedIconsOpacity": 1
-                },
-                {
-                    "compactMode": true,
-                    "hideMode": "hidden",
-                    "hideWhenIdle": false,
-                    "id": "MediaMini",
-                    "maxWidth": 145,
-                    "panelShowAlbumArt": true,
-                    "scrollingMode": "hover",
-                    "showAlbumArt": true,
-                    "showArtistFirst": false,
-                    "showProgressRing": true,
-                    "showVisualizer": false,
-                    "textColor": "none",
-                    "useFixedWidth": false,
-                    "visualizerType": "linear"
-                }
-            ],
-            "left": [
-                {
-                    "defaultSettings": {
-                        "hideBackground": false,
-                        "minimumThreshold": 10
-                    },
-                    "id": "plugin:catwalk"
-                },
-                {
-                    "clockColor": "primary",
-                    "customFont": "Inter ExtraBold",
-                    "formatHorizontal": "h:mm AP",
-                    "formatVertical": "hh mm AP",
-                    "id": "Clock",
-                    "tooltipFormat": "ddd, MMM dd yyyy",
-                    "useCustomFont": true
                 },
                 {
                     "compactMode": true,
@@ -184,10 +175,17 @@
                     ]
                 },
                 {
+                    "defaultSettings": {
+                        "credits": 15,
+                        "showCredits": true
+                    },
+                    "id": "plugin:slot-machine"
+                },
+                {
                     "displayMode": "alwaysHide",
                     "iconColor": "none",
                     "id": "Volume",
-                    "middleClickCommand": "pwvucontrol || pavucontrol",
+                    "middleClickCommand": "pwvucontrol || pavucontrol || pavucontrol-qt",
                     "textColor": "none"
                 },
                 {
@@ -198,13 +196,13 @@
                     "textColor": "none"
                 },
                 {
-                    "deviceNativePath": "__default__",
-                    "displayMode": "graphic-clean",
-                    "hideIfIdle": false,
-                    "hideIfNotDetected": true,
-                    "id": "Battery",
-                    "showNoctaliaPerformance": true,
-                    "showPowerProfiles": true
+                    "clockColor": "primary",
+                    "customFont": "Inter ExtraBold",
+                    "formatHorizontal": "hh:mm AP",
+                    "formatVertical": "hh mm AP",
+                    "id": "Clock",
+                    "tooltipFormat": "ddd, MMM dd yyyy",
+                    "useCustomFont": true
                 },
                 {
                     "hideWhenZero": false,
@@ -355,8 +353,8 @@
     },
     "desktopWidgets": {
         "enabled": true,
-        "gridSnap": true,
-        "gridSnapScale": true,
+        "gridSnap": false,
+        "gridSnapScale": false,
         "monitorWidgets": [
             {
                 "name": "eDP-1",
@@ -365,35 +363,22 @@
                         "id": "Weather",
                         "roundedCorners": true,
                         "scale": 1,
-                        "showBackground": true,
-                        "x": 240,
-                        "y": 24
+                        "showBackground": false,
+                        "x": 1248,
+                        "y": 720
                     },
                     {
-                        "clockColor": "none",
-                        "clockStyle": "digital",
-                        "customFont": "Inter ExtraBold",
-                        "format": "HH:mm\\nd MMMM yyyy",
-                        "id": "Clock",
+                        "colorName": "primary",
+                        "height": 100,
+                        "hideWhenIdle": true,
+                        "id": "AudioVisualizer",
                         "roundedCorners": true,
                         "scale": 1,
-                        "showBackground": true,
-                        "useCustomFont": true,
-                        "x": 72,
-                        "y": 24
-                    },
-                    {
-                        "hideMode": "hidden",
-                        "id": "MediaPlayer",
-                        "roundedCorners": true,
-                        "scale": 1,
-                        "showAlbumArt": true,
-                        "showBackground": true,
-                        "showButtons": false,
-                        "showVisualizer": true,
-                        "visualizerType": "wave",
-                        "x": 72,
-                        "y": 192
+                        "showBackground": false,
+                        "visualizerType": "linear",
+                        "width": 278,
+                        "x": 1172,
+                        "y": 335
                     }
                 ]
             }
@@ -401,7 +386,7 @@
         "overviewEnabled": true
     },
     "dock": {
-        "animationSpeed": 0.5,
+        "animationSpeed": 1,
         "backgroundOpacity": 1,
         "colorizeIcons": false,
         "deadOpacity": 0.6,
@@ -410,21 +395,40 @@
         "enabled": false,
         "floatingRatio": 1,
         "groupApps": false,
-        "groupClickAction": "cycle",
+        "groupClickAction": "list",
         "groupContextMenuMode": "extended",
         "groupIndicatorStyle": "dots",
         "inactiveIndicators": false,
         "indicatorColor": "primary",
         "indicatorOpacity": 0.6,
         "indicatorThickness": 3,
-        "launcherIcon": "",
+        "launcherIcon": "rocket",
         "launcherIconColor": "none",
-        "launcherPosition": "end",
+        "launcherPosition": "start",
         "launcherUseDistroLogo": false,
         "monitors": [
         ],
         "onlySameOutput": true,
         "pinnedApps": [
+            "foot",
+            "firefox",
+            "vesktop",
+            "com.spotify.Client",
+            "org.vinegarhq.Sober",
+            "org.gnome.Nautilus",
+            "org.telegram.desktop",
+            "code",
+            "com.google.AndroidStudio",
+            "polymc",
+            "org.torproject.torbrowser-launcher",
+            "virt-manager",
+            "fluxer_app",
+            "org.kde.kdenlive",
+            "org.gnome.Calculator",
+            "org.kde.filelight",
+            "nwg-look",
+            "libreoffice-startcenter",
+            "myrlyn"
         ],
         "pinnedStatic": false,
         "position": "bottom",
@@ -618,7 +622,7 @@
         "enableCountdown": true,
         "largeButtonsLayout": "single-row",
         "largeButtonsStyle": false,
-        "position": "bottom_center",
+        "position": "top_center",
         "powerOptions": [
             {
                 "action": "logout",
@@ -756,7 +760,7 @@
             "fade"
         ],
         "useSolidColor": false,
-        "useWallhaven": true,
+        "useWallhaven": false,
         "viewMode": "single",
         "wallhavenApiKey": "",
         "wallhavenCategories": "110",
