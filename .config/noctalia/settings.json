@@ -348,6 +348,11 @@
                     "id": "KeepAwake"
                 },
                 {
+                    "defaultSettings": {
+                    },
+                    "id": "plugin:noctalia-kde-connect"
+                },
+                {
                     "enableOnStateLogic": false,
                     "generalTooltipText": "Color Picker",
                     "icon": "color-picker",
