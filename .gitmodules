@@ -1,0 +1,6 @@
+[submodule "noctalia-kde-connect"]
+	path = noctalia-kde-connect
+	url = https://github.com/WerWolv/noctalia-kde-connect
+[submodule ".config/noctalia/plugins/noctalia-kde-connect"]
+	path = .config/noctalia/plugins/noctalia-kde-connect
+	url = https://github.com/WerWolv/noctalia-kde-connect

@@ -8,10 +8,11 @@ input {
 	touchpad {
 		tap
 		dwt
+		dwtp
 		natural-scroll
-		accel-speed 0.5
+		accel-speed 0.7
 		accel-profile "flat"
-		scroll-factor 0.2
+		scroll-factor 0.5
 		scroll-method "two-finger"
 		// disabled-on-external-mouse
 	}
@@ -108,6 +109,7 @@ recent-windows {
 
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
 spawn-at-startup "fcitx5"
+spawn-at-startup "kdeconnectd"
 spawn-at-startup "quickshell" "-c" "noctalia-shell" "-n"
 
 prefer-no-csd
@@ -260,31 +262,6 @@ window-rule {
 	clip-to-geometry true
 }
 
-// window-rule {
-// 	match is-floating=true
-
-// 	geometry-corner-radius 12
-// }
-
-// window-rule {
-// 	match is-floating=false
-
-// 	geometry-corner-radius 0
-// }
-
-// window-rule {
-// 	match is-floating=false
-
-// 	border {
-// 		off
-// 	}
-// }
-
-window-rule {
-	match is-active=false
-	opacity 0.9
-}
-
 window-rule {
 	match app-id="^code$"
 	match app-id="^dev.zed.Zed$"
@@ -332,7 +309,6 @@ window-rule {
 
 window-rule {
 	match app-id="org.kde.kdenlive" title="Kdenlive"
-	match app-id="^(libreoffice-)(.*)$"
 
 	match title="^(OBS)(.*)$"
 
@@ -354,23 +330,13 @@ window-rule {
 	match app-id="^code$"
 	match app-id="^dev.zed.Zed$"
 	match app-id="^org.vinegarhq.Sober$" title="Sober"
+	match app-id="^ONLYOFFICE$"
 
 	match title="^(OBS)(.*)$"
 
 	default-column-width { proportion 1.0; }
 }
 
-window-rule {
-	match is-floating=true
-
-	border {
-		on
-		width 4
-		active-color "#ebbcba"
-		inactive-color "#1f1d2e"
-		urgent-color "#eb6f92"
-	}
-}
 
 window-rule {
 	match app-id="com-sun-tools-javac-launcher-SourceLauncher"
@@ -402,7 +368,7 @@ window-rule {
 
 	match title="^splash$"
 	match title="^zoom$"
-	match title="^LibreOffice$"
+	// match title="^LibreOffice$"
 	match title="^(Updater)(.*)$"
 	match title="^(Sign in)(.*)$"
 	match title="^(Starting Apache)(.*)$"
@@ -484,16 +450,6 @@ window-rule {
 }
 
 window-rule {
-	match app-id="^(libreoffice-)(.*)$"
-
-	open-maximized false
-	open-maximized-to-edges false
-	open-fullscreen false
-
-	default-column-width { proportion 1.0; }
-}
-
-window-rule {
 	match app-id="^(.*)(FileRoller)$"
 
 	default-column-width { fixed 850; }
@@ -549,12 +505,12 @@ binds {
 	Alt+Shift+P repeat=false { spawn-sh "qs -c noctalia-shell ipc call plugin:slot-machine toggle"; }
 
 	// System controls
-	XF86AudioRaiseVolume allow-when-locked=true cooldown-ms=100  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
-	XF86AudioLowerVolume allow-when-locked=true cooldown-ms=100  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+	XF86AudioRaiseVolume allow-when-locked=true cooldown-ms=150  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
+	XF86AudioLowerVolume allow-when-locked=true cooldown-ms=150  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
 	XF86AudioMute allow-when-locked=true repeat=false            { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
 	XF86AudioMicMute allow-when-locked=true repeat=false         { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
-	XF86MonBrightnessUp allow-when-locked=true cooldown-ms=100   {	spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-	XF86MonBrightnessDown allow-when-locked=true cooldown-ms=100 { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+	XF86MonBrightnessUp allow-when-locked=true cooldown-ms=150   {	spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+	XF86MonBrightnessDown allow-when-locked=true cooldown-ms=150 { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
 
 	// Close window
 	Mod+C repeat=false { close-window; }

@@ -47,7 +47,7 @@
         "backgroundOpacity": 0.93,
         "barType": "framed",
         "capsuleColorKey": "none",
-        "capsuleOpacity": 0.5,
+        "capsuleOpacity": 1,
         "contentPadding": 0,
         "density": "spacious",
         "displayMode": "always_visible",
@@ -66,20 +66,41 @@
         "mouseWheelAction": "content",
         "mouseWheelWrap": true,
         "outerCorners": false,
-        "position": "bottom",
+        "position": "left",
         "reverseScroll": false,
         "rightClickAction": "controlCenter",
         "rightClickCommand": "",
-        "rightClickFollowMouse": true,
+        "rightClickFollowMouse": false,
         "screenOverrides": [
         ],
-        "showCapsule": true,
+        "showCapsule": false,
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
         "useSeparateOpacity": false,
         "widgetSpacing": 6,
         "widgets": {
             "center": [
+                {
+                    "characterCount": 2,
+                    "colorizeIcons": false,
+                    "emptyColor": "secondary",
+                    "enableScrollWheel": false,
+                    "focusedColor": "primary",
+                    "followFocusedScreen": false,
+                    "fontWeight": "bold",
+                    "groupedBorderOpacity": 1,
+                    "hideUnoccupied": true,
+                    "iconScale": 0.8,
+                    "id": "Workspace",
+                    "labelMode": "index",
+                    "occupiedColor": "secondary",
+                    "pillSize": 0.55,
+                    "showApplications": false,
+                    "showApplicationsHover": false,
+                    "showBadge": true,
+                    "showLabelsOnlyWhenOccupied": true,
+                    "unfocusedIconsOpacity": 1
+                },
                 {
                     "compactMode": true,
                     "hideMode": "hidden",
@@ -106,25 +127,13 @@
                     "id": "plugin:catwalk"
                 },
                 {
-                    "characterCount": 2,
-                    "colorizeIcons": false,
-                    "emptyColor": "secondary",
-                    "enableScrollWheel": false,
-                    "focusedColor": "primary",
-                    "followFocusedScreen": false,
-                    "fontWeight": "bold",
-                    "groupedBorderOpacity": 1,
-                    "hideUnoccupied": true,
-                    "iconScale": 0.8,
-                    "id": "Workspace",
-                    "labelMode": "index",
-                    "occupiedColor": "secondary",
-                    "pillSize": 0.55,
-                    "showApplications": false,
-                    "showApplicationsHover": false,
-                    "showBadge": true,
-                    "showLabelsOnlyWhenOccupied": true,
-                    "unfocusedIconsOpacity": 1
+                    "clockColor": "primary",
+                    "customFont": "Inter ExtraBold",
+                    "formatHorizontal": "hh:mm AP",
+                    "formatVertical": "hh mm AP",
+                    "id": "Clock",
+                    "tooltipFormat": "ddd, MMM dd yyyy",
+                    "useCustomFont": true
                 },
                 {
                     "compactMode": true,
@@ -147,6 +156,16 @@
                     "textColor": "none",
                     "useMonospaceFont": true,
                     "usePadding": false
+                },
+                {
+                    "capsLockIcon": "letter-c",
+                    "hideWhenOff": true,
+                    "id": "LockKeys",
+                    "numLockIcon": "letter-n",
+                    "scrollLockIcon": "letter-s",
+                    "showCapsLock": true,
+                    "showNumLock": true,
+                    "showScrollLock": false
                 }
             ],
             "right": [
@@ -175,11 +194,13 @@
                     ]
                 },
                 {
-                    "defaultSettings": {
-                        "credits": 15,
-                        "showCredits": true
-                    },
-                    "id": "plugin:slot-machine"
+                    "deviceNativePath": "__default__",
+                    "displayMode": "graphic-clean",
+                    "hideIfIdle": false,
+                    "hideIfNotDetected": true,
+                    "id": "Battery",
+                    "showNoctaliaPerformance": true,
+                    "showPowerProfiles": true
                 },
                 {
                     "displayMode": "alwaysHide",
@@ -194,15 +215,6 @@
                     "iconColor": "none",
                     "id": "Brightness",
                     "textColor": "none"
-                },
-                {
-                    "clockColor": "primary",
-                    "customFont": "Inter ExtraBold",
-                    "formatHorizontal": "hh:mm AP",
-                    "formatVertical": "hh mm AP",
-                    "id": "Clock",
-                    "tooltipFormat": "ddd, MMM dd yyyy",
-                    "useCustomFont": true
                 },
                 {
                     "hideWhenZero": false,
@@ -246,6 +258,7 @@
         "monitorForColors": "",
         "predefinedScheme": "Rose Pine",
         "schedulingMode": "off",
+        "syncGsettings": true,
         "useWallpaperColors": false
     },
     "controlCenter": {
@@ -335,9 +348,6 @@
                     "id": "KeepAwake"
                 },
                 {
-                    "id": "NightLight"
-                },
-                {
                     "enableOnStateLogic": false,
                     "generalTooltipText": "Color Picker",
                     "icon": "color-picker",
@@ -353,8 +363,8 @@
     },
     "desktopWidgets": {
         "enabled": true,
-        "gridSnap": false,
-        "gridSnapScale": false,
+        "gridSnap": true,
+        "gridSnapScale": true,
         "monitorWidgets": [
             {
                 "name": "eDP-1",
@@ -363,22 +373,9 @@
                         "id": "Weather",
                         "roundedCorners": true,
                         "scale": 1,
-                        "showBackground": false,
-                        "x": 1248,
-                        "y": 720
-                    },
-                    {
-                        "colorName": "primary",
-                        "height": 100,
-                        "hideWhenIdle": true,
-                        "id": "AudioVisualizer",
-                        "roundedCorners": true,
-                        "scale": 1,
-                        "showBackground": false,
-                        "visualizerType": "linear",
-                        "width": 278,
-                        "x": 1172,
-                        "y": 335
+                        "showBackground": true,
+                        "x": 72,
+                        "y": 24
                     }
                 ]
             }
@@ -446,7 +443,7 @@
         "avatarImage": "/home/neyfua/.face.gif",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
-        "clockStyle": "analog",
+        "clockStyle": "digital",
         "compactLockScreen": false,
         "dimmerOpacity": 0.2,
         "enableBlurBehind": false,
@@ -549,9 +546,8 @@
         "bluetoothRssiPollIntervalMs": 60000,
         "bluetoothRssiPollingEnabled": true,
         "disableDiscoverability": true,
-        "networkPanelView": "ethernet",
-        "wifiDetailsViewMode": "grid",
-        "wifiEnabled": false
+        "networkPanelView": "wifi",
+        "wifiDetailsViewMode": "grid"
     },
     "nightLight": {
         "autoSchedule": true,
@@ -733,6 +729,32 @@
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/takako_uro.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/MC_snow_pine_forest.png",
+                "useWallpaperColors": false
+            }
         ],
         "fillColor": "#000000",
         "fillMode": "crop",
@@ -759,6 +781,7 @@
         "transitionType": [
             "fade"
         ],
+        "useOriginalImages": false,
         "useSolidColor": false,
         "useWallhaven": false,
         "viewMode": "single",
