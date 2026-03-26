@@ -1,0 +1,131 @@
+{
+  "pages": [
+    {
+      "id": 0,
+      "name": "General"
+    }
+  ],
+  "current_page_id": 0,
+  "todos": [
+    {
+      "id": 1774545663297,
+      "text": "vi translation for hello-world",
+      "completed": false,
+      "createdAt": "2026-03-26T17:21:03.297Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1774545327722,
+      "text": "vi translation for screen-recorder",
+      "completed": true,
+      "createdAt": "2026-03-26T17:15:27.722Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1774545348656,
+      "text": "vi translation for polkit-agent",
+      "completed": true,
+      "createdAt": "2026-03-26T17:15:48.656Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1774545353840,
+      "text": "vi translation for timer",
+      "completed": true,
+      "createdAt": "2026-03-26T17:15:53.840Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1774545370554,
+      "text": "vi translation for privacy-indicator",
+      "completed": true,
+      "createdAt": "2026-03-26T17:16:10.554Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1774545405656,
+      "text": "vi translation for custom-commands",
+      "completed": true,
+      "createdAt": "2026-03-26T17:16:45.656Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1774545428398,
+      "text": "vi translation for fancy-audiovisualizer",
+      "completed": true,
+      "createdAt": "2026-03-26T17:17:08.398Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    },
+    {
+      "id": 1774545562789,
+      "text": "vi translation for color-scheme-creator",
+      "completed": true,
+      "createdAt": "2026-03-26T17:19:22.789Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    }
+  ],
+  "count": 8,
+  "completedCount": 7,
+  "isExpanded": false,
+  "useCustomColors": false,
+  "exportPath": "~/Documents",
+  "exportFormat": "markdown",
+  "exportEmptySections": false,
+  "priorityColors": {
+    "high": {
+      "r": 0.9215686321258545,
+      "g": 0.43529412150382996,
+      "b": 0.572549045085907,
+      "a": 1,
+      "hsvHue": 0.9529444575309753,
+      "hsvSaturation": 0.5276569724082947,
+      "hsvValue": 0.9215686321258545,
+      "hslHue": 0.9529444575309753,
+      "hslSaturation": 0.7560998201370239,
+      "hslLightness": 0.6784313917160034,
+      "valid": true
+    },
+    "medium": {
+      "r": 0.9215686321258545,
+      "g": 0.7372549176216125,
+      "b": 0.729411780834198,
+      "a": 1,
+      "hsvHue": 0.0068055554293096066,
+      "hsvSaturation": 0.20851454138755798,
+      "hsvValue": 0.9215686321258545,
+      "hslHue": 0.0068055554293096066,
+      "hslSaturation": 0.5505607724189758,
+      "hslLightness": 0.8254978060722351,
+      "valid": true
+    },
+    "low": {
+      "r": 0.5647059082984924,
+      "g": 0.5490196347236633,
+      "b": 0.6666666865348816,
+      "a": 1,
+      "hsvHue": 0.6888889074325562,
+      "hsvSaturation": 0.1764705926179886,
+      "hsvValue": 0.6666666865348816,
+      "hslHue": 0.6888889074325562,
+      "hslSaturation": 0.14999619126319885,
+      "hslLightness": 0.6078431606292725,
+      "valid": true
+    }
+  }
+}

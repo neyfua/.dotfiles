@@ -497,8 +497,8 @@ binds {
 
 	// Plugins
 	Alt+Shift+C repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
-	Alt+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle" "vn" ""; }
-	Alt+Shift+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle" "en" ""; }
+	Alt+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle" "" ""; }
+	Alt+T repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:todo" "togglePanel";}
 	Alt+Z repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
 	Alt+I repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:ip-monitor" "toggle"; }
 	Alt+P repeat=false       { spawn-sh "qs -c noctalia-shell ipc call plugin:slot-machine spin;qs -c noctalia-shell ipc call plugin:slot-machine reset"; }

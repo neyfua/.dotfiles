@@ -1,0 +1,10 @@
+[Unit]
+Description=Enable WiFi at boot
+After=network-pre.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/nmcli radio wifi on
+
+[Install]
+WantedBy=multi-user.target

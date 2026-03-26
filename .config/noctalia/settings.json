@@ -106,16 +106,16 @@
                     "hideMode": "hidden",
                     "hideWhenIdle": false,
                     "id": "MediaMini",
-                    "maxWidth": 500,
+                    "maxWidth": 145,
                     "panelShowAlbumArt": true,
                     "scrollingMode": "hover",
                     "showAlbumArt": true,
                     "showArtistFirst": false,
                     "showProgressRing": true,
-                    "showVisualizer": true,
+                    "showVisualizer": false,
                     "textColor": "none",
                     "useFixedWidth": false,
-                    "visualizerType": "wave"
+                    "visualizerType": "linear"
                 }
             ],
             "left": [
@@ -158,18 +158,6 @@
                     "usePadding": false
                 },
                 {
-                    "capsLockIcon": "letter-c",
-                    "hideWhenOff": true,
-                    "id": "LockKeys",
-                    "numLockIcon": "letter-n",
-                    "scrollLockIcon": "letter-s",
-                    "showCapsLock": true,
-                    "showNumLock": true,
-                    "showScrollLock": false
-                }
-            ],
-            "right": [
-                {
                     "defaultSettings": {
                         "activeColor": "primary",
                         "enableToast": true,
@@ -180,7 +168,9 @@
                         "removeMargins": false
                     },
                     "id": "plugin:privacy-indicator"
-                },
+                }
+            ],
+            "right": [
                 {
                     "blacklist": [
                     ],
@@ -192,6 +182,21 @@
                     "pinned": [
                         "Keyboard - English (US)"
                     ]
+                },
+                {
+                    "defaultSettings": {
+                        "compactMode": false,
+                        "defaultPeerAction": "copy-ip",
+                        "hideDisconnected": false,
+                        "hideMullvadExitNodes": true,
+                        "pingCount": 5,
+                        "refreshInterval": 5000,
+                        "showIpAddress": true,
+                        "showPeerCount": true,
+                        "sshUsername": "",
+                        "terminalCommand": ""
+                    },
+                    "id": "plugin:tailscale"
                 },
                 {
                     "deviceNativePath": "__default__",
@@ -501,6 +506,7 @@
         "showHibernateOnLockScreen": false,
         "showScreenCorners": false,
         "showSessionButtonsOnLockScreen": false,
+        "smoothScrollEnabled": true,
         "telemetryEnabled": true
     },
     "hooks": {
@@ -607,7 +613,8 @@
             0,
             1,
             2,
-            3
+            3,
+            4
         ],
         "location": "bottom",
         "monitors": [
@@ -623,7 +630,7 @@
         "enableCountdown": true,
         "largeButtonsLayout": "single-row",
         "largeButtonsStyle": false,
-        "position": "top_center",
+        "position": "bottom_center",
         "powerOptions": [
             {
                 "action": "logout",
@@ -793,7 +800,7 @@
         "wallhavenApiKey": "",
         "wallhavenCategories": "110",
         "wallhavenOrder": "desc",
-        "wallhavenPurity": "100",
+        "wallhavenPurity": "110",
         "wallhavenQuery": "",
         "wallhavenRatios": "landscape",
         "wallhavenResolutionHeight": "",

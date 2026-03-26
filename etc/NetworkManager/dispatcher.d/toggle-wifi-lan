@@ -1,34 +1,10 @@
 #!/bin/bash
 
-ETHERNET_DEV="${1:-$(nmcli -t -f DEVICE,TYPE device | awk -F: '$2=="ethernet"{print $1; exit}')}"
-WIFI_DEV="$(nmcli -t -f DEVICE,TYPE device | awk -F: '$2=="wifi"{print $1; exit}')"
-
-if [[ -z "$ETHERNET_DEV" ]]; then
-    echo "No ethernet device found." >&2
-    exit 1
+if [ "$1" = "enp45s0" ]; then
+    case "$2" in
+        up)
+            nmcli radio wifi off ;;
+        down)
+            nmcli radio wifi on ;;
+    esac
 fi
-
-echo "Monitoring ethernet device: $ETHERNET_DEV"
-
-last_state=""
-
-while true; do
-    state=$(nmcli -t -f GENERAL.STATE device show "$ETHERNET_DEV" | cut -d: -f2)
-
-    if [[ "$state" != "$last_state" ]]; then
-        if [[ "$state" == "100 (connected)" ]]; then
-            if nmcli radio wifi | grep -q enabled; then
-                echo "$(date): Ethernet connected, disabling WiFi"
-                nmcli radio wifi off
-            fi
-        else
-            if nmcli radio wifi | grep -q disabled; then
-                echo "$(date): Ethernet disconnected, enabling WiFi"
-                nmcli radio wifi on
-            fi
-        fi
-        last_state="$state"
-    fi
-
-    sleep 2
-done

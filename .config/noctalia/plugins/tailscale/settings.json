@@ -1,0 +1,12 @@
+{
+  "refreshInterval": 60000,
+  "compactMode": true,
+  "showIpAddress": false,
+  "showPeerCount": false,
+  "hideDisconnected": false,
+  "hideMullvadExitNodes": true,
+  "terminalCommand": "foot",
+  "pingCount": 3,
+  "defaultPeerAction": "ssh",
+  "sshUsername": "ubuntu"
+}
