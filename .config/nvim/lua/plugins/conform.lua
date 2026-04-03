@@ -1,5 +1,6 @@
 return {
 	"stevearc/conform.nvim",
+	lazy = false,
 	event = "BufWritePre",
 	dependencies = { "williamboman/mason.nvim" },
 	config = function()
@@ -20,8 +21,6 @@ return {
 				javascript = { "prettierd" },
 				json = { "clang-format" },
 				php = { "pretty-php" },
-				toml = { "taplo" },
-				xml = { "xmlformatter" },
 			},
 
 			format_on_save = {

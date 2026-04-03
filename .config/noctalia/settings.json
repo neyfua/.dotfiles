@@ -33,7 +33,7 @@
             "Tor Browser"
         ],
         "preferredPlayer": "Spotify, spotify",
-        "spectrumFrameRate": 30,
+        "spectrumFrameRate": 60,
         "spectrumMirrored": true,
         "visualizerType": "linear",
         "volumeFeedback": false,
@@ -47,8 +47,8 @@
         "backgroundOpacity": 0.93,
         "barType": "framed",
         "capsuleColorKey": "none",
-        "capsuleOpacity": 1,
-        "contentPadding": 0,
+        "capsuleOpacity": 0.5,
+        "contentPadding": 2,
         "density": "spacious",
         "displayMode": "always_visible",
         "enableExclusionZoneInset": true,
@@ -56,8 +56,8 @@
         "frameRadius": 12,
         "frameThickness": 8,
         "hideOnOverview": false,
-        "marginHorizontal": 4,
-        "marginVertical": 4,
+        "marginHorizontal": 350,
+        "marginVertical": 8,
         "middleClickAction": "none",
         "middleClickCommand": "",
         "middleClickFollowMouse": false,
@@ -66,7 +66,7 @@
         "mouseWheelAction": "content",
         "mouseWheelWrap": true,
         "outerCorners": false,
-        "position": "left",
+        "position": "bottom",
         "reverseScroll": false,
         "rightClickAction": "controlCenter",
         "rightClickCommand": "",
@@ -81,6 +81,24 @@
         "widgets": {
             "center": [
                 {
+                    "compactMode": true,
+                    "hideMode": "hidden",
+                    "hideWhenIdle": false,
+                    "id": "MediaMini",
+                    "maxWidth": 500,
+                    "panelShowAlbumArt": true,
+                    "scrollingMode": "hover",
+                    "showAlbumArt": true,
+                    "showArtistFirst": false,
+                    "showProgressRing": true,
+                    "showVisualizer": true,
+                    "textColor": "none",
+                    "useFixedWidth": false,
+                    "visualizerType": "wave"
+                }
+            ],
+            "left": [
+                {
                     "characterCount": 2,
                     "colorizeIcons": false,
                     "emptyColor": "secondary",
@@ -94,7 +112,7 @@
                     "id": "Workspace",
                     "labelMode": "index",
                     "occupiedColor": "secondary",
-                    "pillSize": 0.55,
+                    "pillSize": 0.6,
                     "showApplications": false,
                     "showApplicationsHover": false,
                     "showBadge": true,
@@ -103,49 +121,15 @@
                 },
                 {
                     "compactMode": true,
-                    "hideMode": "hidden",
-                    "hideWhenIdle": false,
-                    "id": "MediaMini",
-                    "maxWidth": 145,
-                    "panelShowAlbumArt": true,
-                    "scrollingMode": "hover",
-                    "showAlbumArt": true,
-                    "showArtistFirst": false,
-                    "showProgressRing": true,
-                    "showVisualizer": false,
-                    "textColor": "none",
-                    "useFixedWidth": false,
-                    "visualizerType": "linear"
-                }
-            ],
-            "left": [
-                {
-                    "defaultSettings": {
-                        "hideBackground": false,
-                        "minimumThreshold": 10
-                    },
-                    "id": "plugin:catwalk"
-                },
-                {
-                    "clockColor": "primary",
-                    "customFont": "Inter ExtraBold",
-                    "formatHorizontal": "hh:mm AP",
-                    "formatVertical": "hh mm AP",
-                    "id": "Clock",
-                    "tooltipFormat": "ddd, MMM dd yyyy",
-                    "useCustomFont": true
-                },
-                {
-                    "compactMode": true,
                     "diskPath": "/",
                     "iconColor": "none",
                     "id": "SystemMonitor",
                     "showCpuCores": false,
-                    "showCpuFreq": false,
-                    "showCpuTemp": true,
+                    "showCpuFreq": true,
+                    "showCpuTemp": false,
                     "showCpuUsage": true,
                     "showDiskAvailable": false,
-                    "showDiskUsage": true,
+                    "showDiskUsage": false,
                     "showDiskUsageAsPercent": false,
                     "showGpuTemp": true,
                     "showLoadAverage": false,
@@ -159,6 +143,24 @@
                 },
                 {
                     "defaultSettings": {
+                        "compactMode": false,
+                        "defaultPeerAction": "copy-ip",
+                        "hideDisconnected": false,
+                        "hideMullvadExitNodes": true,
+                        "pingCount": 5,
+                        "refreshInterval": 5000,
+                        "showIpAddress": true,
+                        "showPeerCount": true,
+                        "sshUsername": "",
+                        "taildropDownloadDir": "~/Downloads",
+                        "taildropEnabled": true,
+                        "taildropReceiveMode": "operator",
+                        "terminalCommand": ""
+                    },
+                    "id": "plugin:tailscale"
+                },
+                {
+                    "defaultSettings": {
                         "activeColor": "primary",
                         "enableToast": true,
                         "hideInactive": false,
@@ -168,6 +170,18 @@
                         "removeMargins": false
                     },
                     "id": "plugin:privacy-indicator"
+                },
+                {
+                    "defaultSettings": {
+                        "autoMount": false,
+                        "fileBrowser": "yazi",
+                        "hideWhenEmpty": false,
+                        "iconColor": "none",
+                        "showBadge": false,
+                        "showNotifications": true,
+                        "terminalCommand": "kitty"
+                    },
+                    "id": "plugin:usb-drive-manager"
                 }
             ],
             "right": [
@@ -184,42 +198,36 @@
                     ]
                 },
                 {
-                    "defaultSettings": {
-                        "compactMode": false,
-                        "defaultPeerAction": "copy-ip",
-                        "hideDisconnected": false,
-                        "hideMullvadExitNodes": true,
-                        "pingCount": 5,
-                        "refreshInterval": 5000,
-                        "showIpAddress": true,
-                        "showPeerCount": true,
-                        "sshUsername": "",
-                        "terminalCommand": ""
-                    },
-                    "id": "plugin:tailscale"
-                },
-                {
                     "deviceNativePath": "__default__",
                     "displayMode": "graphic-clean",
                     "hideIfIdle": false,
                     "hideIfNotDetected": true,
                     "id": "Battery",
-                    "showNoctaliaPerformance": true,
-                    "showPowerProfiles": true
+                    "showNoctaliaPerformance": false,
+                    "showPowerProfiles": false
                 },
                 {
-                    "displayMode": "alwaysHide",
+                    "displayMode": "onhover",
                     "iconColor": "none",
                     "id": "Volume",
-                    "middleClickCommand": "pwvucontrol || pavucontrol || pavucontrol-qt",
+                    "middleClickCommand": "pwvucontrol || pavucontrol",
                     "textColor": "none"
                 },
                 {
                     "applyToAllMonitors": false,
-                    "displayMode": "alwaysHide",
+                    "displayMode": "onhover",
                     "iconColor": "none",
                     "id": "Brightness",
                     "textColor": "none"
+                },
+                {
+                    "clockColor": "primary",
+                    "customFont": "Inter ExtraBold",
+                    "formatHorizontal": "h:mm AP",
+                    "formatVertical": "hh mm AP",
+                    "id": "Clock",
+                    "tooltipFormat": "ddd, MMM dd yyyy",
+                    "useCustomFont": true
                 },
                 {
                     "hideWhenZero": false,
@@ -355,7 +363,7 @@
                 {
                     "defaultSettings": {
                     },
-                    "id": "plugin:noctalia-kde-connect"
+                    "id": "plugin:kde-connect"
                 },
                 {
                     "enableOnStateLogic": false,
@@ -383,9 +391,22 @@
                         "id": "Weather",
                         "roundedCorners": true,
                         "scale": 1,
-                        "showBackground": true,
-                        "x": 72,
-                        "y": 24
+                        "showBackground": false,
+                        "x": 1224,
+                        "y": 720
+                    },
+                    {
+                        "colorName": "primary",
+                        "height": 100,
+                        "hideWhenIdle": true,
+                        "id": "AudioVisualizer",
+                        "roundedCorners": true,
+                        "scale": 1,
+                        "showBackground": false,
+                        "visualizerType": "linear",
+                        "width": 280,
+                        "x": 1171,
+                        "y": 335
                     }
                 ]
             }
@@ -537,20 +558,21 @@
     },
     "location": {
         "analogClockInCalendar": false,
+        "autoLocate": true,
         "firstDayOfWeek": 1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
-        "name": "Ho Chi Minh",
+        "name": "Ho Chi Minh City",
         "showCalendarEvents": true,
         "showCalendarWeather": true,
         "showWeekNumberInCalendar": true,
         "use12hourFormat": true,
         "useFahrenheit": false,
         "weatherEnabled": true,
-        "weatherShowEffects": true
+        "weatherShowEffects": true,
+        "weatherTaliaMascotAlways": false
     },
     "network": {
-        "airplaneModeEnabled": false,
         "bluetoothAutoConnect": false,
         "bluetoothDetailsViewMode": "grid",
         "bluetoothHideUnnamedDevices": true,
@@ -726,7 +748,7 @@
         "fontDefault": "Inter Medium",
         "fontDefaultScale": 1,
         "fontFixed": "Noto Sans Mono",
-        "fontFixedScale": 1.1,
+        "fontFixedScale": 1.05,
         "panelBackgroundOpacity": 1,
         "panelsAttachedToBar": true,
         "scrollbarAlwaysVisible": false,
@@ -771,6 +793,7 @@
         "fillColor": "#000000",
         "fillMode": "crop",
         "hideWallpaperFilenames": true,
+        "linkLightAndDarkWallpapers": true,
         "monitorDirectories": [
             {
                 "directory": "/home/neyfua/Pictures/Wallpapers",

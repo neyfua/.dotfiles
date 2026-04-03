@@ -1,12 +1,15 @@
 {
-  "refreshInterval": 60000,
+  "refreshInterval": 10000,
   "compactMode": true,
   "showIpAddress": false,
   "showPeerCount": false,
   "hideDisconnected": false,
   "hideMullvadExitNodes": true,
   "terminalCommand": "foot",
+  "sshUsername": "ne-server",
   "pingCount": 3,
   "defaultPeerAction": "ssh",
-  "sshUsername": "ubuntu"
+  "taildropEnabled": true,
+  "taildropDownloadDir": "~/Downloads",
+  "taildropReceiveMode": "operator"
 }

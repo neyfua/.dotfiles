@@ -1,1 +1,1 @@
-return { "mbbill/undotree", Lazy = true }
+return { "mbbill/undotree", lazy = true }
