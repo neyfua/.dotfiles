@@ -35,7 +35,7 @@
         "preferredPlayer": "Spotify, spotify",
         "spectrumFrameRate": 60,
         "spectrumMirrored": true,
-        "visualizerType": "linear",
+        "visualizerType": "mirrored",
         "volumeFeedback": false,
         "volumeFeedbackSoundFile": "",
         "volumeOverdrive": false,
@@ -48,14 +48,14 @@
         "barType": "framed",
         "capsuleColorKey": "none",
         "capsuleOpacity": 0.5,
-        "contentPadding": 2,
+        "contentPadding": 0,
         "density": "spacious",
         "displayMode": "always_visible",
         "enableExclusionZoneInset": true,
         "fontScale": 1,
         "frameRadius": 12,
         "frameThickness": 8,
-        "hideOnOverview": false,
+        "hideOnOverview": true,
         "marginHorizontal": 350,
         "marginVertical": 8,
         "middleClickAction": "none",
@@ -66,7 +66,7 @@
         "mouseWheelAction": "content",
         "mouseWheelWrap": true,
         "outerCorners": false,
-        "position": "bottom",
+        "position": "left",
         "reverseScroll": false,
         "rightClickAction": "controlCenter",
         "rightClickCommand": "",
@@ -77,27 +77,9 @@
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
         "useSeparateOpacity": false,
-        "widgetSpacing": 6,
+        "widgetSpacing": 4,
         "widgets": {
             "center": [
-                {
-                    "compactMode": true,
-                    "hideMode": "hidden",
-                    "hideWhenIdle": false,
-                    "id": "MediaMini",
-                    "maxWidth": 500,
-                    "panelShowAlbumArt": true,
-                    "scrollingMode": "hover",
-                    "showAlbumArt": true,
-                    "showArtistFirst": false,
-                    "showProgressRing": true,
-                    "showVisualizer": true,
-                    "textColor": "none",
-                    "useFixedWidth": false,
-                    "visualizerType": "wave"
-                }
-            ],
-            "left": [
                 {
                     "characterCount": 2,
                     "colorizeIcons": false,
@@ -112,7 +94,7 @@
                     "id": "Workspace",
                     "labelMode": "index",
                     "occupiedColor": "secondary",
-                    "pillSize": 0.6,
+                    "pillSize": 0.55,
                     "showApplications": false,
                     "showApplicationsHover": false,
                     "showBadge": true,
@@ -121,12 +103,39 @@
                 },
                 {
                     "compactMode": true,
+                    "hideMode": "hidden",
+                    "hideWhenIdle": false,
+                    "id": "MediaMini",
+                    "maxWidth": 145,
+                    "panelShowAlbumArt": true,
+                    "scrollingMode": "hover",
+                    "showAlbumArt": true,
+                    "showArtistFirst": false,
+                    "showProgressRing": true,
+                    "showVisualizer": false,
+                    "textColor": "none",
+                    "useFixedWidth": false,
+                    "visualizerType": "linear"
+                }
+            ],
+            "left": [
+                {
+                    "clockColor": "primary",
+                    "customFont": "Inter ExtraBold",
+                    "formatHorizontal": "hh:mm AP",
+                    "formatVertical": "hh mm AP",
+                    "id": "Clock",
+                    "tooltipFormat": "ddd, MMM dd yyyy",
+                    "useCustomFont": true
+                },
+                {
+                    "compactMode": true,
                     "diskPath": "/",
                     "iconColor": "none",
                     "id": "SystemMonitor",
                     "showCpuCores": false,
-                    "showCpuFreq": true,
-                    "showCpuTemp": false,
+                    "showCpuFreq": false,
+                    "showCpuTemp": true,
                     "showCpuUsage": true,
                     "showDiskAvailable": false,
                     "showDiskUsage": false,
@@ -198,15 +207,6 @@
                     ]
                 },
                 {
-                    "deviceNativePath": "__default__",
-                    "displayMode": "graphic-clean",
-                    "hideIfIdle": false,
-                    "hideIfNotDetected": true,
-                    "id": "Battery",
-                    "showNoctaliaPerformance": false,
-                    "showPowerProfiles": false
-                },
-                {
                     "displayMode": "onhover",
                     "iconColor": "none",
                     "id": "Volume",
@@ -221,13 +221,13 @@
                     "textColor": "none"
                 },
                 {
-                    "clockColor": "primary",
-                    "customFont": "Inter ExtraBold",
-                    "formatHorizontal": "h:mm AP",
-                    "formatVertical": "hh mm AP",
-                    "id": "Clock",
-                    "tooltipFormat": "ddd, MMM dd yyyy",
-                    "useCustomFont": true
+                    "deviceNativePath": "__default__",
+                    "displayMode": "graphic-clean",
+                    "hideIfIdle": false,
+                    "hideIfNotDetected": true,
+                    "id": "Battery",
+                    "showNoctaliaPerformance": true,
+                    "showPowerProfiles": true
                 },
                 {
                     "hideWhenZero": false,
@@ -391,22 +391,9 @@
                         "id": "Weather",
                         "roundedCorners": true,
                         "scale": 1,
-                        "showBackground": false,
-                        "x": 1224,
-                        "y": 720
-                    },
-                    {
-                        "colorName": "primary",
-                        "height": 100,
-                        "hideWhenIdle": true,
-                        "id": "AudioVisualizer",
-                        "roundedCorners": true,
-                        "scale": 1,
-                        "showBackground": false,
-                        "visualizerType": "linear",
-                        "width": 280,
-                        "x": 1171,
-                        "y": 335
+                        "showBackground": true,
+                        "x": 72,
+                        "y": 24
                     }
                 ]
             }
@@ -508,7 +495,7 @@
             ]
         },
         "language": "",
-        "lockOnSuspend": true,
+        "lockOnSuspend": false,
         "lockScreenAnimations": true,
         "lockScreenBlur": 0.4,
         "lockScreenCountdownDuration": 10000,
@@ -652,7 +639,7 @@
         "enableCountdown": true,
         "largeButtonsLayout": "single-row",
         "largeButtonsStyle": false,
-        "position": "bottom_center",
+        "position": "top_center",
         "powerOptions": [
             {
                 "action": "logout",
@@ -764,6 +751,7 @@
         "enabled": true,
         "favorites": [
             {
+                "appearance": "dark",
                 "colorScheme": "Rose Pine",
                 "darkMode": true,
                 "generationMethod": "tonal-spot",
@@ -820,10 +808,10 @@
         "useSolidColor": false,
         "useWallhaven": false,
         "viewMode": "single",
-        "wallhavenApiKey": "",
+        "wallhavenApiKey": "CIeZfGE83rlXdDT44jbiTaJcIes232HJ",
         "wallhavenCategories": "110",
         "wallhavenOrder": "desc",
-        "wallhavenPurity": "110",
+        "wallhavenPurity": "011",
         "wallhavenQuery": "",
         "wallhavenRatios": "landscape",
         "wallhavenResolutionHeight": "",

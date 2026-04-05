@@ -144,7 +144,7 @@ environment {
 
 cursor {
 	xcursor-theme "BreezeX-RosePineDawn-Linux"
-	xcursor-size 40
+	xcursor-size 35
 	hide-when-typing
 }
 
