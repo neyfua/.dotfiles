@@ -1,7 +1,7 @@
 return {
 	{
 		"nvim-mini/mini.nvim",
-		lazy = true,
+		lazy = false,
 		version = false,
 		config = function()
 			require("mini.snippets").setup()

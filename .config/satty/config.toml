@@ -66,7 +66,7 @@ text-move-length = 50.0
 # experimental feature (0.20.1): Scale factor on the input image when it was taken (e.g. DPI scale on the monitor it was recorded from).
 # This may be more useful to set via the command line.
 # Note, this is ignored with explicit resize.
-input-scale = 2.0
+input-scale = 1.0
 
 
 # Tool selection keyboard shortcuts (since 0.20.0)
@@ -85,27 +85,27 @@ highlight = "g"
 
 # Font to use for text annotations
 [font]
-family = "Roboto"
-style = "Regular"
+family = "Inter"
+style = "Bold"
 # specify fallback fonts (0.20.1)
 # Please note, there is no default setting for these and the fonts listed below
 # are not shipped with Satty but need to be available on the system.
 fallback = [
-  "Noto Sans CJK JP",
-  "Noto Sans CJK SC",
-  "Noto Sans CJK TC",
-  "Noto Sans CJK KR",
-  "Noto Serif CJK JP",
-  "Noto Serif JP",
-  "IPAGothic",
-  "IPAexGothic",
-  "Source Han Sans",
+	"Noto Sans CJK JP",
+	"Noto Sans CJK SC",
+	"Noto Sans CJK TC",
+	"Noto Sans CJK KR",
+	"Noto Serif CJK JP",
+	"Noto Serif JP",
+	"IPAGothic",
+	"IPAexGothic",
+	"Source Han Sans",
 ]
 
 # Custom colours for the colour palette
 [color-palette]
 # These will be shown in the toolbar for quick selection
-# palette = ["#00ffff", "#a52a2a", "#dc143c", "#ff1493", "#ffd700", "#008000"]
+palette = ["#eb6f92", "#f6c177", "#ebbcba", "#31748f", "#9ccfd8", "#c4a7e7"]
 
 # These will be available in the color picker as presets
 # Leave empty to use GTK's default

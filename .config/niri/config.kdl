@@ -18,7 +18,7 @@ input {
 	}
 
 	mouse {
-		accel-speed -0.1
+		accel-speed -0.2
 		accel-profile "flat"
 	}
 
@@ -27,12 +27,11 @@ input {
 }
 
 output "eDP-1" {
-	mode "1920x1080@60"
 	scale 1.25
 }
 
 layout {
-	// gaps 8
+	gaps 10
 	center-focused-column "never"
 	always-center-single-column
 	background-color "transparent"
@@ -110,7 +109,7 @@ recent-windows {
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
 spawn-at-startup "fcitx5"
 spawn-at-startup "kdeconnectd"
-spawn-at-startup "quickshell" "-c" "noctalia-shell" "-n"
+spawn-at-startup "qs" "-c" "noctalia-shell" "-n"
 
 prefer-no-csd
 
@@ -134,6 +133,7 @@ environment {
 		// QT
 	QT_QPA_PLATFORM "wayland"
 	QT_QPA_PLATFORMTHEME "qt6ct"
+	// QT_SCALE_FACTOR "1.25"
 	// QT_MEDIA_BACKEND "gstreamer"
 	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 	// QT_SCALE_FACTOR_ROUNDING_POLICY "RoundPreferFloor"
@@ -144,7 +144,7 @@ environment {
 
 cursor {
 	xcursor-theme "BreezeX-RosePineDawn-Linux"
-	xcursor-size 35
+	xcursor-size 40
 	hide-when-typing
 }
 
@@ -266,6 +266,7 @@ window-rule {
 	match app-id="^code$"
 	match app-id="^dev.zed.Zed$"
 	match app-id="^jetbrains-studio$"
+	match app-id="^antigravity$"
 
 	open-on-workspace "code"
 	open-focused true
@@ -328,6 +329,7 @@ window-rule {
 	match app-id="^org.gnome.Nautilus$" title="Home"
 	match app-id="^org.telegram.desktop$"
 	match app-id="^code$"
+	match app-id="^antigravity$"
 	match app-id="^dev.zed.Zed$"
 	match app-id="^org.vinegarhq.Sober$" title="Sober"
 	match app-id="^ONLYOFFICE$"
@@ -496,21 +498,22 @@ binds {
 	Alt+W repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
 
 	// Plugins
-	Alt+Shift+C repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:clipper" "togglePanel"; }
 	Alt+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle" "" ""; }
 	Alt+T repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:todo" "togglePanel";}
 	Alt+Z repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
 	Alt+I repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:ip-monitor" "toggle"; }
 	Alt+P repeat=false       { spawn-sh "qs -c noctalia-shell ipc call plugin:slot-machine spin;qs -c noctalia-shell ipc call plugin:slot-machine reset"; }
 	Alt+Shift+P repeat=false { spawn-sh "qs -c noctalia-shell ipc call plugin:slot-machine toggle"; }
+	Alt+O repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:shell-profiles" "toggleProfiles"; }
+
 
 	// System controls
-	XF86AudioRaiseVolume allow-when-locked=true cooldown-ms=150  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
-	XF86AudioLowerVolume allow-when-locked=true cooldown-ms=150  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+	XF86AudioRaiseVolume allow-when-locked=true cooldown-ms=50  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
+	XF86AudioLowerVolume allow-when-locked=true cooldown-ms=50  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
 	XF86AudioMute allow-when-locked=true repeat=false            { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
 	XF86AudioMicMute allow-when-locked=true repeat=false         { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
-	XF86MonBrightnessUp allow-when-locked=true cooldown-ms=150   {	spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-	XF86MonBrightnessDown allow-when-locked=true cooldown-ms=150 { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+	XF86MonBrightnessUp allow-when-locked=true cooldown-ms=50   {	spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+	XF86MonBrightnessDown allow-when-locked=true cooldown-ms=50 { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
 
 	// Close window
 	Mod+C repeat=false { close-window; }

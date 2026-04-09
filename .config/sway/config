@@ -29,15 +29,14 @@ set $term foot
 
 ### Exec at startup
 exec_always {
-    systemctl --user import-environment
-		dbus-update-activation-environment --systemd --all
-    gsettings set org.gnome.desktop.interface cursor-theme 'BreezeX-RosePineDawn-Linux'
-    # gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-		# gsettings set org.gnome.desktop.interface text-scaling-factor 1.00
-		gsettings set org.gnome.desktop.wm.preferences button-layout ':'
+	systemctl --user import-environment
+	dbus-update-activation-environment --systemd --all
+	# gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+	# gsettings set org.gnome.desktop.interface text-scaling-factor 1.00
+	gsettings set org.gnome.desktop.wm.preferences button-layout ':'
 }
 
-exec quickshell -c noctalia-shell -n
+exec qs -c noctalia-shell -n
 exec fcitx5
 
 ### Output configuration
@@ -87,7 +86,7 @@ output "BOE 0x0B91 Unknown" scale 1.25
 		input type:pointer {
 			dwt enabled
 			accel_profile flat
-			pointer_accel -0.15
+			pointer_accel -0.2
 		}
 
 		seat seat0 xcursor_theme BreezeX-RosePineDawn-Linux 40
@@ -118,12 +117,13 @@ output "BOE 0x0B91 Unknown" scale 1.25
 		bindsym Alt+s exec qs -c noctalia-shell ipc call settings toggle
 
 		# Plugins
-		bindsym Alt+Shift+c exec qs -c noctalia-shell ipc call plugin:clipper togglePanel
-		bindsym Alt+a exec qs -c noctalia-shell ipc call plugin:assistant-panel toggle
+		bindsym Alt+a exec qs -c noctalia-shell ipc call plugin:translator toggle "" ""
+		bindsym Alt+t exec qs -c noctalia-shell ipc call plugin:todo togglePanel
 		bindsym Alt+z exec qs -c noctalia-shell ipc call plugin togglePanel notes-scratchpad
 		bindsym Alt+i exec qs -c noctalia-shell ipc call plugin:ip-monitor toggle
 		bindsym Alt+p exec "qs -c noctalia-shell ipc call plugin:slot-machine spin;qs -c noctalia-shell ipc call plugin:slot-machine reset"
 		bindsym Alt+Shift+p exec qs -c noctalia-shell ipc call plugin:slot-machine toggle
+		bindsym Alt+o exec qs -c noctalia-shell ipc call plugin:shell-profiles toggleProfiles
 
 		# Cycle through workspaces
 		bindsym Alt+tab workspace next_on_output
