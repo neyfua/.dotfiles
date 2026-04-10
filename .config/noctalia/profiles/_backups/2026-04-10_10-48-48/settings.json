@@ -45,19 +45,19 @@
         "autoHideDelay": 500,
         "autoShowDelay": 150,
         "backgroundOpacity": 0.93,
-        "barType": "framed",
+        "barType": "floating",
         "capsuleColorKey": "none",
         "capsuleOpacity": 0.5,
-        "contentPadding": 0,
+        "contentPadding": 2,
         "density": "spacious",
         "displayMode": "always_visible",
-        "enableExclusionZoneInset": true,
+        "enableExclusionZoneInset": false,
         "fontScale": 1,
         "frameRadius": 12,
         "frameThickness": 8,
         "hideOnOverview": true,
         "marginHorizontal": 350,
-        "marginVertical": 8,
+        "marginVertical": 10,
         "middleClickAction": "none",
         "middleClickCommand": "",
         "middleClickFollowMouse": false,
@@ -66,7 +66,7 @@
         "mouseWheelAction": "content",
         "mouseWheelWrap": true,
         "outerCorners": false,
-        "position": "left",
+        "position": "bottom",
         "reverseScroll": false,
         "rightClickAction": "controlCenter",
         "rightClickCommand": "",
@@ -77,9 +77,20 @@
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
         "useSeparateOpacity": false,
-        "widgetSpacing": 3,
+        "widgetSpacing": 6,
         "widgets": {
             "center": [
+            ],
+            "left": [
+                {
+                    "clockColor": "primary",
+                    "customFont": "Inter ExtraBold",
+                    "formatHorizontal": "h:mm AP",
+                    "formatVertical": "h mm AP",
+                    "id": "Clock",
+                    "tooltipFormat": "ddd, MMM d yyyy",
+                    "useCustomFont": true
+                },
                 {
                     "characterCount": 2,
                     "colorizeIcons": false,
@@ -100,40 +111,6 @@
                     "showBadge": true,
                     "showLabelsOnlyWhenOccupied": true,
                     "unfocusedIconsOpacity": 1
-                },
-                {
-                    "compactMode": true,
-                    "hideMode": "hidden",
-                    "hideWhenIdle": false,
-                    "id": "MediaMini",
-                    "maxWidth": 145,
-                    "panelShowAlbumArt": true,
-                    "scrollingMode": "hover",
-                    "showAlbumArt": true,
-                    "showArtistFirst": false,
-                    "showProgressRing": true,
-                    "showVisualizer": false,
-                    "textColor": "none",
-                    "useFixedWidth": false,
-                    "visualizerType": "linear"
-                }
-            ],
-            "left": [
-                {
-                    "defaultSettings": {
-                        "hideBackground": false,
-                        "minimumThreshold": 10
-                    },
-                    "id": "plugin:catwalk"
-                },
-                {
-                    "clockColor": "primary",
-                    "customFont": "Inter ExtraBold",
-                    "formatHorizontal": "hh:mm AP",
-                    "formatVertical": "hh mm AP",
-                    "id": "Clock",
-                    "tooltipFormat": "ddd, MMM dd yyyy",
-                    "useCustomFont": true
                 },
                 {
                     "compactMode": true,
@@ -191,8 +168,6 @@
             "right": [
                 {
                     "blacklist": [
-                        "zero-trust-client",
-                        "*zero-*"
                     ],
                     "chevronColor": "none",
                     "colorizeIcons": false,
@@ -200,8 +175,7 @@
                     "hidePassive": false,
                     "id": "Tray",
                     "pinned": [
-                        "Keyboard - English (US)",
-                        "Lotus"
+                        "Keyboard - English (US)"
                     ]
                 },
                 {
@@ -211,6 +185,15 @@
                         "refreshInterval": 5000
                     },
                     "id": "plugin:cloudflare-warp"
+                },
+                {
+                    "deviceNativePath": "__default__",
+                    "displayMode": "graphic",
+                    "hideIfIdle": false,
+                    "hideIfNotDetected": true,
+                    "id": "Battery",
+                    "showNoctaliaPerformance": true,
+                    "showPowerProfiles": true
                 },
                 {
                     "displayMode": "alwaysHide",
@@ -225,15 +208,6 @@
                     "iconColor": "none",
                     "id": "Brightness",
                     "textColor": "none"
-                },
-                {
-                    "deviceNativePath": "__default__",
-                    "displayMode": "graphic-clean",
-                    "hideIfIdle": false,
-                    "hideIfNotDetected": true,
-                    "id": "Battery",
-                    "showNoctaliaPerformance": true,
-                    "showPowerProfiles": true
                 },
                 {
                     "hideWhenZero": false,
@@ -396,7 +370,7 @@
                         "roundedCorners": true,
                         "scale": 1,
                         "showBackground": true,
-                        "x": 72,
+                        "x": 24,
                         "y": 24
                     }
                 ]
@@ -570,14 +544,14 @@
         "bluetoothRssiPollIntervalMs": 60000,
         "bluetoothRssiPollingEnabled": true,
         "disableDiscoverability": true,
-        "networkPanelView": "wifi",
+        "networkPanelView": "ethernet",
         "wifiDetailsViewMode": "grid"
     },
     "nightLight": {
         "autoSchedule": true,
         "dayTemp": "6500",
         "enabled": true,
-        "forced": false,
+        "forced": true,
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "nightTemp": "6000"

@@ -18,7 +18,7 @@ input {
 	}
 
 	mouse {
-		accel-speed -0.2
+		accel-speed 0
 		accel-profile "flat"
 	}
 
@@ -27,11 +27,11 @@ input {
 }
 
 output "eDP-1" {
-	scale 1.25
+	scale 1.0
 }
 
 layout {
-	gaps 10
+	// gaps 12
 	center-focused-column "never"
 	always-center-single-column
 	background-color "transparent"
@@ -133,7 +133,7 @@ environment {
 		// QT
 	QT_QPA_PLATFORM "wayland"
 	QT_QPA_PLATFORMTHEME "qt6ct"
-	// QT_SCALE_FACTOR "1.25"
+	QT_SCALE_FACTOR "1.25"
 	// QT_MEDIA_BACKEND "gstreamer"
 	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 	// QT_SCALE_FACTOR_ROUNDING_POLICY "RoundPreferFloor"
@@ -144,7 +144,7 @@ environment {
 
 cursor {
 	xcursor-theme "BreezeX-RosePineDawn-Linux"
-	xcursor-size 40
+	xcursor-size 45
 	hide-when-typing
 }
 
@@ -165,7 +165,7 @@ hotkey-overlay {
 
 animations {
 	// off
-	slowdown 0.3
+	slowdown 0.7
 
 	// workspace-switch { spring damping-ratio=0.92 stiffness=850 epsilon=0.00005; }
 
