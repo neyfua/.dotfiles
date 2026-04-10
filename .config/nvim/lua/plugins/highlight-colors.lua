@@ -1,6 +1,5 @@
 return {
 	"brenoprata10/nvim-highlight-colors",
-	lazy = true,
 	cond = not vim.g.vscode,
 	config = function()
 		require("nvim-highlight-colors").setup({

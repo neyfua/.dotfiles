@@ -1,6 +1,5 @@
 return {
 	"akinsho/bufferline.nvim",
-	lazy = false,
 	version = "*",
 	dependencies = "nvim-tree/nvim-web-devicons",
 
@@ -39,8 +38,6 @@ return {
 					bufferline.style_preset.no_italic,
 					bufferline.style_preset.no_bold,
 				},
-
-				sort_by = nil,
 			},
 		})
 	end,

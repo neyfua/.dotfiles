@@ -2,7 +2,6 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		branch = "master",
-		lazy = false,
 		build = ":TSUpdate",
 		cond = not vim.g.vscode,
 		config = function()
@@ -18,13 +17,15 @@ return {
 					"json",
 					"lua",
 					"go",
+					"rust",
 					"bash",
+					"fish",
 					"vim",
 					"query",
 					"markdown",
 					"markdown_inline",
 				},
-				sync_install = true,
+				sync_install = false,
 				auto_install = true,
 				highlight = { enable = true },
 			})

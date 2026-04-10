@@ -502,9 +502,10 @@ binds {
 	Alt+T repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:todo" "togglePanel";}
 	Alt+Z repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
 	Alt+I repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:ip-monitor" "toggle"; }
-	Alt+P repeat=false       { spawn-sh "qs -c noctalia-shell ipc call plugin:slot-machine spin;qs -c noctalia-shell ipc call plugin:slot-machine reset"; }
-	Alt+Shift+P repeat=false { spawn-sh "qs -c noctalia-shell ipc call plugin:slot-machine toggle"; }
+	Alt+M repeat=false       { spawn-sh "qs -c noctalia-shell ipc call plugin:slot-machine spin;qs -c noctalia-shell ipc call plugin:slot-machine reset"; }
+	Alt+Shift+M repeat=false { spawn-sh "qs -c noctalia-shell ipc call plugin:slot-machine toggle"; }
 	Alt+O repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:shell-profiles" "toggleProfiles"; }
+	Alt+P repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:port-monitor" "toggle"; }
 
 
 	// System controls

@@ -1,11 +1,10 @@
 return {
 	"neovim/nvim-lspconfig",
-	lazy = false,
 	dependencies = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 
-		-- Autocompletion
+		-- autocompletion
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
@@ -14,12 +13,12 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-nvim-lua",
 
-		-- Snippets
+		-- snippets
 		{ "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
 		"rafamadriz/friendly-snippets",
 	},
 	config = function()
-		-- Diagnostic UI setup
+		-- diagnostic UI setup
 		vim.diagnostic.config({
 			virtual_text = false,
 			severity_sort = true,
@@ -37,7 +36,7 @@ return {
 			update_in_insert = false,
 		})
 
-		-- Extend LSP capabilities
+		-- extend lsp capabilities
 		local lspconfig_defaults = require("lspconfig").util.default_config
 		lspconfig_defaults.capabilities = vim.tbl_deep_extend(
 			"force",
@@ -45,7 +44,7 @@ return {
 			require("cmp_nvim_lsp").default_capabilities()
 		)
 
-		-- LSP keymaps
+		-- lsp keymaps
 		vim.api.nvim_create_autocmd("LspAttach", {
 			callback = function(event)
 				local opts = { buffer = event.buf }
@@ -55,7 +54,7 @@ return {
 			end,
 		})
 
-		-- Mason setup
+		-- mason setup
 		require("mason").setup({
 			ui = {
 				icons = {
@@ -66,7 +65,7 @@ return {
 			},
 		})
 
-		-- Mason-LSPConfig setup
+		-- mason-lspconfig setup
 		require("mason-lspconfig").setup({
 			handlers = {
 				function(server_name)
@@ -75,7 +74,7 @@ return {
 			},
 		})
 
-		-- Lua LSP special setup
+		-- lua lsp special setup
 		vim.lsp.config("lua_ls", {
 			settings = {
 				Lua = {
@@ -86,7 +85,7 @@ return {
 			},
 		})
 
-		-- Load snippets
+		-- load snippets
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		-- nvim-cmp setup
@@ -137,7 +136,7 @@ return {
 			},
 		})
 
-		-- Cmdline completion
+		-- cmdline completion
 		cmp.setup.cmdline(":", {
 			mapping = cmp.mapping.preset.cmdline({
 				["<Down>"] = { c = cmp.mapping.select_next_item() },

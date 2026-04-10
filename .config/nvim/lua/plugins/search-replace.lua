@@ -1,6 +1,5 @@
 return {
 	"roobert/search-replace.nvim",
-	lazy = true,
 	config = function()
 		require("search-replace").setup({
 			-- optionally override defaults

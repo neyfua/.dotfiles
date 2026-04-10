@@ -1,6 +1,5 @@
 return {
 	"stevearc/conform.nvim",
-	lazy = false,
 	event = "BufWritePre",
 	dependencies = { "williamboman/mason.nvim" },
 	config = function()

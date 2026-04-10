@@ -1,12 +1,11 @@
 return {
 	{
 		"nvim-mini/mini.nvim",
-		lazy = false,
-		version = false,
+		version = "*",
 		config = function()
 			require("mini.snippets").setup()
 
-			require("mini.statusline").setup()
+			-- require("mini.statusline").setup()
 
 			require("mini.pairs").setup()
 
@@ -16,7 +15,6 @@ return {
 					right = "<M-C-Right>",
 					down = "<M-C-Down>",
 					up = "<M-C-Up>",
-
 					line_left = "<M-C-Left>",
 					line_right = "<M-C-Right>",
 					line_down = "<M-C-Down>",

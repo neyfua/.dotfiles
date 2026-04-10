@@ -1,0 +1,64 @@
+"" keymaps
+let mapleader = " "
+nnoremap <silent> <C-a> ggVG
+nnoremap <silent> <Esc> :nohlsearch<CR>
+
+"" plugins
+call plug#begin()
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'matze/vim-move'
+Plug 'scrooloose/nerdtree'
+Plug 'bling/vim-bufferline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'rose-pine/vim'
+call plug#end()
+
+"" settings
+set number
+set tabstop=4
+set shiftwidth=4
+"set signcolumn=yes
+set scrolloff=3
+set noshowmode
+set clipboard=unnamedplus
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set nobackup
+set undofile
+set termguicolors
+set cursorline
+set fillchars=eob:\
+set background=dark
+colorscheme rosepine
+let g:airline_theme='rose_pine'
+
+"" plugins' settings
+" nerdtree
+let g:NERDTreeFileLines = 1
+nnoremap <leader>w :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+autocmd BufEnter * if winnr() == winnr('h') && bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+" vim-surround
+let g:surround_no_mappings = 1
+nmap sa <Plug>Ysurround
+xmap sa <Plug>VSurround
+nmap sd <Plug>Dsurround
+nmap sr <Plug>Csurround
+" vim-move
+nnoremap <A-C-Up>    :m .-2<CR>==
+nnoremap <A-C-Down>  :m .+1<CR>==
+nnoremap <A-C-Left>  <<
+nnoremap <A-C-Right> >>
+vnoremap <A-C-Up>    :m '<-2<CR>gv=gv
+vnoremap <A-C-Down>  :m '>+1<CR>gv=gv
+vnoremap <A-C-Left>  <gv
+vnoremap <A-C-Right> >gv
+" vim-commentary
+autocmd FileType vimrc setlocal commentstring="
