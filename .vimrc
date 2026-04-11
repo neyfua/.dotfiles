@@ -28,7 +28,6 @@ set smartcase
 set hlsearch
 set incsearch
 set nobackup
-set undofile
 set termguicolors
 set cursorline
 set background=dark
