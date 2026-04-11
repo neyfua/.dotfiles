@@ -195,14 +195,9 @@
                 },
                 {
                     "applyToAllMonitors": false,
-                    "deviceNativePath": "BAT1",
                     "displayMode": "alwaysHide",
-                    "hideIfIdle": false,
-                    "hideIfNotDetected": true,
                     "iconColor": "none",
                     "id": "Brightness",
-                    "showNoctaliaPerformance": true,
-                    "showPowerProfiles": true,
                     "textColor": "none"
                 },
                 {

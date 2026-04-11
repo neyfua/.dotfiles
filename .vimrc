@@ -11,19 +11,17 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'matze/vim-move'
 Plug 'scrooloose/nerdtree'
-Plug 'bling/vim-bufferline'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'rose-pine/vim'
 call plug#end()
 
 "" settings
 set number
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 "set signcolumn=yes
-set scrolloff=3
-set noshowmode
+set scrolloff=5
+"set noshowmode
 set clipboard=unnamedplus
 set ignorecase
 set smartcase
@@ -33,10 +31,8 @@ set nobackup
 set undofile
 set termguicolors
 set cursorline
-set fillchars=eob:\
 set background=dark
 colorscheme rosepine
-let g:airline_theme='rose_pine'
 
 "" plugins' settings
 " nerdtree
@@ -52,13 +48,22 @@ xmap sa <Plug>VSurround
 nmap sd <Plug>Dsurround
 nmap sr <Plug>Csurround
 " vim-move
-nnoremap <A-C-Up>    :m .-2<CR>==
-nnoremap <A-C-Down>  :m .+1<CR>==
-nnoremap <A-C-Left>  <<
+nnoremap <A-C-Up> :m .-2<CR>==
+nnoremap <A-C-Down> :m .+1<CR>==
+nnoremap <A-C-Left> <<
 nnoremap <A-C-Right> >>
-vnoremap <A-C-Up>    :m '<-2<CR>gv=gv
-vnoremap <A-C-Down>  :m '>+1<CR>gv=gv
-vnoremap <A-C-Left>  <gv
+vnoremap <A-C-Up> :m '<-2<CR>gv=gv
+vnoremap <A-C-Down> :m '>+1<CR>gv=gv
+vnoremap <A-C-Left> <gv
 vnoremap <A-C-Right> >gv
 " vim-commentary
 autocmd FileType vimrc setlocal commentstring="
+" vim-bufferline
+nmap <Tab> bnext
+nmap <S-Tab> bprevious
+" vim-tmux-navigator
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-Right> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-Up> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
