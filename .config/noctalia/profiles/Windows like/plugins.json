@@ -13,7 +13,8 @@
     ],
     "states": {
         "catwalk": {
-            "enabled": false
+            "enabled": true,
+            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
         "cloudflare-warp": {
             "enabled": true,
@@ -36,8 +37,7 @@
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
         "port-monitor": {
-            "enabled": true,
-            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
+            "enabled": true
         },
         "privacy-indicator": {
             "enabled": true,

@@ -48,7 +48,7 @@
         "barType": "framed",
         "capsuleColorKey": "none",
         "capsuleOpacity": 1,
-        "contentPadding": 2,
+        "contentPadding": 0,
         "density": "spacious",
         "displayMode": "always_visible",
         "enableExclusionZoneInset": true,
@@ -77,7 +77,7 @@
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
         "useSeparateOpacity": false,
-        "widgetSpacing": 6,
+        "widgetSpacing": 4,
         "widgets": {
             "center": [
             ],
@@ -130,8 +130,8 @@
                     "id": "Taskbar",
                     "maxTaskbarWidth": 55,
                     "onlyActiveWorkspaces": false,
-                    "onlySameOutput": false,
-                    "showPinnedApps": false,
+                    "onlySameOutput": true,
+                    "showPinnedApps": true,
                     "showTitle": true,
                     "smartWidth": true,
                     "titleWidth": 120
@@ -153,6 +153,14 @@
                 },
                 {
                     "defaultSettings": {
+                        "connectedColor": "primary",
+                        "disconnectedColor": "none",
+                        "refreshInterval": 5000
+                    },
+                    "id": "plugin:cloudflare-warp"
+                },
+                {
+                    "defaultSettings": {
                         "compactMode": false,
                         "defaultPeerAction": "copy-ip",
                         "hideDisconnected": false,
@@ -170,31 +178,6 @@
                     "id": "plugin:tailscale"
                 },
                 {
-                    "defaultSettings": {
-                        "connectedColor": "primary",
-                        "disconnectedColor": "none",
-                        "refreshInterval": 5000
-                    },
-                    "id": "plugin:cloudflare-warp"
-                },
-                {
-                    "id": "plugin:port-monitor"
-                },
-                {
-                    "displayMode": "onhover",
-                    "iconColor": "none",
-                    "id": "Volume",
-                    "middleClickCommand": "pwvucontrol || pavucontrol || pavucontrol-qt",
-                    "textColor": "none"
-                },
-                {
-                    "applyToAllMonitors": false,
-                    "displayMode": "onhover",
-                    "iconColor": "none",
-                    "id": "Brightness",
-                    "textColor": "none"
-                },
-                {
                     "deviceNativePath": "__default__",
                     "displayMode": "graphic-clean",
                     "hideIfIdle": false,
@@ -202,6 +185,25 @@
                     "id": "Battery",
                     "showNoctaliaPerformance": true,
                     "showPowerProfiles": true
+                },
+                {
+                    "displayMode": "alwaysHide",
+                    "iconColor": "none",
+                    "id": "Volume",
+                    "middleClickCommand": "pwvucontrol || pavucontrol || pavucontrol-qt",
+                    "textColor": "none"
+                },
+                {
+                    "applyToAllMonitors": false,
+                    "deviceNativePath": "BAT1",
+                    "displayMode": "alwaysHide",
+                    "hideIfIdle": false,
+                    "hideIfNotDetected": true,
+                    "iconColor": "none",
+                    "id": "Brightness",
+                    "showNoctaliaPerformance": true,
+                    "showPowerProfiles": true,
+                    "textColor": "none"
                 },
                 {
                     "clockColor": "primary",
@@ -373,7 +375,7 @@
                         "roundedCorners": true,
                         "scale": 1,
                         "showBackground": true,
-                        "x": 24,
+                        "x": 1224,
                         "y": 24
                     }
                 ]

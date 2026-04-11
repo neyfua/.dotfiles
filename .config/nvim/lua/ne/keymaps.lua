@@ -20,6 +20,9 @@ vim.keymap.set("n", "<Esc>", vim.cmd.nohlsearch, opts)
 -- Select all
 vim.keymap.set("n", "<C-a>", "ggVG", opts)
 
+-- Comment
+-- vim.keymap.set({ "n", "v" }, "<leader>/", "gcc", { remap = true })
+
 -- Split window horizontally & vertically
 vim.keymap.set("n", "<A-h>", "<cmd>split<CR>", opts)
 vim.keymap.set("n", "<A-v>", "<cmd>vsplit<CR>", opts)

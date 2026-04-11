@@ -89,7 +89,7 @@ output "BOE 0x0B91 Unknown" scale 1.25
 			pointer_accel -0.2
 		}
 
-		seat seat0 xcursor_theme BreezeX-RosePineDawn-Linux 40
+		seat seat0 xcursor_theme BreezeX-RosePineDawn-Linux 35
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.

@@ -4,8 +4,8 @@ vim.g.maplocalleader = " "
 vim.opt.nu = true
 -- vim.opt.relativenumber = true
 
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 
 -- vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 5
@@ -28,7 +28,7 @@ vim.opt.cursorline = true
 
 vim.g.have_nerd_font = true
 
-vim.opt.fillchars:append({ eob = " " })
+-- vim.opt.fillchars:append({ eob = " " })
 
 vim.opt.guicursor = ""
 
@@ -49,5 +49,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.notify(start_line .. " lines yanked", vim.log.levels.INFO, {
 			title = "Yank",
 		})
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "*",
+	callback = function()
+		vim.opt.formatoptions:remove({ "o", "r" })
 	end,
 })

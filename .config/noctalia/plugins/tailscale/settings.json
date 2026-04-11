@@ -1,5 +1,5 @@
 {
-  "refreshInterval": 30000,
+  "refreshInterval": 10000,
   "compactMode": true,
   "showIpAddress": false,
   "showPeerCount": false,
@@ -11,5 +11,5 @@
   "defaultPeerAction": "ssh",
   "taildropEnabled": true,
   "taildropDownloadDir": "~/Downloads",
-  "taildropReceiveMode": "operator"
+  "taildropReceiveMode": "pkexec"
 }
