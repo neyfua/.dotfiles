@@ -1,10 +1,10 @@
 {
-  "scratchpadContent": "New behavior = feat\nBug gone = fix\nSame behavior, cleaner code = refactor\nSame behavior, faster code = perf\nOnly whitespace/formatting = style\nOnly markdown/comments = docs\nOnly tests = test\nBuild/deploy config = build or ci\nEverything else = chore\n\nwallhaven page: 168",
+  "scratchpadContent": "New behavior = feat\nBug gone = fix\nSame behavior, cleaner code = refactor\nSame behavior, faster code = perf\nOnly whitespace/formatting = style\nOnly markdown/comments = docs\nOnly tests = test\nBuild/deploy config = build or ci\nEverything else = chore\n\nwallhaven page: 187",
   "panelWidth": 600,
   "panelHeight": 400,
   "fontSize": 14,
-  "cursorPosition": 269,
+  "cursorPosition": 108,
   "scrollPositionX": 0,
-  "scrollPositionY": 0.24120603015075376,
+  "scrollPositionY": 0.3417085427135678,
   "filePath": ""
 }

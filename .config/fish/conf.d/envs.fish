@@ -27,9 +27,3 @@ set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
-
-# Spicetify
-set -gx SPICETIFY "$HOME/.spicetify"
-if not string match -q -- $SPICETIFY $PATH
-	set -gx PATH "$SPICETIFY" $PATH
-end

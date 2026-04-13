@@ -20,7 +20,7 @@
         "pinnedApps": [
         ],
         "position": "bottom_left",
-        "screenshotAnnotationTool": "satty -f -",
+        "screenshotAnnotationTool": "waytator",
         "showCategories": false,
         "showIconBackground": true,
         "sortByMostUsed": true,
@@ -128,8 +128,8 @@
                     "hideMode": "hidden",
                     "iconScale": 0.8,
                     "id": "Taskbar",
-                    "maxTaskbarWidth": 55,
-                    "onlyActiveWorkspaces": false,
+                    "maxTaskbarWidth": 60,
+                    "onlyActiveWorkspaces": true,
                     "onlySameOutput": true,
                     "showPinnedApps": true,
                     "showTitle": true,
@@ -160,26 +160,8 @@
                     "id": "plugin:cloudflare-warp"
                 },
                 {
-                    "defaultSettings": {
-                        "compactMode": false,
-                        "defaultPeerAction": "copy-ip",
-                        "hideDisconnected": false,
-                        "hideMullvadExitNodes": true,
-                        "pingCount": 5,
-                        "refreshInterval": 5000,
-                        "showIpAddress": true,
-                        "showPeerCount": true,
-                        "sshUsername": "",
-                        "taildropDownloadDir": "~/Downloads",
-                        "taildropEnabled": true,
-                        "taildropReceiveMode": "operator",
-                        "terminalCommand": ""
-                    },
-                    "id": "plugin:tailscale"
-                },
-                {
                     "deviceNativePath": "__default__",
-                    "displayMode": "graphic-clean",
+                    "displayMode": "icon-only",
                     "hideIfIdle": false,
                     "hideIfNotDetected": true,
                     "id": "Battery",
@@ -195,14 +177,9 @@
                 },
                 {
                     "applyToAllMonitors": false,
-                    "deviceNativePath": "BAT1",
                     "displayMode": "alwaysHide",
-                    "hideIfIdle": false,
-                    "hideIfNotDetected": true,
                     "iconColor": "none",
                     "id": "Brightness",
-                    "showNoctaliaPerformance": true,
-                    "showPowerProfiles": true,
                     "textColor": "none"
                 },
                 {
@@ -350,7 +327,7 @@
                 },
                 {
                     "enableOnStateLogic": false,
-                    "generalTooltipText": "Color Picker",
+                    "generalTooltipText": "Color picker",
                     "icon": "color-picker",
                     "id": "CustomButton",
                     "onClicked": "colorpicker",
@@ -420,7 +397,7 @@
         "allowPanelsOnScreenWithoutBar": true,
         "allowPasswordWithFprintd": false,
         "animationDisabled": false,
-        "animationSpeed": 1.5,
+        "animationSpeed": 1,
         "autoStartAuth": false,
         "avatarImage": "/home/neyfua/.face.gif",
         "boxRadiusRatio": 1,
@@ -699,7 +676,7 @@
         "fontDefault": "Inter Medium",
         "fontDefaultScale": 1,
         "fontFixed": "Noto Sans Mono",
-        "fontFixedScale": 1.05,
+        "fontFixedScale": 1,
         "panelBackgroundOpacity": 1,
         "panelsAttachedToBar": true,
         "scrollbarAlwaysVisible": false,
@@ -729,6 +706,7 @@
                 "useWallpaperColors": false
             },
             {
+                "appearance": "dark",
                 "colorScheme": "Rose Pine",
                 "darkMode": true,
                 "generationMethod": "tonal-spot",
@@ -782,6 +760,76 @@
                 ],
                 "path": "/home/neyfua/Pictures/Wallpapers/flower2.jpg",
                 "useWallpaperColors": false
+            },
+            {
+                "appearance": "dark",
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/cat_and_crow.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "appearance": "dark",
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/cat_walking.jpeg",
+                "useWallpaperColors": false
+            },
+            {
+                "appearance": "dark",
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/retro.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "appearance": "dark",
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/tomoko_kuroki.jpg",
+                "useWallpaperColors": false
+            },
+            {
+                "appearance": "dark",
+                "colorScheme": "Rose Pine",
+                "darkMode": true,
+                "generationMethod": "tonal-spot",
+                "paletteColors": [
+                    "#ebbcba",
+                    "#9ccfd8",
+                    "#31748f",
+                    "#eb6f92"
+                ],
+                "path": "/home/neyfua/Pictures/Wallpapers/building2.jpg",
+                "useWallpaperColors": false
             }
         ],
         "fillColor": "#000000",
@@ -804,7 +852,7 @@
         "showHiddenFiles": false,
         "skipStartupTransition": true,
         "solidColor": "#1a1a2e",
-        "sortOrder": "name",
+        "sortOrder": "date_asc",
         "transitionDuration": 1500,
         "transitionEdgeSmoothness": 0.05,
         "transitionType": [

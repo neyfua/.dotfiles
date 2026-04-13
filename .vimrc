@@ -38,8 +38,7 @@ colorscheme rosepine
 let g:NERDTreeFileLines = 1
 nnoremap <leader>w :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
-autocmd BufEnter * if winnr() == winnr('h') && bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
 " vim-surround
 let g:surround_no_mappings = 1
 nmap sa <Plug>Ysurround
@@ -58,8 +57,9 @@ vnoremap <A-C-Right> >gv
 " vim-commentary
 autocmd FileType vimrc setlocal commentstring="
 " vim-bufferline
-nmap <Tab> bnext
-nmap <S-Tab> bprevious
+nmap <silent> <A-q> :bdelete<CR>
+nmap <silent> <Tab> :bnext<CR>
+nmap <silent> <S-Tab> :bprevious<CR>
 " vim-tmux-navigator
 let g:tmux_navigator_no_mappings = 1
 nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
