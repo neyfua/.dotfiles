@@ -1,0 +1,69 @@
+import QtQuick
+import QtQuick.Layouts
+import Quickshell
+import qs.Commons
+import qs.Widgets
+import qs.Services.UI
+
+Item {
+    id: root
+
+    property var pluginApi: null
+    property ShellScreen screen
+    property string widgetId: ""
+    property string section: ""
+    property int sectionWidgetIndex: -1
+    property int sectionWidgetsCount: 0
+
+    // Per-screen sizing (required by Noctalia bar widget spec)
+    readonly property string screenName:  screen?.name ?? ""
+    readonly property real capsuleHeight: Style.getCapsuleHeightForScreen(screenName)
+    readonly property real barFontSize:   Style.getBarFontSizeForScreen(screenName)
+
+    readonly property real contentWidth:  row.implicitWidth + Style.marginM * 2
+    readonly property real contentHeight: capsuleHeight
+
+    implicitWidth:  contentWidth
+    implicitHeight: contentHeight
+
+    // Visual capsule — centred within the full click area
+    Rectangle {
+        id: visualCapsule
+        x: Style.pixelAlignCenter(parent.width,  width)
+        y: Style.pixelAlignCenter(parent.height, height)
+        width:  root.contentWidth
+        height: root.contentHeight
+        color:  mouseArea.containsMouse ? Color.mHover : Style.capsuleColor
+        radius: Style.radiusL
+        border.color: Style.capsuleBorderColor
+        border.width: Style.capsuleBorderWidth
+
+        RowLayout {
+            id: row
+            anchors.centerIn: parent
+            spacing: Style.marginXS
+
+            NIcon {
+                icon: "device-tv"
+                color: Color.mPrimary
+            }
+            NText {
+                text: "Anime"
+                color: Color.mOnSurface
+                pointSize: root.barFontSize
+            }
+        }
+    }
+
+    MouseArea {
+        id: mouseArea
+        anchors.fill: parent
+        hoverEnabled: true
+        cursorShape:  Qt.PointingHandCursor
+        onEntered: TooltipService.show(root, "Anime browser", BarService.getTooltipDirection())
+        onExited:  TooltipService.hide()
+        onClicked: {
+            if (pluginApi) pluginApi.togglePanel(root.screen, null)
+        }
+    }
+}

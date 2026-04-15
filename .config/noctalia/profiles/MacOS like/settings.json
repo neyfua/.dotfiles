@@ -29,7 +29,6 @@
     },
     "audio": {
         "mprisBlacklist": [
-            "firefox",
             "Tor Browser"
         ],
         "preferredPlayer": "Spotify, spotify",
@@ -109,6 +108,27 @@
                     "useDistroLogo": false
                 },
                 {
+                    "characterCount": 2,
+                    "colorizeIcons": false,
+                    "emptyColor": "secondary",
+                    "enableScrollWheel": true,
+                    "focusedColor": "primary",
+                    "followFocusedScreen": false,
+                    "fontWeight": "bold",
+                    "groupedBorderOpacity": 1,
+                    "hideUnoccupied": true,
+                    "iconScale": 0.8,
+                    "id": "Workspace",
+                    "labelMode": "index",
+                    "occupiedColor": "secondary",
+                    "pillSize": 0.47000000000000003,
+                    "showApplications": false,
+                    "showApplicationsHover": false,
+                    "showBadge": true,
+                    "showLabelsOnlyWhenOccupied": true,
+                    "unfocusedIconsOpacity": 1
+                },
+                {
                     "compactMode": true,
                     "diskPath": "/",
                     "iconColor": "none",
@@ -131,30 +151,74 @@
                     "usePadding": false
                 },
                 {
-                    "defaultSettings": {
-                        "compactMode": false,
-                        "defaultPeerAction": "copy-ip",
-                        "hideDisconnected": false,
-                        "hideMullvadExitNodes": true,
-                        "pingCount": 5,
-                        "refreshInterval": 5000,
-                        "showIpAddress": true,
-                        "showPeerCount": true,
-                        "sshUsername": "",
-                        "taildropDownloadDir": "~/Downloads",
-                        "taildropEnabled": true,
-                        "taildropReceiveMode": "operator",
-                        "terminalCommand": ""
+                    "colorizeSystemIcon": "none",
+                    "colorizeSystemText": "none",
+                    "generalTooltipText": "Files",
+                    "hideMode": "maxTransparent",
+                    "icon": "folder-filled",
+                    "iconPosition": "left",
+                    "id": "CustomButton",
+                    "ipcIdentifier": "qs -c noctalia-shell ipc call cb open nautilus",
+                    "leftClickExec": "nautilus",
+                    "leftClickUpdateText": true,
+                    "maxTextLength": {
+                        "horizontal": 10,
+                        "vertical": 10
                     },
-                    "id": "plugin:tailscale"
+                    "middleClickExec": "",
+                    "middleClickUpdateText": false,
+                    "parseJson": false,
+                    "rightClickExec": "",
+                    "rightClickUpdateText": false,
+                    "showExecTooltip": false,
+                    "showIcon": true,
+                    "showTextTooltip": false,
+                    "textCollapse": "",
+                    "textCommand": "",
+                    "textIntervalMs": 3000,
+                    "textStream": false,
+                    "wheelDownExec": "",
+                    "wheelDownUpdateText": false,
+                    "wheelExec": "",
+                    "wheelMode": "unified",
+                    "wheelUpExec": "",
+                    "wheelUpUpdateText": false,
+                    "wheelUpdateText": false
                 },
                 {
-                    "defaultSettings": {
-                        "connectedColor": "primary",
-                        "disconnectedColor": "none",
-                        "refreshInterval": 5000
+                    "colorizeSystemIcon": "none",
+                    "colorizeSystemText": "none",
+                    "generalTooltipText": "Help",
+                    "hideMode": "alwaysExpanded",
+                    "icon": "question-mark",
+                    "iconPosition": "left",
+                    "id": "CustomButton",
+                    "ipcIdentifier": "",
+                    "leftClickExec": "xdg-open https://docs.noctalia.dev",
+                    "leftClickUpdateText": true,
+                    "maxTextLength": {
+                        "horizontal": 10,
+                        "vertical": 10
                     },
-                    "id": "plugin:cloudflare-warp"
+                    "middleClickExec": "",
+                    "middleClickUpdateText": false,
+                    "parseJson": false,
+                    "rightClickExec": "",
+                    "rightClickUpdateText": false,
+                    "showExecTooltip": false,
+                    "showIcon": true,
+                    "showTextTooltip": false,
+                    "textCollapse": "",
+                    "textCommand": "",
+                    "textIntervalMs": 3000,
+                    "textStream": false,
+                    "wheelDownExec": "",
+                    "wheelDownUpdateText": false,
+                    "wheelExec": "",
+                    "wheelMode": "unified",
+                    "wheelUpExec": "",
+                    "wheelUpUpdateText": false,
+                    "wheelUpdateText": false
                 },
                 {
                     "defaultSettings": {
@@ -170,6 +234,14 @@
                 }
             ],
             "right": [
+                {
+                    "defaultSettings": {
+                        "connectedColor": "primary",
+                        "disconnectedColor": "none",
+                        "refreshInterval": 5000
+                    },
+                    "id": "plugin:cloudflare-warp"
+                },
                 {
                     "deviceNativePath": "__default__",
                     "displayMode": "icon-only",
@@ -378,7 +450,7 @@
                         "roundedCorners": true,
                         "scale": 1,
                         "showBackground": true,
-                        "x": 24,
+                        "x": 1224,
                         "y": 72
                     }
                 ]
@@ -387,11 +459,11 @@
         "overviewEnabled": true
     },
     "dock": {
-        "animationSpeed": 1,
-        "backgroundOpacity": 0.93,
+        "animationSpeed": 0.45000000000000007,
+        "backgroundOpacity": 0.8300000000000001,
         "colorizeIcons": false,
         "deadOpacity": 0.6,
-        "displayMode": "exclusive",
+        "displayMode": "auto_hide",
         "dockType": "floating",
         "enabled": true,
         "floatingRatio": 0,
@@ -411,9 +483,10 @@
         ],
         "onlySameOutput": true,
         "pinnedApps": [
+            "foot",
             "firefox",
             "vesktop",
-            "foot",
+            "com.spotify.Client",
             "org.vinegarhq.Sober",
             "org.gnome.Nautilus",
             "zalo-for-linux",
@@ -430,10 +503,9 @@
             "org.gnome.Calculator",
             "org.kde.filelight",
             "nwg-look",
-            "myrlyn",
-            "com.spotify.Client"
+            "myrlyn"
         ],
-        "pinnedStatic": false,
+        "pinnedStatic": true,
         "position": "bottom",
         "showDockIndicator": false,
         "showLauncherIcon": false,
@@ -452,7 +524,7 @@
         "clockStyle": "digital",
         "compactLockScreen": false,
         "dimmerOpacity": 0.2,
-        "enableBlurBehind": false,
+        "enableBlurBehind": true,
         "enableLockScreenCountdown": true,
         "enableLockScreenMediaControls": true,
         "enableShadows": true,
@@ -724,13 +796,13 @@
         "fontDefaultScale": 1,
         "fontFixed": "Noto Sans Mono",
         "fontFixedScale": 1.05,
-        "panelBackgroundOpacity": 1,
+        "panelBackgroundOpacity": 0.8300000000000001,
         "panelsAttachedToBar": true,
         "scrollbarAlwaysVisible": false,
         "settingsPanelMode": "attached",
         "settingsPanelSideBarCardStyle": false,
         "tooltipsEnabled": true,
-        "translucentWidgets": false
+        "translucentWidgets": true
     },
     "wallpaper": {
         "automationEnabled": false,

@@ -1,0 +1,109 @@
+{
+  "mode": "sub",
+  "preferredProvider": "auto",
+  "posterSize": "small",
+  "panelSize": "large",
+  "library": [
+    {
+      "id": "ReHMC7TQnch3C6z8j",
+      "name": "Sousou no Frieren",
+      "englishName": "Frieren: Beyond Journey's End",
+      "nativeName": "葬送のフリーレン",
+      "thumbnail": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx154587-qQTzQnEJJ3oB.jpg",
+      "score": 9.28,
+      "type": "TV",
+      "episodeCount": "",
+      "availableEpisodes": {
+        "dub": 28,
+        "raw": 0,
+        "sub": 28
+      },
+      "season": {
+        "quarter": "Fall",
+        "year": 2023
+      },
+      "lastWatchedEpId": "",
+      "lastWatchedEpNum": "",
+      "watchedEpisodes": [],
+      "episodeProgress": {},
+      "updatedAt": 1776240557173
+    },
+    {
+      "id": "hABCAmFk4sYrNgFe2",
+      "name": "86 Part 2",
+      "englishName": "86 EIGHTY-SIX Season 2",
+      "nativeName": "86―エイティシックス―",
+      "thumbnail": "https://cdn.myanimelist.net/images/anime/1321/117508.jpg",
+      "score": 8.72,
+      "type": "TV",
+      "episodeCount": "",
+      "availableEpisodes": {
+        "dub": 12,
+        "raw": 0,
+        "sub": 15
+      },
+      "season": {
+        "quarter": "Fall",
+        "year": 2021
+      },
+      "lastWatchedEpId": "",
+      "lastWatchedEpNum": "",
+      "watchedEpisodes": [],
+      "episodeProgress": {},
+      "updatedAt": 1776240636742
+    },
+    {
+      "id": "YYKgYqaJP2sPyYvk4",
+      "name": "86",
+      "englishName": "86 EIGHTY-SIX",
+      "nativeName": "86－エイティシックス－",
+      "thumbnail": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx116589-WSpNedJdAH3L.jpg",
+      "score": 8.19,
+      "type": "TV",
+      "episodeCount": "",
+      "availableEpisodes": {
+        "dub": 11,
+        "raw": 0,
+        "sub": 11
+      },
+      "season": {
+        "quarter": "Spring",
+        "year": 2021
+      },
+      "lastWatchedEpId": "",
+      "lastWatchedEpNum": "",
+      "watchedEpisodes": [],
+      "episodeProgress": {},
+      "updatedAt": 1776240638626
+    },
+    {
+      "id": "2P7kFgthrEfRRkcdm",
+      "name": "Tongari Boushi no Atelier",
+      "englishName": "Witch Hat Atelier",
+      "nativeName": "とんがり帽子のアトリエ",
+      "thumbnail": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx147105-rwOX8qyUy8gV.jpg",
+      "score": 8.74,
+      "type": "TV",
+      "episodeCount": "",
+      "availableEpisodes": {
+        "dub": 3,
+        "raw": 0,
+        "sub": 3
+      },
+      "season": {
+        "quarter": "Spring",
+        "year": 2026
+      },
+      "lastWatchedEpId": "2P7kFgthrEfRRkcdm-episode-3",
+      "lastWatchedEpNum": "3",
+      "watchedEpisodes": [],
+      "episodeProgress": {
+        "3": {
+          "position": 3.5452083333333,
+          "duration": 1420.0619954649
+        }
+      },
+      "updatedAt": 1776240811048
+    }
+  ]
+}

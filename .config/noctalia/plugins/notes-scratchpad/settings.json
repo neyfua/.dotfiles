@@ -1,10 +1,10 @@
 {
-  "scratchpadContent": "New behavior = feat\nBug gone = fix\nSame behavior, cleaner code = refactor\nSame behavior, faster code = perf\nOnly whitespace/formatting = style\nOnly markdown/comments = docs\nOnly tests = test\nBuild/deploy config = build or ci\nEverything else = chore\n\nwallhaven page: 187",
+  "scratchpadContent": "New behavior = feat\nBug gone = fix\nSame behavior, cleaner code = refactor\nSame behavior, faster code = perf\nOnly whitespace/formatting = style\nOnly markdown/comments = docs\nOnly tests = test\nBuild/deploy config = build or ci\nEverything else = chore\n\nwallhaven page: 187\n\nFollow the instructions, files given, help me debug these:\n\n\n\n1. In the `Panel.qml` when you first reload and open the plugin's panel you'll see the projects listed then is able to click and see what's inside that project. But after you close the panel and reopen it it's unable to click to the project\n\n2. Opening a project will try to show package's build results instead of the package's names, I want it to list all the packages were shown if you use `osc list` command, then if you click to the package it'll open another panel like how going from default panel to inside a project's panel, inside that panel it'll show the build results of that chosen package.\n\nFirst help me to fix these 2 first.",
   "panelWidth": 600,
   "panelHeight": 400,
   "fontSize": 14,
-  "cursorPosition": 108,
+  "cursorPosition": 974,
   "scrollPositionX": 0,
-  "scrollPositionY": 0.3417085427135678,
+  "scrollPositionY": 0.386411889596603,
   "filePath": ""
 }

@@ -1,0 +1,1109 @@
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
+import Qt5Compat.GraphicalEffects
+import qs.Commons
+import qs.Widgets
+
+Item {
+    id: browseView
+
+    property var pluginApi: null
+    readonly property var anime: pluginApi?.mainInstance || null
+
+    signal animeSelected(var show)
+    signal settingsRequested()
+
+    function openEntry(entry) {
+        browseView.animeSelected({
+            id: entry.id,
+            name: entry.name,
+            englishName: entry.englishName,
+            nativeName: entry.nativeName || "",
+            thumbnail: entry.thumbnail,
+            score: entry.score,
+            type: entry.type || "",
+            episodeCount: entry.episodeCount || "",
+            availableEpisodes: entry.availableEpisodes || { sub: 0, dub: 0, raw: 0 },
+            season: entry.season || null
+        })
+    }
+
+    function resumeEpisodeFor(entry) {
+        if (!entry) return ""
+        if (entry.lastWatchedEpNum) return entry.lastWatchedEpNum
+        var prog = entry.episodeProgress || {}
+        var episodes = Object.keys(prog).filter(function(key) {
+            return anime?._progressPosition(prog[key]) > 0
+        })
+        episodes.sort(function(a, b) { return Number(b) - Number(a) })
+        return episodes.length > 0 ? episodes[0] : ""
+    }
+
+    function resumeProgressRatioFor(entry) {
+        var epNum = resumeEpisodeFor(entry)
+        if (!entry || !epNum || !anime) return 0
+        return anime.getEpisodeProgressRatio(entry.id, epNum)
+    }
+
+    function openSearch() {
+        searchBar.visible = true
+        searchField.forceActiveFocus()
+    }
+
+    function closeSearch(resetFeed) {
+        if (resetFeed === undefined) resetFeed = true
+        searchBar.visible = false
+        searchField.text = ""
+        if (resetFeed && anime) anime.fetchCurrentFeed(true)
+    }
+
+    function horizontalWheelDelta(wheel) {
+        if (!wheel) return 0
+        var dy = wheel.pixelDelta.y !== 0 ? wheel.pixelDelta.y : wheel.angleDelta.y
+        var dx = wheel.pixelDelta.x !== 0 ? wheel.pixelDelta.x : wheel.angleDelta.x
+        return Math.abs(dx) > Math.abs(dy) ? dx : dy
+    }
+
+    function scrollHorizontally(flickable, wheel) {
+        if (!flickable || !wheel) return
+        var delta = horizontalWheelDelta(wheel)
+        if (delta === 0) return
+        var maxX = Math.max(0, flickable.contentWidth - flickable.width)
+        flickable.contentX = Math.max(0, Math.min(maxX, flickable.contentX - delta))
+        wheel.accepted = true
+    }
+
+    TapHandler {
+        enabled: searchBar.visible
+        gesturePolicy: TapHandler.ReleaseWithinBounds
+        onTapped: function(eventPoint) {
+            var pos = searchBar.mapToItem(browseView, 0, 0)
+            var x = eventPoint.position.x
+            var y = eventPoint.position.y
+            var insideSearchBar =
+                x >= pos.x && x <= pos.x + searchBar.width &&
+                y >= pos.y && y <= pos.y + searchBar.height
+            if (!insideSearchBar)
+                browseView.closeSearch()
+        }
+    }
+
+    // ── Background ────────────────────────────────────────────────────────────
+    ColumnLayout {
+        anchors.fill: parent
+        spacing: 0
+
+        // ── Header ────────────────────────────────────────────────────────────
+        Rectangle {
+            Layout.fillWidth: true
+            height: 56
+            color: "transparent"
+            z: 2
+
+            Rectangle {
+                anchors { bottom: parent.bottom; left: parent.left; right: parent.right }
+                height: 1; color: Color.mOutlineVariant; opacity: 0.5
+            }
+
+            RowLayout {
+                anchors { fill: parent; leftMargin: 18; rightMargin: 10 }
+                spacing: 8
+
+                // Wordmark (hidden when search is open)
+                Rectangle {
+                    id: browseWordmark
+                    visible: !searchBar.visible
+                    Layout.fillWidth: true
+                    implicitHeight: 38
+                    radius: 19
+                    color: browseTitleArea.containsMouse
+                        ? Qt.rgba(Color.mSurfaceVariant.r, Color.mSurfaceVariant.g, Color.mSurfaceVariant.b, 0.92)
+                        : Qt.rgba(Color.mSurface.r, Color.mSurface.g, Color.mSurface.b, 0.88)
+                    border.width: 1
+                    border.color: browseTitleArea.containsMouse
+                        ? Qt.rgba(Color.mPrimary.r, Color.mPrimary.g, Color.mPrimary.b, 0.28)
+                        : Qt.rgba(Color.mOutlineVariant.r, Color.mOutlineVariant.g, Color.mOutlineVariant.b, 0.4)
+                    Behavior on color { ColorAnimation { duration: 180 } }
+                    Behavior on border.color { ColorAnimation { duration: 180 } }
+
+                    Row {
+                        anchors {
+                            left: parent.left
+                            verticalCenter: parent.verticalCenter
+                            leftMargin: 14
+                        }
+                        spacing: 0
+
+                        Text {
+                            text: "A"
+                            font.pixelSize: 22; font.letterSpacing: 1
+                            color: Color.mPrimary
+                        }
+                        Text {
+                            text: "nime"
+                            font.pixelSize: 22; font.letterSpacing: 1
+                            color: Color.mOnSurface
+                            opacity: browseTitleArea.containsMouse ? 1 : 0.85
+                            Behavior on opacity { NumberAnimation { duration: 180 } }
+                        }
+                    }
+
+                    MouseArea {
+                        id: browseTitleArea
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: browseView.openSearch()
+                    }
+                }
+
+                // Search bar
+                Rectangle {
+                    id: searchBar
+                    Layout.fillWidth: true
+                    height: 36; radius: 18
+                    color: Color.mSurface
+                    visible: false
+                    border.color: searchField.activeFocus ? Color.mPrimary : Color.mOutlineVariant
+                    border.width: searchField.activeFocus ? 1.5 : 1
+
+                    TextInput {
+                        id: searchField
+                        anchors {
+                            verticalCenter: parent.verticalCenter
+                            left: parent.left; right: clearBtn.left
+                            leftMargin: 14; rightMargin: 6
+                        }
+                        color: Color.mOnSurface
+                        font.pixelSize: 13
+                        clip: true
+                        onTextChanged: searchDebounce.restart()
+                        Keys.onEscapePressed: {
+                            browseView.closeSearch()
+                        }
+                    }
+
+                    Text {
+                        anchors { verticalCenter: parent.verticalCenter; left: parent.left; leftMargin: 14 }
+                        text: "Search anime…"
+                        color: Color.mOnSurfaceVariant
+                        font.pixelSize: 13
+                        visible: searchField.text.length === 0
+                        opacity: 0.6
+                    }
+
+                    Item {
+                        id: clearBtn
+                        anchors { right: parent.right; verticalCenter: parent.verticalCenter; rightMargin: 10 }
+                        width: 22; height: 22
+                        visible: searchField.text.length > 0
+
+                        Rectangle {
+                            anchors.centerIn: parent
+                            width: 18; height: 18; radius: 9
+                            color: clearSearchArea.containsMouse ? Color.mPrimaryContainer : Color.mSurfaceVariant
+                            Behavior on color { ColorAnimation { duration: 140 } }
+                        }
+                        Text {
+                            anchors.centerIn: parent
+                            text: "✕"
+                            color: clearSearchArea.containsMouse ? Color.mOnPrimaryContainer : Color.mOnSurfaceVariant
+                            font.pixelSize: 9; font.bold: true
+                            Behavior on color { ColorAnimation { duration: 140 } }
+                        }
+                        MouseArea {
+                            id: clearSearchArea
+                            anchors.fill: parent
+                            hoverEnabled: true
+                            onClicked: searchField.text = ""
+                        }
+                    }
+                }
+
+                Timer {
+                    id: searchDebounce
+                    interval: 350
+                    onTriggered: {
+                        if (!anime) return
+                        if (searchField.text.trim().length > 0)
+                            anime.searchAnime(searchField.text.trim(), true)
+                        else
+                            anime.fetchCurrentFeed(true)
+                    }
+                }
+
+                // Search toggle
+                Item {
+                    width: 38; height: 38
+
+                    Rectangle {
+                        anchors.centerIn: parent
+                        width: 32; height: 32; radius: 16
+                        color: (searchBar.visible || browseSearchToggleArea.containsMouse)
+                            ? Color.mPrimaryContainer
+                            : "transparent"
+                        border.width: browseSearchToggleArea.containsMouse ? 1 : 0
+                        border.color: Qt.rgba(Color.mPrimary.r, Color.mPrimary.g, Color.mPrimary.b, 0.25)
+                        scale: browseSearchToggleArea.containsMouse ? 1.06 : 1.0
+                        Behavior on color { ColorAnimation { duration: 180 } }
+                        Behavior on border.width { NumberAnimation { duration: 180 } }
+                        Behavior on scale { NumberAnimation { duration: 180; easing.type: Easing.OutCubic } }
+                    }
+                    Text {
+                        anchors.centerIn: parent
+                        text: "⌕"; font.pixelSize: 18
+                        color: (searchBar.visible || browseSearchToggleArea.containsMouse)
+                            ? Color.mOnPrimaryContainer
+                            : Color.mOnSurfaceVariant
+                        Behavior on color { ColorAnimation { duration: 180 } }
+                    }
+                    MouseArea {
+                        id: browseSearchToggleArea
+                        anchors.fill: parent
+                        z: 1
+                        hoverEnabled: true
+                        onClicked: {
+                            searchBar.visible = !searchBar.visible
+                            if (searchBar.visible) searchField.forceActiveFocus()
+                            else browseView.closeSearch()
+                        }
+                    }
+                }
+
+                // Sub / Dub toggle
+                Rectangle {
+                    height: 28
+                    width: modeRow.implicitWidth + 16
+                    radius: 14
+                    color: Color.mSurface
+                    border.color: Color.mOutlineVariant; border.width: 1
+
+                    Row {
+                        id: modeRow
+                        anchors.centerIn: parent
+                        spacing: 0
+
+                        Repeater {
+                            model: ["sub", "dub"]
+
+                            delegate: Item {
+                                width: modeLabel.implicitWidth + 16
+                                height: 28
+                                readonly property bool active: anime?.currentMode === modelData
+
+                                Rectangle {
+                                    anchors { fill: parent; margins: 3 }
+                                    radius: 11
+                                    color: active ? Color.mPrimary : (modeArea.containsMouse ? Color.mPrimaryContainer : "transparent")
+                                    Behavior on color { ColorAnimation { duration: 160 } }
+                                }
+                                Text {
+                                    id: modeLabel
+                                    anchors.centerIn: parent
+                                    text: modelData.toUpperCase()
+                                    font.pixelSize: 10; font.letterSpacing: 1; font.bold: true
+                                    color: active ? Color.mOnPrimary : (modeArea.containsMouse ? Color.mOnPrimaryContainer : Color.mOnSurfaceVariant)
+                                    Behavior on color { ColorAnimation { duration: 160 } }
+                                }
+                                MouseArea {
+                                    id: modeArea
+                                    anchors.fill: parent
+                                    hoverEnabled: true
+                                    onClicked: if (anime) anime.setMode(modelData)
+                                }
+                            }
+                        }
+                    }
+                }
+
+                Item {
+                    width: 38; height: 38
+                    readonly property bool hovered: settingsHover.hovered
+
+                    Rectangle {
+                        anchors.centerIn: parent
+                        width: 32; height: 32; radius: 16
+                        color: parent.hovered
+                            ? Color.mPrimaryContainer
+                            : "transparent"
+                        border.width: parent.hovered ? 1 : 0
+                        border.color: Qt.rgba(Color.mPrimary.r, Color.mPrimary.g, Color.mPrimary.b, 0.25)
+                        scale: parent.hovered ? 1.06 : 1.0
+                        Behavior on color { ColorAnimation { duration: 180 } }
+                        Behavior on border.width { NumberAnimation { duration: 180 } }
+                        Behavior on scale { NumberAnimation { duration: 180; easing.type: Easing.OutCubic } }
+                    }
+                    Text {
+                        anchors.centerIn: parent
+                        text: "⚙"
+                        font.pixelSize: 15
+                        color: parent.hovered
+                            ? Color.mOnPrimaryContainer
+                            : Color.mOnSurfaceVariant
+                        Behavior on color { ColorAnimation { duration: 180 } }
+                    }
+                    HoverHandler { id: settingsHover }
+                    MouseArea {
+                        id: settingsArea
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: browseView.settingsRequested()
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+            Layout.fillWidth: true
+            height: 44
+            color: "transparent"
+
+            Row {
+                anchors {
+                    left: parent.left
+                    verticalCenter: parent.verticalCenter
+                    leftMargin: 18
+                }
+                spacing: 8
+
+                Repeater {
+                    model: [
+                        { label: "Top", value: "top" },
+                        { label: "Recent", value: "recent" }
+                    ]
+
+                    delegate: Item {
+                        width: feedLabel.implicitWidth + 28
+                        height: 30
+
+                        readonly property bool active: (anime?.currentView === modelData.value)
+                            || (anime?.currentView === "search" && anime?.browseFeed === modelData.value)
+                        readonly property bool hovered: feedTabHover.hovered
+
+                        Rectangle {
+                            anchors.fill: parent
+                            radius: 15
+                            color: active
+                                ? Color.mPrimary
+                                : (hovered
+                                    ? Qt.rgba(Color.mPrimary.r, Color.mPrimary.g, Color.mPrimary.b, 0.18)
+                                    : Qt.rgba(Color.mSurfaceVariant.r, Color.mSurfaceVariant.g, Color.mSurfaceVariant.b, 0.82))
+                            border.width: 1
+                            border.color: active
+                                ? Color.mPrimary
+                                : (hovered
+                                    ? Qt.rgba(Color.mPrimary.r, Color.mPrimary.g, Color.mPrimary.b, 0.45)
+                                    : Qt.rgba(Color.mPrimary.r, Color.mPrimary.g, Color.mPrimary.b, 0.28))
+                            Behavior on color { ColorAnimation { duration: 160 } }
+                            Behavior on border.color { ColorAnimation { duration: 160 } }
+                        }
+
+                        Text {
+                            id: feedLabel
+                            anchors.centerIn: parent
+                            text: modelData.label
+                            font.pixelSize: 11
+                            font.bold: active
+                            font.letterSpacing: 0.4
+                            color: active ? Color.mOnPrimary : (hovered ? Color.mPrimary : Color.mOnSurfaceVariant)
+                            Behavior on color { ColorAnimation { duration: 160 } }
+                        }
+
+                        HoverHandler { id: feedTabHover }
+
+                        MouseArea {
+                            id: feedTabArea
+                            anchors.fill: parent
+                            cursorShape: Qt.PointingHandCursor
+                            onClicked: {
+                                if (!anime) return
+                                browseView.closeSearch(false)
+                                if (modelData.value === "recent")
+                                    anime.fetchRecent(true)
+                                else
+                                    anime.fetchPopular(true)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // ── Genre selector ────────────────────────────────────────────────────
+        Rectangle {
+            Layout.fillWidth: true
+            readonly property bool showGenres:
+                (anime?.genresList?.length ?? 0) > 0 &&
+                ((anime?.browseFeed ?? "top") !== "recent" || (anime?.currentView === "search"))
+            height: showGenres ? 56 : 0
+            color: "transparent"
+            visible: height > 0
+            clip: true
+
+            ListView {
+                id: genreList
+                anchors.fill: parent
+                orientation: ListView.Horizontal
+                spacing: 8
+                leftMargin: 18; rightMargin: 18
+                model: ["All"].concat(anime?.genresList || [])
+                boundsBehavior: Flickable.StopAtBounds
+                flickableDirection: Flickable.HorizontalFlick
+
+                delegate: Item {
+                    width: genreLabel.implicitWidth + 28
+                    height: 32
+                    anchors.verticalCenter: parent.verticalCenter
+
+                    readonly property bool active: (modelData === "All" && (anime?.currentGenre ?? "") === "") ||
+                                                   (anime?.currentGenre === modelData)
+                    readonly property bool hovered: genreHover.hovered
+
+                    Rectangle {
+                        anchors.fill: parent
+                        radius: 16
+                        color: active
+                            ? Color.mPrimary
+                            : (hovered
+                                ? Qt.rgba(Color.mPrimary.r, Color.mPrimary.g, Color.mPrimary.b, 0.18)
+                                : Qt.rgba(Color.mSurfaceVariant.r, Color.mSurfaceVariant.g, Color.mSurfaceVariant.b, 0.82))
+                        border.color: active
+                            ? Color.mPrimary
+                            : (hovered
+                                ? Qt.rgba(Color.mPrimary.r, Color.mPrimary.g, Color.mPrimary.b, 0.45)
+                                : Qt.rgba(Color.mPrimary.r, Color.mPrimary.g, Color.mPrimary.b, 0.28))
+                        border.width: 1
+                        Behavior on color { ColorAnimation { duration: 160 } }
+                        Behavior on border.color { ColorAnimation { duration: 160 } }
+                    }
+
+                    Text {
+                        id: genreLabel
+                        anchors.centerIn: parent
+                        text: modelData
+                        font.pixelSize: 11; font.bold: active
+                        color: active ? Color.mOnPrimary : (hovered ? Color.mPrimary : Color.mOnSurfaceVariant)
+                        Behavior on color { ColorAnimation { duration: 160 } }
+                    }
+
+                    HoverHandler { id: genreHover }
+
+                    MouseArea {
+                        id: genreArea
+                        anchors.fill: parent
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: {
+                            if (anime) {
+                                anime.setGenre(modelData === "All" ? "" : modelData)
+                            }
+                        }
+                    }
+                }
+
+                ScrollBar.horizontal: ScrollBar {
+                    policy: ScrollBar.AlwaysOff
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    acceptedButtons: Qt.NoButton
+                    onWheel: function(wheel) {
+                        browseView.scrollHorizontally(genreList, wheel)
+                    }
+                }
+            }
+        }
+
+        // ── Content area ──────────────────────────────────────────────────────
+        Item {
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            ColumnLayout {
+                anchors.fill: parent
+                spacing: 0
+
+                Item {
+                    id: continueSection
+                    readonly property var continueEntries: anime?.getContinueWatchingList() ?? []
+                    readonly property bool showRail: continueEntries.length > 0 && (anime?.currentView ?? "") !== "search"
+                    Layout.fillWidth: true
+                    Layout.preferredHeight: showRail ? 188 : 0
+                    visible: showRail
+
+                    Column {
+                        anchors.fill: parent
+                        anchors.margins: 10
+                        spacing: 10
+
+                        Row {
+                            width: parent.width
+                            spacing: 8
+
+                            Text {
+                                text: "Continue Watching"
+                                font.pixelSize: 14
+                                font.bold: true
+                                color: Color.mOnSurface
+                            }
+
+                            Rectangle {
+                                height: 20
+                                width: continueCount.implicitWidth + 14
+                                radius: 10
+                                color: Qt.rgba(Color.mPrimary.r, Color.mPrimary.g, Color.mPrimary.b, 0.12)
+                                border.width: 1
+                                border.color: Qt.rgba(Color.mPrimary.r, Color.mPrimary.g, Color.mPrimary.b, 0.28)
+
+                                Text {
+                                    id: continueCount
+                                    anchors.centerIn: parent
+                                    text: continueSection.continueEntries.length + " active"
+                                    font.pixelSize: 9
+                                    font.bold: true
+                                    font.letterSpacing: 0.5
+                                    color: Color.mPrimary
+                                }
+                            }
+                        }
+
+                        ListView {
+                            id: continueRail
+                            width: parent.width
+                            height: 148
+                            orientation: ListView.Horizontal
+                            spacing: 10
+                            boundsBehavior: Flickable.StopAtBounds
+                            clip: true
+                            model: continueSection.continueEntries
+                            flickableDirection: Flickable.HorizontalFlick
+
+                            delegate: Item {
+                                width: 232
+                                height: continueRail.height
+
+                                readonly property var entry: modelData
+                                readonly property string resumeEpisode: browseView.resumeEpisodeFor(entry)
+                                readonly property real progressRatio: browseView.resumeProgressRatioFor(entry)
+
+                                Rectangle {
+                                    anchors.fill: parent
+                                    radius: 18
+                                    color: Qt.rgba(Color.mSurface.r, Color.mSurface.g, Color.mSurface.b, 0.9)
+                                    border.width: 1
+                                    border.color: Qt.rgba(Color.mOutlineVariant.r, Color.mOutlineVariant.g, Color.mOutlineVariant.b, 0.38)
+
+                                    Row {
+                                        anchors.fill: parent
+                                        anchors.margins: 10
+                                        spacing: 10
+
+                                        Rectangle {
+                                            width: 72
+                                            height: parent.height
+                                            radius: 12
+                                            clip: true
+                                            color: Color.mSurfaceVariant
+
+                                            Image {
+                                                anchors.fill: parent
+                                                source: entry.thumbnail || ""
+                                                fillMode: Image.PreserveAspectCrop
+                                                asynchronous: true
+                                                cache: true
+                                            }
+                                        }
+
+                                        Column {
+                                            width: parent.width - 82
+                                            anchors.verticalCenter: parent.verticalCenter
+                                            spacing: 6
+
+                                            Rectangle {
+                                                height: 20
+                                                width: resumeText.implicitWidth + 14
+                                                radius: 10
+                                                color: Qt.rgba(Color.mPrimary.r, Color.mPrimary.g, Color.mPrimary.b, 0.12)
+
+                                                Text {
+                                                    id: resumeText
+                                                    anchors.centerIn: parent
+                                                    text: resumeEpisode ? "Resume Ep. " + resumeEpisode : "In progress"
+                                                    font.pixelSize: 9
+                                                    font.bold: true
+                                                    font.letterSpacing: 0.4
+                                                    color: Color.mPrimary
+                                                }
+                                            }
+
+                                            Text {
+                                                width: parent.width
+                                                text: entry.englishName || entry.name || ""
+                                                font.pixelSize: 13
+                                                font.bold: true
+                                                color: Color.mOnSurface
+                                                wrapMode: Text.Wrap
+                                                maximumLineCount: 2
+                                                elide: Text.ElideRight
+                                                lineHeight: 1.25
+                                            }
+
+                                            Text {
+                                                width: parent.width
+                                                text: (entry.watchedEpisodes || []).length > 0
+                                                    ? (entry.watchedEpisodes || []).length + " watched"
+                                                    : "Pick up where you left off"
+                                                font.pixelSize: 10
+                                                color: Color.mOnSurfaceVariant
+                                                opacity: 0.78
+                                                elide: Text.ElideRight
+                                            }
+
+                                            Rectangle {
+                                                width: parent.width
+                                                height: 6
+                                                radius: 3
+                                                color: Qt.rgba(Color.mOutlineVariant.r, Color.mOutlineVariant.g, Color.mOutlineVariant.b, 0.26)
+                                                visible: progressRatio > 0
+
+                                                Rectangle {
+                                                    width: parent.width * progressRatio
+                                                    height: parent.height
+                                                    radius: parent.radius
+                                                    color: Color.mTertiary
+                                                }
+                                            }
+
+                                            Item { width: 1; height: 2 }
+
+                                            Rectangle {
+                                                width: 88
+                                                height: 28
+                                                radius: 14
+                                                z: 3
+                                                readonly property bool hovered: continueButtonArea.containsMouse
+                                                color: hovered
+                                                    ? Qt.rgba(Color.mSecondary.r, Color.mSecondary.g, Color.mSecondary.b, 0.28)
+                                                    : Qt.rgba(Color.mSecondary.r, Color.mSecondary.g, Color.mSecondary.b, 0.18)
+                                                border.width: 1
+                                                border.color: hovered
+                                                    ? Qt.rgba(Color.mSecondary.r, Color.mSecondary.g, Color.mSecondary.b, 0.58)
+                                                    : Qt.rgba(Color.mSecondary.r, Color.mSecondary.g, Color.mSecondary.b, 0.42)
+                                                Behavior on color { ColorAnimation { duration: 140 } }
+                                                Behavior on border.color { ColorAnimation { duration: 140 } }
+
+                                                Text {
+                                                    anchors.centerIn: parent
+                                                    text: "Open"
+                                                    font.pixelSize: 10
+                                                    font.bold: true
+                                                    font.letterSpacing: 0.5
+                                                    color: Color.mSecondary
+                                                    Behavior on color { ColorAnimation { duration: 140 } }
+                                                }
+
+                                                MouseArea {
+                                                    id: continueButtonArea
+                                                    anchors.fill: parent
+                                                    hoverEnabled: true
+                                                    cursorShape: Qt.PointingHandCursor
+                                                    onClicked: browseView.openEntry(entry)
+                                                }
+
+                                                StyledToolTip {
+                                                    target: continueButtonArea
+                                                    shown: hovered
+                                                    above: true
+                                                    text: "Open details"
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    MouseArea {
+                                        anchors.fill: parent
+                                        z: 1
+                                        hoverEnabled: false
+                                        cursorShape: Qt.PointingHandCursor
+                                        onClicked: browseView.openEntry(entry)
+                                    }
+                                }
+                            }
+
+                            MouseArea {
+                                anchors.fill: parent
+                                acceptedButtons: Qt.NoButton
+                                onWheel: function(wheel) {
+                                    browseView.scrollHorizontally(continueRail, wheel)
+                                }
+                            }
+                        }
+                    }
+                }
+
+                Item {
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
+
+                    // Loading
+                    Rectangle {
+                        anchors.fill: parent; color: "transparent"
+                        visible: (anime?.isFetchingAnime ?? false) && (anime?.animeList?.length ?? 0) === 0
+                        z: 10
+
+                        Column {
+                            anchors.centerIn: parent; spacing: 14
+
+                            Rectangle {
+                                width: 34; height: 34; radius: 17
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                color: "transparent"
+                                border.color: Color.mPrimary; border.width: 2.5
+                                RotationAnimator on rotation {
+                                    from: 0; to: 360; duration: 800
+                                    loops: Animation.Infinite; running: parent.visible
+                                    easing.type: Easing.Linear
+                                }
+                            }
+                            Text {
+                                anchors.horizontalCenter: parent.horizontalCenter
+                                text: "loading"
+                                color: Color.mOnSurfaceVariant
+                                font.pixelSize: 11; font.letterSpacing: 2.5; opacity: 0.7
+                            }
+                        }
+                    }
+
+                    // Error
+                    Rectangle {
+                        anchors.fill: parent; color: "transparent"
+                        visible: (anime?.animeError?.length ?? 0) > 0 && !(anime?.isFetchingAnime ?? false)
+                        z: 9
+
+                        Column {
+                            anchors.centerIn: parent; spacing: 10
+
+                            Text {
+                                text: "⚠"; font.pixelSize: 30; color: Color.mError
+                                anchors.horizontalCenter: parent.horizontalCenter; opacity: 0.8
+                            }
+                            Text {
+                                text: anime?.animeError ?? ""
+                                color: Color.mOnSurfaceVariant; font.pixelSize: 12
+                                wrapMode: Text.Wrap; width: 280
+                                horizontalAlignment: Text.AlignHCenter; lineHeight: 1.4
+                            }
+                        }
+                    }
+
+                    // Grid
+                    GridView {
+                        id: animeGrid
+                        anchors.fill: parent; anchors.margins: 10
+                        
+                        readonly property var columnsMap: ({ "small": 8, "medium": 5, "large": 3 })
+                        readonly property int columns: columnsMap[anime?.posterSize || "medium"]
+                        
+                        cellWidth: (width - 10) / columns
+                        cellHeight: cellWidth * 1.58
+                        clip: true
+                        boundsBehavior: Flickable.StopAtBounds
+                        model: anime?.animeList ?? []
+
+                        ScrollBar.vertical: ScrollBar {
+                            policy: ScrollBar.AsNeeded
+                            contentItem: Rectangle {
+                                implicitWidth: 3; color: Color.mPrimary; opacity: 0.45; radius: 2
+                            }
+                        }
+
+                        onContentYChanged: {
+                            if (anime) anime.setBrowseScroll(contentY)
+                            if (contentY + height > contentHeight - cellHeight * 2)
+                                if (anime) anime.fetchNextPage()
+                        }
+
+                        onVisibleChanged: {
+                            if (!visible || !anime) return
+                            Qt.callLater(function() {
+                                animeGrid.contentY = Math.min(
+                                    anime.browseScrollY || 0,
+                                    Math.max(0, animeGrid.contentHeight - animeGrid.height)
+                                )
+                            })
+                        }
+
+                        onContentHeightChanged: {
+                            if (!visible || !anime) return
+                            if ((anime.browseScrollY || 0) <= 0) return
+                            Qt.callLater(function() {
+                                animeGrid.contentY = Math.min(
+                                    anime.browseScrollY || 0,
+                                    Math.max(0, animeGrid.contentHeight - animeGrid.height)
+                                )
+                            })
+                        }
+
+                        delegate: Item {
+                            width: animeGrid.cellWidth
+                            height: animeGrid.cellHeight
+
+                            readonly property bool inLibrary: {
+                                var _ = anime?.libraryVersion ?? 0
+                                return anime?.isInLibrary(modelData.id) ?? false
+                            }
+                            readonly property bool cardHovered: cardArea.containsMouse || libraryActionArea.containsMouse
+                            readonly property bool showLibraryAction: inLibrary || cardHovered
+                            readonly property bool actionIsRemove: inLibrary && cardHovered
+
+                            Rectangle {
+                                id: card
+                                anchors { fill: parent; margins: 5 }
+                                radius: 10; color: Qt.rgba(Color.mSurfaceVariant.r, Color.mSurfaceVariant.g, Color.mSurfaceVariant.b, 0.45)
+                                clip: true
+
+                                // Title bar (defined before wrapper so it can be referenced if needed)
+                                Rectangle {
+                                    id: titleBar
+                                    anchors { bottom: parent.bottom; left: parent.left; right: parent.right }
+                                    height: titleText.implicitHeight + 14
+                                    color: Color.mSurfaceVariant; radius: 10
+
+                                    Text {
+                                        id: titleText
+                                        anchors {
+                                            left: parent.left; right: parent.right
+                                            verticalCenter: parent.verticalCenter
+                                            leftMargin: 8; rightMargin: 8
+                                        }
+                                        text: modelData.englishName || modelData.name || ""
+                                        font.pixelSize: 10; font.letterSpacing: 0.2
+                                        color: Color.mOnSurface
+                                        wrapMode: Text.Wrap; maximumLineCount: 2
+                                        elide: Text.ElideRight; lineHeight: 1.3
+                                    }
+                                }
+
+                                // Poster Wrapper
+                                Rectangle {
+                                    id: posterWrapper
+                                    anchors { top: parent.top; left: parent.left; right: parent.right; bottom: titleBar.top }
+                                    radius: 10; clip: true; color: "transparent"
+                                    layer.enabled: true
+                                    layer.effect: OpacityMask {
+                                        maskSource: Rectangle {
+                                            width: posterWrapper.width
+                                            height: posterWrapper.height
+                                            radius: posterWrapper.radius
+                                        }
+                                    }
+
+                                    Image {
+                                        id: coverImg
+                                        anchors.fill: parent
+                                        source: modelData.thumbnail || ""
+                                        fillMode: Image.PreserveAspectCrop
+                                        asynchronous: true; cache: true
+                                        opacity: status === Image.Ready ? 1 : 0
+                                        Behavior on opacity { NumberAnimation { duration: 300 } }
+
+                                        Rectangle {
+                                            anchors.fill: parent; color: Color.mSurfaceVariant
+                                            visible: coverImg.status !== Image.Ready
+                                            Text {
+                                                anchors.centerIn: parent; text: "◫"
+                                                font.pixelSize: 28; color: Color.mOutline; opacity: 0.25
+                                            }
+                                        }
+
+                                        // Score badge
+                                        Rectangle {
+                                            visible: modelData.score != null
+                                            anchors { top: parent.top; left: parent.left; topMargin: 6; leftMargin: 6 }
+                                            height: 18; radius: 9
+                                            width: scoreText.implicitWidth + 10
+                                            color: Qt.rgba(Color.mSurface.r, Color.mSurface.g, Color.mSurface.b, 0.88)
+                                            border.width: 1
+                                            border.color: Qt.rgba(Color.mOutlineVariant.r, Color.mOutlineVariant.g, Color.mOutlineVariant.b, 0.38)
+
+                                            Text {
+                                                id: scoreText; anchors.centerIn: parent
+                                                text: modelData.score != null ? "★ " + (modelData.score || 0).toFixed(1) : ""
+                                                font.pixelSize: 8; font.bold: true; font.letterSpacing: 0.5
+                                                color: Color.mPrimary
+                                            }
+                                        }
+
+                                        // Type badge
+                                        Rectangle {
+                                            visible: (modelData.type || "").length > 0
+                                            anchors { top: parent.top; right: parent.right; topMargin: 6; rightMargin: 6 }
+                                            height: 18; radius: 9
+                                            width: typeText.implicitWidth + 10
+                                            color: Qt.rgba(Color.mSurface.r, Color.mSurface.g, Color.mSurface.b, 0.86)
+                                            border.width: 1
+                                            border.color: Qt.rgba(Color.mOutlineVariant.r, Color.mOutlineVariant.g, Color.mOutlineVariant.b, 0.36)
+
+                                            Text {
+                                                id: typeText; anchors.centerIn: parent
+                                                text: (modelData.type || "").toUpperCase()
+                                                font.pixelSize: 8; font.letterSpacing: 1; font.bold: true
+                                                color: Color.mPrimary
+                                            }
+                                        }
+
+                                        // Episode count badge
+                                        Rectangle {
+                                            visible: modelData.availableEpisodes &&
+                                                ((modelData.availableEpisodes.sub > 0) ||
+                                                 (modelData.availableEpisodes.dub > 0))
+                                            anchors {
+                                                bottom: parent.bottom; right: parent.right
+                                                bottomMargin: 6; rightMargin: 6
+                                            }
+                                            height: 18; radius: 9
+                                            width: epText.implicitWidth + 10
+                                            color: Qt.rgba(Color.mSurface.r, Color.mSurface.g, Color.mSurface.b, 0.88)
+                                            border.width: 1
+                                            border.color: Qt.rgba(Color.mOutlineVariant.r, Color.mOutlineVariant.g, Color.mOutlineVariant.b, 0.38)
+
+                                            Text {
+                                                id: epText; anchors.centerIn: parent
+                                                text: {
+                                                    var avail = modelData.availableEpisodes
+                                                    var n = (anime?.currentMode === "dub") ? avail.dub : avail.sub
+                                                    return n + " ep"
+                                                }
+                                                font.pixelSize: 8; font.letterSpacing: 0.5
+                                                color: Color.mOnSurface
+                                            }
+                                        }
+
+                                        // Gradient
+                                        Rectangle {
+                                            anchors { bottom: parent.bottom; left: parent.left; right: parent.right }
+                                            height: 40
+                                            gradient: Gradient {
+                                                GradientStop { position: 0.0; color: "transparent" }
+                                                GradientStop { position: 1.0; color: Color.mSurfaceVariant }
+                                            }
+                                        }
+                                    }
+                                }
+
+                                // Library action
+                                Rectangle {
+                                    id: libraryAction
+                                    anchors { top: parent.top; horizontalCenter: parent.horizontalCenter; topMargin: 8 }
+                                    width: 32
+                                    height: 32
+                                    radius: 16
+                                    opacity: showLibraryAction ? 1 : 0
+                                    scale: showLibraryAction ? 1 : 0.82
+                                    visible: opacity > 0
+                                    color: inLibrary
+                                        ? (actionIsRemove
+                                            ? Qt.rgba(Color.mErrorContainer.r, Color.mErrorContainer.g, Color.mErrorContainer.b, 0.96)
+                                            : Color.mPrimary)
+                                        : Qt.rgba(Color.mSurface.r, Color.mSurface.g, Color.mSurface.b, 0.92)
+                                    border.width: 1
+                                    border.color: inLibrary
+                                        ? (actionIsRemove ? Color.mError : Qt.rgba(Color.mPrimary.r, Color.mPrimary.g, Color.mPrimary.b, 0.6))
+                                        : Qt.rgba(Color.mOutlineVariant.r, Color.mOutlineVariant.g, Color.mOutlineVariant.b, 0.42)
+                                    z: 3
+
+                                    Behavior on opacity { NumberAnimation { duration: 140; easing.type: Easing.OutCubic } }
+                                    Behavior on scale { NumberAnimation { duration: 150; easing.type: Easing.OutBack } }
+                                    Behavior on color { ColorAnimation { duration: 140 } }
+                                    Behavior on border.color { ColorAnimation { duration: 140 } }
+
+                                    NIcon {
+                                        id: bookmarkIcon
+                                        anchors.centerIn: parent
+                                        icon: "bookmark"
+                                        pointSize: 14
+                                        color: Color.mOnPrimary
+                                        opacity: inLibrary && !actionIsRemove ? 1 : 0
+                                        scale: inLibrary && !actionIsRemove ? 1 : 0.7
+                                        Behavior on opacity { NumberAnimation { duration: 110 } }
+                                        Behavior on scale { NumberAnimation { duration: 130; easing.type: Easing.OutCubic } }
+                                    }
+
+                                    Text {
+                                        id: addIcon
+                                        anchors.centerIn: parent
+                                        text: "+"
+                                        font.pixelSize: 18
+                                        font.bold: true
+                                        color: Color.mPrimary
+                                        opacity: !inLibrary && cardHovered ? 1 : 0
+                                        scale: !inLibrary && cardHovered ? 1 : 0.7
+                                        Behavior on opacity { NumberAnimation { duration: 110 } }
+                                        Behavior on scale { NumberAnimation { duration: 130; easing.type: Easing.OutCubic } }
+                                    }
+
+                                    Text {
+                                        id: removeIcon
+                                        anchors.centerIn: parent
+                                        text: "−"
+                                        font.pixelSize: 18
+                                        font.bold: true
+                                        color: Color.mOnErrorContainer
+                                        opacity: actionIsRemove ? 1 : 0
+                                        scale: actionIsRemove ? 1 : 0.7
+                                        Behavior on opacity { NumberAnimation { duration: 110 } }
+                                        Behavior on scale { NumberAnimation { duration: 130; easing.type: Easing.OutCubic } }
+                                    }
+
+                                    MouseArea {
+                                        id: libraryActionArea
+                                        anchors.fill: parent
+                                        hoverEnabled: true
+                                        cursorShape: Qt.PointingHandCursor
+                                        acceptedButtons: Qt.LeftButton
+                                        onClicked: {
+                                            if (!anime) return
+                                            if (inLibrary)
+                                                anime.removeFromLibrary(modelData.id)
+                                            else
+                                                anime.addToLibrary(modelData)
+                                        }
+                                    }
+                                }
+
+                                // Hover/press overlay
+                                Rectangle {
+                                    anchors.fill: parent; radius: 10; color: Color.mPrimary
+                                    opacity: cardArea.pressed ? 0.16 : (cardArea.containsMouse ? 0.07 : 0)
+                                    Behavior on opacity { NumberAnimation { duration: 130 } }
+                                }
+
+                                transform: Scale {
+                                    origin.x: card.width / 2; origin.y: card.height / 2
+                                    xScale: cardArea.pressed ? 0.97 : 1.0
+                                    yScale: cardArea.pressed ? 0.97 : 1.0
+                                    Behavior on xScale { NumberAnimation { duration: 120; easing.type: Easing.OutCubic } }
+                                    Behavior on yScale { NumberAnimation { duration: 120; easing.type: Easing.OutCubic } }
+                                }
+
+                                MouseArea {
+                                    id: cardArea
+                                    anchors.fill: parent; hoverEnabled: true
+                                    onClicked: browseView.animeSelected(modelData)
+                                            }
+                                        }
+                                    }
+
+                                    StyledToolTip {
+                                        target: libraryActionArea
+                                        shown: libraryActionArea.containsMouse
+                                        above: false
+                                        text: inLibrary ? "Remove from library" : "Add to library"
+                                    }
+                                }
+                }
+            }
+        }
+    }
+}

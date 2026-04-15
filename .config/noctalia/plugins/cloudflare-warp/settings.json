@@ -1,5 +1,5 @@
 {
-  "refreshInterval": 5000,
+  "refreshInterval": 60000,
   "connectedColor": "primary",
   "disconnectedColor": "none"
 }

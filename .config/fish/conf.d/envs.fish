@@ -6,8 +6,7 @@ set -gx PATH \
 		/usr/bin \
     /usr/sbin \
     /usr/local/bin \
-		/usr/lib64/ \
-    $HOME/.local/bin
+    ~/.local/bin
 
 # Rust / Cargo
 set -gx PATH $HOME/.cargo/bin $PATH
