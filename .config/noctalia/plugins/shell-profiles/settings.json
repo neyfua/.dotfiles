@@ -4,6 +4,6 @@
   "iconColor": "none",
   "includeWallpapers": true,
   "lastAppliedProfile": "MacOS like",
-  "backupEnabled": true,
+  "backupEnabled": false,
   "backupCount": 15
 }
