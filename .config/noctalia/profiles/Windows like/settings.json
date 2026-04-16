@@ -45,7 +45,7 @@
         "autoHideDelay": 500,
         "autoShowDelay": 150,
         "backgroundOpacity": 0.93,
-        "barType": "framed",
+        "barType": "simple",
         "capsuleColorKey": "none",
         "capsuleOpacity": 1,
         "contentPadding": 0,
@@ -126,18 +126,30 @@
                 {
                     "colorizeIcons": false,
                     "hideMode": "hidden",
-                    "iconScale": 0.8,
+                    "iconScale": 0.75,
                     "id": "Taskbar",
                     "maxTaskbarWidth": 60,
                     "onlyActiveWorkspaces": false,
                     "onlySameOutput": true,
-                    "showPinnedApps": true,
+                    "showPinnedApps": false,
                     "showTitle": true,
                     "smartWidth": true,
-                    "titleWidth": 120
+                    "titleWidth": 150
                 }
             ],
             "right": [
+                {
+                    "defaultSettings": {
+                        "activeColor": "primary",
+                        "enableToast": true,
+                        "hideInactive": false,
+                        "iconSpacing": 4,
+                        "inactiveColor": "none",
+                        "micFilterRegex": "",
+                        "removeMargins": false
+                    },
+                    "id": "plugin:privacy-indicator"
+                },
                 {
                     "blacklist": [
                         "*zero-*"
@@ -352,7 +364,7 @@
                         "roundedCorners": true,
                         "scale": 1,
                         "showBackground": true,
-                        "x": 1224,
+                        "x": 24,
                         "y": 24
                     }
                 ]
@@ -451,7 +463,7 @@
         "shadowDirection": "center",
         "shadowOffsetX": 0,
         "shadowOffsetY": 0,
-        "showChangelogOnStartup": true,
+        "showChangelogOnStartup": false,
         "showHibernateOnLockScreen": false,
         "showScreenCorners": false,
         "showSessionButtonsOnLockScreen": false,
@@ -852,7 +864,7 @@
         "showHiddenFiles": false,
         "skipStartupTransition": true,
         "solidColor": "#1a1a2e",
-        "sortOrder": "date_asc",
+        "sortOrder": "name",
         "transitionDuration": 1500,
         "transitionEdgeSmoothness": 0.05,
         "transitionType": [

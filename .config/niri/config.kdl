@@ -7,10 +7,10 @@ input {
 
 	touchpad {
 		tap
-		dwt
+		// dwt
 		dwtp
 		natural-scroll
-		accel-speed 0.7
+		accel-speed 1
 		accel-profile "flat"
 		scroll-factor 0.5
 		scroll-method "two-finger"
@@ -242,7 +242,7 @@ blur {
 }
 
 layer-rule {
-  match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
+  match namespace="^noctalia-(background|launcher-overlay|desktop-widgets|dock)-.*$"
   background-effect {
     xray false
   }
