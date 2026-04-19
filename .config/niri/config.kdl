@@ -18,7 +18,7 @@ input {
 	}
 
 	mouse {
-		accel-speed -0.2
+		accel-speed -0.1
 		accel-profile "flat"
 	}
 
@@ -104,7 +104,7 @@ recent-windows {
 }
 
 // gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
-// gsettings set org.gnome.desktop.wm.preferences button-layout ''
+// gsettings set org.gnome.desktop.wm.preferences button-layout ':'
 
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
 spawn-at-startup "fcitx5"
@@ -133,6 +133,7 @@ environment {
 		// QT
 	QT_QPA_PLATFORM "wayland"
 	QT_QPA_PLATFORMTHEME "qt6ct"
+	// QT_QPA_PLATFORMTHEME "gtk3"
 	// QT_SCALE_FACTOR "1.25"
 	// QT_MEDIA_BACKEND "gstreamer"
 	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
@@ -398,6 +399,7 @@ window-rule {
 	match title="^(File Upload)(.*)$"
 	match title="^(Choose wallpaper)(.*)$"
 	match title="^(Choose an image)(.*)$"
+	match title="^(Locate ISO)(.*)$"
 	match title="^(blob.)(.*)$"
 
 	default-column-width { proportion 0.7; }
@@ -508,12 +510,13 @@ binds {
 	Alt+Shift+T repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:todo" "togglePanel";}
 	Alt+Z repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
 	Alt+I repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:ip-monitor" "toggle"; }
-	Alt+M repeat=false       { spawn-sh "qs -c noctalia-shell ipc call plugin:slot-machine spin;qs -c noctalia-shell ipc call plugin:slot-machine reset"; }
-	Alt+Shift+M repeat=false { spawn-sh "qs -c noctalia-shell ipc call plugin:slot-machine toggle"; }
+	Alt+Shift+Slash repeat=false       { spawn-sh "qs -c noctalia-shell ipc call plugin:slot-machine spin;qs -c noctalia-shell ipc call plugin:slot-machine reset"; }
+	Alt+M repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:mimeapp-gui" "openPanel"; }
 	Alt+O repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:shell-profiles" "toggleProfiles"; }
 	Alt+P repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:port-monitor" "toggle"; }
 	Alt+B repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:obs-integration" "openPanel"; }
-
+	Alt+Slash repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:plugin-manager" "toggle"; }
+	Alt+N repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:sticky-notes" "toggle"; }
 
 	// System controls
 	XF86AudioRaiseVolume allow-when-locked=true cooldown-ms=50  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }

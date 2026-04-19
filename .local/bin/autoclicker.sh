@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CLICK_INTERVAL=10000
+CLICK_INTERVAL=150000
 LEFT_BUTTON=272
 CLICKER="$HOME/.cargo/bin/theclicker"
 

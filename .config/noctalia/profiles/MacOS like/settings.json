@@ -19,8 +19,8 @@
         "overviewLayer": false,
         "pinnedApps": [
         ],
-        "position": "follow_bar",
-        "screenshotAnnotationTool": "satty -f -",
+        "position": "top_right",
+        "screenshotAnnotationTool": "waytator",
         "showCategories": false,
         "showIconBackground": true,
         "sortByMostUsed": true,
@@ -29,6 +29,7 @@
     },
     "audio": {
         "mprisBlacklist": [
+            "firefox",
             "Tor Browser"
         ],
         "preferredPlayer": "Spotify, spotify",
@@ -62,12 +63,12 @@
         "middleClickFollowMouse": false,
         "monitors": [
         ],
-        "mouseWheelAction": "content",
+        "mouseWheelAction": "none",
         "mouseWheelWrap": true,
         "outerCorners": true,
         "position": "top",
         "reverseScroll": false,
-        "rightClickAction": "controlCenter",
+        "rightClickAction": "settings",
         "rightClickCommand": "",
         "rightClickFollowMouse": false,
         "screenOverrides": [
@@ -243,27 +244,26 @@
                     "id": "plugin:cloudflare-warp"
                 },
                 {
-                    "deviceNativePath": "__default__",
-                    "displayMode": "icon-only",
-                    "hideIfIdle": false,
-                    "hideIfNotDetected": true,
-                    "id": "Battery",
-                    "showNoctaliaPerformance": true,
-                    "showPowerProfiles": true
+                    "displayMode": "alwaysHide",
+                    "iconColor": "none",
+                    "id": "Network",
+                    "textColor": "none"
                 },
                 {
-                    "displayMode": "alwaysHide",
+                    "displayMode": "onhover",
                     "iconColor": "none",
                     "id": "Volume",
                     "middleClickCommand": "pwvucontrol || pavucontrol || pavucontrol-qt",
                     "textColor": "none"
                 },
                 {
-                    "applyToAllMonitors": false,
-                    "displayMode": "alwaysHide",
-                    "iconColor": "none",
-                    "id": "Brightness",
-                    "textColor": "none"
+                    "deviceNativePath": "__default__",
+                    "displayMode": "icon-only",
+                    "hideIfIdle": false,
+                    "hideIfNotDetected": true,
+                    "id": "Battery",
+                    "showNoctaliaPerformance": true,
+                    "showPowerProfiles": false
                 },
                 {
                     "colorizeSystemIcon": "none",
@@ -366,10 +366,10 @@
         "shortcuts": {
             "left": [
                 {
-                    "id": "Network"
+                    "id": "Bluetooth"
                 },
                 {
-                    "id": "Bluetooth"
+                    "id": "PowerProfile"
                 },
                 {
                     "defaultSettings": {
@@ -396,13 +396,7 @@
                     "id": "plugin:screen-recorder"
                 },
                 {
-                    "defaultSettings": {
-                        "compactMode": false,
-                        "defaultDuration": 0,
-                        "iconColor": "none",
-                        "textColor": "none"
-                    },
-                    "id": "plugin:timer"
+                    "id": "Notifications"
                 }
             ],
             "right": [
@@ -446,25 +440,37 @@
                 "name": "eDP-1",
                 "widgets": [
                     {
-                        "id": "Weather",
+                        "diskPath": "/",
+                        "id": "SystemStat",
+                        "layout": "bottom",
                         "roundedCorners": true,
                         "scale": 1,
                         "showBackground": true,
+                        "statType": "CPU",
                         "x": 24,
-                        "y": 768
+                        "y": 72
                     },
                     {
-                        "hideMode": "hidden",
-                        "id": "MediaPlayer",
+                        "diskPath": "/",
+                        "id": "SystemStat",
+                        "layout": "side",
                         "roundedCorners": true,
                         "scale": 1,
-                        "showAlbumArt": true,
                         "showBackground": true,
-                        "showButtons": false,
-                        "showVisualizer": true,
-                        "visualizerType": "wave",
+                        "statType": "Memory",
+                        "x": 288,
+                        "y": 72
+                    },
+                    {
+                        "diskPath": "/home",
+                        "id": "SystemStat",
+                        "layout": "side",
+                        "roundedCorners": true,
+                        "scale": 1,
+                        "showBackground": true,
+                        "statType": "Disk",
                         "x": 24,
-                        "y": 672
+                        "y": 216
                     }
                 ]
             }
@@ -506,13 +512,13 @@
             "code",
             "antigravity",
             "com.google.AndroidStudio",
+            "onlyoffice-desktopeditors",
             "org.telegram.desktop",
             "org.torproject.torbrowser-launcher",
             "virt-manager",
             "fluxer_app",
             "org.kde.kdenlive",
             "com.obsproject.Studio",
-            "onlyoffice-desktopeditors",
             "org.gnome.Calculator",
             "org.kde.filelight",
             "nwg-look",
@@ -712,7 +718,7 @@
         "enableCountdown": true,
         "largeButtonsLayout": "single-row",
         "largeButtonsStyle": false,
-        "position": "top_center",
+        "position": "bottom_center",
         "powerOptions": [
             {
                 "action": "logout",
@@ -809,7 +815,7 @@
         "fontDefaultScale": 1,
         "fontFixed": "Noto Sans Mono",
         "fontFixedScale": 1.05,
-        "panelBackgroundOpacity": 0.8300000000000001,
+        "panelBackgroundOpacity": 0.87,
         "panelsAttachedToBar": true,
         "scrollbarAlwaysVisible": false,
         "settingsPanelMode": "attached",
@@ -917,7 +923,7 @@
         "transitionDuration": 1500,
         "transitionEdgeSmoothness": 0.05,
         "transitionType": [
-            "fade"
+            "disc"
         ],
         "useOriginalImages": false,
         "useSolidColor": false,

@@ -1,10 +1,10 @@
 {
-  "scratchpadContent": "New behavior = feat\nBug gone = fix\nSame behavior, cleaner code = refactor\nSame behavior, faster code = perf\nOnly whitespace/formatting = style\nOnly markdown/comments = docs\nOnly tests = test\nBuild/deploy config = build or ci\nEverything else = chore\n\nwallhaven page: 187\n\nFollow the instructions, files given, help me debug these:\n\n\n\n1. In the `Panel.qml` when you first reload and open the plugin's panel you'll see the projects listed then is able to click and see what's inside that project. But after you close the panel and reopen it it's unable to click to the project\n\n2. Opening a project will try to show package's build results instead of the package's names, I want it to list all the packages were shown if you use `osc list` command, then if you click to the package it'll open another panel like how going from default panel to inside a project's panel, inside that panel it'll show the build results of that chosen package.\n\nFirst help me to fix these 2 first.",
+  "scratchpadContent": "Wallhaven page: 300\n\nChange logs for MimeApp GUI:\n1. Added `Settings.qml` with options to change BarWidget icon colors and copy IPC command directly inside the settings panel\n2. Improve the BarWidget icon by removing the uneccessary background behind the icon and to follow the development guidelines of Noctalia plugin creation\n3. Change BarWidget icon from \"file-text\" to \"file-dots\" to avoid having the same icon type with `notes-scratchpad` plugin\n4. Changed the IPC command from \"open\" to \"openPanel\" for a more clarification on the IPC command's purpose\n5. Added some new translations for the new stuff added above\n6. Changed the default icon color from mPrimary to mOnSurface and users have option to choose their own icon color inside settings panel",
   "panelWidth": 600,
   "panelHeight": 400,
   "fontSize": 14,
-  "cursorPosition": 974,
+  "cursorPosition": 757,
   "scrollPositionX": 0,
-  "scrollPositionY": 0.386411889596603,
+  "scrollPositionY": 0.26591760299625467,
   "filePath": ""
 }

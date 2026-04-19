@@ -12,9 +12,8 @@
         }
     ],
     "states": {
-        "catwalk": {
-            "enabled": true,
-            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
+        "af83f5:anime-reloaded": {
+            "enabled": false
         },
         "cloudflare-warp": {
             "enabled": true,
@@ -32,9 +31,15 @@
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
+        "obs-integration": {
+            "enabled": false
+        },
         "polkit-agent": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
+        },
+        "port-monitor": {
+            "enabled": false
         },
         "privacy-indicator": {
             "enabled": true,
@@ -53,10 +58,6 @@
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
         "tailscale": {
-            "enabled": true,
-            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
-        },
-        "timer": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },

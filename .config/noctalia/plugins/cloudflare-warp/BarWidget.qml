@@ -113,15 +113,15 @@ Item {
     ]
 
     onTriggered: action => {
-                   contextMenu.close();
-                   PanelService.closeContextMenu(screen);
+		 contextMenu.close();
+		 PanelService.closeContextMenu(screen);
 
-                   if (action === "widget-settings") {
-                     BarService.openPluginSettings(screen, pluginApi.manifest);
-                   } else if (action === "toggle-warp") {
-                     mainInstance?.toggleWarp();
-                   }
-                 }
+		 if (action === "widget-settings") {
+			 BarService.openPluginSettings(screen, pluginApi.manifest);
+		 } else if (action === "toggle-warp") {
+			 mainInstance?.toggleWarp();
+		 }
+	 }
   }
 
   MouseArea {
@@ -132,11 +132,11 @@ Item {
     acceptedButtons: Qt.LeftButton | Qt.RightButton
 
     onClicked: mouse => {
-                 if (mouse.button === Qt.LeftButton) {
-                   pluginApi?.openPanel(root.screen, root);
-                 } else if (mouse.button === Qt.RightButton) {
-                   PanelService.showContextMenu(contextMenu, root, screen);
-                 }
-               }
+		 if (mouse.button === Qt.LeftButton) {
+			 pluginApi?.openPanel(root.screen, root);
+		 } else if (mouse.button === Qt.RightButton) {
+			 PanelService.showContextMenu(contextMenu, root, screen);
+		 }
+	 }
   }
 }
