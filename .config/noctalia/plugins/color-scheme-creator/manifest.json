@@ -1,17 +1,16 @@
 {
-  "id": "mimeapp-gui",
-  "name": "MimeApp GUI",
+  "id": "color-scheme-creator",
+  "name": "Color Scheme Creator",
   "version": "1.0.4",
-  "minNoctaliaVersion": "4.1.2",
-  "author": "Mathew-D",
+  "minNoctaliaVersion": "4.5.1",
+  "author": "Noctalia Team",
+  "official": true,
   "license": "MIT",
   "repository": "https://github.com/noctalia-dev/noctalia-plugins",
-  "description": "GUI for inspecting MIME handlers and updating default applications in mimeapps.list (requires python3).",
+  "description": "Create and manage custom predefined color schemes with a visual color editor.",
   "tags": [
-    "Bar",
-    "Panel",
-    "Utility",
-    "System"
+    "Theming",
+    "Utility"
   ],
   "entryPoints": {
     "main": "Main.qml",

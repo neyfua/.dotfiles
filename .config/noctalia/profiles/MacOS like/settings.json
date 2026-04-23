@@ -85,7 +85,7 @@
                     "hideMode": "hidden",
                     "hideWhenIdle": false,
                     "id": "MediaMini",
-                    "maxWidth": 500,
+                    "maxWidth": 400,
                     "panelShowAlbumArt": true,
                     "scrollingMode": "hover",
                     "showAlbumArt": true,
@@ -122,7 +122,7 @@
                     "id": "Workspace",
                     "labelMode": "index",
                     "occupiedColor": "secondary",
-                    "pillSize": 0.47000000000000003,
+                    "pillSize": 0.45,
                     "showApplications": false,
                     "showApplicationsHover": false,
                     "showBadge": true,
@@ -223,6 +223,14 @@
                 },
                 {
                     "defaultSettings": {
+                        "connectedColor": "primary",
+                        "disconnectedColor": "none",
+                        "refreshInterval": 5000
+                    },
+                    "id": "plugin:cloudflare-warp"
+                },
+                {
+                    "defaultSettings": {
                         "activeColor": "primary",
                         "enableToast": true,
                         "hideInactive": false,
@@ -236,17 +244,25 @@
             ],
             "right": [
                 {
-                    "defaultSettings": {
-                        "connectedColor": "primary",
-                        "disconnectedColor": "none",
-                        "refreshInterval": 5000
-                    },
-                    "id": "plugin:cloudflare-warp"
+                    "deviceNativePath": "__default__",
+                    "displayMode": "graphic",
+                    "hideIfIdle": false,
+                    "hideIfNotDetected": true,
+                    "id": "Battery",
+                    "showNoctaliaPerformance": true,
+                    "showPowerProfiles": false
                 },
                 {
                     "displayMode": "alwaysHide",
                     "iconColor": "none",
                     "id": "Network",
+                    "textColor": "none"
+                },
+                {
+                    "applyToAllMonitors": false,
+                    "displayMode": "onhover",
+                    "iconColor": "none",
+                    "id": "Brightness",
                     "textColor": "none"
                 },
                 {
@@ -257,28 +273,17 @@
                     "textColor": "none"
                 },
                 {
-                    "deviceNativePath": "__default__",
-                    "displayMode": "icon-only",
-                    "hideIfIdle": false,
-                    "hideIfNotDetected": true,
-                    "id": "Battery",
-                    "showNoctaliaPerformance": true,
-                    "showPowerProfiles": false
-                },
-                {
                     "colorizeSystemIcon": "none",
                     "colorizeSystemText": "none",
                     "customIconPath": "",
                     "enableColorization": false,
-                    "icon": "search",
+                    "icon": "rocket",
                     "iconColor": "none",
                     "id": "Launcher",
                     "useDistroLogo": false
                 },
                 {
                     "blacklist": [
-                        "zero-trust-client",
-                        "*zero-*"
                     ],
                     "chevronColor": "none",
                     "colorizeIcons": false,
@@ -289,10 +294,10 @@
                     ]
                 },
                 {
-                    "clockColor": "primary",
-                    "customFont": "Inter ExtraBold",
-                    "formatHorizontal": "ddd MMM dd  h:mm AP",
-                    "formatVertical": "HH mm - dd MM",
+                    "clockColor": "none",
+                    "customFont": "Inter SemiBold",
+                    "formatHorizontal": "MMM dd  h:mmAP",
+                    "formatVertical": "",
                     "id": "Clock",
                     "tooltipFormat": "ddd, MMM dd yyyy",
                     "useCustomFont": true
@@ -433,12 +438,31 @@
     },
     "desktopWidgets": {
         "enabled": true,
-        "gridSnap": true,
+        "gridSnap": false,
         "gridSnapScale": true,
         "monitorWidgets": [
             {
                 "name": "eDP-1",
                 "widgets": [
+                    {
+                        "id": "Weather",
+                        "roundedCorners": true,
+                        "scale": 1,
+                        "showBackground": true,
+                        "x": 134,
+                        "y": 71
+                    },
+                    {
+                        "defaultSettings": {
+                            "roundedCorners": true,
+                            "showBackground": true
+                        },
+                        "id": "plugin:calendar-widget",
+                        "scale": 1,
+                        "showBackground": true,
+                        "x": 279,
+                        "y": 168
+                    },
                     {
                         "diskPath": "/",
                         "id": "SystemStat",
@@ -448,7 +472,7 @@
                         "showBackground": true,
                         "statType": "CPU",
                         "x": 24,
-                        "y": 72
+                        "y": 168
                     },
                     {
                         "diskPath": "/",
@@ -458,19 +482,8 @@
                         "scale": 1,
                         "showBackground": true,
                         "statType": "Memory",
-                        "x": 288,
-                        "y": 72
-                    },
-                    {
-                        "diskPath": "/home",
-                        "id": "SystemStat",
-                        "layout": "side",
-                        "roundedCorners": true,
-                        "scale": 1,
-                        "showBackground": true,
-                        "statType": "Disk",
                         "x": 24,
-                        "y": 216
+                        "y": 303
                     }
                 ]
             }
@@ -511,7 +524,6 @@
             "zalo-for-linux",
             "code",
             "antigravity",
-            "com.google.AndroidStudio",
             "onlyoffice-desktopeditors",
             "org.telegram.desktop",
             "org.torproject.torbrowser-launcher",
@@ -813,7 +825,7 @@
         "boxBorderEnabled": false,
         "fontDefault": "Inter Medium",
         "fontDefaultScale": 1,
-        "fontFixed": "Noto Sans Mono",
+        "fontFixed": "IBM Plex Mono SemiBold",
         "fontFixedScale": 1.05,
         "panelBackgroundOpacity": 0.87,
         "panelsAttachedToBar": true,

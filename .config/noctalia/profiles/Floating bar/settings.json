@@ -20,7 +20,7 @@
         "pinnedApps": [
         ],
         "position": "follow_bar",
-        "screenshotAnnotationTool": "satty -f -",
+        "screenshotAnnotationTool": "waytator",
         "showCategories": false,
         "showIconBackground": true,
         "sortByMostUsed": true,
@@ -523,7 +523,7 @@
         "autoSchedule": true,
         "dayTemp": "6500",
         "enabled": true,
-        "forced": true,
+        "forced": false,
         "manualSunrise": "06:30",
         "manualSunset": "18:30",
         "nightTemp": "6000"

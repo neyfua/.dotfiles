@@ -4,24 +4,18 @@
             "enabled": true,
             "name": "Noctalia Plugins",
             "url": "https://github.com/noctalia-dev/noctalia-plugins"
-        },
-        {
-            "enabled": true,
-            "name": "Slot Machine",
-            "url": "https://github.com/neyfua/slot-machine.git"
-        },
-        {
-            "enabled": true,
-            "name": "Anime Reload",
-            "url": "https://github.com/demencia89/noctalia-shell-animereloaded-plugin.git"
         }
     ],
     "states": {
-        "af83f5:anime-reloaded": {
+        "calendar-widget": {
             "enabled": true,
-            "sourceUrl": "https://github.com/demencia89/noctalia-shell-animereloaded-plugin.git"
+            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
         "cloudflare-warp": {
+            "enabled": true,
+            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
+        },
+        "color-scheme-creator": {
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
@@ -39,6 +33,10 @@
         },
         "obs-integration": {
             "enabled": false,
+            "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
+        },
+        "plugin-manager": {
+            "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
         "polkit-agent": {
@@ -61,8 +59,8 @@
             "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
-        "slot-machine": {
-            "enabled": false,
+        "sticky-notes": {
+            "enabled": true,
             "sourceUrl": "https://github.com/noctalia-dev/noctalia-plugins"
         },
         "tailscale": {

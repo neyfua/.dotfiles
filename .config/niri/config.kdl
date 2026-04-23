@@ -27,6 +27,7 @@ input {
 }
 
 output "eDP-1" {
+	mode "1920x1080@59.999"
 	scale 1.25
 }
 
@@ -128,7 +129,7 @@ environment {
 
 		// Java
 	_JAVA_AWT_WM_NONREPARENTING "1"
-	NO_AT_BRIDGE "1"
+	// NO_AT_BRIDGE "1"
 
 		// QT
 	QT_QPA_PLATFORM "wayland"
@@ -243,6 +244,11 @@ blur {
 }
 
 layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true
+}
+
+layer-rule {
   match namespace="^noctalia-(background|launcher-overlay|desktop-widgets|dock)-.*$"
   background-effect {
     xray false
@@ -268,7 +274,7 @@ window-rule {
 window-rule {
 	match app-id="^code$"
 	match app-id="^dev.zed.Zed$"
-	match app-id="^jetbrains-studio$"
+	match app-id="^jetbrains(.*)$"
 	match app-id="^antigravity$"
 
 	open-on-workspace "code"
@@ -351,7 +357,7 @@ window-rule {
 	match app-id="^org.kde.kdenlive$" title="^(Splash Screen)(.*)$"
 	match app-id="^org.vinegarhq.Sober$" title="^Servers$"
 	match app-id="^org.vinegarhq.Sober$" title="^Buy Robux$"
-	match app-id="^dev.waytator.Waytator$"
+	match app-id="^dev.faetalize.waytator$"
 
 	match title="^About$"
 	match title="^Library$"
@@ -476,6 +482,13 @@ window-rule {
 	open-maximized-to-edges false
 }
 
+window-rule {
+	match app-id="^jetbrains(.*)$" title="^$" // wayland
+	match app-id="^jetbrains(.*)$" title="^ $" // X11
+
+	open-focused false
+}
+
 binds {
 	// Terminal
 	Mod+Q repeat=false { spawn "foot"; }
@@ -510,7 +523,6 @@ binds {
 	Alt+Shift+T repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:todo" "togglePanel";}
 	Alt+Z repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
 	Alt+I repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:ip-monitor" "toggle"; }
-	Alt+Shift+Slash repeat=false       { spawn-sh "qs -c noctalia-shell ipc call plugin:slot-machine spin;qs -c noctalia-shell ipc call plugin:slot-machine reset"; }
 	Alt+M repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:mimeapp-gui" "openPanel"; }
 	Alt+O repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:shell-profiles" "toggleProfiles"; }
 	Alt+P repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:port-monitor" "toggle"; }
