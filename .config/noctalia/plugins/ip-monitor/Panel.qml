@@ -2,10 +2,10 @@ import QtQuick
 import QtQuick.Layouts
 import Quickshell
 import Quickshell.Io
-import "." as Local
 import qs.Commons
 import qs.Services.UI
 import qs.Widgets
+import "." as Local
 
 // Panel Component
 Item {

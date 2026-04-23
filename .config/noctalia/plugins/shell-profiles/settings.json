@@ -1,9 +1,9 @@
 {
   "profilesDir": "",
-  "icon": "edit-circle",
-  "iconColor": "none",
+  "icon": "wand",
+  "iconColor": "primary",
   "includeWallpapers": true,
-  "lastAppliedProfile": "Left bar",
-  "backupEnabled": false,
-  "backupCount": 15
+  "lastAppliedProfile": "Window alike",
+  "backupEnabled": true,
+  "backupCount": 5
 }

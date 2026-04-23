@@ -7,9 +7,10 @@
   "hideMullvadExitNodes": true,
   "terminalCommand": "foot",
   "sshUsername": "khang",
-  "pingCount": 3,
-  "defaultPeerAction": "ssh",
+  "pingCount": 5,
+  "defaultPeerAction": "copy-ip",
   "taildropEnabled": true,
   "taildropDownloadDir": "~/Downloads",
-  "taildropReceiveMode": "pkexec"
+  "taildropReceiveMode": "pkexec",
+  "loginServer": ""
 }

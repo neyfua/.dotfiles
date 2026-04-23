@@ -2,7 +2,9 @@
 # VERSION: 3.0
 SETUVAR --export DOTNET_ROOT:/home/neyfua/\x2edotnet
 SETUVAR --export EDITOR:nvim
+SETUVAR --export GLFW_IM_MODULE:ibus
 SETUVAR --export GTK_IM_MODULE:fcitx
 SETUVAR --export QT_IM_MODULE:fcitx
+SETUVAR --export QT_IM_MODULES:wayland\x3bfcitx
 SETUVAR --export XMODIFIERS:\x40im\x3dfcitx
 SETUVAR __fish_initialized:4300

@@ -1,9 +1,9 @@
 import QtQuick
 import Quickshell
 import Quickshell.Io
-import "." as Local
 import qs.Commons
 import qs.Services.UI
+import "." as Local
 
 Item {
   id: root

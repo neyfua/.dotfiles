@@ -1,10 +1,10 @@
 {
-  "scratchpadContent": "Wallhaven page: 300\n\nChange logs for MimeApp GUI:\n1. Added `Settings.qml` with options to change BarWidget icon colors and copy IPC command directly inside the settings panel\n2. Improve the BarWidget icon by removing the uneccessary background behind the icon and to follow the development guidelines of Noctalia plugin creation\n3. Change BarWidget icon from \"file-text\" to \"file-dots\" to avoid having the same icon type with `notes-scratchpad` plugin\n4. Changed the IPC command from \"open\" to \"openPanel\" for a more clarification on the IPC command's purpose\n5. Added some new translations for the new stuff added above\n6. Changed the default icon color from mPrimary to mOnSurface and users have option to choose their own icon color inside settings panel\n\n17.989.000\n\n17.763.000",
+  "scratchpadContent": "Wallhaven page: 300",
   "panelWidth": 600,
   "panelHeight": 400,
   "fontSize": 14,
-  "cursorPosition": 759,
+  "cursorPosition": 19,
   "scrollPositionX": 0,
-  "scrollPositionY": 0.1373134328358209,
+  "scrollPositionY": 0,
   "filePath": ""
 }

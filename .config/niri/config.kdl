@@ -14,11 +14,11 @@ input {
 		accel-profile "flat"
 		scroll-factor 0.5
 		scroll-method "two-finger"
-		// disabled-on-external-mouse
+		disabled-on-external-mouse
 	}
 
 	mouse {
-		accel-speed -0.1
+		accel-speed 0
 		accel-profile "flat"
 	}
 
@@ -27,8 +27,8 @@ input {
 }
 
 output "eDP-1" {
-	mode "1920x1080@59.999"
-	scale 1.25
+	mode "2240x1400@60.002"
+	scale 1.5
 }
 
 layout {
@@ -137,7 +137,7 @@ environment {
 	// QT_QPA_PLATFORMTHEME "gtk3"
 	// QT_SCALE_FACTOR "1.25"
 	// QT_MEDIA_BACKEND "gstreamer"
-	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+	// QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 	// QT_SCALE_FACTOR_ROUNDING_POLICY "RoundPreferFloor"
 
 		// Quickshell
@@ -227,6 +227,10 @@ animations {
 			return fall_and_rotate(coords_geo, size_geo);
 		}"
 	}
+}
+
+switch-events {
+	lid-close { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
 }
 
 workspace "code"
@@ -525,18 +529,16 @@ binds {
 	Alt+I repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:ip-monitor" "toggle"; }
 	Alt+M repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:mimeapp-gui" "openPanel"; }
 	Alt+O repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:shell-profiles" "toggleProfiles"; }
-	Alt+P repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:port-monitor" "toggle"; }
-	Alt+B repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:obs-integration" "openPanel"; }
-	Alt+Slash repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:plugin-manager" "toggle"; }
+	// Alt+Slash repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:plugin-manager" "toggle"; }
 	Alt+N repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:sticky-notes" "toggle"; }
 
 	// System controls
-	XF86AudioRaiseVolume allow-when-locked=true cooldown-ms=50  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
-	XF86AudioLowerVolume allow-when-locked=true cooldown-ms=50  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+	XF86AudioRaiseVolume allow-when-locked=true cooldown-ms=100  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
+	XF86AudioLowerVolume allow-when-locked=true cooldown-ms=100  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
 	XF86AudioMute allow-when-locked=true repeat=false            { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
 	XF86AudioMicMute allow-when-locked=true repeat=false         { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
-	XF86MonBrightnessUp allow-when-locked=true cooldown-ms=50   {	spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-	XF86MonBrightnessDown allow-when-locked=true cooldown-ms=50 { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+	XF86MonBrightnessUp allow-when-locked=true cooldown-ms=100   {	spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+	XF86MonBrightnessDown allow-when-locked=true cooldown-ms=100 { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
 
 	// Close window
 	Mod+C repeat=false { close-window; }

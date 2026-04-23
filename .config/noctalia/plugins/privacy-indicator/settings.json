@@ -6,5 +6,5 @@
   "activeColor": "primary",
   "inactiveColor": "none",
   "micFilterRegex": "",
-  "camFilterRegex": "vesktop"
+  "camFilterRegex": ""
 }
