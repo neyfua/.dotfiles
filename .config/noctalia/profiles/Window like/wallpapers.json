@@ -1,0 +1,9 @@
+{
+  "screens": [
+    {
+      "name": "eDP-1",
+      "light": "/home/neyfua/Pictures/Wallpapers/MC_snow_pine_forest.png",
+      "dark": "/home/neyfua/Pictures/Wallpapers/MC_snow_pine_forest.png"
+    }
+  ]
+}

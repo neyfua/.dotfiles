@@ -1,0 +1,9 @@
+{
+  "screens": [
+    {
+      "name": "eDP-1",
+      "light": "/home/neyfua/Pictures/Wallpapers/building.jpg",
+      "dark": "/home/neyfua/Pictures/Wallpapers/building.jpg"
+    }
+  ]
+}
