@@ -408,7 +408,7 @@
     },
     "desktopWidgets": {
         "enabled": true,
-        "gridSnap": true,
+        "gridSnap": false,
         "gridSnapScale": true,
         "monitorWidgets": [
             {
@@ -422,19 +422,8 @@
                         "scale": 1,
                         "showBackground": true,
                         "statType": "CPU",
-                        "x": 31,
-                        "y": 93
-                    },
-                    {
-                        "diskPath": "/",
-                        "id": "SystemStat",
-                        "layout": "side",
-                        "roundedCorners": true,
-                        "scale": 1,
-                        "showBackground": true,
-                        "statType": "Memory",
-                        "x": 279,
-                        "y": 93
+                        "x": 14,
+                        "y": 61
                     },
                     {
                         "diskPath": "/",
@@ -444,8 +433,19 @@
                         "scale": 1,
                         "showBackground": true,
                         "statType": "Disk",
-                        "x": 31,
-                        "y": 217
+                        "x": 14,
+                        "y": 191
+                    },
+                    {
+                        "diskPath": "/",
+                        "id": "SystemStat",
+                        "layout": "side",
+                        "roundedCorners": true,
+                        "scale": 1,
+                        "showBackground": true,
+                        "statType": "Memory",
+                        "x": 263,
+                        "y": 61
                     },
                     {
                         "diskPath": "/",
@@ -455,8 +455,8 @@
                         "scale": 1,
                         "showBackground": true,
                         "statType": "GPU",
-                        "x": 279,
-                        "y": 217
+                        "x": 263,
+                        "y": 191
                     }
                 ]
             }
@@ -488,11 +488,6 @@
         ],
         "onlySameOutput": true,
         "pinnedApps": [
-            "firefox",
-            "vesktop",
-            "com.spotify.Client",
-            "org.telegram.desktop",
-            "com.google.AndroidStudio"
         ],
         "pinnedStatic": true,
         "position": "bottom",
@@ -510,7 +505,7 @@
         "avatarImage": "/home/neyfua/.face.gif",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
-        "clockStyle": "analog",
+        "clockStyle": "digital",
         "compactLockScreen": false,
         "dimmerOpacity": 0.2,
         "enableBlurBehind": true,
@@ -784,7 +779,7 @@
         "fontDefaultScale": 1,
         "fontFixed": "IBM Plex Mono SemiBold",
         "fontFixedScale": 1,
-        "panelBackgroundOpacity": 0.87,
+        "panelBackgroundOpacity": 0.9,
         "panelsAttachedToBar": true,
         "scrollbarAlwaysVisible": false,
         "settingsPanelMode": "attached",

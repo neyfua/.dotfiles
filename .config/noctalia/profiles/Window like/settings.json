@@ -116,7 +116,7 @@
                     "id": "Workspace",
                     "labelMode": "index",
                     "occupiedColor": "secondary",
-                    "pillSize": 0.5,
+                    "pillSize": 0.6,
                     "showApplications": false,
                     "showApplicationsHover": false,
                     "showBadge": true,
@@ -134,7 +134,7 @@
                     "showPinnedApps": false,
                     "showTitle": true,
                     "smartWidth": true,
-                    "titleWidth": 150
+                    "titleWidth": 160
                 }
             ],
             "right": [
@@ -389,12 +389,12 @@
         "allowPanelsOnScreenWithoutBar": true,
         "allowPasswordWithFprintd": false,
         "animationDisabled": false,
-        "animationSpeed": 1.25,
+        "animationSpeed": 1.5,
         "autoStartAuth": false,
         "avatarImage": "/home/neyfua/.face.gif",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
-        "clockStyle": "analog",
+        "clockStyle": "digital",
         "compactLockScreen": false,
         "dimmerOpacity": 0.2,
         "enableBlurBehind": false,

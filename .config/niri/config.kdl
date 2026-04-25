@@ -12,7 +12,7 @@ input {
 		natural-scroll
 		accel-speed 0.8
 		accel-profile "flat"
-		scroll-factor 0.3
+		scroll-factor 0.4
 		scroll-method "two-finger"
 		disabled-on-external-mouse
 	}
@@ -109,7 +109,7 @@ recent-windows {
 
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
 spawn-at-startup "fcitx5"
-spawn-at-startup "kdeconnectd"
+spawn-at-startup "wl-clip-persist" "--clipboard" "both"
 spawn-at-startup "qs" "-c" "noctalia-shell" "-n"
 
 prefer-no-csd
@@ -119,13 +119,13 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 environment {
 	MOZ_ENABLE_WAYLAND "1"
 	PROTON_ENABLE_WAYLAND "1"
-	ELECTRON_OZONE_PLATFORM_HINT "wayland"
+	ELECTRON_OZONE_PLATFORM_HINT "auto"
 
-	ECORE_EVAS_ENGINE "wayland-egl"
-	ELM_ENGINE "wayland_egl"
-	SDL_VIDEODRIVER "wayland"
-	GDK_BACKEND "wayland"
-	CLUTTER_BACKEND "wayland"
+	// ECORE_EVAS_ENGINE "wayland-egl"
+	// ELM_ENGINE "wayland_egl"
+	// SDL_VIDEODRIVER "wayland"
+	// GDK_BACKEND "wayland"
+	// CLUTTER_BACKEND "wayland"
 
 		// Java
 	_JAVA_AWT_WM_NONREPARENTING "1"
@@ -272,7 +272,7 @@ window-rule {
 window-rule {
 	match is-active=false
 
-	opacity 0.8
+	opacity 0.95
 }
 
 window-rule {
@@ -362,6 +362,7 @@ window-rule {
 	match app-id="^org.vinegarhq.Sober$" title="^Servers$"
 	match app-id="^org.vinegarhq.Sober$" title="^Buy Robux$"
 	match app-id="^dev.faetalize.waytator$"
+	match app-id="^DesktopEditors$" title="^Open Document$"
 
 	match title="^About$"
 	match title="^Library$"

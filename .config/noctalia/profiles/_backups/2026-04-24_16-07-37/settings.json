@@ -134,7 +134,7 @@
                     "showPinnedApps": false,
                     "showTitle": true,
                     "smartWidth": true,
-                    "titleWidth": 150
+                    "titleWidth": 160
                 }
             ],
             "right": [
@@ -344,7 +344,7 @@
                         "roundedCorners": true,
                         "scale": 1,
                         "showBackground": true,
-                        "x": 1178,
+                        "x": 31,
                         "y": 31
                     }
                 ]
@@ -394,7 +394,7 @@
         "avatarImage": "/home/neyfua/.face.gif",
         "boxRadiusRatio": 1,
         "clockFormat": "hh\\nmm",
-        "clockStyle": "analog",
+        "clockStyle": "digital",
         "compactLockScreen": false,
         "dimmerOpacity": 0.2,
         "enableBlurBehind": false,
@@ -678,7 +678,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/neyfua/Pictures/.r",
+        "directory": "/home/neyfua/Pictures/Wallpapers",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [

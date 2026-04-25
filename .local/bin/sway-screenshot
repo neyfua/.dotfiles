@@ -41,9 +41,9 @@ function send_notification() {
     if [ $SILENT -eq 1 ]; then
         return 0
     fi
-    notify-send "Screenshot saved" \
-        "Image saved in <i>${1}</i> and copied to the clipboard." \
-        -i "${1}"
+    local title="${2:-Screenshot saved}"
+    local body="${3:-Image saved in <i>${1}</i> and copied to the clipboard.}"
+    notify-send "$title" "$body" -i "${1}"
 }
 
 function Convert() {
@@ -71,31 +71,29 @@ function save_geometry() {
     if [ $CLIPBOARD -eq 0 ]; then
         mkdir -p "$SAVEDIR"
         grim -g "${1}" "$SAVE_FULLPATH"
-        local output="$SAVE_FULLPATH"
-        # Trim transparent pixels, in case the window was floating and partially
-        # outside the monitor
-        Convert $output -trim +repage $output
-        wl-copy < "$output"
-        send_notification $output
+        wl-copy < "$SAVE_FULLPATH"
+        send_notification "$SAVE_FULLPATH"
         [ -z "$COMMAND" ] || {
-            "$COMMAND" "$output"
+            "$COMMAND" "$SAVE_FULLPATH"
         }
     else
-        wl-copy < <(grim -g "${1}" - | Convert - -trim +repage -)
+        grim -g "${1}" - | wl-copy
+        send_notification "" "Screenshot copied" "Screenshot copied to clipboard."
     fi
 }
 
 function begin_grab() {
     local option=$1
+    local geometry
     case $option in
         output)
-            local geometry=`grab_output`
+            geometry=$(grab_output)
             ;;
         region)
-            local geometry=`grab_region`
+            geometry=$(grab_region)
             ;;
         window)
-            local geometry=`grab_window`
+            geometry=$(grab_window)
             ;;
     esac
     save_geometry "${geometry}"
@@ -108,20 +106,21 @@ function grab_output() {
 function grab_region() {
     # Freeze the screen before selecting
     freezescreen
-    
+
     # Now let the user select the region on the frozen screen
-    local geometry=$(slurp -d)
+    local geometry
+    geometry=$(slurp -d)
     local slurp_exit=$?
-    
+
     # Kill hyprpicker to unfreeze
     killhyprpicker
-    
+
     # Check if user cancelled the selection
     if [ $slurp_exit -ne 0 ]; then
         Print "User cancelled selection\n"
         exit 1
     fi
-    
+
     echo "$geometry"
 }
 
@@ -132,23 +131,24 @@ function grab_window() {
     # through stdin
     local boxes="$(echo $clients | jq -r '.[] | "\(.rect.x),\(.rect.y) \(.rect.width)x\(.rect.height) \(.name)"')"
     Print "Boxes:\n%s\n" "$boxes"
-    
+
     # Freeze the screen before selecting window
     freezescreen
-    
+
     # Now let the user select the window on the frozen screen
-    local geometry=$(slurp -r <<< "$boxes")
+    local geometry
+    geometry=$(slurp -r <<< "$boxes")
     local slurp_exit=$?
-    
+
     # Kill hyprpicker to unfreeze
     killhyprpicker
-    
+
     # Check if user cancelled the selection
     if [ $slurp_exit -ne 0 ]; then
         Print "User cancelled selection\n"
         exit 1
     fi
-    
+
     echo "$geometry"
 }
 

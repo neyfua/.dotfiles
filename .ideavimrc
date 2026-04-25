@@ -7,7 +7,7 @@
 "" -- Suggested options --
 " Show a few lines of context around the cursor. Note that this makes the
 " text scroll if you mouse-click near the start or end of the window.
-set scrolloff=7
+set scrolloff=5
 
 " Do incremental searching.
 set incsearch
@@ -27,6 +27,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'matze/vim-move'
 
 " vim-surround plugin
 nmap sa ys
@@ -34,9 +35,22 @@ vmap sa S
 nmap sd ds
 nmap sr cs
 
+" vim-move
+nnoremap <A-C-Up> :m .-2<CR>==
+nnoremap <A-C-Down> :m .+1<CR>==
+nnoremap <A-C-Left> <<
+nnoremap <A-C-Right> >>
+vnoremap <A-C-Up> :m '<-2<CR>gv=gv
+vnoremap <A-C-Down> :m '>+1<CR>gv=gv
+vnoremap <A-C-Left> <gv
+vnoremap <A-C-Right> >gv
+
+" keybindings
+map <C-a> ggVG
+
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
 "" Map \r to the Reformat Code action
-"map \r <Action>(ReformatCode)
+map \r <Action>(ReformatCode)
 
 "" Map <leader>d to start debug
 "map <leader>d <Action>(Debug)
