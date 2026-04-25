@@ -122,7 +122,7 @@
                     "id": "Workspace",
                     "labelMode": "index",
                     "occupiedColor": "secondary",
-                    "pillSize": 0.4,
+                    "pillSize": 0.45,
                     "showApplications": false,
                     "showApplicationsHover": false,
                     "showBadge": true,

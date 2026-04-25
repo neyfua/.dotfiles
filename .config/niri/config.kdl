@@ -31,6 +31,11 @@ output "eDP-1" {
 	scale 1.5
 }
 
+switch-events {
+	lid-close { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+	lid-open { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+}
+
 layout {
 	// gaps 12
 	center-focused-column "never"
@@ -70,6 +75,12 @@ layout {
 	}
 }
 
+workspace "code"
+workspace "web"
+workspace "chat"
+workspace "music"
+workspace "misc"
+
 gestures {
 	dnd-edge-view-scroll {
 		trigger-width 10
@@ -106,7 +117,6 @@ recent-windows {
 
 // gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
 // gsettings set org.gnome.desktop.wm.preferences button-layout ':'
-
 spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
 spawn-at-startup "fcitx5"
 spawn-at-startup "wl-clip-persist" "--clipboard" "both"
@@ -119,13 +129,13 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 environment {
 	MOZ_ENABLE_WAYLAND "1"
 	PROTON_ENABLE_WAYLAND "1"
-	ELECTRON_OZONE_PLATFORM_HINT "auto"
+	ELECTRON_OZONE_PLATFORM_HINT "wayland"
 
-	// ECORE_EVAS_ENGINE "wayland-egl"
-	// ELM_ENGINE "wayland_egl"
-	// SDL_VIDEODRIVER "wayland"
-	// GDK_BACKEND "wayland"
-	// CLUTTER_BACKEND "wayland"
+	ECORE_EVAS_ENGINE "wayland-egl"
+	ELM_ENGINE "wayland_egl"
+	SDL_VIDEODRIVER "wayland"
+	GDK_BACKEND "wayland"
+	CLUTTER_BACKEND "wayland"
 
 		// Java
 	_JAVA_AWT_WM_NONREPARENTING "1"
@@ -134,14 +144,7 @@ environment {
 		// QT
 	QT_QPA_PLATFORM "wayland"
 	QT_QPA_PLATFORMTHEME "qt6ct"
-	// QT_QPA_PLATFORMTHEME "gtk3"
 	// QT_SCALE_FACTOR "1.25"
-	// QT_MEDIA_BACKEND "gstreamer"
-	// QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
-	// QT_SCALE_FACTOR_ROUNDING_POLICY "RoundPreferFloor"
-
-		// Quickshell
-	// QS_ICON_THEME "RoséPine"
 }
 
 cursor {
@@ -165,6 +168,13 @@ hotkey-overlay {
 	skip-at-startup
 }
 
+blur {
+	passes 3
+	offset 3.0
+	noise 0.02
+	saturation 1.5
+}
+
 animations {
 	// off
 	slowdown 0.7
@@ -173,15 +183,15 @@ animations {
 
 	// horizontal-view-movement { spring damping-ratio=1.0 stiffness=550 epsilon=5e-5; }
 
-	// window-open {
-	// 	duration-ms 500
-	// 	curve "ease-out-expo"
-	// }
+	window-open {
+		duration-ms 700
+		curve "ease-out-expo"
+	}
 
-	// window-close {
-	// 	duration-ms 500
-	// 	curve "ease-out-quad"
-	// }
+	window-close {
+		duration-ms 700
+		curve "ease-out-quad"
+	}
 
 	// window-open {
 	// 	duration-ms 300
@@ -229,31 +239,13 @@ animations {
 	// }
 }
 
-switch-events {
-	lid-close { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
-	lid-open { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
-}
-
-blur {
-	passes 2
-	offset 3.0
-	noise 0.03
-	saturation 1.0
-}
-
-workspace "code"
-workspace "web"
-workspace "chat"
-workspace "music"
-workspace "misc"
-
 layer-rule {
 	match namespace="^noctalia-overview*"
 	place-within-backdrop true
 }
 
 layer-rule {
-	match namespace="^noctalia-(background|launcher-overlay|desktop-widgets|dock)-.*$"
+  match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
 	background-effect {
 		xray false
 	}
@@ -276,7 +268,7 @@ window-rule {
 }
 
 window-rule {
-	match app-id="^code$|^(.*)Zed$|^jetbrains(.*)$|^antigravity$"
+	match app-id="code|^(.*)Zed$|^jetbrains(.*)$|antigravity"
 
 	default-column-width { proportion 1.0; }
 	open-on-workspace "code"
@@ -284,7 +276,7 @@ window-rule {
 }
 
 window-rule {
-	match app-id="^firefox(.*)$|Tor Browser"
+	match app-id="firefox|Tor Browser"
 
 	default-column-width { proportion 1.0; }
 	open-on-workspace "web"
@@ -308,7 +300,7 @@ window-rule {
 }
 
 window-rule {
-	match app-id="^(.*)kdenlive$" title="Kdenlive"
+	match app-id="^(.*)kdenlive$" title="^Kdenlive$"
 	match title="^OBS(.*)$"
 
 	default-column-width { proportion 1.0; }
@@ -452,9 +444,8 @@ binds {
 	Alt+Z repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
 	Alt+I repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:ip-monitor" "toggle"; }
 	Alt+M repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:mimeapp-gui" "openPanel"; }
-	Alt+O repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:shell-profiles" "toggleProfiles"; }
-	// Alt+Slash repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:plugin-manager" "toggle"; }
-	Alt+N repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:sticky-notes" "toggle"; }
+	Alt+O repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:shell-profiles" "toggleProfiles"; }
+	Alt+N repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:sticky-notes" "toggle"; }
 
 	// System controls
 	XF86AudioRaiseVolume allow-when-locked=true cooldown-ms=100  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
@@ -506,17 +497,6 @@ binds {
 	Mod+9 repeat=false { focus-workspace 9; }
 	Mod+0 repeat=false { focus-workspace 10; }
 
-	// Mod+1 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 1 && sleep 0.15 && niri msg action toggle-overview"; }
-	// Mod+2 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 2 && sleep 0.15 && niri msg action toggle-overview"; }
-	// Mod+3 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 3 && sleep 0.15 && niri msg action toggle-overview"; }
-	// Mod+4 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 4 && sleep 0.15 && niri msg action toggle-overview"; }
-	// Mod+5 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 5 && sleep 0.15 && niri msg action toggle-overview"; }
-	// Mod+6 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 6 && sleep 0.15 && niri msg action toggle-overview"; }
-	// Mod+7 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 7 && sleep 0.15 && niri msg action toggle-overview"; }
-	// Mod+8 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 8 && sleep 0.15 && niri msg action toggle-overview"; }
-	// Mod+9 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 9 && sleep 0.15 && niri msg action toggle-overview"; }
-	// Mod+0 cooldown-ms=500 { spawn-sh "niri msg action toggle-overview && sleep 0.15 && niri msg action focus-workspace 10 && sleep 0.15 && niri msg action toggle-overview"; }
-
 	Mod+Ctrl+1 repeat=false { move-column-to-workspace 1; }
 	Mod+Ctrl+2 repeat=false { move-column-to-workspace 2; }
 	Mod+Ctrl+3 repeat=false { move-column-to-workspace 3; }
@@ -563,11 +543,11 @@ binds {
 
 debug {
 	// disable-cursor-plane
-	render-drm-device "/dev/dri/renderD128"
-	ignore-drm-device "/dev/dri/renderD129"
+	// render-drm-device "/dev/dri/renderD128"
+	// ignore-drm-device "/dev/dri/renderD129"
 	// emulate-zero-presentation-time
 	// disable-resize-throttling
 	// disable-transactions
 	// skip-cursor-only-updates-during-vrr
-	// honor-xdg-activation-with-invalid-serial
+	honor-xdg-activation-with-invalid-serial
 }
