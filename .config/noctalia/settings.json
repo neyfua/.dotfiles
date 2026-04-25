@@ -29,8 +29,7 @@
     },
     "audio": {
         "mprisBlacklist": [
-            "firefox",
-            "Tor Browser"
+            "firefox"
         ],
         "preferredPlayer": "spotify, Spotify",
         "spectrumFrameRate": 60,
@@ -85,7 +84,7 @@
                     "hideMode": "hidden",
                     "hideWhenIdle": false,
                     "id": "MediaMini",
-                    "maxWidth": 500,
+                    "maxWidth": 590,
                     "panelShowAlbumArt": true,
                     "scrollingMode": "hover",
                     "showAlbumArt": true,
@@ -368,8 +367,8 @@
                         "id": "Weather",
                         "roundedCorners": true,
                         "scale": 1,
-                        "showBackground": true,
-                        "x": 31,
+                        "showBackground": false,
+                        "x": 1178,
                         "y": 31
                     }
                 ]
@@ -736,7 +735,7 @@
         "wallhavenApiKey": "",
         "wallhavenCategories": "110",
         "wallhavenOrder": "desc",
-        "wallhavenPurity": "110",
+        "wallhavenPurity": "100",
         "wallhavenQuery": "",
         "wallhavenRatios": "landscape",
         "wallhavenResolutionHeight": "",

@@ -48,6 +48,8 @@ exec qs -c noctalia-shell -n
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 output "BOE 0x0C03 Unknown" scale 1.5
+# Lid close event
+bindswitch lid:toggle exec qs -c noctalia-shell ipc call lockScreen lock
 
 ### Idle configuration
 #
@@ -77,8 +79,8 @@ output "BOE 0x0C03 Unknown" scale 1.5
 		}
 
 		input type:keyboard {
-			repeat_delay 250
-			repeat_rate 50
+			repeat_delay 200
+			repeat_rate 40
 			xkb_numlock enabled
 		}
 
