@@ -11,7 +11,7 @@
   "showCursor": true,
   "copyToClipboard": false,
   "audioSource": "default_output",
-  "videoSource": "screen",
+  "videoSource": "portal",
   "resolution": "original",
   "replayEnabled": false,
   "replayDuration": "30",

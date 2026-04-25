@@ -100,7 +100,7 @@ function begin_grab() {
 }
 
 function grab_output() {
-    slurp -or
+    swaymsg -t get_outputs | jq -r '.[] | select(.focused) | "\(.rect.x),\(.rect.y) \(.rect.width)x\(.rect.height)"'
 }
 
 function grab_region() {

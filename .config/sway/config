@@ -155,13 +155,9 @@ output "BOE 0x0C03 Unknown" scale 1.5
 		# Media keys
 		bindsym XF86AudioRaiseVolume exec qs -c noctalia-shell ipc call volume increase
 		bindsym XF86AudioLowerVolume exec qs -c noctalia-shell ipc call volume decrease
-		bindsym XF86AudioMute exec qs -c noctalia-shell ipc call volume muteOutput
-		bindsym XF86AudioMicMute exec qs -c noctalia-shell ipc call volume muteInput
 		bindsym XF86MonBrightnessUp exec qs -c noctalia-shell ipc call brightness increase
 		bindsym XF86MonBrightnessDown exec qs -c noctalia-shell ipc call brightness decrease
-		# bindsym --no-warn XF86AudioPlay exec qs -c noctalia-shell ipc call media playPause
-		# bindsym --no-warn XF86AudioNext exec qs -c noctalia-shell ipc call media next
-		# bindsym --no-warn XF86AudioPrev exec qs -c noctalia-shell ipc call media previous
+		bindsym --no-warn XF86AudioPlay exec qs -c noctalia-shell ipc call media playPause
 
 		# Screenshot
 		bindsym Print exec sway-screenshot -m output -o $HOME/Pictures/Screenshots
