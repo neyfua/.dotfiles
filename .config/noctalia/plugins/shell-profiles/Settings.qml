@@ -75,7 +75,7 @@ ColumnLayout {
   // ── Widget icon ──────────────────────────────────────────────────────────
 
   RowLayout {
-    spacing: Style.marginM
+    spacing: Style.marginM ?? 8
 
     NLabel {
       label: pluginApi?.tr("settings.icon-label")
@@ -85,7 +85,7 @@ ColumnLayout {
     NIcon {
       Layout.alignment: Qt.AlignVCenter
       icon: root.editIcon || "bookmark"
-      pointSize: Style.fontSizeXXL * 2.5
+      pointSize: Style?.fontSizeXXXL ?? 24
       color: Color.resolveColorKeyOptional(root.editIconColor).a > 0
         ? Color.resolveColorKeyOptional(root.editIconColor)
         : Color.mOnSurface

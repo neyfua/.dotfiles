@@ -223,95 +223,97 @@ NBox {
     }
   }
 
-  // ── Row content ────────────────────────────────────────
+// ── Row content ────────────────────────────────────────
 
-  NIconButton {
-    id: dotsBtn
-    anchors.right: parent.right
-    anchors.verticalCenter: parent.verticalCenter
-    anchors.rightMargin: Style.marginM
-    icon: "dots-vertical"
-    tooltipText: pluginApi?.tr("panel.more-actions")
-    baseSize: Math.round(Style.fontSizeXXL * Style.uiScaleRatio)
-    colorBg: "transparent"
-    colorFg: Color.mOnSurfaceVariant
-    onClicked: contextMenu.openAtItem(this, width / 2, height / 2)
-  }
-
-  NIconButton {
-    id: wallpaperToggle
-    anchors.right: dotsBtn.left
-    anchors.verticalCenter: parent.verticalCenter
-    anchors.rightMargin: Style.marginXS
-    icon: "photo"
-    tooltipText: pluginApi?.tr("panel.include-wallpapers")
-    baseSize: Math.round(Style.fontSizeXXL * Style.uiScaleRatio)
-    colorBg: "transparent"
-    colorFg: root.includeWallpapers ? Color.mPrimary : Color.mOnSurfaceVariant
-    onClicked: root.includeWallpapers = !root.includeWallpapers
-  }
-
-  NButton {
-    id: applyBtn
-    anchors.right: wallpaperToggle.left
-    anchors.verticalCenter: parent.verticalCenter
-    anchors.rightMargin: Style.marginS
-    text: pluginApi?.tr("panel.action-apply")
-    icon: "download"
-    enabled: !(service?.isBusy ?? false)
-    onClicked: {
-      service?.applyProfile(root.profileName, root.includeWallpapers)
-      if (root.panelRef)
-        pluginApi?.closePanel(pluginApi.panelOpenScreen)
-    }
-  }
-
-  // Active check icon
-  NIcon {
-    id: activeIcon
-    anchors.left: parent.left
-    anchors.verticalCenter: savedAtFormatted !== "" ? undefined : parent.verticalCenter
-    anchors.top: savedAtFormatted !== "" ? parent.top : undefined
-    anchors.topMargin: savedAtFormatted !== "" ? Style.marginM : 0
+  RowLayout {
+    anchors.fill: parent
     anchors.leftMargin: Style.marginM
-    icon: "check"
-    color: Color.mPrimary
-    pointSize: Style.fontSizeM
-    visible: root.isActive
-    width: visible ? implicitWidth + Style.marginXS : 0
+    anchors.rightMargin: Style.marginM
+    spacing: Style.marginS
 
-    Behavior on width { NumberAnimation { duration: Style.animationFast } }
-  }
+    // Active check icon
+    Rectangle {
+      id: activeIcon
+      width: root.isActive ? Math.round(Style.baseWidgetSize * 0.45) : 0
+      height: Math.round(Style.baseWidgetSize * 0.45)
+      radius: height / 2
+      color: Color.mPrimary
+      opacity: root.isActive ? 1 : 0
+      visible: root.isActive
+      Layout.alignment: Qt.AlignVCenter
 
-  // Profile name
-  NText {
-    id: nameText
-    anchors.left: activeIcon.right
-    anchors.right: applyBtn.left
-    anchors.top: parent.top
-    anchors.topMargin: savedAtFormatted !== "" ? Style.marginM : 0
-    anchors.verticalCenter: savedAtFormatted !== "" ? undefined : parent.verticalCenter
-    anchors.rightMargin: Style.marginS
-    text: root.profileName
-    pointSize: Style.fontSizeM
-    font.weight: Style.fontWeightSemiBold
-    color: root.isActive ? Color.mPrimary : Color.mOnSurface
-    elide: Text.ElideRight
+      Behavior on width { NumberAnimation { duration: Style.animationFast } }
+      Behavior on opacity { NumberAnimation { duration: Style.animationFast } }
 
-    Behavior on color { ColorAnimation { duration: Style.animationFast } }
-  }
+      NIcon {
+        anchors.centerIn: parent
+        icon: "check"
+        color: Color.mOnPrimary
+        pointSize: Style.fontSizeS
+      }
+    }
 
-  // Saved date subtitle
-  NText {
-    anchors.left: activeIcon.right
-    anchors.right: applyBtn.left
-    anchors.top: nameText.bottom
-    anchors.topMargin: 2
-    anchors.rightMargin: Style.marginS
-    text: root.savedAtFormatted
-    visible: root.savedAtFormatted !== ""
-    pointSize: Style.fontSizeXS
-    color: Color.mOnSurfaceVariant
-    elide: Text.ElideRight
+    // Profile name + date
+    ColumnLayout {
+      Layout.fillWidth: true
+      Layout.alignment: Qt.AlignVCenter
+      spacing: 2
+
+      NText {
+        id: nameText
+        Layout.fillWidth: true
+        text: root.profileName
+        pointSize: Style.fontSizeM
+        font.weight: Style.fontWeightSemiBold
+        color: root.isActive ? Color.mPrimary : Color.mOnSurface
+        elide: Text.ElideRight
+
+        Behavior on color { ColorAnimation { duration: Style.animationFast } }
+      }
+
+      NText {
+        Layout.fillWidth: true
+        text: root.savedAtFormatted
+        visible: root.savedAtFormatted !== ""
+        pointSize: Style.fontSizeXS
+        color: Color.mOnSurfaceVariant
+        elide: Text.ElideRight
+      }
+    }
+
+    NButton {
+      id: applyBtn
+      text: pluginApi?.tr("panel.action-apply")
+      icon: "download"
+      enabled: !(service?.isBusy ?? false)
+      Layout.alignment: Qt.AlignVCenter
+      onClicked: {
+        service?.applyProfile(root.profileName, root.includeWallpapers)
+        if (root.panelRef)
+          pluginApi?.closePanel(pluginApi.panelOpenScreen)
+      }
+    }
+
+    NIconButton {
+      id: wallpaperToggle
+      icon: "photo"
+      tooltipText: pluginApi?.tr("panel.include-wallpapers")
+      baseSize: Math.round(Style.fontSizeXXL * Style.uiScaleRatio)
+      colorBg: "transparent"
+      colorFg: root.includeWallpapers ? Color.mPrimary : Color.mOnSurfaceVariant
+      Layout.alignment: Qt.AlignVCenter
+      onClicked: root.includeWallpapers = !root.includeWallpapers
+    }
+
+    NIconButton {
+      id: dotsBtn
+      icon: "dots-vertical"
+      tooltipText: pluginApi?.tr("panel.more-actions")
+      baseSize: Math.round(Style.fontSizeXXL * Style.uiScaleRatio)
+      colorBg: "transparent"
+      colorFg: Color.mOnSurfaceVariant
+      Layout.alignment: Qt.AlignVCenter
+      onClicked: contextMenu.openAtItem(this, width / 2, height / 2)
+    }
   }
 }

@@ -44,8 +44,8 @@ Item {
       : (resolvedIconColor.a > 0 ? resolvedIconColor : Color.mOnSurface)
 
   // Content dimensions
-  readonly property real contentWidth: isBarVertical ? capsuleHeight : row.implicitWidth + Style.marginM * 2
-  readonly property real contentHeight: isBarVertical ? row.implicitHeight + Style.marginM * 2 : capsuleHeight
+	readonly property real contentWidth: Style.capsuleHeight
+  readonly property real contentHeight: Style.capsuleHeight
 
   implicitWidth: contentWidth
   implicitHeight: contentHeight
@@ -65,14 +65,14 @@ Item {
     border.width: Style.capsuleBorderWidth
 
     RowLayout {
-      id: row
-      anchors.centerIn: parent
+      id: content
+			anchors.centerIn: parent
       spacing: Style.marginS
 
       NIcon {
         icon: root.widgetIcon
         color: root.iconColor
-        pointSize: root.capsuleHeight * 0.55
+				applyUiScale: true
 
         Behavior on color {
           enabled: !Color.isTransitioning

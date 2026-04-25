@@ -4,6 +4,6 @@
   "iconColor": "primary",
   "includeWallpapers": true,
   "lastAppliedProfile": "Window like",
-  "backupEnabled": true,
+  "backupEnabled": false,
   "backupCount": 5
 }

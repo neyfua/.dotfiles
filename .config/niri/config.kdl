@@ -183,80 +183,80 @@ animations {
 	// 	curve "ease-out-quad"
 	// }
 
-	window-open {
-		duration-ms 300
-		curve "ease-out-expo"
-		custom-shader "vec4 fall_from_top(vec3 coords_geo, vec3 size_geo) {
-			float progress = niri_clamped_progress * niri_clamped_progress;
-			vec2 coords = (coords_geo.xy - vec2(0.5, 0.0)) * size_geo.xy;
-			coords.y += (1.0 - progress) * 1440.0;
-			float random = (niri_random_seed - 0.5) / 2.0;
-			random = sign(random) - random;
-			float max_angle = 0.5 * random;
-			float angle = (1.0 - progress) * max_angle;
-			mat2 rotate = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
-			coords = rotate * coords;
-			coords_geo = vec3(coords / size_geo.xy + vec2(0.5, 0.0), 1.0);
-			vec3 coords_tex = niri_geo_to_tex * coords_geo;
-			return texture2D(niri_tex, coords_tex.st); 
-		}
-		vec4 open_color(vec3 coords_geo, vec3 size_geo) {
-			return fall_from_top(coords_geo, size_geo);
-		}"
-	}
-
-	window-close {
-		duration-ms 300
-		curve "linear"
-		custom-shader "vec4 fall_and_rotate(vec3 coords_geo, vec3 size_geo) {
-			float progress = niri_clamped_progress * niri_clamped_progress;
-			vec2 coords = (coords_geo.xy - vec2(0.5, 1.0)) * size_geo.xy;
-			coords.y -= progress * 1440.0;
-			float random = (niri_random_seed - 0.5) / 2.0;
-			random = sign(random) - random;
-			float max_angle = 0.5 * random;
-			float angle = progress * max_angle;
-			mat2 rotate = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
-			coords = rotate * coords;
-			coords_geo = vec3(coords / size_geo.xy + vec2(0.5, 1.0), 1.0);
-			vec3 coords_tex = niri_geo_to_tex * coords_geo;
-			vec4 color = texture2D(niri_tex, coords_tex.st);
-			return color;
-		}
-		vec4 close_color(vec3 coords_geo, vec3 size_geo) {
-			return fall_and_rotate(coords_geo, size_geo);
-		}"
-	}
+	// window-open {
+	// 	duration-ms 300
+	// 	curve "ease-out-expo"
+	// 	custom-shader "vec4 fall_from_top(vec3 coords_geo, vec3 size_geo) {
+	// 		float progress = niri_clamped_progress * niri_clamped_progress;
+	// 		vec2 coords = (coords_geo.xy - vec2(0.5, 0.0)) * size_geo.xy;
+	// 		coords.y += (1.0 - progress) * 1440.0;
+	// 		float random = (niri_random_seed - 0.5) / 2.0;
+	// 		random = sign(random) - random;
+	// 		float max_angle = 0.5 * random;
+	// 		float angle = (1.0 - progress) * max_angle;
+	// 		mat2 rotate = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
+	// 		coords = rotate * coords;
+	// 		coords_geo = vec3(coords / size_geo.xy + vec2(0.5, 0.0), 1.0);
+	// 		vec3 coords_tex = niri_geo_to_tex * coords_geo;
+	// 		return texture2D(niri_tex, coords_tex.st); 
+	// 	}
+	// 	vec4 open_color(vec3 coords_geo, vec3 size_geo) {
+	// 		return fall_from_top(coords_geo, size_geo);
+	// 	}"
+	// }
+	//
+	// window-close {
+	// 	duration-ms 300
+	// 	curve "linear"
+	// 	custom-shader "vec4 fall_and_rotate(vec3 coords_geo, vec3 size_geo) {
+	// 		float progress = niri_clamped_progress * niri_clamped_progress;
+	// 		vec2 coords = (coords_geo.xy - vec2(0.5, 1.0)) * size_geo.xy;
+	// 		coords.y -= progress * 1440.0;
+	// 		float random = (niri_random_seed - 0.5) / 2.0;
+	// 		random = sign(random) - random;
+	// 		float max_angle = 0.5 * random;
+	// 		float angle = progress * max_angle;
+	// 		mat2 rotate = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
+	// 		coords = rotate * coords;
+	// 		coords_geo = vec3(coords / size_geo.xy + vec2(0.5, 1.0), 1.0);
+	// 		vec3 coords_tex = niri_geo_to_tex * coords_geo;
+	// 		vec4 color = texture2D(niri_tex, coords_tex.st);
+	// 		return color;
+	// 	}
+	// 	vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+	// 		return fall_and_rotate(coords_geo, size_geo);
+	// 	}"
+	// }
 }
 
 switch-events {
 	lid-close { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+	lid-open { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+}
+
+blur {
+	passes 2
+	offset 3.0
+	noise 0.03
+	saturation 1.0
 }
 
 workspace "code"
 workspace "web"
 workspace "chat"
-workspace "game"
 workspace "music"
 workspace "misc"
 
-blur {
-  passes 2        // more passes = stronger blur (default: 3)
-  offset 3.0      // sample distance per pass (default: 3.0)
-  noise 0.03      // grain overlay (default: 0.02)
-  saturation 1.0  // color saturation boost (default: 1.5)
+layer-rule {
+	match namespace="^noctalia-overview*"
+	place-within-backdrop true
 }
 
 layer-rule {
-  match namespace="^noctalia-overview*"
-  place-within-backdrop true
-}
-
-layer-rule {
-  match namespace="^noctalia-(background|launcher-overlay|desktop-widgets|dock)-.*$"
-  background-effect {
-    xray false
-  }
+	match namespace="^noctalia-(background|launcher-overlay|desktop-widgets|dock)-.*$"
+	background-effect {
+		xray false
+	}
 }
 
 window-rule {
@@ -276,149 +276,81 @@ window-rule {
 }
 
 window-rule {
-	match app-id="^code$"
-	match app-id="^dev.zed.Zed$"
-	match app-id="^jetbrains(.*)$"
-	match app-id="^antigravity$"
+	match app-id="^code$|^(.*)Zed$|^jetbrains(.*)$|^antigravity$"
 
+	default-column-width { proportion 1.0; }
 	open-on-workspace "code"
 	open-focused true
 }
 
 window-rule {
-	match app-id="^(firefox)(.*)$"
-	match app-id="^Tor Browser$"
+	match app-id="^firefox(.*)$|Tor Browser"
 
+	default-column-width { proportion 1.0; }
 	open-on-workspace "web"
 	open-focused true
 }
 
 window-rule {
-	match app-id="^vesktop$"
-	match app-id="^org.telegram.desktop$"
-	match app-id="^fluxer_app$"
-	match app-id="^zalo-for-linux$"
+	match app-id="vesktop|^(.*)telegram(.*)$|^fluxer(.*)$"
 
+	default-column-width { proportion 1.0; }
 	open-on-workspace "chat"
 	open-focused true
 }
 
 window-rule {
-	match app-id="^steam$"
-	match app-id="^com.heroicgameslauncher.hgl$"
-	match app-id="^org.vinegarhq.Sober$"
-	match app-id="^PolyMC$"
-	match app-id="^(Minecraft)(.*)$"
+	match app-id="spotify|Spotify"
 
-	open-on-workspace "game"
-	open-focused true
-}
-
-window-rule {
-	match app-id="^spotify$"
-	match app-id="^Spotify$"
-
+	default-column-width { proportion 1.0; }
 	open-on-workspace "music"
 	open-focused true
 }
 
 window-rule {
-	match app-id="org.kde.kdenlive" title="Kdenlive"
+	match app-id="^(.*)kdenlive$" title="Kdenlive"
+	match title="^OBS(.*)$"
 
-	match title="^(OBS)(.*)$"
-
+	default-column-width { proportion 1.0; }
 	open-on-workspace "misc"
 	open-focused true
 }
 
 window-rule {
-	match app-id="^(firefox)(.*)$"
-	match app-id="^Tor Browser$"
-	match app-id="^vesktop$"
-	match app-id="^fluxer_app$"
-	match app-id="^zalo-for-linux$"
-	match app-id="^steam$" title="Steam"
-	match app-id="^com.heroicgameslauncher.hgl$"
-	match app-id="^spotify$"
-	match app-id="^Spotify$"
-	match app-id="^org.gnome.Nautilus$" title="Home"
-	match app-id="^org.telegram.desktop$"
-	match app-id="^code$"
-	match app-id="^antigravity$"
-	match app-id="^dev.zed.Zed$"
-	match app-id="^org.vinegarhq.Sober$" title="Sober"
-	match app-id="^ONLYOFFICE$"
-
-	match title="^(OBS)(.*)$"
+	match app-id="^org.(gnome.Nautilus|telegram.desktop)$|ONLYOFFICE"
+	match title="^OBS(.*)$|Home"
 
 	default-column-width { proportion 1.0; }
 }
 
 
 window-rule {
-	match app-id="com-sun-tools-javac-launcher-SourceLauncher"
-	match app-id="^zenity$"
-	match app-id="^org.kde.kdenlive$" title="^(Splash Screen)(.*)$"
-	match app-id="^org.vinegarhq.Sober$" title="^Servers$"
-	match app-id="^org.vinegarhq.Sober$" title="^Buy Robux$"
-	match app-id="^dev.faetalize.waytator$"
-	match app-id="^DesktopEditors$" title="^Open Document$"
-
-	match title="^About$"
-	match title="^Library$"
-	match title="^Pushbullet$"
-	match title="^splash$"
-	match title="^Android Studio Setup Wizard$"
-	match title="^(zoom)(.*)$"
-	match title="^(.*)(Properties)$"
-	match title="^(Calculator)(.*)$"
-	match title="^(Warning)(.*)$"
-	match title="^(Splash)(.*)$"
-	match title="^(Project Settings)(.*)$"
-	match title="^(.*)(KDE Connect Daemon)$"
+	match app-id="^(.*)javac(.*)$|zenity|^(.*)waytator$"
+	match title="About Mozilla Firefox|Library|^Pushbullet(.*)$|^splash(.*)$|^Splash(.*)$|Android Studio Setup Wizard|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document"
 
 	open-floating true
 }
 
 window-rule {
-	match app-id="^vesktop$" title="vesktop"
-	match app-id="^zenity$"
-	match app-id="^org.gnome.Nautilus$" title="^(Select)(.*)$"
-
-	match title="^splash$"
-	match title="^zoom$"
-	// match title="^LibreOffice$"
-	match title="^(Updater)(.*)$"
-	match title="^(Sign in)(.*)$"
-	match title="^(Starting Apache)(.*)$"
-	match title="^(Warning)(.*)$"
-	match title="^(Splash)(.*)$"
+	match app-id="zenity"
+	match app-id="vesktop" title="^vesktop$"
+	match app-id="^(.*)Nautilus$" title="^Select(.*)$"
+	match title="^splash(.*)$|^Splash(.*)$|zoom|^Updater(.*)$|^Sign in(.*)$|^Starting Apache(.*)$|^Warning(.*)$"
 
 	border { off; }
 }
 
 window-rule {
 	match app-id="^xdg-desktop-portal-gtk$"
-	match app-id="^org.gnome.Nautilus$" title="^(Open File)(.*)$"
-	match app-id="^org.gnome.Nautilus$" title="^(Select)(.*)$"
-
-	match title="^dialog$"
-	match title="^confirm$"
-	match title="^(Save As)(.*)$"
-	match title="^(Save Image)(.*)$"
-	match title="^(Open Folder)(.*)$"
-	match title="^(File Upload)(.*)$"
-	match title="^(Choose wallpaper)(.*)$"
-	match title="^(Choose an image)(.*)$"
-	match title="^(Locate ISO)(.*)$"
-	match title="^(blob.)(.*)$"
+	match app-id="^(.*)Nautilus$" title="^Open File(.*)$|^Select(.*)$"
+	match title="^dialog(.*)$|^confirm(.*)$|^Save As(.*)$|^Save Image(.*)$|^Open Folder(.*)$|^File Upload(.*)$|^Choose wallpaper(.*)$|^Choose an image(.*)$|^Locate ISO(.*)$|^blob(.*)$"
 
 	default-column-width { proportion 0.7; }
 	default-window-height { proportion 0.7; }
 }
 
 window-rule {
-	match app-id="^(firefox)(.*)$" title="^Picture-in-Picture$"
+	match app-id="firefox" title="Picture-in-Picture"
 
 	default-column-width { fixed 354; }
 	default-window-height { fixed 200; }
@@ -432,8 +364,7 @@ window-rule {
 }
 
 window-rule {
-	match app-id="^org.pulseaudio.pavucontrol$"
-	match app-id="^pavucontrol-qt$"
+	match app-id="^(.*)pavucontrol(.*)$"
 
 	default-column-width { proportion 0.5; }
 	default-window-height { proportion 0.7; }
@@ -442,7 +373,7 @@ window-rule {
 }
 
 window-rule {
-	match app-id="^mpv$"
+	match app-id="mpv"
 
 	default-column-width { fixed 1160; }
 	default-window-height { fixed 653; }
@@ -451,7 +382,7 @@ window-rule {
 }
 
 window-rule {
-	match title="^(Media viewer)(.*)$"
+	match title="^Media viewer(.*)$"
 
 	default-column-width { proportion 0.9; }
 	default-window-height { proportion 0.9; }
@@ -463,14 +394,14 @@ window-rule {
 }
 
 window-rule {
-	match title="^(Welcome to)(.*)$"
+	match title="^Welcome to(.*)$"
 
 	default-column-width { proportion 1.0; }
 	default-window-height { proportion 1.0; }
 }
 
 window-rule {
-	match app-id="^(.*)(FileRoller)$"
+	match app-id="^(.*)FileRoller$"
 
 	default-column-width { fixed 850; }
 	default-window-height { fixed 500; }
@@ -479,19 +410,11 @@ window-rule {
 }
 
 window-rule {
-	match app-id="^spotify$"
-	match app-id="^Spotify$"
+	match app-id="spotify|Spotify"
 
 	open-fullscreen false
 	open-maximized false
 	open-maximized-to-edges false
-}
-
-window-rule {
-	match app-id="^jetbrains(.*)$" title="^$" // wayland
-	match app-id="^jetbrains(.*)$" title="^ $" // X11
-
-	open-focused false
 }
 
 binds {
