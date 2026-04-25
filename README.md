@@ -1,3 +1,3 @@
-# This dotfiles were exclusively made to run on my system, please use it as references.
+# This dotfiles were exclusively made to run on my system, please only use it as references.
 
-<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a588ce62-5fd2-4b3e-a0e8-29b94910cfdc" />
+<img width="2240" height="1400" alt="image" src="https://github.com/user-attachments/assets/da87230e-d774-4705-8d6b-26eb758c6740" />
