@@ -1,5 +1,24 @@
 {
-  "todos": [],
+  "todos": [
+    {
+      "id": 1777157599956,
+      "text": "Hoàn thành 10 activities của Android",
+      "completed": false,
+      "createdAt": "2026-04-25T22:53:19.956Z",
+      "pageId": 0,
+      "priority": "high",
+      "details": ""
+    },
+    {
+      "id": 1777157622504,
+      "text": "Bắt đầu làm ASP.NET Core project",
+      "completed": false,
+      "createdAt": "2026-04-25T22:53:42.504Z",
+      "pageId": 0,
+      "priority": "medium",
+      "details": ""
+    }
+  ],
   "pages": [
     {
       "id": 0,
@@ -7,7 +26,7 @@
     }
   ],
   "current_page_id": 0,
-  "count": 0,
+  "count": 2,
   "completedCount": 0,
   "showCompleted": true,
   "showBackground": true,

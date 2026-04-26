@@ -131,11 +131,11 @@ environment {
 	PROTON_ENABLE_WAYLAND "1"
 	ELECTRON_OZONE_PLATFORM_HINT "wayland"
 
-	ECORE_EVAS_ENGINE "wayland-egl"
-	ELM_ENGINE "wayland_egl"
-	SDL_VIDEODRIVER "wayland"
+	// ECORE_EVAS_ENGINE "wayland-egl"
+	// ELM_ENGINE "wayland_egl"
+	// SDL_VIDEODRIVER "wayland"
 	GDK_BACKEND "wayland"
-	CLUTTER_BACKEND "wayland"
+	// CLUTTER_BACKEND "wayland"
 
 		// Java
 	_JAVA_AWT_WM_NONREPARENTING "1"
@@ -145,6 +145,9 @@ environment {
 	QT_QPA_PLATFORM "wayland"
 	QT_QPA_PLATFORMTHEME "qt6ct"
 	// QT_SCALE_FACTOR "1.25"
+
+	EDITOR "nvim"
+	BROWSER "firefox"
 }
 
 cursor {
@@ -337,8 +340,8 @@ window-rule {
 	match app-id="^(.*)Nautilus$" title="^Open File(.*)$|^Select(.*)$"
 	match title="^dialog(.*)$|^confirm(.*)$|^Save As(.*)$|^Save Image(.*)$|^Open Folder(.*)$|^File Upload(.*)$|^Choose wallpaper(.*)$|^Choose an image(.*)$|^Locate ISO(.*)$|^blob(.*)$"
 
-	default-column-width { proportion 0.7; }
-	default-window-height { proportion 0.7; }
+	default-column-width { proportion 0.8; }
+	default-window-height { proportion 0.8; }
 }
 
 window-rule {
@@ -432,6 +435,7 @@ binds {
 	Mod+Shift+E repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
 
 	// Notifications history and notifications clear
+	Alt+H repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"; }
 	Alt+Escape repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "notifications" "clear"; }
 
 	// Wallpaper selector

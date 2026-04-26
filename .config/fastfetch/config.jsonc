@@ -28,7 +28,7 @@
 			"format": "{name}"
 		},
 		{
-			"type": "kernel",
+			"type": "kernel"
 		},
 		{
 			"type": "packages",

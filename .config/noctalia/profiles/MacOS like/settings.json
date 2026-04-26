@@ -48,7 +48,7 @@
         "barType": "simple",
         "capsuleColorKey": "none",
         "capsuleOpacity": 1,
-        "contentPadding": 0,
+        "contentPadding": 4,
         "density": "spacious",
         "displayMode": "always_visible",
         "enableExclusionZoneInset": true,
@@ -122,7 +122,7 @@
                     "id": "Workspace",
                     "labelMode": "index",
                     "occupiedColor": "secondary",
-                    "pillSize": 0.45,
+                    "pillSize": 0.5,
                     "showApplications": false,
                     "showApplicationsHover": false,
                     "showBadge": true,
@@ -415,48 +415,17 @@
                 "name": "eDP-1",
                 "widgets": [
                     {
-                        "diskPath": "/",
-                        "id": "SystemStat",
-                        "layout": "bottom",
+                        "clockColor": "none",
+                        "clockStyle": "digital",
+                        "customFont": "",
+                        "format": "HH:mm\\nd MMMM yyyy",
+                        "id": "Clock",
                         "roundedCorners": true,
                         "scale": 1,
                         "showBackground": true,
-                        "statType": "CPU",
-                        "x": 14,
-                        "y": 61
-                    },
-                    {
-                        "diskPath": "/",
-                        "id": "SystemStat",
-                        "layout": "side",
-                        "roundedCorners": true,
-                        "scale": 1,
-                        "showBackground": true,
-                        "statType": "Disk",
-                        "x": 14,
-                        "y": 191
-                    },
-                    {
-                        "diskPath": "/",
-                        "id": "SystemStat",
-                        "layout": "side",
-                        "roundedCorners": true,
-                        "scale": 1,
-                        "showBackground": true,
-                        "statType": "Memory",
-                        "x": 263,
-                        "y": 61
-                    },
-                    {
-                        "diskPath": "/",
-                        "id": "SystemStat",
-                        "layout": "side",
-                        "roundedCorners": true,
-                        "scale": 1,
-                        "showBackground": true,
-                        "statType": "GPU",
-                        "x": 263,
-                        "y": 191
+                        "useCustomFont": false,
+                        "x": 28,
+                        "y": 76
                     }
                 ]
             }
@@ -614,12 +583,12 @@
         "wifiDetailsViewMode": "grid"
     },
     "nightLight": {
-        "autoSchedule": true,
+        "autoSchedule": false,
         "dayTemp": "6500",
         "enabled": true,
         "forced": false,
         "manualSunrise": "06:30",
-        "manualSunset": "18:30",
+        "manualSunset": "17:00",
         "nightTemp": "6000"
     },
     "noctaliaPerformance": {

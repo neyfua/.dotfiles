@@ -80,22 +80,6 @@
         "widgetSpacing": 2,
         "widgets": {
             "center": [
-                {
-                    "compactMode": true,
-                    "hideMode": "hidden",
-                    "hideWhenIdle": false,
-                    "id": "MediaMini",
-                    "maxWidth": 600,
-                    "panelShowAlbumArt": true,
-                    "scrollingMode": "hover",
-                    "showAlbumArt": true,
-                    "showArtistFirst": false,
-                    "showProgressRing": true,
-                    "showVisualizer": true,
-                    "textColor": "none",
-                    "useFixedWidth": false,
-                    "visualizerType": "wave"
-                }
             ],
             "left": [
                 {
@@ -121,7 +105,7 @@
                 {
                     "characterCount": 2,
                     "colorizeIcons": false,
-                    "emptyColor": "secondary",
+                    "emptyColor": "none",
                     "enableScrollWheel": false,
                     "focusedColor": "primary",
                     "followFocusedScreen": false,
@@ -140,26 +124,17 @@
                     "unfocusedIconsOpacity": 1
                 },
                 {
-                    "compactMode": true,
-                    "diskPath": "/",
-                    "iconColor": "none",
-                    "id": "SystemMonitor",
-                    "showCpuCores": false,
-                    "showCpuFreq": false,
-                    "showCpuTemp": true,
-                    "showCpuUsage": true,
-                    "showDiskAvailable": false,
-                    "showDiskUsage": false,
-                    "showDiskUsageAsPercent": false,
-                    "showGpuTemp": true,
-                    "showLoadAverage": false,
-                    "showMemoryAsPercent": false,
-                    "showMemoryUsage": true,
-                    "showNetworkStats": false,
-                    "showSwapUsage": false,
-                    "textColor": "none",
-                    "useMonospaceFont": true,
-                    "usePadding": false
+                    "colorizeIcons": false,
+                    "hideMode": "hidden",
+                    "iconScale": 0.75,
+                    "id": "Taskbar",
+                    "maxTaskbarWidth": 60,
+                    "onlyActiveWorkspaces": false,
+                    "onlySameOutput": true,
+                    "showPinnedApps": false,
+                    "showTitle": true,
+                    "smartWidth": true,
+                    "titleWidth": 180
                 }
             ],
             "right": [
@@ -190,7 +165,7 @@
                     "textColor": "none"
                 },
                 {
-                    "displayMode": "onhover",
+                    "displayMode": "alwaysHide",
                     "iconColor": "none",
                     "id": "Volume",
                     "middleClickCommand": "pwvucontrol || pavucontrol",
@@ -528,12 +503,12 @@
         "wifiDetailsViewMode": "grid"
     },
     "nightLight": {
-        "autoSchedule": true,
+        "autoSchedule": false,
         "dayTemp": "6500",
         "enabled": true,
         "forced": false,
         "manualSunrise": "06:30",
-        "manualSunset": "18:30",
+        "manualSunset": "17:00",
         "nightTemp": "6000"
     },
     "noctaliaPerformance": {

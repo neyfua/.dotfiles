@@ -186,25 +186,6 @@
                     "id": "plugin:cloudflare-warp"
                 },
                 {
-                    "defaultSettings": {
-                        "compactMode": false,
-                        "defaultPeerAction": "copy-ip",
-                        "hideDisconnected": false,
-                        "hideMullvadExitNodes": true,
-                        "loginServer": "",
-                        "pingCount": 5,
-                        "refreshInterval": 5000,
-                        "showIpAddress": true,
-                        "showPeerCount": true,
-                        "sshUsername": "",
-                        "taildropDownloadDir": "~/Downloads",
-                        "taildropEnabled": true,
-                        "taildropReceiveMode": "operator",
-                        "terminalCommand": ""
-                    },
-                    "id": "plugin:tailscale"
-                },
-                {
                     "displayMode": "alwaysHide",
                     "iconColor": "none",
                     "id": "Volume",
@@ -534,12 +515,12 @@
         "wifiDetailsViewMode": "grid"
     },
     "nightLight": {
-        "autoSchedule": true,
+        "autoSchedule": false,
         "dayTemp": "6500",
         "enabled": true,
         "forced": false,
         "manualSunrise": "06:30",
-        "manualSunset": "18:30",
+        "manualSunset": "17:00",
         "nightTemp": "6000"
     },
     "noctaliaPerformance": {
