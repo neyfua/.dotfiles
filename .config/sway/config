@@ -34,8 +34,9 @@ set $term foot
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec fcitx5
 exec autotiling-rs
-exec wl-clip-persist
-exec qs -c noctalia-shell -n
+exec wl-clip-persist --clipboard both
+# exec qs -c noctalia-shell -n
+exec noctalia
 
 ### Output configuration
 #
@@ -47,9 +48,10 @@ exec qs -c noctalia-shell -n
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-output "BOE 0x0C03 Unknown" scale 1.5
+output "eDP-1" scale 1.5
 # Lid close event
-bindswitch lid:toggle exec qs -c noctalia-shell ipc call lockScreen lock
+# bindswitch lid:toggle exec qs -c noctalia-shell ipc call lockScreen lock
+bindswitch lid:toggle exec noctalia msg screen-lock
 
 ### Input configuration
 #
