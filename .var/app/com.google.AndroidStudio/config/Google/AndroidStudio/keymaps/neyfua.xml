@@ -12,8 +12,9 @@
     <keyboard-shortcut first-keystroke="alt insert" />
   </action>
   <action id="CloseContent">
-    <keyboard-shortcut first-keystroke="ctrl w" />
+    <keyboard-shortcut first-keystroke="alt q" />
   </action>
+  <action id="EditorContextInfo" />
   <action id="EditorSelectWord">
     <keyboard-shortcut first-keystroke="shift alt equals" />
     <keyboard-shortcut first-keystroke="ctrl alt right" />

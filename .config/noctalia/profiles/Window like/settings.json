@@ -205,7 +205,7 @@
         ],
         "brightnessStep": 5,
         "enableDdcSupport": false,
-        "enforceMinimum": true
+        "enforceMinimum": false
     },
     "calendar": {
         "cards": [
@@ -343,8 +343,8 @@
                         "id": "Weather",
                         "roundedCorners": true,
                         "scale": 1,
-                        "showBackground": false,
-                        "x": 1178,
+                        "showBackground": true,
+                        "x": 31,
                         "y": 31
                     }
                 ]
@@ -428,10 +428,10 @@
             ]
         },
         "language": "",
-        "lockOnSuspend": false,
+        "lockOnSuspend": true,
         "lockScreenAnimations": true,
         "lockScreenBlur": 0.4,
-        "lockScreenCountdownDuration": 10000,
+        "lockScreenCountdownDuration": 3000,
         "lockScreenMonitors": [
         ],
         "lockScreenTint": 0.6,
@@ -446,7 +446,7 @@
         "showChangelogOnStartup": true,
         "showHibernateOnLockScreen": false,
         "showScreenCorners": false,
-        "showSessionButtonsOnLockScreen": false,
+        "showSessionButtonsOnLockScreen": true,
         "smoothScrollEnabled": true,
         "telemetryEnabled": true
     },
@@ -478,7 +478,7 @@
     },
     "location": {
         "analogClockInCalendar": false,
-        "autoLocate": true,
+        "autoLocate": false,
         "firstDayOfWeek": 1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
@@ -563,7 +563,7 @@
         "overlayLayer": true
     },
     "plugins": {
-        "autoUpdate": false,
+        "autoUpdate": true,
         "notifyUpdates": true
     },
     "sessionMenu": {
@@ -591,8 +591,8 @@
                 "action": "suspend",
                 "command": "",
                 "countdownEnabled": true,
-                "enabled": false,
-                "keybind": ""
+                "enabled": true,
+                "keybind": "2"
             },
             {
                 "action": "hibernate",
@@ -606,14 +606,14 @@
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": true,
-                "keybind": "2"
+                "keybind": "3"
             },
             {
                 "action": "shutdown",
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": true,
-                "keybind": "3"
+                "keybind": "4"
             },
             {
                 "action": "rebootToUefi",
@@ -711,8 +711,8 @@
         "wallhavenApiKey": "",
         "wallhavenCategories": "110",
         "wallhavenOrder": "desc",
-        "wallhavenPurity": "100",
-        "wallhavenQuery": "",
+        "wallhavenPurity": "110",
+        "wallhavenQuery": "flower",
         "wallhavenRatios": "landscape",
         "wallhavenResolutionHeight": "",
         "wallhavenResolutionMode": "atleast",

@@ -7,13 +7,12 @@ input {
 
 	touchpad {
 		tap
-		// dwt
+		dwt
 		dwtp
 		natural-scroll
-		accel-speed 0.8
+		accel-speed 1.0
 		accel-profile "flat"
 		scroll-factor 0.4
-		scroll-method "two-finger"
 		disabled-on-external-mouse
 	}
 
@@ -37,7 +36,7 @@ switch-events {
 }
 
 layout {
-	// gaps 12
+	gaps 10
 	center-focused-column "never"
 	always-center-single-column
 	background-color "transparent"
@@ -117,10 +116,11 @@ recent-windows {
 
 // gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
 // gsettings set org.gnome.desktop.wm.preferences button-layout ':'
-spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
+// spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
 spawn-at-startup "fcitx5"
 spawn-at-startup "wl-clip-persist" "--clipboard" "both"
 spawn-at-startup "qs" "-c" "noctalia-shell" "-n"
+// spawn-at-startup "noctalia"
 
 prefer-no-csd
 
@@ -134,7 +134,7 @@ environment {
 	// ECORE_EVAS_ENGINE "wayland-egl"
 	// ELM_ENGINE "wayland_egl"
 	// SDL_VIDEODRIVER "wayland"
-	GDK_BACKEND "wayland"
+	// GDK_BACKEND "wayland"
 	// CLUTTER_BACKEND "wayland"
 
 		// Java
@@ -152,7 +152,7 @@ environment {
 
 cursor {
 	xcursor-theme "BreezeX-RosePineDawn-Linux"
-	xcursor-size 35
+	xcursor-size 32
 	hide-when-typing
 }
 
@@ -180,19 +180,19 @@ blur {
 
 animations {
 	// off
-	slowdown 0.7
+	// slowdown 0.6
 
 	// workspace-switch { spring damping-ratio=0.92 stiffness=850 epsilon=0.00005; }
 
-	// horizontal-view-movement { spring damping-ratio=1.0 stiffness=550 epsilon=5e-5; }
+	horizontal-view-movement { spring damping-ratio=1.0 stiffness=550 epsilon=5e-5; }
 
 	window-open {
-		duration-ms 700
+		duration-ms 500
 		curve "ease-out-expo"
 	}
 
 	window-close {
-		duration-ms 700
+		duration-ms 500
 		curve "ease-out-quad"
 	}
 
@@ -254,6 +254,13 @@ layer-rule {
 	}
 }
 
+layer-rule {
+  match namespace="^noctalia-(main|dock|panel)$"
+  background-effect {
+    xray false
+  }
+}
+
 window-rule {
 	geometry-corner-radius 12
 	clip-to-geometry true
@@ -312,8 +319,8 @@ window-rule {
 }
 
 window-rule {
-	match app-id="^org.(gnome.Nautilus|telegram.desktop)$|ONLYOFFICE"
-	match title="^OBS(.*)$|Home"
+	match app-id="^(.*)telegram(.*)$|ONLYOFFICE"
+	match title="^OBS(.*)$"
 
 	default-column-width { proportion 1.0; }
 }
@@ -321,7 +328,7 @@ window-rule {
 
 window-rule {
 	match app-id="^(.*)javac(.*)$|zenity|^(.*)waytator$"
-	match title="About Mozilla Firefox|Library|^Pushbullet(.*)$|^splash(.*)$|^Splash(.*)$|Android Studio Setup Wizard|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document"
+	match title="About Mozilla Firefox|Library|^Pushbullet(.*)$|^splash(.*)$|^Splash(.*)$|Android Studio Setup Wizard|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document|Noctalia Settings"
 
 	open-floating true
 }
@@ -421,25 +428,31 @@ binds {
 
 	// Control center & settings
 	Mod+S repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
+	// Mod+S repeat=false { spawn "noctalia" "msg" "panel-toggle" "control-center"; }
 	Alt+S repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "settings" "toggle"; }
+	// Alt+S repeat=false { spawn "noctalia" "msg" "settings-toggle"; }
 
 	// Lockscreen
 	Mod+L repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+	// Mod+L repeat=false { spawn "noctalia" "msg" "screen-lock"; }
 
 	// Launcher, clipboard history and emoji
 	Mod+Return repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+	// Mod+Return repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
 	Alt+C repeat=false      { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
+	// Alt+C repeat=false      { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
 	Mod+Period repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "emoji"; }
 
 	// Session menu
 	Mod+Shift+E repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
+	// Mod+Shift+E repeat=false { spawn "noctalia" "msg" "panel-toggle" "session"; }
 
 	// Notifications history and notifications clear
-	Alt+H repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"; }
 	Alt+Escape repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "notifications" "clear"; }
 
 	// Wallpaper selector
 	Alt+W repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
+	// Alt+W repeat=false { spawn "noctalia" "msg" "panel-toggle" "wallpaper"; }
 
 	// Plugins
 	Alt+A repeat=false       { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle" "" ""; }
@@ -453,11 +466,16 @@ binds {
 
 	// System controls
 	XF86AudioRaiseVolume allow-when-locked=true cooldown-ms=100  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
+	// XF86AudioRaiseVolume allow-when-locked=true  { spawn "noctalia" "msg" "volume-up" "2"; }
 	XF86AudioLowerVolume allow-when-locked=true cooldown-ms=100  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
-	XF86AudioMute allow-when-locked=true repeat=false            { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
-	XF86AudioMicMute allow-when-locked=true repeat=false         { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteInput"; }
+	// XF86AudioLowerVolume allow-when-locked=true  { spawn "noctalia" "msg" "volume-down" "2"; }
+	XF86AudioMute allow-when-locked=true repeat=false  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
+	// XF86AudioMute allow-when-locked=true repeat=false  { spawn "noctalia" "msg" "volume-mute"; }
 	XF86MonBrightnessUp allow-when-locked=true cooldown-ms=100   {	spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+	// XF86MonBrightnessUp allow-when-locked=true  {	spawn "noctalia" "msg" "brightness-up" "*" "5%"; }
 	XF86MonBrightnessDown allow-when-locked=true cooldown-ms=100 { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+	// XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia" "msg" "brightness-down" "*" "5%"; }
+	XF86AudioPlay allow-when-locked=true repeat=false { spawn "noctalia" "msg" "media" "toggle"; }
 
 	// Close window
 	Mod+C repeat=false { close-window; }

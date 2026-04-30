@@ -9,7 +9,7 @@
 # Xwayland
 xwayland enable
 # Font
-font pango:Inter Regular 12
+font pango:Inter Medium 12
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Focus mouse
@@ -30,8 +30,8 @@ set $term foot
 ### Exec at startup
 # gsettings set org.gnome.desktop.interface text-scaling-factor 1.00
 # gsettings set org.gnome.desktop.wm.preferences button-layout ':'
-exec systemctl --user import-environment
-exec dbus-update-activation-environment --systemd --all
+# exec systemctl --user import-environment
+# exec dbus-update-activation-environment --systemd --all
 exec fcitx5
 exec autotiling-rs
 exec wl-clip-persist
@@ -51,19 +51,6 @@ output "BOE 0x0C03 Unknown" scale 1.5
 # Lid close event
 bindswitch lid:toggle exec qs -c noctalia-shell ipc call lockScreen lock
 
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
 ### Input configuration
 #
 # Example configuration:
@@ -72,7 +59,7 @@ bindswitch lid:toggle exec qs -c noctalia-shell ipc call lockScreen lock
 			dwt enabled
 			tap enabled
 			accel_profile flat
-			pointer_accel 0.8
+			pointer_accel 1.0
 			scroll_factor 0.4
 			natural_scroll enabled
 			events disabled_on_external_mouse

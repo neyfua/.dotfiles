@@ -6,236 +6,125 @@
 // To see the default key bindings run `zed: open default keymap`
 // from the command palette.
 [
-      {
-            "context": "Workspace",
-            "bindings": {
-                  // "shift shift": "file_finder::Toggle"
-            },
-      },
-      {
-            "context": "Editor && vim_mode == insert",
-            "bindings": {
-                  // "j k": "vim::NormalBefore"
-            },
-      },
-      {
-            "context": "Editor",
-            "bindings": {
-                  "shift-right": null,
-            },
-      },
-      {
-            "context": "Editor",
-            "bindings": {
-                  "shift-left": null,
-            },
-      },
-      {
-            "bindings": {
-                  "pageup": null,
-            },
-      },
-      {
-            "context": "(VimControl && !menu)",
-            "bindings": {
-                  "shift-left": "vim::PreviousWordStart",
-            },
-      },
-      {
-            "context": "(VimControl && !menu)",
-            "bindings": {
-                  "shift-right": "vim::NextWordStart",
-            },
-      },
-      {
-            "context": "Editor",
-            "bindings": {
-                  "alt-pageup": null,
-            },
-      },
-      {
-            "context": "Editor",
-            "bindings": {
-                  "alt-pagedown": null,
-            },
-      },
-      {
-            "context": "Editor",
-            "bindings": {
-                  "shift-up": "editor::MovePageUp",
-            },
-      },
-      {
-            "context": "Editor",
-            "bindings": {
-                  "pageup": null,
-            },
-      },
-      {
-            "context": "Editor",
-            "bindings": {
-                  "shift-down": "editor::MovePageDown",
-            },
-      },
-      {
-            "context": "Editor",
-            "bindings": {
-                  "pagedown": null,
-            },
-      },
-      {
-            "context": "Editor",
-            "bindings": {
-                  "ctrl-shift-up": "editor::SelectPageUp",
-            },
-      },
-      {
-            "context": "Editor",
-            "bindings": {
-                  "shift-pageup": null,
-            },
-      },
-      {
-            "context": "Editor",
-            "bindings": {
-                  "ctrl-shift-down": "editor::SelectPageDown",
-            },
-      },
-      {
-            "context": "Editor",
-            "bindings": {
-                  "shift-pagedown": null,
-            },
-      },
-      {
-            "context": "Workspace",
-            "bindings": {
-                  "alt-`": "terminal_panel::Toggle",
-            },
-      },
-      {
-            "context": "Workspace",
-            "bindings": {
-                  "ctrl-`": null,
-            },
-      },
-      {
-            "context": "Terminal",
-            "bindings": {
-                  "ctrl-shift-c": null,
-            },
-      },
-      {
-            "context": "Terminal",
-            "bindings": {
-                  "ctrl-c": null,
-            },
-      },
-      {
-            "context": "Terminal",
-            "bindings": {
-                  "ctrl-shift-c": ["terminal::SendKeystroke", "ctrl-c"],
-            },
-      },
-      {
-            "context": "Terminal",
-            "bindings": {
-                  "ctrl-c": "terminal::Copy",
-            },
-      },
-      {
-            "context": "((VimControl && !menu) || (!Editor && !Terminal))",
-            "bindings": {
-                  "ctrl-w ctrl-q": null,
-            },
-      },
-      {
-            "context": "((VimControl && !menu) || (!Editor && !Terminal))",
-            "bindings": {
-                  "alt-q": "pane::CloseActiveItem",
-            },
-      },
-      {
-            "context": "((VimControl && !menu) || (!Editor && !Terminal))",
-            "bindings": {
-                  "ctrl-w q": null,
-            },
-      },
-      {
-            "context": "((VimControl && !menu) || (!Editor && !Terminal))",
-            "bindings": {
-                  "ctrl-w c": null,
-            },
-      },
-      {
-            "context": "((VimControl && !menu) || (!Editor && !Terminal))",
-            "bindings": {
-                  "ctrl-w ctrl-c": null,
-            },
-      },
-      {
-            "context": "((vim_mode == helix_normal || vim_mode == helix_select) && !menu)",
-            "bindings": {
-                  "space w q": null,
-            },
-      },
-      {
-            "context": "SettingsWindow",
-            "bindings": {
-                  "ctrl-w": null,
-            },
-      },
-      {
-            "context": "SettingsWindow",
-            "bindings": {
-                  "escape": null,
-            },
-      },
-      {
-            "context": "RulesLibrary",
-            "bindings": {
-                  "ctrl-w": null,
-            },
-      },
-      {
-            "context": "Pane",
-            "bindings": {
-                  "ctrl-w": null,
-            },
-      },
-      {
-            "context": "Pane",
-            "bindings": {
-                  "ctrl-f4": null,
-            },
-      },
-      {
-            "context": "Pane",
-            "bindings": {
-                  "ctrl-alt-t": null,
-            },
-      },
-      {
-            "context": "Pane",
-            "bindings": {
-                  "ctrl-k u": null,
-            },
-      },
-      {
-            "bindings": {
-                  "ctrl-shift-w": null,
-            },
-      },
-      {
-            "context": "Workspace",
-            "bindings": {
-                  "ctrl-w": null,
-            },
-      },
-      {
-            "context": "Workspace",
-            "bindings": {
-                  "ctrl-f4": null,
-            },
-      },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "shift-left": "vim::PreviousWordStart",
+      "shift-right": "vim::NextWordStart",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "shift-up": "editor::MovePageUp",
+      "shift-down": "editor::MovePageDown",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "shift-up": "editor::MovePageUp",
+      "shift-down": "editor::MovePageDown",
+      "shift-left": "vim::PreviousWordStart",
+      "shift-right": "vim::NextWordStart",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "shift-up": "editor::SelectPageUp",
+      "shift-down": "editor::SelectPageDown",
+    },
+  },
+  {
+    "context": "((VimControl && !menu) || (!Editor && !Terminal))",
+    "bindings": {
+      "ctrl-w ctrl-q": null,
+      "ctrl-w q": null,
+      "ctrl-w c": null,
+      "ctrl-w ctrl-c": null,
+    },
+  },
+  {
+    "context": "((vim_mode == helix_normal || vim_mode == helix_select) && !menu)",
+    "bindings": {
+      "space w q": null,
+    },
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-v": "editor::Paste",
+      "ctrl-a": "editor::SelectAll",
+      "ctrl-c": null,
+      "alt-ctrl-left": "editor::Outdent",
+      "alt-ctrl-down": "editor::MoveLineDown",
+      "alt-ctrl-up": "editor::MoveLineUp",
+      "alt-ctrl-right": "editor::Indent",
+      "alt-pageup": null,
+      "alt-pagedown": null,
+      "pagedown": null,
+      "pageup": null,
+      "shift-pageup": null,
+      "shift-pagedown": null,
+    },
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-`": "terminal_panel::Toggle",
+      "ctrl-n": "workspace::ToggleLeftDock",
+      "ctrl-`": null,
+      "ctrl-w": null,
+      "ctrl-f4": null,
+      "ctrl-b": null,
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "alt-v": "pane::SplitRight",
+      "alt-q": "pane::CloseActiveItem",
+      "ctrl-w": null,
+      "ctrl-f4": null,
+      "ctrl-alt-t": null,
+      "ctrl-k u": null,
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-x": "terminal_panel::ToggleFocus",
+      "ctrl-shift-c": ["terminal::SendKeystroke", "ctrl-c"],
+      "ctrl-c": "terminal::Copy",
+      "shift-up": "terminal::ScrollPageUp",
+      "shift-down": "terminal::ScrollPageDown",
+      "ctrl-up": "terminal::ScrollLineUp",
+      "ctrl-down": "terminal::ScrollLineDown",
+    },
+  },
+  {
+    "context": "SettingsWindow",
+    "bindings": {
+      "ctrl-w": null,
+      "escape": null,
+    },
+  },
+  {
+    "context": "RulesLibrary",
+    "bindings": {
+      "ctrl-w": null,
+    },
+  },
+  {
+    "context": "ProjectPanel",
+    "unbind": {
+      "ctrl-n": "project_panel::NewFile",
+    },
+  },
+  {
+    "bindings": {
+      "ctrl-w r": "vim::SwitchToReplaceMode",
+    },
+  },
 ]

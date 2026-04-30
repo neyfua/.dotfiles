@@ -11,6 +11,10 @@ set -gx PATH \
 # Rust / Cargo
 set -gx PATH $HOME/.cargo/bin $PATH
 
+# Golang
+set -x GOPATH $HOME/go
+set -x PATH $GOPATH/bin $PATH
+
 # .NET
 set -Ux DOTNET_ROOT $HOME/.dotnet
 set -gx PATH $HOME/.dotnet $HOME/.dotnet/tools $PATH

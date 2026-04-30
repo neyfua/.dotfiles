@@ -152,6 +152,14 @@
                     "usePadding": false
                 },
                 {
+                    "defaultSettings": {
+                        "connectedColor": "primary",
+                        "disconnectedColor": "none",
+                        "refreshInterval": 5000
+                    },
+                    "id": "plugin:cloudflare-warp"
+                },
+                {
                     "colorizeSystemIcon": "none",
                     "colorizeSystemText": "none",
                     "generalTooltipText": "File",
@@ -408,7 +416,7 @@
     },
     "desktopWidgets": {
         "enabled": true,
-        "gridSnap": false,
+        "gridSnap": true,
         "gridSnapScale": true,
         "monitorWidgets": [
             {
@@ -424,8 +432,8 @@
                         "scale": 1,
                         "showBackground": true,
                         "useCustomFont": false,
-                        "x": 28,
-                        "y": 76
+                        "x": 1302,
+                        "y": 93
                     }
                 ]
             }
@@ -562,7 +570,7 @@
         "firstDayOfWeek": 1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
-        "name": "Ho Chi Minh City",
+        "name": "Hong Kong",
         "showCalendarEvents": true,
         "showCalendarWeather": true,
         "showWeekNumberInCalendar": true,

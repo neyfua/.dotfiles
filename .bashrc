@@ -31,8 +31,6 @@ export EDITOR={$VISUAL}
 ##############################################################################
 
 # Misc
-# zoxide
-eval "$(zoxide init --cmd cd bash)"
 
 # yazi
 function y() {
@@ -48,86 +46,49 @@ unset EZA_COLORS
 
 ##############################################################################
 
-# Prompt like my fishy shell
+# Prompt
+if [ -f /usr/share/git/completion/git-prompt.sh ]; then
+    source /usr/share/git/completion/git-prompt.sh
+fi
+
 # Colors
-cyan="\[\e[1;36m\]"
-yellow="\[\e[1;33m\]"
-red="\[\e[1;31m\]"
-green="\[\e[1;32m\]"
-blue="\[\e[1;34m\]"
-normal="\[\e[0m\]"
+COLOR_CWD="\[\e[34m\]"          # blue
+COLOR_GIT="\[\e[35m\]\[\e[1m\]" # bold magenta
+COLOR_STATUS="\[\e[31m\]"
+COLOR_RESET="\[\e[0m\]"
 
-# Get git branch name
-_git_branch_name() {
-    branch=$(git symbolic-ref --quiet HEAD 2>/dev/null)
-    if [[ -n "$branch" ]]; then
-        echo "${branch#refs/heads/}"
-    else
-        git rev-parse --short HEAD 2>/dev/null
+# Function to print last exit status
+__prompt_status() {
+    local status=$?
+    if [ $status -ne 0 ]; then
+        printf "${COLOR_STATUS}[%d]${COLOR_RESET} " "$status"
     fi
 }
 
-# Is git dirty?
-_is_git_dirty() {
-    ! git diff-index --cached --quiet HEAD -- >/dev/null 2>&1 \
-        || ! git diff --no-ext-diff --quiet --exit-code >/dev/null 2>&1
+# Git status with counts (Fish-like)
+parse_git_status() {
+    git rev-parse --is-inside-work-tree &>/dev/null || return
+
+    local branch
+    branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD)
+
+    local modified untracked
+
+    # Count ALL tracked changes (staged + unstaged)
+    modified=$(git status --porcelain 2>/dev/null | grep -v '^??' | wc -l)
+
+    # Count untracked
+    untracked=$(git status --porcelain 2>/dev/null | grep '^??' | wc -l)
+
+    local out="(${branch}"
+
+    [ "$modified" -gt 0 ] && out+="|+${modified}"
+    [ "$untracked" -gt 0 ] && out+="|?${untracked}"
+
+    out+=")"
+
+    printf "%s" "$out"
 }
 
-# Get hg branch
-_hg_branch_name() {
-    hg branch 2>/dev/null
-}
-
-# Is hg dirty?
-_is_hg_dirty() {
-    [[ -n "$(hg status -mard 2>/dev/null)" ]]
-}
-
-# Repo type (git/hg)
-_repo_type() {
-    if git rev-parse --git-dir >/dev/null 2>&1; then
-        echo "git"
-    elif hg root >/dev/null 2>&1; then
-        echo "hg"
-    else
-        return 1
-    fi
-}
-
-# Main Bash prompt
-prompt_command() {
-    local exit_status=$?
-
-    # Arrow color
-    local arrow_color="$green"
-    [[ $exit_status -ne 0 ]] && arrow_color="$red"
-
-    local arrow="${arrow_color}➜ "
-
-    # Full working directory (not truncated)
-    local cwd="${cyan}\w"
-
-    # Repo info
-    local repo_info=""
-    local repo_type=$(_repo_type)
-
-    if [[ -n "$repo_type" ]]; then
-        local branch_name
-
-        if [[ "$repo_type" == "git" ]]; then
-            branch_name=$(_git_branch_name)
-            local dirty=""
-            _is_git_dirty && dirty="${yellow} ✗"
-            repo_info=" ${blue}${repo_type}:(${red}${branch_name}${blue})${dirty}"
-        elif [[ "$repo_type" == "hg" ]]; then
-            branch_name=$(_hg_branch_name)
-            local dirty=""
-            _is_hg_dirty && dirty="${yellow} ✗"
-            repo_info=" ${blue}${repo_type}:(${red}${branch_name}${blue})${dirty}"
-        fi
-    fi
-
-    PS1="${arrow} ${cwd}${repo_info}${normal} "
-}
-
-PROMPT_COMMAND=prompt_command
+# Set prompt
+PS1='$( __prompt_status )'"${COLOR_CWD}"'\w'"${COLOR_RESET}"' $(parse_git_status) \$ '

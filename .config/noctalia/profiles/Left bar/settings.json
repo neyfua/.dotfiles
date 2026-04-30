@@ -440,10 +440,10 @@
             ]
         },
         "language": "",
-        "lockOnSuspend": false,
+        "lockOnSuspend": true,
         "lockScreenAnimations": true,
         "lockScreenBlur": 0.4,
-        "lockScreenCountdownDuration": 10000,
+        "lockScreenCountdownDuration": 3000,
         "lockScreenMonitors": [
         ],
         "lockScreenTint": 0.6,
@@ -458,7 +458,7 @@
         "showChangelogOnStartup": true,
         "showHibernateOnLockScreen": false,
         "showScreenCorners": false,
-        "showSessionButtonsOnLockScreen": false,
+        "showSessionButtonsOnLockScreen": true,
         "smoothScrollEnabled": true,
         "telemetryEnabled": true
     },
@@ -490,7 +490,7 @@
     },
     "location": {
         "analogClockInCalendar": false,
-        "autoLocate": true,
+        "autoLocate": false,
         "firstDayOfWeek": 1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
@@ -603,8 +603,8 @@
                 "action": "suspend",
                 "command": "",
                 "countdownEnabled": true,
-                "enabled": false,
-                "keybind": ""
+                "enabled": true,
+                "keybind": "2"
             },
             {
                 "action": "hibernate",
@@ -618,14 +618,14 @@
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": true,
-                "keybind": "2"
+                "keybind": "3"
             },
             {
                 "action": "shutdown",
                 "command": "",
                 "countdownEnabled": true,
                 "enabled": true,
-                "keybind": "3"
+                "keybind": "4"
             },
             {
                 "action": "rebootToUefi",
@@ -697,7 +697,7 @@
         ],
         "fillColor": "#000000",
         "fillMode": "crop",
-        "hideWallpaperFilenames": false,
+        "hideWallpaperFilenames": true,
         "linkLightAndDarkWallpapers": true,
         "monitorDirectories": [
         ],
@@ -721,15 +721,15 @@
         "useWallhaven": false,
         "viewMode": "single",
         "wallhavenApiKey": "",
-        "wallhavenCategories": "111",
+        "wallhavenCategories": "110",
         "wallhavenOrder": "desc",
-        "wallhavenPurity": "100",
+        "wallhavenPurity": "110",
         "wallhavenQuery": "",
-        "wallhavenRatios": "",
+        "wallhavenRatios": "landscape",
         "wallhavenResolutionHeight": "",
         "wallhavenResolutionMode": "atleast",
         "wallhavenResolutionWidth": "",
-        "wallhavenSorting": "relevance",
+        "wallhavenSorting": "date_added",
         "wallpaperChangeMode": "random"
     }
 }
