@@ -77,7 +77,7 @@
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
         "useSeparateOpacity": false,
-        "widgetSpacing": 4,
+        "widgetSpacing": 6,
         "widgets": {
             "center": [
                 {
@@ -162,6 +162,17 @@
                         "removeMargins": false
                     },
                     "id": "plugin:privacy-indicator"
+                },
+                {
+                    "colorizeIcons": false,
+                    "hideMode": "hidden",
+                    "id": "ActiveWindow",
+                    "maxWidth": 145,
+                    "scrollingMode": "hover",
+                    "showIcon": true,
+                    "showText": true,
+                    "textColor": "none",
+                    "useFixedWidth": false
                 }
             ],
             "right": [

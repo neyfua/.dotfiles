@@ -31,7 +31,7 @@ set $term foot
 # gsettings set org.gnome.desktop.interface text-scaling-factor 1.00
 # gsettings set org.gnome.desktop.wm.preferences button-layout ':'
 # exec systemctl --user import-environment
-# exec dbus-update-activation-environment --systemd --all
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec fcitx5
 exec autotiling-rs
 exec wl-clip-persist
@@ -85,23 +85,28 @@ bindswitch lid:toggle exec qs -c noctalia-shell ipc call lockScreen lock
 #
 # Basics:
 #
-		# Start a terminal
+		## Terminal
 		bindsym $mod+q exec $$term
 
-		# File managers
+		## File manager
 		bindsym $mod+e exec nautilus
 
-		# Kill focused window
+		## Kill focused window
 		bindsym $mod+c kill
 
+		## Control center, Settings
+		# bindsym $mod+S exec qs -c noctalia-shell ipc call controlCenter toggle
+		bindsym $mod+S exec noctalia msg panel-toggle control-center
+		# bindsym Alt+s exec qs -c noctalia-shell ipc call settings toggle
+		bindsym Alt+s exec noctalia msg settings-toggle
+
 		# Launcher, Clipboard, Emoji
-		bindsym $mod+Return exec qs -c noctalia-shell ipc call launcher toggle
-		bindsym Alt+c exec qs -c noctalia-shell ipc call launcher clipboard
+		# bindsym $mod+Return exec qs -c noctalia-shell ipc call launcher toggle
+		bindsym $mod+Return exec noctalia msg panel-toggle launcher
+		# bindsym Alt+c exec qs -c noctalia-shell ipc call launcher clipboard
+		bindsym Alt+c exec noctalia msg panel-toggle clipboard
 		bindsym $mod+Period exec qs -c noctalia-shell ipc call launcher emoji
 
-		# Control center, Settings
-		bindsym $mod+S exec qs -c noctalia-shell ipc call controlCenter toggle
-		bindsym Alt+s exec qs -c noctalia-shell ipc call settings toggle
 
 		# Plugins
 		bindsym Alt+a exec qs -c noctalia-shell ipc call plugin:translator toggle "" ""
@@ -129,24 +134,36 @@ bindswitch lid:toggle exec qs -c noctalia-shell ipc call lockScreen lock
     bindsym $mod+Shift+c reload
 
     # Session menu
-    bindsym $mod+Shift+e exec qs -c noctalia-shell ipc call sessionMenu toggle
+    # bindsym $mod+Shift+e exec qs -c noctalia-shell ipc call sessionMenu toggle
+		bindsym $mod+Shift+e exec noctalia msg panel-toggle session
 
 		# Lockscreen
-		bindsym $mod+l exec qs -c noctalia-shell ipc call lockScreen lock
+		# bindsym $mod+l exec qs -c noctalia-shell ipc call lockScreen lock
+		bindsym $mod+l exec noctalia msg screen-lock
 
 		# Notification history, clear all notification
 		bindsym Alt+h exec qs -c noctalia-shell ipc call notifications toggleHistory
-		bindsym Alt+Escape exec qs -c noctalia-shell ipc call notifications clear
+		# bindsym Alt+Escape exec qs -c noctalia-shell ipc call notifications clear
+		bindsym Alt+Escape exec noctalia msg notification-clear-active
+		bindsym $mod+Shift+Escape exec noctalia msg notification-clear-history
 
 		# Wallpaper selector
-		bindsym Alt+w exec qs -c noctalia-shell ipc call wallpaper toggle
+		# bindsym Alt+w exec qs -c noctalia-shell ipc call wallpaper toggle
+		bindsym Alt+w exec noctalia msg panel-toggle wallpaper
 
 		# Media keys
-		bindsym XF86AudioRaiseVolume exec qs -c noctalia-shell ipc call volume increase
-		bindsym XF86AudioLowerVolume exec qs -c noctalia-shell ipc call volume decrease
-		bindsym XF86MonBrightnessUp exec qs -c noctalia-shell ipc call brightness increase
-		bindsym XF86MonBrightnessDown exec qs -c noctalia-shell ipc call brightness decrease
-		bindsym --no-warn XF86AudioPlay exec qs -c noctalia-shell ipc call media playPause
+		# bindsym XF86AudioRaiseVolume exec qs -c noctalia-shell ipc call volume increase
+		bindsym XF86AudioRaiseVolume exec noctalia msg volume-up 2
+		# bindsym XF86AudioLowerVolume exec qs -c noctalia-shell ipc call volume decrease
+		bindsym XF86AudioLowerVolume exec noctalia msg volume-down 2
+		# bindsym XF86AudioMute exec qs -c noctalia-shell ipc call volume muteOutput
+		bindsym XF86AudioMute exec noctalia msg volume-mute
+		# bindsym XF86MonBrightnessUp exec qs -c noctalia-shell ipc call brightness increase
+		bindsym XF86MonBrightnessUp exec noctalia msg brightness-up current 5%
+		# bindsym XF86MonBrightnessDown exec qs -c noctalia-shell ipc call brightness decrease
+		bindsym XF86MonBrightnessDown exec noctalia msg brightness-down current 5%
+		# bindsym --no-warn XF86AudioPlay exec qs -c noctalia-shell ipc call media playPause
+		bindsym XF86AudioPlay noctalia msg media toggle
 
 		# Screenshot
 		bindsym Print exec sway-screenshot -m output -o $HOME/Pictures/Screenshots
