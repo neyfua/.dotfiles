@@ -254,12 +254,20 @@ layer-rule {
 	}
 }
 
-layer-rule {
-  match namespace="^noctalia-(main|dock|panel)$"
-  background-effect {
-    xray false
-  }
-}
+// layer-rule {
+//   match namespace="^noctalia-(.*)$"
+//   background-effect {
+//     xray false
+//   }
+// }
+
+// layer-rule {
+// 	match namespace="^noctalia-panel$"
+// 	background-effect {
+// 		blur false
+// 		xray false
+// 	}
+// }
 
 window-rule {
 	geometry-corner-radius 12
@@ -328,7 +336,7 @@ window-rule {
 
 window-rule {
 	match app-id="^(.*)javac(.*)$|zenity|^(.*)waytator$"
-	match title="About Mozilla Firefox|Library|^Pushbullet(.*)$|^splash(.*)$|^Splash(.*)$|Android Studio Setup Wizard|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document|Noctalia Settings"
+	match title="About Mozilla Firefox|Library|^Pushbullet(.*)$|^splash(.*)$|^Splash(.*)$|Android Studio Setup Wizard|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document"
 
 	open-floating true
 }
@@ -367,9 +375,19 @@ window-rule {
 
 window-rule {
 	match app-id="^(.*)pavucontrol(.*)$"
+	match title="Noctalia Settings"
 
 	default-column-width { proportion 0.5; }
 	default-window-height { proportion 0.7; }
+
+	open-floating true
+}
+
+window-rule {
+	match title="Noctalia Settings"
+
+	default-column-width { proportion 0.8; }
+	default-window-height { proportion 0.9; }
 
 	open-floating true
 }
@@ -449,6 +467,8 @@ binds {
 
 	// Notifications history and notifications clear
 	Alt+Escape repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "notifications" "clear"; }
+	// Alt+Escape repeat=false { spawn "noctalia" "msg" "notification-clear-active"; }
+	// Mod+Shift+Escape repeat=false { spawn "noctalia" "msg" "notification-clear-history"; }
 
 	// Wallpaper selector
 	Alt+W repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; }
@@ -475,7 +495,8 @@ binds {
 	// XF86MonBrightnessUp allow-when-locked=true  {	spawn "noctalia" "msg" "brightness-up" "*" "5%"; }
 	XF86MonBrightnessDown allow-when-locked=true cooldown-ms=100 { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
 	// XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia" "msg" "brightness-down" "*" "5%"; }
-	XF86AudioPlay allow-when-locked=true repeat=false { spawn "noctalia" "msg" "media" "toggle"; }
+	XF86AudioPlay allow-when-locked=true repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "media" "playPause"; }
+	// XF86AudioPlay allow-when-locked=true repeat=false { spawn "noctalia" "msg" "media" "toggle"; }
 
 	// Close window
 	Mod+C repeat=false { close-window; }

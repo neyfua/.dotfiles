@@ -509,7 +509,7 @@
         "forced": false,
         "manualSunrise": "06:30",
         "manualSunset": "17:00",
-        "nightTemp": "6000"
+        "nightTemp": "5001"
     },
     "noctaliaPerformance": {
         "disableDesktopWidgets": false,
