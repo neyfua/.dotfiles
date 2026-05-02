@@ -5,16 +5,15 @@ return {
 		require("mason-tool-installer").setup({
 			ensure_installed = {
 				-- lsp
+				"ast_grep",
 				"bashls",
 				"lua_ls",
 				"html",
 				"cssls",
 				"pyright",
-				"clangd",
 				"jdtls",
 				"ts_ls",
 				"jsonls",
-				"stylua",
 
 				-- formatters
 				"beautysh",
