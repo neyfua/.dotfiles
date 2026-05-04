@@ -5,21 +5,23 @@ return {
 	config = function()
 		require("conform").setup({
 			formatters_by_ft = {
-				sh = { "beautysh" },
+				rust = { "ast_grep" },
+				go = { "ast_grep" },
+				python = { "black" },
 				bash = { "beautysh" },
+				sh = { "beautysh" },
 				zsh = { "beautysh" },
-				lua = { "stylua" },
-				html = { "prettierd" },
 				css = { "prettierd" },
+				html = { "prettierd" },
+				javascript = { "prettierd" },
+				markdown = { "prettierd" },
 				scss = { "prettierd" },
-				python = { "black", "autoflake", stop_after_first = true },
 				c = { "clang-format" },
 				cpp = { "clang-format" },
-				cs = { "csharpier", "clang-format", stop_after_first = true },
+				cs = { "clang-format" },
 				java = { "clang-format" },
-				javascript = { "prettierd" },
 				json = { "clang-format" },
-				php = { "pretty-php" },
+				lua = { "stylua" },
 			},
 
 			format_on_save = {

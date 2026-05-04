@@ -31,8 +31,10 @@ output "eDP-1" {
 }
 
 switch-events {
-	lid-close { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
-	lid-open { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+	// lid-close { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+	// lid-open { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+	lid-close { spawn "noctalia" "msg" "screen-lock"; }
+	lid-open { spawn "noctalia" "msg" "screen-lock"; }
 }
 
 layout {
@@ -120,8 +122,8 @@ recent-windows {
 // spawn-at-startup "dbus-update-activation-environment" "--systemd" "--all"
 spawn-at-startup "fcitx5"
 spawn-at-startup "wl-clip-persist" "-c" "both" "-e" "-f"
-// spawn-at-startup "qs" "-c" "noctalia-shell" "-n"
-spawn-at-startup "noctalia"
+spawn-at-startup "qs" "-c" "noctalia-shell" "-n"
+// spawn-at-startup "noctalia"
 
 prefer-no-csd
 
@@ -174,8 +176,8 @@ hotkey-overlay {
 
 blur {
 	passes 3
-	offset 3.0
-	noise 0.02
+	offset 2.0
+	noise 0.07
 	saturation 1.5
 }
 
@@ -261,7 +263,7 @@ layer-rule {
 // }
 
 layer-rule {
-  match namespace="^noctalia-(.*)$"
+  match namespace="^noctalia-.*$"
   background-effect {
     xray false
   }
@@ -316,18 +318,18 @@ window-rule {
 }
 
 window-rule {
-	match app-id="steam"
-
-	default-column-width { proportion 1.0; }
-	open-on-workspace "game"
-	open-focused true
-}
-
-window-rule {
 	match app-id="spotify|Spotify"
 
 	default-column-width { proportion 1.0; }
 	open-on-workspace "music"
+	open-focused true
+}
+
+window-rule {
+	match app-id="steam|Upload Labs"
+
+	default-column-width { proportion 1.0; }
+	open-on-workspace "game"
 	open-focused true
 }
 
@@ -350,7 +352,7 @@ window-rule {
 
 window-rule {
 	match app-id="^(.*)javac(.*)$|zenity|^(.*)waytator$"
-	match title="About Mozilla Firefox|Library|^Pushbullet(.*)$|^splash(.*)$|^Splash(.*)$|Close Tor Browser|Android Studio Setup Wizard|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document|^Select Folder(.*)$"
+	match title="About Mozilla Firefox|Library|^Pushbullet(.*)$|^splash(.*)$|^Splash(.*)$|Close Tor Browser|Android Studio Setup Wizard|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document|^Select Folder(.*)$|Friends List"
 
 	open-floating true
 }
@@ -389,7 +391,6 @@ window-rule {
 
 window-rule {
 	match app-id="^(.*)pavucontrol(.*)$"
-	match title="Noctalia Settings"
 
 	default-column-width { proportion 0.5; }
 	default-window-height { proportion 0.7; }
@@ -400,8 +401,8 @@ window-rule {
 window-rule {
 	match title="Noctalia Settings"
 
-	default-column-width { proportion 0.8; }
-	default-window-height { proportion 0.9; }
+	default-column-width { fixed 1050; }
+	default-window-height { fixed 800; }
 
 	open-floating true
 }
