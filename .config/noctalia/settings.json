@@ -68,7 +68,7 @@
         "outerCorners": true,
         "position": "bottom",
         "reverseScroll": false,
-        "rightClickAction": "none",
+        "rightClickAction": "controlCenter",
         "rightClickCommand": "",
         "rightClickFollowMouse": false,
         "screenOverrides": [
@@ -178,7 +178,7 @@
                     "hideIfNotDetected": true,
                     "id": "Battery",
                     "showNoctaliaPerformance": true,
-                    "showPowerProfiles": true
+                    "showPowerProfiles": false
                 },
                 {
                     "clockColor": "primary",
@@ -296,7 +296,15 @@
                     "id": "plugin:screen-recorder"
                 },
                 {
-                    "id": "DarkMode"
+                    "enableOnStateLogic": false,
+                    "generalTooltipText": "Color picker",
+                    "icon": "color-picker",
+                    "id": "CustomButton",
+                    "onClicked": "colorpicker",
+                    "onMiddleClicked": "",
+                    "onRightClicked": "",
+                    "showExecTooltip": false,
+                    "stateChecksJson": "[]"
                 }
             ],
             "right": [
@@ -315,18 +323,10 @@
                     "id": "KeepAwake"
                 },
                 {
-                    "id": "NightLight"
+                    "id": "PowerProfile"
                 },
                 {
-                    "enableOnStateLogic": false,
-                    "generalTooltipText": "Color picker",
-                    "icon": "color-picker",
-                    "id": "CustomButton",
-                    "onClicked": "colorpicker",
-                    "onMiddleClicked": "",
-                    "onRightClicked": "",
-                    "showExecTooltip": false,
-                    "stateChecksJson": "[]"
+                    "id": "NightLight"
                 }
             ]
         }
@@ -499,7 +499,7 @@
         "bluetoothRssiPollIntervalMs": 60000,
         "bluetoothRssiPollingEnabled": true,
         "disableDiscoverability": true,
-        "networkPanelView": "ethernet",
+        "networkPanelView": "wifi",
         "wifiDetailsViewMode": "grid"
     },
     "nightLight": {
