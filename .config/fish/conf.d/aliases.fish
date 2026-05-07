@@ -6,3 +6,5 @@ alias ci="commit"
 alias py="python3"
 alias c="gcc"
 alias cpp="g++"
+
+alias gearlever="flatpak run it.mijorus.gearlever"

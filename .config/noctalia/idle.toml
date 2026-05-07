@@ -6,3 +6,4 @@ enabled = true
 [idle.behavior.screen-off]
 timeout = 480
 command = "noctalia:dpms-off"
+resume_command = "noctalia:dpms-on"

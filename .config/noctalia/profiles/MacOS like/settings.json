@@ -48,7 +48,7 @@
         "barType": "simple",
         "capsuleColorKey": "none",
         "capsuleOpacity": 1,
-        "contentPadding": 4,
+        "contentPadding": 8,
         "density": "spacious",
         "displayMode": "always_visible",
         "enableExclusionZoneInset": true,
@@ -77,7 +77,7 @@
         "showOnWorkspaceSwitch": true,
         "showOutline": false,
         "useSeparateOpacity": false,
-        "widgetSpacing": 6,
+        "widgetSpacing": 5,
         "widgets": {
             "center": [
                 {
@@ -104,7 +104,7 @@
                     "colorizeSystemText": "none",
                     "customIconPath": "",
                     "enableColorization": false,
-                    "icon": "brand-apple-filled",
+                    "icon": "noctalia",
                     "id": "ControlCenter",
                     "useDistroLogo": false
                 },
@@ -122,7 +122,7 @@
                     "id": "Workspace",
                     "labelMode": "index",
                     "occupiedColor": "secondary",
-                    "pillSize": 0.5,
+                    "pillSize": 0.45,
                     "showApplications": false,
                     "showApplicationsHover": false,
                     "showBadge": true,
@@ -158,92 +158,40 @@
                         "refreshInterval": 5000
                     },
                     "id": "plugin:cloudflare-warp"
-                },
-                {
-                    "colorizeSystemIcon": "none",
-                    "colorizeSystemText": "none",
-                    "generalTooltipText": "File",
-                    "hideMode": "alwaysExpanded",
-                    "icon": "folder-filled",
-                    "iconPosition": "left",
-                    "id": "CustomButton",
-                    "ipcIdentifier": "",
-                    "leftClickExec": "nautilus",
-                    "leftClickUpdateText": true,
-                    "maxTextLength": {
-                        "horizontal": 10,
-                        "vertical": 10
-                    },
-                    "middleClickExec": "",
-                    "middleClickUpdateText": false,
-                    "parseJson": false,
-                    "rightClickExec": "",
-                    "rightClickUpdateText": false,
-                    "showExecTooltip": false,
-                    "showIcon": true,
-                    "showTextTooltip": false,
-                    "textCollapse": "",
-                    "textCommand": "",
-                    "textIntervalMs": 3000,
-                    "textStream": false,
-                    "wheelDownExec": "",
-                    "wheelDownUpdateText": false,
-                    "wheelExec": "",
-                    "wheelMode": "unified",
-                    "wheelUpExec": "",
-                    "wheelUpUpdateText": false,
-                    "wheelUpdateText": false
-                },
-                {
-                    "colorizeSystemIcon": "none",
-                    "colorizeSystemText": "none",
-                    "generalTooltipText": "Help",
-                    "hideMode": "alwaysExpanded",
-                    "icon": "question-mark",
-                    "iconPosition": "left",
-                    "id": "CustomButton",
-                    "ipcIdentifier": "",
-                    "leftClickExec": "xdg-open https://docs.noctalia.dev/",
-                    "leftClickUpdateText": true,
-                    "maxTextLength": {
-                        "horizontal": 10,
-                        "vertical": 10
-                    },
-                    "middleClickExec": "",
-                    "middleClickUpdateText": false,
-                    "parseJson": false,
-                    "rightClickExec": "",
-                    "rightClickUpdateText": false,
-                    "showExecTooltip": false,
-                    "showIcon": true,
-                    "showTextTooltip": false,
-                    "textCollapse": "",
-                    "textCommand": "",
-                    "textIntervalMs": 3000,
-                    "textStream": false,
-                    "wheelDownExec": "",
-                    "wheelDownUpdateText": false,
-                    "wheelExec": "",
-                    "wheelMode": "unified",
-                    "wheelUpExec": "",
-                    "wheelUpUpdateText": false,
-                    "wheelUpdateText": false
                 }
             ],
             "right": [
                 {
+                    "blacklist": [
+                    ],
+                    "chevronColor": "none",
+                    "colorizeIcons": false,
+                    "drawerEnabled": false,
+                    "hidePassive": false,
+                    "id": "Tray",
+                    "pinned": [
+                    ]
+                },
+                {
                     "deviceNativePath": "__default__",
-                    "displayMode": "graphic-clean",
+                    "displayMode": "graphic",
                     "hideIfIdle": false,
                     "hideIfNotDetected": true,
                     "id": "Battery",
                     "showNoctaliaPerformance": true,
-                    "showPowerProfiles": true
+                    "showPowerProfiles": false
                 },
                 {
                     "displayMode": "alwaysHide",
                     "iconColor": "none",
                     "id": "Network",
+                    "textColor": "none"
+                },
+                {
+                    "displayMode": "alwaysHide",
+                    "iconColor": "none",
+                    "id": "Volume",
+                    "middleClickCommand": "pwvucontrol || pavucontrol",
                     "textColor": "none"
                 },
                 {
@@ -257,23 +205,8 @@
                     "useDistroLogo": false
                 },
                 {
-                    "iconColor": "none",
-                    "id": "Settings"
-                },
-                {
-                    "blacklist": [
-                    ],
-                    "chevronColor": "none",
-                    "colorizeIcons": false,
-                    "drawerEnabled": false,
-                    "hidePassive": false,
-                    "id": "Tray",
-                    "pinned": [
-                    ]
-                },
-                {
                     "clockColor": "primary",
-                    "customFont": "Inter SemiBold",
+                    "customFont": "Inter ExtraBold",
                     "formatHorizontal": "ddd MMM dd  h:mm AP",
                     "formatVertical": "",
                     "id": "Clock",
@@ -349,10 +282,10 @@
         "shortcuts": {
             "left": [
                 {
-                    "id": "AirplaneMode"
+                    "id": "Bluetooth"
                 },
                 {
-                    "id": "Bluetooth"
+                    "id": "PowerProfile"
                 },
                 {
                     "defaultSettings": {
@@ -416,7 +349,7 @@
     },
     "desktopWidgets": {
         "enabled": true,
-        "gridSnap": true,
+        "gridSnap": false,
         "gridSnapScale": true,
         "monitorWidgets": [
             {
@@ -432,8 +365,8 @@
                         "scale": 1,
                         "showBackground": true,
                         "useCustomFont": false,
-                        "x": 1302,
-                        "y": 93
+                        "x": 1326,
+                        "y": 67
                     }
                 ]
             }
@@ -570,7 +503,7 @@
         "firstDayOfWeek": 1,
         "hideWeatherCityName": false,
         "hideWeatherTimezone": false,
-        "name": "Hong Kong",
+        "name": "Ho Chi Minh City",
         "showCalendarEvents": true,
         "showCalendarWeather": true,
         "showWeekNumberInCalendar": true,
@@ -597,7 +530,7 @@
         "forced": false,
         "manualSunrise": "06:30",
         "manualSunset": "17:00",
-        "nightTemp": "5001"
+        "nightTemp": "4000"
     },
     "noctaliaPerformance": {
         "disableDesktopWidgets": false,

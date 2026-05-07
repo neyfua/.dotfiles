@@ -55,7 +55,7 @@
         "fontScale": 1,
         "frameRadius": 12,
         "frameThickness": 8,
-        "hideOnOverview": true,
+        "hideOnOverview": false,
         "marginHorizontal": 4,
         "marginVertical": 4,
         "middleClickAction": "none",
@@ -116,11 +116,11 @@
                     "id": "Workspace",
                     "labelMode": "index",
                     "occupiedColor": "secondary",
-                    "pillSize": 0.55,
+                    "pillSize": 0.5,
                     "showApplications": false,
                     "showApplicationsHover": false,
                     "showBadge": true,
-                    "showLabelsOnlyWhenOccupied": true,
+                    "showLabelsOnlyWhenOccupied": false,
                     "unfocusedIconsOpacity": 1
                 },
                 {
@@ -344,7 +344,7 @@
                         "roundedCorners": true,
                         "scale": 1,
                         "showBackground": true,
-                        "x": 31,
+                        "x": 1178,
                         "y": 31
                     }
                 ]
@@ -509,7 +509,7 @@
         "forced": false,
         "manualSunrise": "06:30",
         "manualSunset": "17:00",
-        "nightTemp": "5001"
+        "nightTemp": "4000"
     },
     "noctaliaPerformance": {
         "disableDesktopWidgets": false,
@@ -711,8 +711,8 @@
         "wallhavenApiKey": "",
         "wallhavenCategories": "110",
         "wallhavenOrder": "desc",
-        "wallhavenPurity": "110",
-        "wallhavenQuery": "flower",
+        "wallhavenPurity": "100",
+        "wallhavenQuery": "",
         "wallhavenRatios": "landscape",
         "wallhavenResolutionHeight": "",
         "wallhavenResolutionMode": "atleast",
