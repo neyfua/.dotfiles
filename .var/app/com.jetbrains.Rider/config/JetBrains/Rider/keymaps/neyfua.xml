@@ -3,8 +3,10 @@
     <keyboard-shortcut first-keystroke="ctrl n" />
   </action>
   <action id="ActivateTerminalToolWindow">
-    <keyboard-shortcut first-keystroke="alt f12" />
     <keyboard-shortcut first-keystroke="alt back_quote" />
+  </action>
+  <action id="CloseContent">
+    <keyboard-shortcut first-keystroke="alt q" />
   </action>
   <action id="FileChooser.NewFolder">
     <keyboard-shortcut first-keystroke="alt insert" />

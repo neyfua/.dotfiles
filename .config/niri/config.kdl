@@ -36,7 +36,7 @@ switch-events {
 }
 
 layout {
-	gaps 10
+	gaps 25
 	center-focused-column "never"
 	always-center-single-column
 	// background-color "transparent"
@@ -55,23 +55,26 @@ layout {
 
 	focus-ring {
 		off
+		width 3
+		active-color "#ebbcba"
+		urgent-color "#eb6f92"
 	}
 
 	border {
-		on
-		width 4
+		// off
+		width 3
 		active-color "#ebbcba"
-		inactive-color "#1f1d2e"
+		inactive-color "#191724"
 		urgent-color "#eb6f92"
 	}
 
 	shadow {
 		on
-		draw-behind-window true
-		softness 40
+		softness 30
 		spread 5
 		offset x=0 y=0
-		color "#0007"
+		draw-behind-window true
+		color "#00000070"
 	}
 }
 
@@ -177,9 +180,9 @@ hotkey-overlay {
 
 blur {
 	passes 3
-	offset 2.0
+	offset 4.0
 	noise 0.07
-	saturation 1.5
+	saturation 1.7
 }
 
 animations {
@@ -188,17 +191,17 @@ animations {
 
 	// workspace-switch { spring damping-ratio=0.92 stiffness=850 epsilon=0.00005; }
 
-	horizontal-view-movement { spring damping-ratio=1.0 stiffness=550 epsilon=5e-5; }
+	// horizontal-view-movement { spring damping-ratio=1.0 stiffness=550 epsilon=5e-5; }
 
-	window-open {
-		duration-ms 200
-		curve "linear"
-	}
+	// window-open {
+	// 	duration-ms 200
+	// 	curve "linear"
+	// }
 
-	window-close {
-		duration-ms 700
-		curve "ease-out-cubic"
-	}
+	// window-close {
+	// 	duration-ms 700
+	// 	curve "ease-out-cubic"
+	// }
 
 	// window-open {
 	// 	duration-ms 300
@@ -221,7 +224,7 @@ animations {
 	// 		return fall_from_top(coords_geo, size_geo);
 	// 	}"
 	// }
-	//
+
 	// window-close {
 	// 	duration-ms 300
 	// 	curve "linear"
@@ -271,7 +274,7 @@ layer-rule {
 }
 
 window-rule {
-	geometry-corner-radius 12
+	geometry-corner-radius 0
 	clip-to-geometry true
 
 	background-effect {
@@ -283,7 +286,7 @@ window-rule {
 window-rule {
 	match is-active=false
 
-	opacity 0.95
+	opacity 0.93
 }
 
 window-rule {
@@ -354,7 +357,9 @@ window-rule {
 
 window-rule {
 	match app-id="^(.*)javac(.*)$|zenity|^(.*)waytator$"
-	match title="About Mozilla Firefox|Library|^Pushbullet(.*)$|^splash(.*)$|^Splash(.*)$|Close Tor Browser|Android Studio Setup Wizard|Data Sharing|^(.*)User Agreement$|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document|^Select(.*)$|Friends List|^Myrlyn-(.*)$"
+	match title="^About Mozilla(.*)$|Library|^Pushbullet(.*)$|^Picture-in(.*)$|^Picture in(.*)$|^splash(.*)$|^Splash(.*)$|Close Tor Browser|Android Studio Setup Wizard|Data Sharing|Error Loading Solution|^(.*)User Agreement$|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document|^Select(.*)$|Friends List|^Myrlyn-(.*)$"
+
+	geometry-corner-radius 12
 
 	open-floating true
 }
@@ -362,7 +367,6 @@ window-rule {
 window-rule {
 	match app-id="zenity"
 	match app-id="vesktop" title="^vesktop$"
-	// match app-id="^(.*)Nautilus$" title="^Select(.*)$"
 	match title="^splash(.*)$|^Splash(.*)$|zoom|^Updater(.*)$|^Sign in(.*)$|^Starting Apache(.*)$|^Warning(.*)$"
 
 	border { off; }
@@ -386,7 +390,6 @@ window-rule {
 	default-floating-position x=20 y=20 relative-to="bottom-right"
 
 	open-focused false
-	open-floating true
 
 	border { off; }
 }
@@ -408,6 +411,12 @@ window-rule {
 
 	open-floating true
 }
+
+// window-rule {
+// 	match app-id="^jetbrains(.*)$" title="^Settings$|^(.*)File or Project$"
+
+// 	geometry-corner-radius 12
+// }
 
 window-rule {
 	match app-id="mpv"
@@ -466,12 +475,23 @@ window-rule {
 	default-floating-position x=142 y=60 relative-to="right"
 }
 
+window-rule {
+	match title="^Calculator(.*)$"
+
+	default-floating-position x=10 y=10 relative-to="bottom-right"
+
+	open-floating true
+}
+
 binds {
 	// Terminal
 	Mod+Q repeat=false { spawn "foot"; }
 
 	// File managers
 	Mod+E repeat=false { spawn "nautilus"; }
+
+	// Keyboard
+	Alt+Shift+Ctrl+Z repeat=false { spawn "fcitx5-remote" "-t"; }
 
 	// Control center & settings
 	// Mod+S repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
