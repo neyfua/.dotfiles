@@ -5,8 +5,8 @@ return {
 	config = function()
 		require("conform").setup({
 			formatters_by_ft = {
+				go = { "gofumpt" },
 				rust = { "ast_grep" },
-				go = { "ast_grep" },
 				python = { "black" },
 				bash = { "beautysh" },
 				sh = { "beautysh" },
@@ -22,6 +22,7 @@ return {
 				java = { "clang-format" },
 				json = { "clang-format" },
 				lua = { "stylua" },
+				luau = { "stylua" },
 			},
 
 			format_on_save = {
