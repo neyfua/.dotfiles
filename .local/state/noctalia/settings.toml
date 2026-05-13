@@ -1,0 +1,224 @@
+[audio]
+sound_volume = 0.0
+
+[bar]
+order = [ "main" ]
+
+    [bar.main]
+    capsule = true
+    capsule_groups = [ "SysMon", "Utilities" ]
+    capsule_opacity = 0.0
+    capsule_padding = 4.0
+    center = [ "workspaces", "media" ]
+    enabled = true
+    end = [ "tray", "Screen_Recorder", "network", "volume", "battery", "notifications" ]
+    margin_edge = 0
+    margin_ends = 0
+    margin_h = 0
+    margin_v = 0
+    padding = 10
+    position = "left"
+    radius = 0
+    shadow = true
+    start = [ "control-center", "clock", "cpu", "temp", "ram", "Disk" ]
+    thickness = 40
+
+[[control_center.shortcuts]]
+type = "bluetooth"
+
+[[control_center.shortcuts]]
+type = "weather"
+
+[[control_center.shortcuts]]
+type = "power_profile"
+
+[[control_center.shortcuts]]
+type = "caffeine"
+
+[desktop_widgets]
+enabled = false
+
+[idle]
+pre_action_fade_seconds = 3.0
+
+    [idle.behavior.idle-behavior]
+    action = "suspend"
+    enabled = true
+    lock_before_suspend = true
+    timeout = 1800
+
+    [idle.behavior.lock]
+    action = "lock"
+    command = "noctalia:screen-lock"
+    enabled = true
+    timeout = 605
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    command = "noctalia:dpms-off"
+    enabled = true
+    resume_command = "noctalia:dpms-on"
+    timeout = 600
+
+[nightlight]
+enabled = true
+start_time = "17:30"
+stop_time = "07:00"
+temperature_day = 6500
+temperature_night = 4300
+
+[notification]
+background_opacity = 0.93000000715255737
+enable_daemon = true
+layer = "overlay"
+
+[osd]
+position = "bottom_center"
+
+[overview]
+enabled = true
+
+[shell]
+avatar_path = "/home/neyfua/.face"
+clipboard_auto_paste = "off"
+clipboard_image_action_command = "waytator"
+date_format = "%a, %b %d %Y"
+font_family = "Inter Medium"
+password_style = "random"
+polkit_agent = true
+settings_show_advanced = true
+telemetry_enabled = true
+time_format = "{:%-I:%M %p}"
+
+    [shell.mpris]
+    blacklist = [ "firefox", "Tor Browser" ]
+
+    [shell.panel]
+    attach_clipboard = true
+    attach_launcher = true
+
+    [[shell.session.actions]]
+    action = "logout"
+    enabled = true
+
+    [[shell.session.actions]]
+    action = "command"
+    command = "systemctl suspend"
+    enabled = true
+    glyph = "suspend"
+    label = "Suspend"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    enabled = true
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    destructive = true
+    enabled = true
+
+[theme]
+builtin = "Rosé Pine"
+mode = "auto"
+
+    [theme.templates]
+    enable_builtin_templates = false
+    enable_builtins = false
+    enable_community_templates = false
+
+[wallpaper]
+directory = "~/Pictures/Wallpapers"
+edge_smoothness = 0.5
+transition = [ "disc" ]
+transition_duration = 2000
+
+    [wallpaper.automation]
+    order = "alphabetical"
+
+    [wallpaper.default]
+    path = "/home/neyfua/Pictures/Wallpapers/flower5.png"
+
+    [wallpaper.last]
+    path = "/home/neyfua/Pictures/Wallpapers/flower5.png"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/neyfua/Pictures/Wallpapers/flower5.png"
+
+[weather]
+auto_locate = true
+
+[widget.Disk]
+capsule_group = "SysMon"
+show_label = false
+stat = "disk_pct"
+type = "sysmon"
+
+[widget.Screen_Recorder]
+script = "scripts/screen_recorder.lua"
+type = "scripted"
+
+[widget.active_window]
+icon_size = 20.0
+
+[widget.audio_visualizer]
+anchor = true
+bands = 128
+capsule = false
+low_color = "tertiary"
+width = 400.0
+
+[widget.battery]
+capsule_group = "Utilities"
+warning_threshold = 10
+
+[widget.brightness]
+show_label = false
+
+[widget.clock]
+color = "primary"
+format = "{:%-I:%M %p}"
+vertical_format = "{:%I\\n%M\\n%p}"
+
+[widget.control-center]
+custom_image = "/usr/share/pixmaps/distribution-logos/square-hicolor.svg"
+
+[widget.cpu]
+capsule_group = "SysMon"
+show_label = false
+
+[widget.launcher]
+capsule_padding = 0.0
+
+[widget.media]
+art_size = 22.0
+capsule_group = ""
+
+[widget.network]
+capsule_group = "Utilities"
+show_label = false
+
+[widget.ram]
+capsule_group = "SysMon"
+show_label = false
+
+[widget.scripted]
+capsule = false
+
+[widget.sysmon]
+stat = "ram_pct"
+
+[widget.temp]
+capsule_group = "SysMon"
+show_label = false
+
+[widget.tray]
+drawer = true
+pinned = [ "Fcitx" ]
+
+[widget.volume]
+capsule_group = "Utilities"
+show_label = false
+
+[widget.workspaces]
+capsule_group = ""
+display = "none"
