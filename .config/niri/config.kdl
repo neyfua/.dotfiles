@@ -322,19 +322,10 @@ window-rule {
 }
 
 window-rule {
-	match app-id="steam"
+	match app-id="steam|Upload Labs|^(.*)Sober$"
 
 	default-column-width { proportion 1.0; }
 	open-on-workspace "game"
-	open-focused true
-}
-
-window-rule {
-	match app-id="Upload Labs"
-
-	default-column-width { proportion 1.0; }
-	open-on-workspace "game"
-	open-fullscreen true
 	open-focused true
 }
 
@@ -349,6 +340,12 @@ window-rule {
 }
 
 window-rule {
+	match is-floating=true
+
+	geometry-corner-radius 12
+}
+
+window-rule {
 	match app-id="^(.*)telegram(.*)$|ONLYOFFICE"
 	match title="^OBS(.*)$"
 
@@ -357,9 +354,7 @@ window-rule {
 
 window-rule {
 	match app-id="^(.*)javac(.*)$|zenity|^(.*)waytator$"
-	match title="^About Mozilla(.*)$|Library|^Pushbullet(.*)$|^Picture-in(.*)$|^Picture in(.*)$|^splash(.*)$|^Splash(.*)$|Close Tor Browser|Android Studio Setup Wizard|Data Sharing|Error Loading Solution|^(.*)User Agreement$|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document|^Select(.*)$|Friends List|^Myrlyn-(.*)$"
-
-	geometry-corner-radius 12
+	match title="^About Mozilla(.*)$|Library|^Pushbullet(.*)$|^Picture-in(.*)$|^Picture in(.*)$|^splash(.*)$|^Splash(.*)$|Close Tor Browser|Android Studio Setup Wizard|Data Sharing|Error Loading Solution|^(.*)User Agreement$|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document|^Select(.*)$|Friends List|^Myrlyn-(.*)$|Servers"
 
 	open-floating true
 }
@@ -370,6 +365,12 @@ window-rule {
 	match title="^splash(.*)$|^Splash(.*)$|zoom|^Updater(.*)$|^Sign in(.*)$|^Starting Apache(.*)$|^Warning(.*)$"
 
 	border { off; }
+}
+
+window-rule {
+	match app-id="Upload Labs"
+
+	open-fullscreen true
 }
 
 window-rule {
@@ -411,12 +412,6 @@ window-rule {
 
 	open-floating true
 }
-
-// window-rule {
-// 	match app-id="^jetbrains(.*)$" title="^Settings$|^(.*)File or Project$"
-
-// 	geometry-corner-radius 12
-// }
 
 window-rule {
 	match app-id="mpv"
@@ -491,7 +486,7 @@ binds {
 	Mod+E repeat=false { spawn "nautilus"; }
 
 	// Keyboard
-	Alt+Shift+Ctrl+Z repeat=false { spawn "fcitx5-remote" "-t"; }
+	Alt+Shift+Z repeat=false { spawn "fcitx5-remote" "-t"; }
 
 	// Control center & settings
 	// Mod+S repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }

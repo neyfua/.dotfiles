@@ -7,7 +7,7 @@ vim.opt.nu = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 
--- vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "yes"
 vim.opt.scrolloff = 3
 
 -- vim.opt.showmode = false

@@ -25,6 +25,12 @@ return {
 			require("mini.surround").setup({})
 
 			require("mini.icons").setup({})
+
+			require("mini.comment").setup({
+				options = {
+					ignore_blank_line = true,
+				},
+			})
 		end,
 	},
 }

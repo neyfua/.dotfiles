@@ -10,7 +10,7 @@ local CHECK_TICKS = 8 -- 8 * 250ms = 2s between process checks
 local PENDING_TICKS = 8
 
 local state = "idle" -- idle | pending | recording | replay_pending | replaying
-local outputPath = "~/Videos/Records"
+local outputPath = ""
 local isAvailable = false
 local tickCount = 0
 local pendingTick = 0
@@ -466,5 +466,29 @@ function onMiddleClick()
 		saveReplay()
 	elseif state == "replaying" or state == "replay_pending" then
 		stopReplay()
+	end
+end
+
+function onIpc(event, payload)
+	if event == "start" then
+		startRecording()
+	elseif event == "stop" then
+		stopRecording()
+	elseif event == "toggle" then
+		onClick()
+	elseif event == "replay-start" then
+		startReplay()
+	elseif event == "replay-stop" then
+		stopReplay()
+	elseif event == "replay-toggle" then
+		if state == "replaying" or state == "replay_pending" then
+			stopReplay()
+		elseif state == "idle" then
+			startReplay()
+		end
+	elseif event == "replay-save" or event == "save-replay" then
+		saveReplay()
+	else
+		noctalia.log("screen_recorder: unknown IPC event '" .. event .. "'")
 	end
 end
