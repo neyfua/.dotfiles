@@ -1,4 +1,4 @@
-<keymap version="1" name="IntelliJ (XWin) copy" parent="Default for XWin">
+<keymap version="1" name="neyfua" parent="Default for XWin">
   <action id="ActivateProjectToolWindow">
     <keyboard-shortcut first-keystroke="ctrl n" />
   </action>
@@ -8,9 +8,13 @@
   <action id="CloseContent">
     <keyboard-shortcut first-keystroke="alt q" />
   </action>
+  <action id="EditorContextInfo" />
   <action id="FileChooser.NewFolder">
     <keyboard-shortcut first-keystroke="alt insert" />
   </action>
   <action id="GotoClass" />
+  <action id="Terminal.SwitchFocusToEditor">
+    <keyboard-shortcut first-keystroke="escape" />
+  </action>
   <action id="Vcs.QuickListPopupAction" />
 </keymap>

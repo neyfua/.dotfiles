@@ -17,7 +17,7 @@ input {
 	}
 
 	mouse {
-		accel-speed 0.1
+		accel-speed 0
 		accel-profile "flat"
 	}
 
@@ -31,12 +31,12 @@ output "eDP-1" {
 }
 
 switch-events {
-	lid-close { spawn "bash" "-c" "noctalia msg screen-lock"; }
-	lid-open { spawn "bash" "-c" "noctalia msg screen-lock"; }
+	lid-close { spawn "noctalia" "msg" "screen-lock"; }
+	lid-open { spawn "noctalia" "msg" "screen-lock"; }
 }
 
 layout {
-	gaps 25
+	gaps 35
 	center-focused-column "never"
 	always-center-single-column
 	// background-color "transparent"
@@ -99,31 +99,31 @@ gestures {
 recent-windows {
 	off
 
-	debounce-ms 0
+	// debounce-ms 0
 
-	open-delay-ms 100
+	// open-delay-ms 100
 
-	highlight {
-		active-color "#ebbcba"
-		urgent-color "#eb6f92"
-		padding 20
-		corner-radius 0
-	}
+	// highlight {
+	// 	active-color "#ebbcba"
+	// 	urgent-color "#eb6f92"
+	// 	padding 20
+	// 	corner-radius 0
+	// }
 
-	previews {
-		max-height 480
-		max-scale 1.0
-	}
+	// previews {
+	// 	max-height 480
+	// 	max-scale 1.0
+	// }
 
-	binds {
-		Alt+Tab         { next-window; }
-		Alt+Shift+Tab   { previous-window; }
-	}
+	// binds {
+	// 	Alt+Tab         { next-window; }
+	// 	Alt+Shift+Tab   { previous-window; }
+	// }
 }
 
-// gsettings set org.gnome.desktop.interface text-scaling-factor 1.25
-// gsettings set org.gnome.desktop.wm.preferences button-layout ':'
-spawn-at-startup "fcitx5"
+// gsettings set org.gnome.desktop.interface text-scaling-factor 1.50
+// gsettings set org.gnome.desktop.wm.preferences button-layout ''
+spawn-at-startup "fcitx5" "-d"
 spawn-at-startup "wl-clip-persist" "-c" "regular" "-e"
 spawn-at-startup "noctalia"
 
@@ -153,25 +153,25 @@ environment {
 
 	EDITOR "nvim"
 	TERMINAL "footclient"
-	BROWSER "firefox"
+	BROWSER "firefox|^.*zen_browser.*$"
 }
 
 cursor {
-	xcursor-theme "BreezeX-RosePineDawn-Linux"
-	xcursor-size 32
+	xcursor-theme "BreezeX-RosePine-Linux"
+	xcursor-size 36
 	hide-when-typing
 }
 
-// overview {
-// 	zoom 1.0
-// 	backdrop-color "#191724"
-// 	workspace-shadow {
-// 		softness 40
-// 		spread 10
-// 		offset x=0 y=0
-// 		color "#0007"
-// 	}
-// }
+overview {
+	zoom 1.0
+	backdrop-color "#191724"
+	workspace-shadow {
+		softness 40
+		spread 10
+		offset x=0 y=0
+		color "#0007"
+	}
+}
 
 hotkey-overlay {
 	skip-at-startup
@@ -186,24 +186,10 @@ blur {
 
 animations {
 	// off
-	// slowdown 0.6
-
-	// workspace-switch { spring damping-ratio=0.92 stiffness=850 epsilon=0.00005; }
-
-	// horizontal-view-movement { spring damping-ratio=1.0 stiffness=550 epsilon=5e-5; }
+	slowdown 0.93
 
 	// window-open {
-	// 	duration-ms 200
-	// 	curve "linear"
-	// }
-
-	// window-close {
-	// 	duration-ms 700
-	// 	curve "ease-out-cubic"
-	// }
-
-	// window-open {
-	// 	duration-ms 300
+	// 	duration-ms 500
 	// 	curve "ease-out-expo"
 	// 	custom-shader "vec4 fall_from_top(vec3 coords_geo, vec3 size_geo) {
 	// 		float progress = niri_clamped_progress * niri_clamped_progress;
@@ -225,8 +211,8 @@ animations {
 	// }
 
 	// window-close {
-	// 	duration-ms 300
-	// 	curve "linear"
+	// 	duration-ms 500
+	// 	curve "ease-out-expo"
 	// 	custom-shader "vec4 fall_and_rotate(vec3 coords_geo, vec3 size_geo) {
 	// 		float progress = niri_clamped_progress * niri_clamped_progress;
 	// 		vec2 coords = (coords_geo.xy - vec2(0.5, 1.0)) * size_geo.xy;
@@ -248,32 +234,15 @@ animations {
 	// }
 }
 
-// layer-rule {
-// 	match namespace="^noctalia-overview*"
-// 	place-within-backdrop true
-// }
-
-// layer-rule {
-// 	match namespace="^noctalia-backdrop"
-// 	place-within-backdrop true
-// }
-
-// layer-rule {
-//   match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
-// 	background-effect {
-// 		xray false
-// 	}
-// }
-
 layer-rule {
-  match namespace="^noctalia-.*$"
-  background-effect {
-    xray false
-  }
+	match namespace="^noctalia-.*$"
+	background-effect {
+		xray false
+	}
 }
 
 window-rule {
-	geometry-corner-radius 0
+	geometry-corner-radius 12
 	clip-to-geometry true
 
 	background-effect {
@@ -288,6 +257,12 @@ window-rule {
 	opacity 0.93
 }
 
+// window-rule {
+// 	match is-floating=true
+
+// 	geometry-corner-radius 16
+// }
+
 window-rule {
 	match app-id="code|^(.*)Zed$|^jetbrains(.*)$|antigravity"
 
@@ -297,7 +272,7 @@ window-rule {
 }
 
 window-rule {
-	match app-id="firefox|Tor Browser|^(.*)torbrowser-launcher$"
+	match app-id="firefox|Tor Browser|^(.*)torbrowser-launcher$|^.*zen_browser.*$"
 
 	default-column-width { proportion 1.0; }
 	open-on-workspace "web"
@@ -339,12 +314,6 @@ window-rule {
 }
 
 window-rule {
-	match is-floating=true
-
-	geometry-corner-radius 12
-}
-
-window-rule {
 	match app-id="^(.*)telegram(.*)$|ONLYOFFICE"
 	match title="^OBS(.*)$"
 
@@ -352,8 +321,9 @@ window-rule {
 }
 
 window-rule {
+	// Data Sharing|Error Loading Solution
 	match app-id="^(.*)javac(.*)$|zenity|^(.*)waytator$"
-	match title="^About Mozilla(.*)$|Library|^Pushbullet(.*)$|^Picture-in(.*)$|^Picture in(.*)$|^splash(.*)$|^Splash(.*)$|Close Tor Browser|Android Studio Setup Wizard|Data Sharing|Error Loading Solution|^(.*)User Agreement$|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document|^Select(.*)$|Friends List|^Myrlyn-(.*)$|Servers"
+	match title="^About (.*)$|Library|^Pushbullet(.*)$|^Picture-in(.*)$|^Picture in(.*)$|^splash(.*)$|^Splash(.*)$|Close Tor Browser|Android Studio Setup Wizard|^(.*)User Agreement$|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document|^Select(.*)$|Friends List|^Myrlyn-(.*)$|Servers|^Incoming (.*)$"
 
 	open-floating true
 }
@@ -368,6 +338,7 @@ window-rule {
 
 window-rule {
 	match app-id="Upload Labs"
+	match app-id="^.*Sober$" title="Sober"
 
 	open-fullscreen true
 }
@@ -382,7 +353,7 @@ window-rule {
 }
 
 window-rule {
-	match app-id="firefox" title="Picture-in-Picture"
+	match app-id="firefox|^.*zen_browser.*$" title="Picture-in-Picture"
 
 	default-column-width { fixed 354; }
 	default-window-height { fixed 200; }
@@ -406,8 +377,8 @@ window-rule {
 window-rule {
 	match app-id="^(.*)Noctalia.Settings$"
 
-	default-column-width { fixed 1080; }
-  default-window-height { fixed 800; }
+	default-column-width { fixed 1260; }
+	 default-window-height { fixed 820; }
 
 	open-floating true
 }
@@ -436,8 +407,10 @@ window-rule {
 window-rule {
 	match title="^Welcome to(.*)$"
 
-	default-column-width { proportion 1.0; }
-	default-window-height { proportion 1.0; }
+	open-floating true
+
+	// default-column-width { proportion 1.0; }
+	// default-window-height { proportion 1.0; }
 }
 
 window-rule {
@@ -465,16 +438,31 @@ window-rule {
 	open-floating true
 }
 
-window-rule {
-	match title="Sign in to Steam"
+// window-rule {
+// 	match app-id="steam" title="Sign in to Steam"
 	
-	default-floating-position x=41 y=110 relative-to="right"
-}
+// 	default-floating-position x=41 y=110 relative-to="right"
+// }
+
+// window-rule {
+// 	match app-id="steam" title="Shutdown"
+
+// 	default-floating-position x=142 y=60 relative-to="right"
+// }
+
+// window-rule {
+// 	match app-id="steam" title="Steam Dialog"
+
+// 	default-floating-position x=348.5 y=46.5 relative-to="right"
+// }
 
 window-rule {
-	match title="Shutdown"
+	match app-id="steam" title="Friends List"
 
-	default-floating-position x=142 y=60 relative-to="right"
+	default-column-width { proportion 0.2; }
+	default-window-height { proportion 0.6; }
+
+	default-floating-position x=32 y=32 relative-to="bottom-right"
 }
 
 binds {
@@ -497,7 +485,7 @@ binds {
 	// Launcher, clipboard history and emoji
 	Mod+Return repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
 	Alt+C repeat=false      { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
-	Mod+Period repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher" "/emo"; }
+	Mod+Period repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher" "/emo "; }
 
 	// Session menu
 	Mod+Shift+E repeat=false { spawn "noctalia" "msg" "panel-toggle" "session"; }

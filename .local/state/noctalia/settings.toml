@@ -1,6 +1,3 @@
-[audio]
-sound_volume = 0.0
-
 [bar]
 order = [ "main" ]
 
@@ -10,85 +7,74 @@ order = [ "main" ]
     capsule_opacity = 0.0
     capsule_padding = 4.0
     center = [ "workspaces", "media" ]
-    enabled = true
     end = [ "tray", "Screen_Recorder", "network", "volume", "battery", "notifications" ]
     margin_edge = 0
     margin_ends = 0
-    margin_h = 0
-    margin_v = 0
-    padding = 10
-    position = "left"
+    padding = 6
+    position = "right"
     radius = 0
-    shadow = true
-    start = [ "control-center", "clock", "cpu", "temp", "ram", "Disk" ]
-    thickness = 40
+    start = [ "control-center", "clock", "cpu", "temp", "GPU_Temp", "ram", "Disk" ]
+    thickness = 44
 
-[[control_center.shortcuts]]
-type = "bluetooth"
+[control_center]
+compact = false
 
-[[control_center.shortcuts]]
-type = "weather"
+    [[control_center.shortcuts]]
+    type = "bluetooth"
 
-[[control_center.shortcuts]]
-type = "power_profile"
+    [[control_center.shortcuts]]
+    type = "weather"
 
-[[control_center.shortcuts]]
-type = "caffeine"
+    [[control_center.shortcuts]]
+    type = "power_profile"
+
+    [[control_center.shortcuts]]
+    type = "caffeine"
 
 [desktop_widgets]
 enabled = false
 
 [idle]
+behavior_order = [ "lock", "screen-off" ]
 pre_action_fade_seconds = 3.0
-
-    [idle.behavior.idle-behavior]
-    action = "suspend"
-    enabled = true
-    lock_before_suspend = true
-    timeout = 1800
 
     [idle.behavior.lock]
     action = "lock"
-    command = "noctalia:screen-lock"
     enabled = true
-    timeout = 605
+    timeout = 600
 
     [idle.behavior.screen-off]
     action = "screen_off"
-    command = "noctalia:dpms-off"
     enabled = true
-    resume_command = "noctalia:dpms-on"
-    timeout = 600
+    timeout = 660
 
 [nightlight]
 enabled = true
-start_time = "17:30"
-stop_time = "07:00"
-temperature_day = 6500
-temperature_night = 4300
+
+[noctalia_state]
+setup_wizard_completed = true
 
 [notification]
 background_opacity = 0.93000000715255737
-enable_daemon = true
 layer = "overlay"
 
 [osd]
 position = "bottom_center"
 
-[overview]
-enabled = true
-
 [shell]
 avatar_path = "/home/neyfua/.face"
 clipboard_auto_paste = "off"
 clipboard_image_action_command = "waytator"
-date_format = "%a, %b %d %Y"
-font_family = "Inter Medium"
+date_format = "%A, %B %d %Y"
+font_family = "Inter"
 password_style = "random"
 polkit_agent = true
 settings_show_advanced = true
 telemetry_enabled = true
 time_format = "{:%-I:%M %p}"
+
+    [shell.animation]
+    speed = 1.25
 
     [shell.mpris]
     blacklist = [ "firefox", "Tor Browser" ]
@@ -96,6 +82,9 @@ time_format = "{:%-I:%M %p}"
     [shell.panel]
     attach_clipboard = true
     attach_launcher = true
+
+    [shell.screen_corners]
+    enabled = true
 
     [[shell.session.actions]]
     action = "logout"
@@ -119,30 +108,25 @@ time_format = "{:%-I:%M %p}"
 
 [theme]
 builtin = "Rosé Pine"
-mode = "auto"
 
     [theme.templates]
     enable_builtin_templates = false
-    enable_builtins = false
     enable_community_templates = false
 
 [wallpaper]
-directory = "~/Pictures/Wallpapers"
+directory = "/home/neyfua/Pictures/Wallpapers"
 edge_smoothness = 0.5
 transition = [ "disc" ]
 transition_duration = 2000
 
-    [wallpaper.automation]
-    order = "alphabetical"
-
     [wallpaper.default]
-    path = "/home/neyfua/Pictures/Wallpapers/flower5.png"
+    path = "/home/neyfua/Pictures/Wallpapers/earrings.jpg"
 
     [wallpaper.last]
-    path = "/home/neyfua/Pictures/Wallpapers/flower5.png"
+    path = "/home/neyfua/Pictures/Wallpapers/earrings.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/neyfua/Pictures/Wallpapers/flower5.png"
+    path = "/home/neyfua/Pictures/Wallpapers/earrings.jpg"
 
 [weather]
 auto_locate = true
@@ -153,26 +137,19 @@ show_label = false
 stat = "disk_pct"
 type = "sysmon"
 
+[widget.GPU_Temp]
+capsule_group = "SysMon"
+show_label = false
+stat = "gpu_temp"
+type = "sysmon"
+
 [widget.Screen_Recorder]
 script = "scripts/screen_recorder.lua"
 type = "scripted"
 
-[widget.active_window]
-icon_size = 20.0
-
-[widget.audio_visualizer]
-anchor = true
-bands = 128
-capsule = false
-low_color = "tertiary"
-width = 400.0
-
 [widget.battery]
 capsule_group = "Utilities"
 warning_threshold = 10
-
-[widget.brightness]
-show_label = false
 
 [widget.clock]
 color = "primary"
@@ -186,12 +163,9 @@ custom_image = "/usr/share/pixmaps/distribution-logos/square-hicolor.svg"
 capsule_group = "SysMon"
 show_label = false
 
-[widget.launcher]
-capsule_padding = 0.0
-
 [widget.media]
 art_size = 22.0
-capsule_group = ""
+title_scroll = "on_hover"
 
 [widget.network]
 capsule_group = "Utilities"
@@ -200,12 +174,6 @@ show_label = false
 [widget.ram]
 capsule_group = "SysMon"
 show_label = false
-
-[widget.scripted]
-capsule = false
-
-[widget.sysmon]
-stat = "ram_pct"
 
 [widget.temp]
 capsule_group = "SysMon"
@@ -220,5 +188,4 @@ capsule_group = "Utilities"
 show_label = false
 
 [widget.workspaces]
-capsule_group = ""
 display = "none"

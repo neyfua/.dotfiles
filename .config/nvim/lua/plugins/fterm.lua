@@ -5,13 +5,11 @@ return {
 
 		-- FTerm setup
 		fterm.setup({
-			border = "double",
-			dimensions = {
-				height = 0.95,
-				width = 0.9,
-				x = 0.5,
-				y = 0.5,
-			},
+			border = "single",
+			-- dimensions = {
+			-- 	height = 0.85,
+			-- 	width = 0.85,
+			-- },
 		})
 
 		vim.keymap.set({ "n", "i", "v", "t" }, "<A-`>", function()

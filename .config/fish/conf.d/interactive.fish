@@ -3,3 +3,7 @@ if status is-interactive
 	bind \e\x7f backward-kill-word
 	bind \e\b backward-kill-word
 end
+
+if test "$TERM" = linux
+	setfont ter-u32n
+end

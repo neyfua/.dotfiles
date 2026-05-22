@@ -1,9 +1,11 @@
 return {
 	"stevearc/conform.nvim",
-	event = "BufWritePre",
 	dependencies = { "williamboman/mason.nvim" },
+
 	config = function()
-		require("conform").setup({
+		local conform = require("conform")
+
+		conform.setup({
 			formatters_by_ft = {
 				go = { "gofumpt" },
 				rust = { "ast_grep" },
@@ -24,11 +26,13 @@ return {
 				lua = { "stylua" },
 				luau = { "stylua" },
 			},
+		})
 
-			format_on_save = {
+		vim.keymap.set({ "n", "v", "o" }, "\\r", function()
+			conform.format({
 				timeout_ms = 1000,
 				lsp_fallback = true,
-			},
-		})
+			})
+		end, { desc = "Format file" })
 	end,
 }
