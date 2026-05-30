@@ -8,3 +8,4 @@ SETUVAR --export QT_IM_MODULE:fcitx
 SETUVAR --export QT_IM_MODULES:wayland\x3bfcitx
 SETUVAR --export XMODIFIERS:\x40im\x3dfcitx
 SETUVAR __fish_initialized:4300
+SETUVAR _fisher_upgraded_to_4_4:\x1d

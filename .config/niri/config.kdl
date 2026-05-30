@@ -2,27 +2,23 @@ input {
 	keyboard {
 		repeat-delay 200
 		repeat-rate 40
-		// numlock
 	}
 
 	touchpad {
 		tap
 		dwt
-		dwtp
 		natural-scroll
-		accel-speed 0.9
-		accel-profile "flat"
-		scroll-factor 0.4
+		accel-speed 0.4
+		// accel-profile "flat"
+		scroll-factor 0.8
 		disabled-on-external-mouse
 	}
 
 	mouse {
-		accel-speed 0
+		accel-speed 0.0
 		accel-profile "flat"
+		scroll-factor 1.3
 	}
-
-	// workspace-auto-back-and-forth
-	// focus-follows-mouse
 }
 
 output "eDP-1" {
@@ -36,10 +32,9 @@ switch-events {
 }
 
 layout {
-	gaps 35
+	// gaps 25
 	center-focused-column "never"
 	always-center-single-column
-	// background-color "transparent"
 	background-color "#191724"
 
 	preset-column-widths {
@@ -121,11 +116,13 @@ recent-windows {
 	// }
 }
 
-// gsettings set org.gnome.desktop.interface text-scaling-factor 1.50
+// gsettings set org.gnome.desktop.interface text-scaling-factor 1.60
 // gsettings set org.gnome.desktop.wm.preferences button-layout ''
 spawn-at-startup "fcitx5" "-d"
+spawn-at-startup "warp-taskbar"
 spawn-at-startup "wl-clip-persist" "-c" "regular" "-e"
-spawn-at-startup "noctalia"
+spawn-at-startup "noctalia" "-d"
+// spawn-at-startup "qs" "-c" "noctalia-shell" "-n"
 
 prefer-no-csd
 
@@ -152,8 +149,8 @@ environment {
 	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 
 	EDITOR "nvim"
-	TERMINAL "footclient"
-	BROWSER "firefox|^.*zen_browser.*$"
+	TERMINAL "foot"
+	BROWSER "zen"
 }
 
 cursor {
@@ -232,6 +229,46 @@ animations {
 	// 		return fall_and_rotate(coords_geo, size_geo);
 	// 	}"
 	// }
+
+	window-open {
+		duration-ms 400
+		curve "ease-out-cubic"
+			custom-shader "vec4 open_color(vec3 coords_geo, vec3 size_geo) {
+			float p = niri_clamped_progress;
+			vec2 uv = coords_geo.xy;
+
+			vec2 center = vec2(0.5, 0.5);
+			float scale = mix(0.95, 1.0, p);
+			vec2 scaled_uv = (uv - center) / scale + center;
+
+			vec3 tex_coords = niri_geo_to_tex * vec3(scaled_uv, 1.0);
+			vec4 color = texture2D(niri_tex, tex_coords.st);
+
+			float alpha = smoothstep(0.0, 0.8, p);
+
+			return color * alpha;
+		}"
+	}
+
+	window-close {
+		duration-ms 400
+		curve "ease-out-cubic"
+		custom-shader "vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+			float p = niri_clamped_progress;
+			vec2 uv = coords_geo.xy;
+
+			vec2 center = vec2(0.5, 0.5);
+			float scale = mix(1.0, 0.95, p);
+			vec2 scaled_uv = (uv - center) / scale + center;
+
+			vec3 tex_coords = niri_geo_to_tex * vec3(scaled_uv, 1.0);
+			vec4 color = texture2D(niri_tex, tex_coords.st);
+
+			float alpha = smoothstep(1.0, 0.2, p);
+
+			return color * alpha;
+		}"
+	}
 }
 
 layer-rule {
@@ -257,14 +294,8 @@ window-rule {
 	opacity 0.93
 }
 
-// window-rule {
-// 	match is-floating=true
-
-// 	geometry-corner-radius 16
-// }
-
 window-rule {
-	match app-id="code|^(.*)Zed$|^jetbrains(.*)$|antigravity"
+	match app-id="code|^(.*)Zed$|^jetbrains(.*)$|antigravity|^virt-.*$"
 
 	default-column-width { proportion 1.0; }
 	open-on-workspace "code"
@@ -272,7 +303,8 @@ window-rule {
 }
 
 window-rule {
-	match app-id="firefox|Tor Browser|^(.*)torbrowser-launcher$|^.*zen_browser.*$"
+	match app-id="firefox|Tor Browser|^(.*)torbrowser-launcher$|^.*zen$|chromium-browser"
+	match app-id="antigravity" title="^.*Chromium$"
 
 	default-column-width { proportion 1.0; }
 	open-on-workspace "web"
@@ -280,7 +312,7 @@ window-rule {
 }
 
 window-rule {
-	match app-id="vesktop|^(.*)telegram(.*)$|^(.*)fluxer(.*)$"
+	match app-id="vesktop|^(.*)telegram(.*)$|^(.*)fluxer(.*)$|Zalo"
 
 	default-column-width { proportion 1.0; }
 	open-on-workspace "chat"
@@ -305,7 +337,7 @@ window-rule {
 
 window-rule {
 	match app-id="^(.*)kdenlive$" title="^Kdenlive$"
-	match app-id="^virt-(.*)$|winboat"
+	match app-id="winboat"
 	match title="^OBS(.*)$"
 
 	default-column-width { proportion 1.0; }
@@ -322,7 +354,7 @@ window-rule {
 
 window-rule {
 	// Data Sharing|Error Loading Solution
-	match app-id="^(.*)javac(.*)$|zenity|^(.*)waytator$"
+	match app-id="^(.*)javac(.*)$|zenity|^(.*)waytator$|warp-taskbar"
 	match title="^About (.*)$|Library|^Pushbullet(.*)$|^Picture-in(.*)$|^Picture in(.*)$|^splash(.*)$|^Splash(.*)$|Close Tor Browser|Android Studio Setup Wizard|^(.*)User Agreement$|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document|^Select(.*)$|Friends List|^Myrlyn-(.*)$|Servers|^Incoming (.*)$"
 
 	open-floating true
@@ -346,14 +378,17 @@ window-rule {
 window-rule {
 	match app-id="^xdg-desktop-portal-gtk$"
 	match app-id="^(.*)Nautilus$" title="^Open File(.*)$|^Select(.*)$"
-	match title="^dialog(.*)$|^confirm(.*)$|^Save As(.*)$|^Save Image(.*)$|^Open Folder(.*)$|^File Upload(.*)$|^Choose wallpaper(.*)$|^Choose an image(.*)$|^Locate ISO(.*)$|^blob(.*)$"
+	match app-id="Electron" title="Save"
+	match title="^dialog(.*)$|^confirm(.*)$|^Save As(.*)$|^Save Image(.*)$|^Open Folder(.*)$|^File Upload(.*)$|^Choose wallpaper(.*)$|^Choose an image(.*)$|Choose File|^Locate ISO(.*)$|^blob(.*)$|Open project"
 
 	default-column-width { proportion 0.8; }
 	default-window-height { proportion 0.8; }
+
+	open-floating true
 }
 
 window-rule {
-	match app-id="firefox|^.*zen_browser.*$" title="Picture-in-Picture"
+	match app-id="firefox|^.*zen$|chromium-browser" title="Picture-in-Picture"
 
 	default-column-width { fixed 354; }
 	default-window-height { fixed 200; }
@@ -368,8 +403,8 @@ window-rule {
 window-rule {
 	match app-id="^(.*)pavucontrol(.*)$"
 
-	default-column-width { proportion 0.5; }
-	default-window-height { proportion 0.7; }
+	default-column-width { proportion 0.55; }
+	default-window-height { proportion 0.6; }
 
 	open-floating true
 }
@@ -377,8 +412,17 @@ window-rule {
 window-rule {
 	match app-id="^(.*)Noctalia.Settings$"
 
-	default-column-width { fixed 1260; }
-	 default-window-height { fixed 820; }
+	default-column-width { proportion 0.8; }
+	default-window-height { proportion 0.9; }
+
+	open-floating true
+}
+
+window-rule {
+	match title="Lotus Settings"
+
+	default-column-width { proportion 0.65; }
+	default-window-height { proportion 0.8; }
 
 	open-floating true
 }
@@ -387,13 +431,13 @@ window-rule {
 	match app-id="mpv"
 
 	default-column-width { fixed 1755; }
-	default-window-height { fixed 1100; }
+	default-window-height { fixed 987; }
 
 	open-floating true
 }
 
 window-rule {
-	match title="^Media viewer(.*)$"
+	match title="^Media viewer(.*)$|Zalo Photo"
 
 	default-column-width { proportion 0.9; }
 	default-window-height { proportion 0.9; }
@@ -408,16 +452,13 @@ window-rule {
 	match title="^Welcome to(.*)$"
 
 	open-floating true
-
-	// default-column-width { proportion 1.0; }
-	// default-window-height { proportion 1.0; }
 }
 
 window-rule {
 	match app-id="^(.*)FileRoller$"
 
-	default-column-width { fixed 850; }
-	default-window-height { fixed 500; }
+	default-column-width { proportion 0.6; }
+	default-window-height { proportion 0.6; }
 
 	open-floating true
 }
@@ -433,28 +474,28 @@ window-rule {
 window-rule {
 	match title="^Calculator(.*)$"
 
-	default-floating-position x=10 y=10 relative-to="bottom-right"
+	default-floating-position x=32 y=32 relative-to="bottom-right"
 
 	open-floating true
 }
 
-// window-rule {
-// 	match app-id="steam" title="Sign in to Steam"
+window-rule {
+	match app-id="steam" title="Sign in to Steam"
 	
-// 	default-floating-position x=41 y=110 relative-to="right"
-// }
+	default-floating-position x=41 y=110 relative-to="right"
+}
 
-// window-rule {
-// 	match app-id="steam" title="Shutdown"
+window-rule {
+	match app-id="steam" title="Shutdown"
 
-// 	default-floating-position x=142 y=60 relative-to="right"
-// }
+	default-floating-position x=130 y=60 relative-to="right"
+}
 
-// window-rule {
-// 	match app-id="steam" title="Steam Dialog"
+window-rule {
+	match app-id="steam" title="Steam Dialog"
 
-// 	default-floating-position x=348.5 y=46.5 relative-to="right"
-// }
+	default-floating-position x=367 y=46.5 relative-to="right"
+}
 
 window-rule {
 	match app-id="steam" title="Friends List"
@@ -472,43 +513,69 @@ binds {
 	// File managers
 	Mod+E repeat=false { spawn "nautilus"; }
 
-	// Keyboard
+	// fcitx5
 	Alt+Shift+Z repeat=false { spawn "fcitx5-remote" "-t"; }
 
 	// Control center & settings
-	Mod+S repeat=false { spawn "noctalia" "msg" "panel-toggle" "control-center"; }
-	Alt+S repeat=false { spawn "noctalia" "msg" "settings-toggle"; }
+	// Mod+S repeat=false { spawn "noctalia" "msg" "panel-toggle" "control-center"; }
+	// Alt+S repeat=false { spawn "noctalia" "msg" "settings-toggle"; }
+	Mod+S repeat=false { spawn-sh "noctalia msg panel-toggle control-center;qs -c noctalia-shell ipc call controlCenter toggle"; }
+	Alt+S repeat=false { spawn-sh "noctalia msg settings-toggle;qs -c noctalia-shell ipc call settings open"; }
 
 	// Lockscreen
-	Mod+L repeat=false { spawn "noctalia" "msg" "screen-lock"; }
+	// Mod+L repeat=false { spawn "noctalia" "msg" "screen-lock"; }
+	Mod+L repeat=false { spawn-sh "noctalia msg screen-lock;qs -c noctalia-shell ipc call lockScreen lock"; }
 
 	// Launcher, clipboard history and emoji
-	Mod+Return repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
-	Alt+C repeat=false      { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
-	Mod+Period repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher" "/emo "; }
+	// Mod+Return repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+	// Alt+C repeat=false      { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
+	// Mod+Period repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher" "/emo "; }
+	Mod+Return repeat=false { spawn-sh "noctalia msg panel-toggle launcher;qs -c noctalia-shell ipc call launcher toggle"; }
+	Alt+C repeat=false      { spawn-sh "noctalia msg panel-toggle clipboard;qs -c noctalia-shell ipc call launcher clipboard"; }
+	Mod+Period repeat=false { spawn-sh "noctalia msg panel-toggle launcher /emo;qs -c noctalia-shell ipc call launcher emoji" ; }
 
 	// Session menu
-	Mod+Shift+E repeat=false { spawn "noctalia" "msg" "panel-toggle" "session"; }
+	// Mod+Shift+E repeat=false { spawn "noctalia" "msg" "panel-toggle" "session"; }
+	Mod+Shift+E repeat=false { spawn-sh "noctalia msg panel-toggle session;qs -c noctalia-shell ipc call sessionMenu toggle"; }
 
 	// Notifications history and notifications clear
-	Alt+Escape repeat=false { spawn "noctalia" "msg" "notification-clear-active"; }
-	Mod+Shift+Escape repeat=false { spawn "noctalia" "msg" "notification-clear-history"; }
+	// Alt+Escape repeat=false { spawn "noctalia" "msg" "notification-clear-active"; }
+	// Mod+Shift+Escape repeat=false { spawn "noctalia" "msg" "notification-clear-history"; }
+	Alt+Escape repeat=false { spawn-sh "noctalia msg notification-clear-active;qs -c noctalia-shell ipc call notifications dismissAll"; }
+	Mod+Shift+Escape repeat=false { spawn-sh "noctalia msg notification-clear-history;qs -c noctalia-shell ipc call notifications clear"; }
 
 	// Wallpaper selector
-	Alt+W repeat=false { spawn "noctalia" "msg" "panel-toggle" "wallpaper"; }
+	// Alt+W repeat=false { spawn "noctalia" "msg" "panel-toggle" "wallpaper"; }
+	Alt+W repeat=false { spawn-sh "noctalia msg panel-toggle wallpaper;qs -c noctalia-shell ipc call wallpaper toggle"; }
 
 	// System controls
-	XF86AudioRaiseVolume allow-when-locked=true  { spawn "noctalia" "msg" "volume-up" "2"; }
-	XF86AudioLowerVolume allow-when-locked=true  { spawn "noctalia" "msg" "volume-down" "2"; }
-	XF86AudioMute allow-when-locked=true repeat=false  { spawn "noctalia" "msg" "volume-mute"; }
-	XF86MonBrightnessUp allow-when-locked=true  {	spawn "noctalia" "msg" "brightness-up" "*" "5%"; }
-	XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia" "msg" "brightness-down" "*" "5%"; }
-	XF86AudioPlay allow-when-locked=true repeat=false { spawn "noctalia" "msg" "media" "toggle"; }
+	// XF86AudioRaiseVolume allow-when-locked=true  { spawn "noctalia" "msg" "volume-up" "2"; }
+	// XF86AudioLowerVolume allow-when-locked=true  { spawn "noctalia" "msg" "volume-down" "2"; }
+	// XF86AudioMute allow-when-locked=true repeat=false  { spawn "noctalia" "msg" "volume-mute"; }
+	// XF86MonBrightnessUp allow-when-locked=true  {	spawn "noctalia" "msg" "brightness-up" "*" "5%"; }
+	// XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia" "msg" "brightness-down" "*" "5%"; }
+	// XF86AudioPlay allow-when-locked=true repeat=false { spawn "noctalia" "msg" "media" "toggle"; }
+	XF86AudioRaiseVolume allow-when-locked=true  { spawn-sh "noctalia msg volume-up 2;qs -c noctalia-shell ipc call volume increase"; }
+	XF86AudioLowerVolume allow-when-locked=true  { spawn-sh "noctalia msg volume-down 2;qs -c noctalia-shell ipc call volume decrease"; }
+	XF86AudioMute allow-when-locked=true repeat=false  { spawn-sh "noctalia msg volume-mute;qs -c noctalia-shell ipc call volume muteOutput"; }
+	XF86MonBrightnessUp allow-when-locked=true  {	spawn-sh "noctalia msg brightness-up 5%;qs -c noctalia-shell ipc call brightness increase"; }
+	XF86MonBrightnessDown allow-when-locked=true { spawn-sh "noctalia msg brightness-down 5%;qs -c noctalia-shell ipc call brightness decrease"; }
+	XF86AudioPlay allow-when-locked=true repeat=false { spawn-sh "noctalia msg media toggle;ipc call media playPause"; }
+
+	// Noctalia v4 plugins
+	Alt+N repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:sticky-notes" "toggle"; }
+	Alt+I repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:ip-monitor" "toggle"; }
+	Alt+P repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:shell-profiles" "toggleProfiles"; }
+	Alt+Z repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
+	Alt+T repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle"; }
+
+	// Noctalia v5 scripted widgets
+	F9 { spawn "noctalia" "msg" "scripted-widget" "screen_recorder" "focused" "toggle"; }
 
 	// Close window
 	Mod+C repeat=false { close-window; }
 
-	// Mod+W repeat=false { toggle-overview; }
+	Mod+G repeat=false { toggle-overview; }
 
 	Mod+Left repeat=false       { focus-column-left; }
 	Mod+Shift+Down repeat=false { focus-window-down; }

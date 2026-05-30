@@ -129,3 +129,7 @@ prompt_command() {
 }
 
 PROMPT_COMMAND=prompt_command
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/neyfua/.local/bin:$PATH"

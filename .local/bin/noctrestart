@@ -1,4 +1,5 @@
 #!/bin/bash
-pkill -f 'noctalia'
-sleep 0.1
-noctalia --daemon
+pkill -f 'quickshell|qs'
+pkill -f 'wlsunset'
+sleep 0.3
+qs -c noctalia-shell -n

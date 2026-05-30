@@ -13,7 +13,7 @@
 	"modules": [
 		{
 			"type": "os",
-			"key": "distro",
+			"key": "os",
 			"format": "{name}"
 		},
 		{
@@ -21,8 +21,13 @@
 			"key": "kernel"
 		},
 		{
-			"type": "host",
-			"key": "host",
+			"type": "cpu",
+			"key": "cpu",
+			"format": "{name} @ {freq-max}"
+		},
+		{
+			"type": "gpu",
+			"key": "gpu",
 			"format": "{name}"
 		},
 		{
