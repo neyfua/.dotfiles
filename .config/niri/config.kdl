@@ -27,15 +27,16 @@ output "eDP-1" {
 }
 
 switch-events {
-	lid-close { spawn "noctalia" "msg" "screen-lock"; }
-	lid-open { spawn "noctalia" "msg" "screen-lock"; }
+	lid-close { spawn "noctalia" "msg" "session" "lock"; }
+	lid-open { spawn "noctalia" "msg" "session" "lock"; }
 }
 
 layout {
 	// gaps 25
 	center-focused-column "never"
 	always-center-single-column
-	background-color "#191724"
+	// background-color "#191724"
+	background-color "transparent"
 
 	preset-column-widths {
 		proportion 0.25
@@ -183,7 +184,7 @@ blur {
 
 animations {
 	// off
-	slowdown 0.93
+	slowdown 0.67
 
 	// window-open {
 	// 	duration-ms 500
@@ -276,6 +277,11 @@ layer-rule {
 	background-effect {
 		xray false
 	}
+}
+
+layer-rule {
+  match namespace="^noctalia-backdrop"
+  place-within-backdrop true
 }
 
 window-rule {
@@ -413,7 +419,7 @@ window-rule {
 	match app-id="^(.*)Noctalia.Settings$"
 
 	default-column-width { proportion 0.8; }
-	default-window-height { proportion 0.9; }
+	default-window-height { proportion 0.95; }
 
 	open-floating true
 }
@@ -480,7 +486,7 @@ window-rule {
 }
 
 window-rule {
-	match app-id="steam" title="Sign in to Steam"
+	match app-id="steam" title="^Sign in.*$"
 	
 	default-floating-position x=41 y=110 relative-to="right"
 }
@@ -492,7 +498,7 @@ window-rule {
 }
 
 window-rule {
-	match app-id="steam" title="Steam Dialog"
+	match app-id="steam" title="^.*Dialog$"
 
 	default-floating-position x=367 y=46.5 relative-to="right"
 }
@@ -524,7 +530,7 @@ binds {
 
 	// Lockscreen
 	// Mod+L repeat=false { spawn "noctalia" "msg" "screen-lock"; }
-	Mod+L repeat=false { spawn-sh "noctalia msg screen-lock;qs -c noctalia-shell ipc call lockScreen lock"; }
+	Mod+L repeat=false { spawn-sh "noctalia msg session lock;qs -c noctalia-shell ipc call lockScreen lock"; }
 
 	// Launcher, clipboard history and emoji
 	// Mod+Return repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
