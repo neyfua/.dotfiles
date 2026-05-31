@@ -1,4 +1,4 @@
 #!/bin/bash
 pkill noctalia
-sleep 0.8
+sleep 1.5
 noctalia -d

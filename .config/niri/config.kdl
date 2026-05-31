@@ -419,7 +419,7 @@ window-rule {
 	match app-id="^(.*)Noctalia.Settings$"
 
 	default-column-width { proportion 0.8; }
-	default-window-height { proportion 0.95; }
+	default-window-height { proportion 0.9; }
 
 	open-floating true
 }
