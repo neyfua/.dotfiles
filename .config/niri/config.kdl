@@ -15,7 +15,7 @@ input {
 	}
 
 	mouse {
-		accel-speed 0.0
+		accel-speed -0.13
 		accel-profile "flat"
 		scroll-factor 1.3
 	}
@@ -23,7 +23,7 @@ input {
 
 output "eDP-1" {
 	mode "2240x1400@60.002"
-	scale 1.5
+	scale 1.6
 }
 
 switch-events {
@@ -32,7 +32,7 @@ switch-events {
 }
 
 layout {
-	// gaps 25
+	gaps 0
 	center-focused-column "never"
 	always-center-single-column
 	// background-color "#191724"
@@ -51,26 +51,33 @@ layout {
 
 	focus-ring {
 		off
-		width 3
-		active-color "#ebbcba"
-		urgent-color "#eb6f92"
+		// width 3
+		// active-color "#ebbcba"
+		// urgent-color "#eb6f92"
 	}
 
 	border {
 		// off
-		width 3
-		active-color "#ebbcba"
-		inactive-color "#191724"
-		urgent-color "#eb6f92"
+		width 0
+		// active-color "#ebbcba"
+		// inactive-color "#191724"
+		// urgent-color "#eb6f92"
 	}
 
 	shadow {
 		on
-		softness 30
-		spread 5
+		softness 25
+		spread 3
 		offset x=0 y=0
 		draw-behind-window true
 		color "#00000070"
+	}
+
+	struts {
+		left 12
+		right 12
+		top 12
+		// bottom 64
 	}
 }
 
@@ -147,7 +154,7 @@ environment {
 	QT_QPA_PLATFORM "wayland"
 	QT_QPA_PLATFORMTHEME "qt6ct"
 	// QT_SCALE_FACTOR "1.25"
-	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+	// QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 
 	EDITOR "nvim"
 	TERMINAL "foot"
@@ -155,8 +162,8 @@ environment {
 }
 
 cursor {
-	xcursor-theme "BreezeX-RosePine-Linux"
-	xcursor-size 36
+	xcursor-theme "BreezeX-RosePineDawn-Linux"
+	xcursor-size 28
 	hide-when-typing
 }
 
@@ -176,15 +183,15 @@ hotkey-overlay {
 }
 
 blur {
-	passes 3
-	offset 4.0
-	noise 0.07
-	saturation 1.7
+  passes 2        // more passes = stronger blur (default: 3)
+  offset 3.0      // sample distance per pass (default: 3.0)
+  noise 0.03      // grain overlay (default: 0.02)
+  saturation 1.0  // color saturation boost (default: 1.5)
 }
 
 animations {
 	// off
-	slowdown 0.67
+	slowdown 0.83
 
 	// window-open {
 	// 	duration-ms 500
@@ -274,6 +281,7 @@ animations {
 
 layer-rule {
 	match namespace="^noctalia-.*$"
+
 	background-effect {
 		xray false
 	}
@@ -285,8 +293,13 @@ layer-rule {
 }
 
 window-rule {
-	geometry-corner-radius 12
+	geometry-corner-radius 14
 	clip-to-geometry true
+
+	default-column-width { proportion 0.7; }
+	default-window-height { proportion 0.8; }
+
+	open-floating true
 
 	background-effect {
 		blur true
@@ -295,25 +308,44 @@ window-rule {
 }
 
 window-rule {
+	match is-floating=true
+
+	border {
+		// off
+		width 1.5
+		active-color "#ebbcba"
+		inactive-color "#00000000"
+		urgent-color "#eb6f92"
+	}
+}
+
+window-rule {
 	match is-active=false
 
-	opacity 0.93
+	opacity 0.90
 }
 
 window-rule {
 	match app-id="code|^(.*)Zed$|^jetbrains(.*)$|antigravity|^virt-.*$"
 
 	default-column-width { proportion 1.0; }
+	default-window-height { proportion 1.0; }
+
 	open-on-workspace "code"
+
+	open-floating false
 	open-focused true
 }
 
 window-rule {
-	match app-id="firefox|Tor Browser|^(.*)torbrowser-launcher$|^.*zen$|chromium-browser"
-	match app-id="antigravity" title="^.*Chromium$"
+	match app-id="firefox|Tor Browser|^(.*)torbrowser-launcher$|^.*zen$"
 
 	default-column-width { proportion 1.0; }
+	default-window-height { proportion 1.0; }
+
 	open-on-workspace "web"
+
+	open-floating false
 	open-focused true
 }
 
@@ -321,7 +353,11 @@ window-rule {
 	match app-id="vesktop|^(.*)telegram(.*)$|^(.*)fluxer(.*)$|Zalo"
 
 	default-column-width { proportion 1.0; }
+	default-window-height { proportion 1.0; }
+
 	open-on-workspace "chat"
+
+	open-floating false
 	open-focused true
 }
 
@@ -329,15 +365,20 @@ window-rule {
 	match app-id="spotify|Spotify"
 
 	default-column-width { proportion 1.0; }
+	default-window-height { proportion 1.0; }
+
 	open-on-workspace "music"
+
+	open-maximized true
+	open-floating false
 	open-focused true
 }
 
 window-rule {
 	match app-id="steam|Upload Labs|^(.*)Sober$"
 
-	default-column-width { proportion 1.0; }
 	open-on-workspace "game"
+
 	open-focused true
 }
 
@@ -347,21 +388,26 @@ window-rule {
 	match title="^OBS(.*)$"
 
 	default-column-width { proportion 1.0; }
+	default-window-height { proportion 1.0; }
+
 	open-on-workspace "misc"
+
+	open-floating false
 	open-focused true
 }
 
-window-rule {
-	match app-id="^(.*)telegram(.*)$|ONLYOFFICE"
-	match title="^OBS(.*)$"
+// window-rule {
+// 	match app-id="^(.*)telegram(.*)$|ONLYOFFICE"
+// 	match title="^OBS(.*)$"
 
-	default-column-width { proportion 1.0; }
-}
+// 	default-column-width { proportion 1.0; }
+// }
 
 window-rule {
 	// Data Sharing|Error Loading Solution
-	match app-id="^(.*)javac(.*)$|zenity|^(.*)waytator$|warp-taskbar"
-	match title="^About (.*)$|Library|^Pushbullet(.*)$|^Picture-in(.*)$|^Picture in(.*)$|^splash(.*)$|^Splash(.*)$|Close Tor Browser|Android Studio Setup Wizard|^(.*)User Agreement$|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document|^Select(.*)$|Friends List|^Myrlyn-(.*)$|Servers|^Incoming (.*)$"
+	// match app-id="^(.*)javac(.*)$|zenity|^(.*)waytator$|warp-taskbar"
+	// match title="^About (.*)$|Library|^Pushbullet(.*)$|^Picture-in(.*)$|^Picture in(.*)$|^splash(.*)$|^Splash(.*)$|Close Tor Browser|Android Studio Setup Wizard|^(.*)User Agreement$|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document|^Select(.*)$|Friends List|^Myrlyn-(.*)$|Servers|^Incoming (.*)$"
+	match app-id="vesktop" title="^vesktop$"
 
 	open-floating true
 }
@@ -375,9 +421,56 @@ window-rule {
 }
 
 window-rule {
+	match app-id="steam" title="Steam"
+
+	default-column-width { proportion 1.0; }
+	default-window-height { proportion 1.0; }
+
+	open-floating false
+	open-fullscreen false
+}
+
+window-rule {
+	match app-id="steam" title="^Sign in.*$"
+
+	open-floating true
+	
+	default-floating-position x=-73 y=131.5 relative-to="right"
+}
+
+window-rule {
+	match app-id="steam" title="Shutdown"
+
+	open-floating true
+
+	default-floating-position x=42 y=72 relative-to="right"
+}
+
+window-rule {
+	match app-id="steam" title="^.*Dialog$"
+
+	open-floating true
+
+	default-floating-position x=287.5 y=56 relative-to="right"
+}
+
+window-rule {
+	match app-id="steam" title="Friends List"
+
+	default-column-width { proportion 0.2; }
+	default-window-height { proportion 0.5; }
+
+	default-floating-position x=12 y=12 relative-to="bottom-right"
+}
+
+window-rule {
 	match app-id="Upload Labs"
 	match app-id="^.*Sober$" title="Sober"
 
+	default-column-width { proportion 1.0; }
+	default-window-height { proportion 1.0; }
+
+	open-floating false
 	open-fullscreen true
 }
 
@@ -387,10 +480,24 @@ window-rule {
 	match app-id="Electron" title="Save"
 	match title="^dialog(.*)$|^confirm(.*)$|^Save As(.*)$|^Save Image(.*)$|^Open Folder(.*)$|^File Upload(.*)$|^Choose wallpaper(.*)$|^Choose an image(.*)$|Choose File|^Locate ISO(.*)$|^blob(.*)$|Open project"
 
-	default-column-width { proportion 0.8; }
-	default-window-height { proportion 0.8; }
+	// default-column-width { proportion 0.8; }
+	// default-window-height { proportion 0.8; }
 
 	open-floating true
+}
+
+window-rule {
+	match app-id="foot"
+
+	default-column-width { proportion 0.7; }
+	default-window-height { proportion 0.85; }
+}
+
+window-rule {
+	match app-id="Zalo"
+
+	default-column-width { proportion 0.8; }
+	default-window-height { proportion 0.9; }
 }
 
 window-rule {
@@ -409,8 +516,8 @@ window-rule {
 window-rule {
 	match app-id="^(.*)pavucontrol(.*)$"
 
-	default-column-width { proportion 0.55; }
-	default-window-height { proportion 0.6; }
+	// default-column-width { proportion 0.55; }
+	// default-window-height { proportion 0.6; }
 
 	open-floating true
 }
@@ -419,7 +526,7 @@ window-rule {
 	match app-id="^(.*)Noctalia.Settings$"
 
 	default-column-width { proportion 0.8; }
-	default-window-height { proportion 0.9; }
+	default-window-height { proportion 0.93; }
 
 	open-floating true
 }
@@ -427,8 +534,8 @@ window-rule {
 window-rule {
 	match title="Lotus Settings"
 
-	default-column-width { proportion 0.65; }
-	default-window-height { proportion 0.8; }
+	// default-column-width { proportion 0.65; }
+	// default-window-height { proportion 0.8; }
 
 	open-floating true
 }
@@ -436,8 +543,8 @@ window-rule {
 window-rule {
 	match app-id="mpv"
 
-	default-column-width { fixed 1755; }
-	default-window-height { fixed 987; }
+	// default-column-width { fixed 1755; }
+	// default-window-height { fixed 987; }
 
 	open-floating true
 }
@@ -445,8 +552,8 @@ window-rule {
 window-rule {
 	match title="^Media viewer(.*)$|Zalo Photo"
 
-	default-column-width { proportion 0.9; }
-	default-window-height { proportion 0.9; }
+	// default-column-width { proportion 0.9; }
+	// default-window-height { proportion 0.9; }
 
 	open-fullscreen false
 	open-floating true
@@ -463,8 +570,8 @@ window-rule {
 window-rule {
 	match app-id="^(.*)FileRoller$"
 
-	default-column-width { proportion 0.6; }
-	default-window-height { proportion 0.6; }
+	// default-column-width { proportion 0.6; }
+	// default-window-height { proportion 0.6; }
 
 	open-floating true
 }
@@ -472,9 +579,7 @@ window-rule {
 window-rule {
 	match app-id="spotify|Spotify"
 
-	open-fullscreen false
-	open-maximized false
-	open-maximized-to-edges false
+	open-maximized-to-edges true
 }
 
 window-rule {
@@ -483,33 +588,6 @@ window-rule {
 	default-floating-position x=32 y=32 relative-to="bottom-right"
 
 	open-floating true
-}
-
-window-rule {
-	match app-id="steam" title="^Sign in.*$"
-	
-	default-floating-position x=41 y=110 relative-to="right"
-}
-
-window-rule {
-	match app-id="steam" title="Shutdown"
-
-	default-floating-position x=130 y=60 relative-to="right"
-}
-
-window-rule {
-	match app-id="steam" title="^.*Dialog$"
-
-	default-floating-position x=367 y=46.5 relative-to="right"
-}
-
-window-rule {
-	match app-id="steam" title="Friends List"
-
-	default-column-width { proportion 0.2; }
-	default-window-height { proportion 0.6; }
-
-	default-floating-position x=32 y=32 relative-to="bottom-right"
 }
 
 binds {
@@ -523,50 +601,34 @@ binds {
 	Alt+Shift+Z repeat=false { spawn "fcitx5-remote" "-t"; }
 
 	// Control center & settings
-	// Mod+S repeat=false { spawn "noctalia" "msg" "panel-toggle" "control-center"; }
-	// Alt+S repeat=false { spawn "noctalia" "msg" "settings-toggle"; }
-	Mod+S repeat=false { spawn-sh "noctalia msg panel-toggle control-center;qs -c noctalia-shell ipc call controlCenter toggle"; }
-	Alt+S repeat=false { spawn-sh "noctalia msg settings-toggle;qs -c noctalia-shell ipc call settings open"; }
+	Mod+S repeat=false { spawn-sh "noctalia msg panel-toggle control-center || qs -c noctalia-shell ipc call controlCenter toggle"; }
+	Alt+S repeat=false { spawn-sh "noctalia msg settings-toggle || qs -c noctalia-shell ipc call settings open"; }
 
 	// Lockscreen
-	// Mod+L repeat=false { spawn "noctalia" "msg" "screen-lock"; }
-	Mod+L repeat=false { spawn-sh "noctalia msg session lock;qs -c noctalia-shell ipc call lockScreen lock"; }
+	Mod+L repeat=false { spawn-sh "noctalia msg session lock || qs -c noctalia-shell ipc call lockScreen lock"; }
 
 	// Launcher, clipboard history and emoji
-	// Mod+Return repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
-	// Alt+C repeat=false      { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
-	// Mod+Period repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher" "/emo "; }
-	Mod+Return repeat=false { spawn-sh "noctalia msg panel-toggle launcher;qs -c noctalia-shell ipc call launcher toggle"; }
-	Alt+C repeat=false      { spawn-sh "noctalia msg panel-toggle clipboard;qs -c noctalia-shell ipc call launcher clipboard"; }
-	Mod+Period repeat=false { spawn-sh "noctalia msg panel-toggle launcher /emo;qs -c noctalia-shell ipc call launcher emoji" ; }
+	Mod+Return repeat=false { spawn-sh "noctalia msg panel-toggle launcher || qs -c noctalia-shell ipc call launcher toggle"; }
+	Alt+C repeat=false      { spawn-sh "noctalia msg panel-toggle clipboard || qs -c noctalia-shell ipc call launcher clipboard"; }
+	Mod+Period repeat=false { spawn-sh "noctalia msg panel-toggle launcher /emo || qs -c noctalia-shell ipc call launcher emoji"; }
 
 	// Session menu
-	// Mod+Shift+E repeat=false { spawn "noctalia" "msg" "panel-toggle" "session"; }
-	Mod+Shift+E repeat=false { spawn-sh "noctalia msg panel-toggle session;qs -c noctalia-shell ipc call sessionMenu toggle"; }
+	Mod+Shift+E repeat=false { spawn-sh "noctalia msg panel-toggle session || qs -c noctalia-shell ipc call sessionMenu toggle"; }
 
 	// Notifications history and notifications clear
-	// Alt+Escape repeat=false { spawn "noctalia" "msg" "notification-clear-active"; }
-	// Mod+Shift+Escape repeat=false { spawn "noctalia" "msg" "notification-clear-history"; }
-	Alt+Escape repeat=false { spawn-sh "noctalia msg notification-clear-active;qs -c noctalia-shell ipc call notifications dismissAll"; }
-	Mod+Shift+Escape repeat=false { spawn-sh "noctalia msg notification-clear-history;qs -c noctalia-shell ipc call notifications clear"; }
+	Alt+Escape repeat=false { spawn-sh "noctalia msg notification-clear-history || qs -c noctalia-shell ipc call notifications clear"; }
+	Alt+Shift+Escape repeat=false { spawn-sh "noctalia msg notification-clear-active || qs -c noctalia-shell ipc call notifications dismissAll"; }
 
 	// Wallpaper selector
-	// Alt+W repeat=false { spawn "noctalia" "msg" "panel-toggle" "wallpaper"; }
-	Alt+W repeat=false { spawn-sh "noctalia msg panel-toggle wallpaper;qs -c noctalia-shell ipc call wallpaper toggle"; }
+	Alt+W repeat=false { spawn-sh "noctalia msg panel-toggle wallpaper || qs -c noctalia-shell ipc call wallpaper toggle"; }
 
 	// System controls
-	// XF86AudioRaiseVolume allow-when-locked=true  { spawn "noctalia" "msg" "volume-up" "2"; }
-	// XF86AudioLowerVolume allow-when-locked=true  { spawn "noctalia" "msg" "volume-down" "2"; }
-	// XF86AudioMute allow-when-locked=true repeat=false  { spawn "noctalia" "msg" "volume-mute"; }
-	// XF86MonBrightnessUp allow-when-locked=true  {	spawn "noctalia" "msg" "brightness-up" "*" "5%"; }
-	// XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia" "msg" "brightness-down" "*" "5%"; }
-	// XF86AudioPlay allow-when-locked=true repeat=false { spawn "noctalia" "msg" "media" "toggle"; }
-	XF86AudioRaiseVolume allow-when-locked=true  { spawn-sh "noctalia msg volume-up 2;qs -c noctalia-shell ipc call volume increase"; }
-	XF86AudioLowerVolume allow-when-locked=true  { spawn-sh "noctalia msg volume-down 2;qs -c noctalia-shell ipc call volume decrease"; }
-	XF86AudioMute allow-when-locked=true repeat=false  { spawn-sh "noctalia msg volume-mute;qs -c noctalia-shell ipc call volume muteOutput"; }
-	XF86MonBrightnessUp allow-when-locked=true  {	spawn-sh "noctalia msg brightness-up 5%;qs -c noctalia-shell ipc call brightness increase"; }
-	XF86MonBrightnessDown allow-when-locked=true { spawn-sh "noctalia msg brightness-down 5%;qs -c noctalia-shell ipc call brightness decrease"; }
-	XF86AudioPlay allow-when-locked=true repeat=false { spawn-sh "noctalia msg media toggle;ipc call media playPause"; }
+	XF86AudioRaiseVolume allow-when-locked=true  { spawn-sh "noctalia msg volume-up 2 || qs -c noctalia-shell ipc call volume increase"; }
+	XF86AudioLowerVolume allow-when-locked=true  { spawn-sh "noctalia msg volume-down 2 || qs -c noctalia-shell ipc call volume decrease"; }
+	XF86AudioMute allow-when-locked=true repeat=false  { spawn-sh "noctalia msg volume-mute || qs -c noctalia-shell ipc call volume muteOutput"; }
+	XF86MonBrightnessUp allow-when-locked=true  {	spawn-sh "noctalia msg brightness-up 5% || qs -c noctalia-shell ipc call brightness increase"; }
+	XF86MonBrightnessDown allow-when-locked=true { spawn-sh "noctalia msg brightness-down 5% || qs -c noctalia-shell ipc call brightness decrease"; }
+	XF86AudioPlay allow-when-locked=true repeat=false { spawn-sh "noctalia msg media toggle || qs -c noctalia-shell ipc call media playPause"; }
 
 	// Noctalia v4 plugins
 	Alt+N repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:sticky-notes" "toggle"; }
@@ -640,9 +702,10 @@ binds {
 	Mod+Ctrl+R repeat=false  { switch-preset-window-height; }
 	Mod+Shift+R repeat=false { reset-window-height; }
 
-	Mod+X repeat=false { maximize-column; }
+	// Mod+X repeat=false { maximize-column; }
 	Mod+F repeat=false { fullscreen-window; }
 	Alt+F repeat=false { maximize-window-to-edges; }
+	Mod+X repeat=false { spawn-sh "niri msg action toggle-window-floating && niri msg action maximize-column"; }
 
 	Mod+V repeat=false       { center-column; }
 	Mod+Shift+V repeat=false { center-visible-columns; }
@@ -652,7 +715,7 @@ binds {
 	Mod+Shift+Minus { set-window-height "-10%"; }
 	Mod+Shift+Equal { set-window-height "+10%"; }
 
-	Mod+A repeat=false { toggle-window-floating; }
+	// Mod+A repeat=false { toggle-window-floating; }
 	Mod+D repeat=false { switch-focus-between-floating-and-tiling; }
 
 	Mod+J { toggle-column-tabbed-display; }

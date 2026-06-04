@@ -1,74 +1,103 @@
-[bar]
-order = [ "main" ]
+[backdrop]
+enabled = true
 
-    [bar.main]
-    capsule = true
-    capsule_groups = [ "SysMon", "Utilities" ]
-    capsule_opacity = 0.0
-    capsule_padding = 4.0
-    center = [ "workspaces", "media" ]
-    end = [ "tray", "Screen_Recorder", "network", "volume", "battery", "notifications" ]
-    margin_edge = 0
-    margin_ends = 0
-    padding = 6
-    position = "right"
-    radius = 0
-    start = [ "control-center", "clock", "cpu", "temp", "GPU_Temp", "ram", "Disk" ]
-    thickness = 44
+[bar.default]
+capsule = true
+capsule_opacity = 0.0
+capsule_padding = 4.0
+center = [ "control-center", "launcher", "taskbar" ]
+end = [ "tray", "screen_recorder", "group:g2", "group:g1" ]
+margin_edge = 0
+margin_ends = 0
+padding = 10
+position = "bottom"
+radius = 0
+start = [ "bongocat", "workspaces", "weather" ]
+thickness = 40
+
+    [[bar.default.capsule_group]]
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "clock", "notifications" ]
+    opacity = 0.0
+    padding = 4.0
+
+    [[bar.default.capsule_group]]
+    fill = "surface_variant"
+    id = "g2"
+    members = [ "network", "volume", "battery" ]
+    opacity = 0.0
+    padding = 4.0
 
 [control_center]
-compact = false
+sidebar = "full"
+sidebar_section = "full"
 
     [[control_center.shortcuts]]
     type = "bluetooth"
 
     [[control_center.shortcuts]]
-    type = "weather"
+    type = "caffeine"
 
     [[control_center.shortcuts]]
     type = "power_profile"
 
     [[control_center.shortcuts]]
-    type = "caffeine"
+    type = "screen_recorder"
 
 [desktop_widgets]
 enabled = false
 
+[hooks]
+battery_low_percent_threshold = 15
+battery_under_threshold = "notify-send \"Battery\" \"Battery Threshold Low\" \"Battery is low, please plug in charger\""
+
 [idle]
-behavior_order = [ "lock", "screen-off" ]
-pre_action_fade_seconds = 3.0
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
 
     [idle.behavior.lock]
     action = "lock"
     enabled = true
-    timeout = 600
+    timeout = 610
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = false
+    timeout = 900
 
     [idle.behavior.screen-off]
     action = "screen_off"
     enabled = true
-    timeout = 660
+    timeout = 600
+
+[keybinds]
+cancel = [ "Escape" ]
+validate = [ "Return" ]
 
 [nightlight]
 enabled = true
-
-[noctalia_state]
-setup_wizard_completed = true
+start_time = "18:00"
+stop_time = "07:00"
+use_weather_location = false
 
 [notification]
-background_opacity = 0.93000000715255737
 layer = "overlay"
+scale = 0.90000000596046448
 
 [osd]
+keyboard_layout = false
 position = "bottom_center"
+scale = 0.90000000596046448
 
 [shell]
-avatar_path = "/home/neyfua/.face"
+avatar_path = "/home/neyfua/Pictures/Saved/7fcbe541f805008092e6e431a3dd0f5e.jpg"
 clipboard_auto_paste = "off"
 clipboard_image_action_command = "waytator"
 date_format = "%A, %B %d %Y"
-font_family = "Inter"
+font_family = "Cantarell"
 password_style = "random"
 polkit_agent = true
+screen_time_enabled = true
 settings_show_advanced = true
 telemetry_enabled = true
 time_format = "{:%-I:%M %p}"
@@ -80,112 +109,116 @@ time_format = "{:%-I:%M %p}"
     blacklist = [ "firefox", "Tor Browser" ]
 
     [shell.panel]
-    attach_clipboard = true
-    attach_launcher = true
+    borders = false
+    clipboard_placement = "floating"
+    control_center_placement = "floating"
+    launcher_categories = false
+    launcher_placement = "floating"
+    session_placement = "floating"
+    wallpaper_placement = "floating"
 
     [shell.screen_corners]
     enabled = true
 
     [[shell.session.actions]]
-    action = "logout"
-    enabled = true
+    action = "lock"
+    enabled = false
+    variant = "default"
 
     [[shell.session.actions]]
-    action = "command"
-    command = "systemctl suspend"
+    action = "logout"
     enabled = true
-    glyph = "suspend"
-    label = "Suspend"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "suspend"
+    enabled = true
+    variant = "default"
 
     [[shell.session.actions]]
     action = "reboot"
     enabled = true
+    variant = "default"
 
     [[shell.session.actions]]
     action = "shutdown"
-    destructive = true
     enabled = true
+    variant = "destructive"
+
+    [shell.shadow]
+    direction = "center"
 
 [theme]
 builtin = "Rosé Pine"
 
-    [theme.templates]
-    enable_builtin_templates = false
-    enable_community_templates = false
-
 [wallpaper]
 directory = "/home/neyfua/Pictures/Wallpapers"
-edge_smoothness = 0.5
+edge_smoothness = 0.59999998658895493
 transition = [ "disc" ]
-transition_duration = 2000
 
     [wallpaper.default]
-    path = "/home/neyfua/Pictures/Wallpapers/earrings.jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/flower7.png"
 
     [wallpaper.last]
-    path = "/home/neyfua/Pictures/Wallpapers/earrings.jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/flower7.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/neyfua/Pictures/Wallpapers/earrings.jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/flower7.png"
+
+    [[wallpaper.favorite]]
+    builtin_palette = "Rosé Pine"
+    palette_source = "builtin"
+    path = "/home/neyfua/Pictures/Wallpapers/umbrella.png"
+    theme_mode = "dark"
 
 [weather]
-auto_locate = true
-
-[widget.Disk]
-capsule_group = "SysMon"
-show_label = false
-stat = "disk_pct"
-type = "sysmon"
-
-[widget.GPU_Temp]
-capsule_group = "SysMon"
-show_label = false
-stat = "gpu_temp"
-type = "sysmon"
-
-[widget.Screen_Recorder]
-script = "scripts/screen_recorder.lua"
-type = "scripted"
+address = "Ho Chi Minh City, Vietnam"
 
 [widget.battery]
-capsule_group = "Utilities"
-warning_threshold = 10
+display_mode = "graphic"
+
+[widget.bongocat]
+audio_spectrum = true
+hot_reload = true
+scale = 1.05
+script = "scripts/bongocat.lua"
+tappy_mode = true
+type = "scripted"
 
 [widget.clock]
 color = "primary"
-format = "{:%-I:%M %p}"
-vertical_format = "{:%I\\n%M\\n%p}"
+font_weight = 700
+format = "{:%-I:%M %p\\n%m/%d/%Y}"
+scale = 1.25
 
 [widget.control-center]
 custom_image = "/usr/share/pixmaps/distribution-logos/square-hicolor.svg"
 
-[widget.cpu]
-capsule_group = "SysMon"
-show_label = false
-
-[widget.media]
-art_size = 22.0
-title_scroll = "on_hover"
-
 [widget.network]
-capsule_group = "Utilities"
 show_label = false
 
-[widget.ram]
-capsule_group = "SysMon"
-show_label = false
+[widget.screen_recorder]
+hot_reload = true
+restore_portal = true
+script = "scripts/screen_recorder.lua"
+type = "scripted"
 
-[widget.temp]
-capsule_group = "SysMon"
-show_label = false
+[widget.taskbar]
+scale = 1.1500000000000001
 
 [widget.tray]
 drawer = true
+drawer_columns = 5
 pinned = [ "Fcitx" ]
 
 [widget.volume]
-capsule_group = "Utilities"
+scroll_step = 2
 show_label = false
 
 [widget.workspaces]
-display = "none"
+empty_color = "outline"
+font_weight = 700
+hide_when_empty = true
+minimal = true
+occupied_color = "outline"
+scale = 1.1000000000000001
