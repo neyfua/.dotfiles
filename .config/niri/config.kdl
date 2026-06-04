@@ -72,13 +72,6 @@ layout {
 		draw-behind-window true
 		color "#00000070"
 	}
-
-	struts {
-		left 12
-		right 12
-		top 12
-		// bottom 64
-	}
 }
 
 workspace "code"
