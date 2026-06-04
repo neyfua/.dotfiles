@@ -1,0 +1,11 @@
+systemctl --user --no-block start labwc-session.target
+
+noctalia -d
+
+wl-clip-persist -c regular -e >/dev/null 2>&1 &
+
+warp-taskbar >/dev/null 2>&1 &
+
+fcitx5 -d
+
+kanshi >/dev/null 2>&1 &

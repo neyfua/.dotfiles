@@ -120,7 +120,7 @@ recent-windows {
 // gsettings set org.gnome.desktop.interface text-scaling-factor 1.60
 // gsettings set org.gnome.desktop.wm.preferences button-layout ''
 spawn-at-startup "fcitx5" "-d"
-spawn-at-startup "warp-taskbar"
+// spawn-at-startup "warp-taskbar"
 spawn-at-startup "wl-clip-persist" "-c" "regular" "-e"
 spawn-at-startup "noctalia" "-d"
 // spawn-at-startup "qs" "-c" "noctalia-shell" "-n"
@@ -286,7 +286,7 @@ layer-rule {
 }
 
 window-rule {
-	geometry-corner-radius 14
+	geometry-corner-radius 12
 	clip-to-geometry true
 
 	background-effect {
@@ -380,8 +380,9 @@ window-rule {
 // open-floating true
 window-rule {
 	match app-id="^(.*)javac(.*)$|zenity|^(.*)waytator$|warp-taskbar"
-	match title="^About (.*)$|Library|^Pushbullet(.*)$|^Picture-in(.*)$|^Picture in(.*)$|^splash(.*)$|^Splash(.*)$|Close Tor Browser|Android Studio Setup Wizard|^(.*)User Agreement$|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document|^Select(.*)$|Friends List|^Myrlyn-(.*)$|Servers|^Incoming (.*)$"
+	match title="^About (.*)$|Library|^Pushbullet(.*)$|^Picture-in(.*)$|^Picture in(.*)$|^splash(.*)$|^Splash(.*)$|Close Tor Browser|Android Studio Setup Wizard|^(.*)User Agreement$|^Open File(.*)$|New Solution|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document|^Select(.*)$|Friends List|^Myrlyn-(.*)$|Servers|^Incoming(.*)$"
 	match app-id="vesktop" title="^vesktop$"
+	match app-id="virt-manager"
 
 	open-floating true
 }
@@ -389,6 +390,7 @@ window-rule {
 // open-floating false
 window-rule {
 	match app-id="winboat"
+	match app-id="virt-manager" title="Virtual Machine Manager|^(.*)on QEMU/KVM$"
 	match title="^OBS(.*)$"
 
 	open-floating false
@@ -409,7 +411,7 @@ window-rule {
 
 	open-floating true
 	
-	default-floating-position x=-73 y=132 relative-to="right"
+	default-floating-position x=-73 y=131.5 relative-to="right"
 }
 
 window-rule {
@@ -417,7 +419,11 @@ window-rule {
 
 	open-floating true
 
-	default-floating-position x=44.5 y=69.5 relative-to="right"
+	default-floating-position x=42 y=72.5 relative-to="right"
+
+	border {
+		off
+	}
 }
 
 window-rule {
@@ -425,7 +431,7 @@ window-rule {
 
 	open-floating true
 
-	default-floating-position x=290 y=53 relative-to="right"
+	default-floating-position x=290 y=53.5 relative-to="right"
 }
 
 window-rule {

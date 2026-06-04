@@ -1,56 +1,122 @@
 [backdrop]
 enabled = true
 
-[bar.default]
-capsule = true
-capsule_opacity = 0.0
-capsule_padding = 4.0
-center = [ "control-center", "launcher", "taskbar" ]
-end = [ "tray", "screen_recorder", "group:g2", "group:g1" ]
-margin_edge = 0
-margin_ends = 0
-padding = 10
-position = "bottom"
-radius = 0
-start = [ "bongocat", "workspaces", "weather" ]
-thickness = 40
+[bar]
+order = [ "default" ]
 
-    [[bar.default.capsule_group]]
-    fill = "surface_variant"
-    id = "g1"
-    members = [ "clock", "notifications" ]
-    opacity = 0.0
-    padding = 4.0
+    [bar.default]
+    background_opacity = 0.90000000000000002
+    capsule = true
+    capsule_opacity = 0.0
+    capsule_padding = 3.0
+    center = []
+    end = [ "tray", "battery", "screen_recorder", "weather", "notifications", "clock" ]
+    margin_edge = 0
+    margin_ends = 0
+    padding = 8
+    radius = 0
+    scale = 1.1000000000000001
+    start = [ "control-center", "Finder", "File", "Edit", "View", "Window", "Help" ]
+    thickness = 28
 
-    [[bar.default.capsule_group]]
-    fill = "surface_variant"
-    id = "g2"
-    members = [ "network", "volume", "battery" ]
-    opacity = 0.0
-    padding = 4.0
+[battery]
+warning_threshold = 15
 
 [control_center]
 sidebar = "full"
 sidebar_section = "full"
 
     [[control_center.shortcuts]]
-    type = "bluetooth"
+    type = "wifi"
 
     [[control_center.shortcuts]]
-    type = "caffeine"
+    type = "bluetooth"
 
     [[control_center.shortcuts]]
     type = "power_profile"
 
     [[control_center.shortcuts]]
-    type = "screen_recorder"
+    type = "notification"
 
 [desktop_widgets]
-enabled = false
+schema_version = 1
+widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-0000000000000002" ]
+
+    [desktop_widgets.grid]
+    cell_size = 8
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000001]
+    cx = 108.0
+    cy = 100.5
+    output = "eDP-1"
+    rotation = 0.0
+    scale = 1.0
+    type = "sysmon"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
+        background_opacity = 0.91000000000000003
+        color = "primary"
+        color2 = "error"
+        stat2 = "cpu_temp"
+
+    [desktop_widgets.widget.desktop-widget-0000000000000002]
+    cx = 108.0
+    cy = 236.5
+    output = "eDP-1"
+    rotation = 0.0
+    scale = 1.0
+    type = "sysmon"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000002.settings]
+        background_opacity = 0.91000000000000003
+        color2 = "tertiary"
+        stat = "ram_pct"
+        stat2 = "swap_pct"
+
+[dock]
+active_scale = 0.90000000000000002
+enabled = true
+icon_size = 40
+inactive_opacity = 0.94999999999999996
+inactive_scale = 0.80000000000000004
+item_spacing = 0
+launcher_icon = "brand-finder"
+launcher_position = "start"
+margin_edge = 0
+padding = 0
+pinned = [
+    "foot",
+    "zen",
+    "vesktop",
+    "spotify",
+    "steam",
+    "zalo",
+    "sober",
+    "tor-browser",
+    "files",
+    "antigravity",
+    "rider",
+    "cursor",
+    "obsidian",
+    "onlyoffice",
+    "podman-desktop",
+    "rustdesk",
+    "winboat",
+    "virt-manager"
+]
+radius = 14
+show_dots = true
+show_instance_count = false
 
 [hooks]
 battery_low_percent_threshold = 15
 battery_under_threshold = "notify-send \"Battery\" \"Battery Threshold Low\" \"Battery is low, please plug in charger\""
+bluetooth_disabled = "notify-send \"Bluetooth\" \"Disabled\""
+bluetooth_enabled = "notify-send \"Bluetooth\" \"Enabled\""
+wifi_disabled = "notify-send \"Wi-Fi\" \"Disabled\""
+wifi_enabled = "notify-send \"Wi-Fi\" \"Enabled\""
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
@@ -74,6 +140,47 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
 cancel = [ "Escape" ]
 validate = [ "Return" ]
 
+[location]
+address = "Ho Chi Minh City, Vietnam"
+sunrise = "07:00"
+sunset = "18:00"
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 1
+widget_order = [ "lockscreen-widget-0000000000000003", "lockscreen-widget-0000000000000004" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 8
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000003]
+    cx = 700.0
+    cy = 252.5
+    output = "eDP-1"
+    rotation = 0.0
+    scale = 0.83913123607635498
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000003.settings]
+        background = false
+        background_opacity = 0.70000000000000007
+        color = "primary"
+        format = "{:%-I:%M %p\\n%A, %B %-d}"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000004]
+    cx = 787.0
+    cy = 181.5
+    output = "eDP-1"
+    rotation = 0.0
+    scale = 0.6111111044883728
+    type = "weather"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000004.settings]
+        background = false
+        color = "on_surface"
+
 [nightlight]
 enabled = true
 start_time = "18:00"
@@ -81,29 +188,29 @@ stop_time = "07:00"
 use_weather_location = false
 
 [notification]
+background_opacity = 0.88
 layer = "overlay"
-scale = 0.90000000596046448
+scale = 0.94999999999999996
 
 [osd]
+background_opacity = 0.67999998480081558
 keyboard_layout = false
 position = "bottom_center"
-scale = 0.90000000596046448
+scale = 0.84999999999999998
 
 [shell]
 avatar_path = "/home/neyfua/Pictures/Saved/7fcbe541f805008092e6e431a3dd0f5e.jpg"
 clipboard_auto_paste = "off"
+clipboard_history_max_entries = 200
 clipboard_image_action_command = "waytator"
 date_format = "%A, %B %d %Y"
-font_family = "Cantarell"
+font_family = "SF Pro Display"
 password_style = "random"
 polkit_agent = true
 screen_time_enabled = true
 settings_show_advanced = true
 telemetry_enabled = true
 time_format = "{:%-I:%M %p}"
-
-    [shell.animation]
-    speed = 1.25
 
     [shell.mpris]
     blacklist = [ "firefox", "Tor Browser" ]
@@ -115,14 +222,12 @@ time_format = "{:%-I:%M %p}"
     launcher_categories = false
     launcher_placement = "floating"
     session_placement = "floating"
+    transparency_mode = "soft"
     wallpaper_placement = "floating"
-
-    [shell.screen_corners]
-    enabled = true
 
     [[shell.session.actions]]
     action = "lock"
-    enabled = false
+    enabled = true
     variant = "default"
 
     [[shell.session.actions]]
@@ -131,7 +236,7 @@ time_format = "{:%-I:%M %p}"
     variant = "default"
 
     [[shell.session.actions]]
-    action = "suspend"
+    action = "lock_and_suspend"
     enabled = true
     variant = "default"
 
@@ -151,19 +256,22 @@ time_format = "{:%-I:%M %p}"
 [theme]
 builtin = "Rosé Pine"
 
+    [theme.templates]
+    community_ids = [ "zen-browser" ]
+
 [wallpaper]
 directory = "/home/neyfua/Pictures/Wallpapers"
 edge_smoothness = 0.59999998658895493
 transition = [ "disc" ]
 
     [wallpaper.default]
-    path = "/home/neyfua/Pictures/Wallpapers/flower7.png"
+    path = "/home/neyfua/Pictures/Wallpapers/motorcycle.jpg"
 
     [wallpaper.last]
-    path = "/home/neyfua/Pictures/Wallpapers/flower7.png"
+    path = "/home/neyfua/Pictures/Wallpapers/motorcycle.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/neyfua/Pictures/Wallpapers/flower7.png"
+    path = "/home/neyfua/Pictures/Wallpapers/motorcycle.jpg"
 
     [[wallpaper.favorite]]
     builtin_palette = "Rosé Pine"
@@ -173,6 +281,49 @@ transition = [ "disc" ]
 
 [weather]
 address = "Ho Chi Minh City, Vietnam"
+
+[widget.Edit]
+command = "footclient nvim ~/Documents/notes.txt"
+glyph = ""
+label = "Edit"
+right_command = "niri msg action close-window"
+type = "custom_button"
+
+[widget.File]
+command = "nautilus"
+glyph = ""
+label = "File"
+type = "custom_button"
+
+[widget.Finder]
+command = "noctalia msg settings-toggle"
+font_weight = 700
+glyph = ""
+label = "Finder"
+right_command = "noctalia msg panel-toggle launcher"
+type = "custom_button"
+
+[widget.Help]
+command = "xdg-open https://docs.noctalia.dev/v5/"
+glyph = ""
+label = "Help"
+right_command = "xdg-open https://niri-wm.github.io/niri"
+type = "custom_button"
+
+[widget.View]
+command = "niri msg action toggle-overview"
+glyph = ""
+label = "View"
+type = "custom_button"
+
+[widget.Window]
+command = "niri msg action focus-column-right"
+glyph = ""
+label = "Window"
+right_command = "niri msg action focus-column-left"
+scroll_down_command = "niri msg action focus-workspace-down"
+scroll_up_command = "niri msg action focus-workspace-up"
+type = "custom_button"
 
 [widget.battery]
 display_mode = "graphic"
@@ -186,16 +337,10 @@ tappy_mode = true
 type = "scripted"
 
 [widget.clock]
-color = "primary"
-font_weight = 700
-format = "{:%-I:%M %p\\n%m/%d/%Y}"
-scale = 1.25
+format = "{:%a %b %-d   %-I:%M %p}"
 
 [widget.control-center]
-custom_image = "/usr/share/pixmaps/distribution-logos/square-hicolor.svg"
-
-[widget.network]
-show_label = false
+glyph = "brand-apple-filled"
 
 [widget.screen_recorder]
 hot_reload = true
@@ -207,18 +352,11 @@ type = "scripted"
 scale = 1.1500000000000001
 
 [widget.tray]
-drawer = true
-drawer_columns = 5
 pinned = [ "Fcitx" ]
 
 [widget.volume]
 scroll_step = 2
 show_label = false
 
-[widget.workspaces]
-empty_color = "outline"
-font_weight = 700
-hide_when_empty = true
-minimal = true
-occupied_color = "outline"
-scale = 1.1000000000000001
+[widget.weather]
+show_condition = false
