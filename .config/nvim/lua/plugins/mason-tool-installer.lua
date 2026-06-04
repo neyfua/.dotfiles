@@ -5,15 +5,19 @@ return {
 		require("mason-tool-installer").setup({
 			ensure_installed = {
 				-- lsp
+				"ansiblels",
 				"ast_grep",
 				"bashls",
 				"cssls",
+				"docker_compose_language_service",
+				"docker_language_server",
+				"fish_lsp",
+				"dockerls",
 				"gopls",
 				"html",
 				"jdtls",
 				"jsonls",
 				"lua_ls",
-				"luau_lsp",
 				"pyright",
 
 				-- formatters

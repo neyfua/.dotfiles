@@ -31,9 +31,16 @@ return {
 		{
 			"<leader>fa",
 			function()
-				Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+				Snacks.picker.files()
 			end,
-			desc = "Find Config File",
+			desc = "Find Files",
+		},
+		{
+			"<leader>fl",
+			function()
+				Snacks.picker.grep()
+			end,
+			desc = "Grep",
 		},
 		{
 			"<A-q>",

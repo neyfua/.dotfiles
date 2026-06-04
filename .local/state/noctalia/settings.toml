@@ -39,41 +39,16 @@ sidebar_section = "full"
     type = "notification"
 
 [desktop_widgets]
+enabled = false
 schema_version = 1
-widget_order = [ "desktop-widget-0000000000000001", "desktop-widget-0000000000000002" ]
+widget_order = []
 
     [desktop_widgets.grid]
     cell_size = 8
     major_interval = 4
     visible = true
 
-    [desktop_widgets.widget.desktop-widget-0000000000000001]
-    cx = 108.0
-    cy = 100.5
-    output = "eDP-1"
-    rotation = 0.0
-    scale = 1.0
-    type = "sysmon"
-
-        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
-        background_opacity = 0.91000000000000003
-        color = "primary"
-        color2 = "error"
-        stat2 = "cpu_temp"
-
-    [desktop_widgets.widget.desktop-widget-0000000000000002]
-    cx = 108.0
-    cy = 236.5
-    output = "eDP-1"
-    rotation = 0.0
-    scale = 1.0
-    type = "sysmon"
-
-        [desktop_widgets.widget.desktop-widget-0000000000000002.settings]
-        background_opacity = 0.91000000000000003
-        color2 = "tertiary"
-        stat = "ram_pct"
-        stat2 = "swap_pct"
+    [desktop_widgets.widget]
 
 [dock]
 active_scale = 0.90000000000000002
@@ -113,10 +88,6 @@ show_instance_count = false
 [hooks]
 battery_low_percent_threshold = 15
 battery_under_threshold = "notify-send \"Battery\" \"Battery Threshold Low\" \"Battery is low, please plug in charger\""
-bluetooth_disabled = "notify-send \"Bluetooth\" \"Disabled\""
-bluetooth_enabled = "notify-send \"Bluetooth\" \"Enabled\""
-wifi_disabled = "notify-send \"Wi-Fi\" \"Disabled\""
-wifi_enabled = "notify-send \"Wi-Fi\" \"Enabled\""
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
@@ -157,10 +128,10 @@ widget_order = [ "lockscreen-widget-0000000000000003", "lockscreen-widget-000000
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000003]
     cx = 700.0
-    cy = 252.5
+    cy = 259.0
     output = "eDP-1"
     rotation = 0.0
-    scale = 0.83913123607635498
+    scale = 0.74513018131256104
     type = "clock"
 
         [lockscreen_widgets.widget.lockscreen-widget-0000000000000003.settings]
@@ -170,8 +141,8 @@ widget_order = [ "lockscreen-widget-0000000000000003", "lockscreen-widget-000000
         format = "{:%-I:%M %p\\n%A, %B %-d}"
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000004]
-    cx = 787.0
-    cy = 181.5
+    cx = 789.0
+    cy = 197.5
     output = "eDP-1"
     rotation = 0.0
     scale = 0.6111111044883728
@@ -227,7 +198,7 @@ time_format = "{:%-I:%M %p}"
 
     [[shell.session.actions]]
     action = "lock"
-    enabled = true
+    enabled = false
     variant = "default"
 
     [[shell.session.actions]]

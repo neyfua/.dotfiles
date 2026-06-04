@@ -1,5 +1,7 @@
 return {
 	"stevearc/oil.nvim",
+	priority = 1000,
+	lazy = false,
 	cond = not vim.g.vscode and not vim.g.antigravity,
 
 	dependencies = {

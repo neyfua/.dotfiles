@@ -29,8 +29,8 @@ vim.keymap.set({ "n", "i", "v" }, "<A-=>", "<cmd>vertical resize +2<CR>", opts)
 vim.keymap.set({ "n", "i", "v" }, "<A-->", "<cmd>vertical resize -2<CR>", opts)
 
 -- Bufferline
-vim.keymap.set({ "n", "v" }, "<A-Right>", "<Cmd>BufferLineCycleNext<CR>", opts)
-vim.keymap.set({ "n", "v" }, "<A-Left>", "<Cmd>BufferLineCyclePrev<CR>", opts)
+vim.keymap.set({ "n", "v" }, "<Tab>", "<Cmd>BufferLineCycleNext<CR>", opts)
+vim.keymap.set({ "n", "v" }, "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", opts)
 vim.keymap.set({ "n", "v" }, "<A-p>", vim.cmd.BufferLineTogglePin, opts)
 vim.keymap.set({ "n", "v" }, "<A-]>", vim.cmd.BufferLineMoveNext, opts)
 vim.keymap.set({ "n", "v" }, "<A-[>", vim.cmd.BufferLineMovePrev, opts)
