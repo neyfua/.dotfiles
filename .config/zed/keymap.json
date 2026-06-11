@@ -127,4 +127,16 @@
       "ctrl-w r": "vim::SwitchToReplaceMode",
     },
   },
+  {
+    "context": "Editor",
+    "bindings": {
+      "\\ r": "editor::Format"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-alt-l": "editor::Format"
+    }
+  }
 ]

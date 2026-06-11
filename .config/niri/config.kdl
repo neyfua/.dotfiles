@@ -72,6 +72,10 @@ layout {
 		draw-behind-window true
 		color "#00000070"
 	}
+
+	struts {
+		bottom 2
+	}
 }
 
 workspace "main"
@@ -94,27 +98,6 @@ gestures {
 
 recent-windows {
 	off
-
-	// debounce-ms 0
-
-	// open-delay-ms 100
-
-	// highlight {
-	// 	active-color "#ebbcba"
-	// 	urgent-color "#eb6f92"
-	// 	padding 20
-	// 	corner-radius 0
-	// }
-
-	// previews {
-	// 	max-height 480
-	// 	max-scale 1.0
-	// }
-
-	// binds {
-	// 	Alt+Tab         { next-window; }
-	// 	Alt+Shift+Tab   { previous-window; }
-	// }
 }
 
 // gsettings set org.gnome.desktop.interface text-scaling-factor 1.60
@@ -146,8 +129,7 @@ environment {
 		// QT
 	QT_QPA_PLATFORM "wayland"
 	QT_QPA_PLATFORMTHEME "qt6ct"
-	// QT_SCALE_FACTOR "1.25"
-	// QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+	QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
 
 	EDITOR "nvim"
 	TERMINAL "foot"
@@ -156,7 +138,7 @@ environment {
 
 cursor {
 	xcursor-theme "BreezeX-RosePineDawn-Linux"
-	xcursor-size 28
+	xcursor-size 32
 	hide-when-typing
 }
 
@@ -184,7 +166,7 @@ blur {
 
 animations {
 	// off
-	slowdown 0.83
+	slowdown 0.88
 
 	// window-open {
 	// 	duration-ms 500
@@ -309,12 +291,12 @@ window-rule {
 window-rule {
 	match is-active=false
 
-	opacity 0.88
+	opacity 0.87
 }
 
 // window main
 window-rule {
-	match app-id="code|^(.*)Zed$|^jetbrains(.*)$|antigravity|^virt-.*$"
+	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|^virt-.*$"
 
 	open-on-workspace "main"
 
@@ -324,7 +306,7 @@ window-rule {
 
 // window browser
 window-rule {
-	match app-id="firefox|Tor Browser|^(.*)torbrowser-launcher$|^.*zen$"
+	match app-id="firefox|Tor Browser|^.*torbrowser-launcher$|^.*zen$"
 
 	open-on-workspace "browser"
 
@@ -333,7 +315,7 @@ window-rule {
 
 // window chat
 window-rule {
-	match app-id="vesktop|^(.*)telegram(.*)$|^(.*)fluxer(.*)$|Zalo"
+	match app-id="vesktop|^.*telegram.*$|^.*fluxer.*$|Zalo"
 
 	open-on-workspace "chat"
 
@@ -351,37 +333,34 @@ window-rule {
 
 // window game
 window-rule {
-	match app-id="steam|Upload Labs|^(.*)Sober$"
+	match app-id="steam|Upload Labs|^.*Sober$"
 
 	open-on-workspace "game"
-
-	open-focused true
 }
 
 // window misc
 window-rule {
 	match app-id="winboat"
-	match title="^OBS(.*)$"
+	match title="^OBS.*$"
 
 	open-on-workspace "misc"
-
-	open-focused true
 }
 
 // default-column-width 1.0
 window-rule {
-	match app-id="code|^(.*)Zed$|^jetbrains(.*)$|antigravity|^virt-.*$|firefox|Tor Browser|^(.*)torbrowser-launcher$|^.*zen$|vesktop|^(.*)telegram(.*)$|^(.*)fluxer(.*)$|Zalo|^(.*)telegram(.*)$|spotify|Spotify|ONLYOFFICE"
+	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|^virt-.*$|firefox|Tor Browser|^.*torbrowser-launcher$|^.*zen$|vesktop|^.*telegram.*$|^.*fluxer.*$|Zalo|^.*telegram.*$|spotify|Spotify|ONLYOFFICE"
 	match app-id="steam" title="Steam"
-	match title="^OBS(.*)$"
+	match title="^OBS.*$"
 
 	default-column-width { proportion 1.0; }
 }
 
 // open-floating true
 window-rule {
-	match app-id="^(.*)javac(.*)$|zenity|^(.*)waytator$|warp-taskbar"
-	match title="^About (.*)$|Library|^Pushbullet(.*)$|^Picture-in(.*)$|^Picture in(.*)$|^splash(.*)$|^Splash(.*)$|Close Tor Browser|Android Studio Setup Wizard|^(.*)User Agreement$|^Open File(.*)$|New Solution|^zoom(.*)$|^Calculator(.*)$|^Warning(.*)$|Open Document|^Select(.*)$|Friends List|^Myrlyn-(.*)$|Servers|^Incoming(.*)$"
+	match app-id="^.*javac.*$|zenity|^.*waytator$|warp-taskbar"
+	match title="^About.*$|Library|^Pushbullet.*$|^Picture-in.*$|^Picture in.*$|^splash.*$|^Splash.*$|Close Tor Browser|^Welcome to.*$|^.*Setup Wizard$|^.*User Agreement$|^Open File.*$|New Solution|^zoom.*$|^Calculator.*$|^Warning.*$|Open Document|^Select.*$|Friends List|^Myrlyn-.*$|Servers|^Incoming.*$"
 	match app-id="vesktop" title="^vesktop$"
+	match app-id="code" title="^Settings.*$|^Uninstall$"
 	match app-id="virt-manager"
 
 	open-floating true
@@ -390,8 +369,8 @@ window-rule {
 // open-floating false
 window-rule {
 	match app-id="winboat"
-	match app-id="virt-manager" title="Virtual Machine Manager|^(.*)on QEMU/KVM$"
-	match title="^OBS(.*)$"
+	match app-id="virt-manager" title="Virtual Machine Manager|^.*on QEMU/KVM$"
+	match title="^OBS.*$"
 
 	open-floating false
 }
@@ -400,7 +379,7 @@ window-rule {
 window-rule {
 	match app-id="zenity"
 	match app-id="vesktop" title="^vesktop$"
-	match title="^splash(.*)$|^Splash(.*)$|zoom|^Updater(.*)$|^Sign in(.*)$|^Starting Apache(.*)$|^Warning(.*)$"
+	match title="^splash.*$|^Splash.*$|zoom|^Updater.*$|^Sign in.*$|^Starting Apache.*$|^Warning.*$"
 
 	border { off; }
 }
@@ -457,9 +436,9 @@ window-rule {
 // default-column-width default-window-height open-floating true
 window-rule {
 	match app-id="^xdg-desktop-portal-gtk$"
-	match app-id="^(.*)Nautilus$" title="^Open File(.*)$|^Select(.*)$"
+	match app-id="^.*Nautilus$" title="^Open File.*$"
 	match app-id="Electron" title="Save"
-	match title="^dialog(.*)$|^confirm(.*)$|^Save As(.*)$|^Save Image(.*)$|^Open Folder(.*)$|^File Upload(.*)$|^Choose wallpaper(.*)$|^Choose an image(.*)$|Choose File|^Locate ISO(.*)$|^blob(.*)$|Open project"
+	match title="^dialog.*$|^confirm.*$|^Save As.*$|^Save Image.*$|^Open Folder.*$|^File Upload.*$|^Select.*$|^Choose wallpaper.*$|^Choose an image.*$|Choose File|^Locate ISO.*$|^blob.*$|Open project"
 
 	default-column-width { proportion 0.8; }
 	default-window-height { proportion 0.8; }
@@ -483,7 +462,7 @@ window-rule {
 
 // pavucontrol
 window-rule {
-	match app-id="^(.*)pavucontrol(.*)$"
+	match app-id="^.*pavucontrol.*$"
 
 	default-column-width { proportion 0.55; }
 	default-window-height { proportion 0.6; }
@@ -493,7 +472,7 @@ window-rule {
 
 // noctalia settings
 window-rule {
-	match app-id="^(.*)Noctalia.Settings$"
+	match app-id="^.*Noctalia.Settings$"
 
 	default-column-width { proportion 0.8; }
 	default-window-height { proportion 0.93; }
@@ -523,7 +502,7 @@ window-rule {
 
 // media viewer
 window-rule {
-	match title="^Media viewer(.*)$|Zalo Photo"
+	match title="^Media viewer.*$|Zalo Photo"
 
 	default-column-width { proportion 0.9; }
 	default-window-height { proportion 0.9; }
@@ -536,17 +515,10 @@ window-rule {
 
 // fileroller
 window-rule {
-	match app-id="^(.*)FileRoller$"
+	match app-id="^.*FileRoller$"
 
 	default-column-width { proportion 0.55; }
 	default-window-height { proportion 0.7; }
-
-	open-floating true
-}
-
-// misc
-window-rule {
-	match title="^Welcome to(.*)$"
 
 	open-floating true
 }
@@ -575,6 +547,7 @@ binds {
 
 	// Session menu
 	Mod+Shift+E repeat=false { spawn-sh "noctalia msg panel-toggle session || qs -c noctalia-shell ipc call sessionMenu toggle"; }
+	// Mod+Shift+E repeat=false { spawn-sh "noctalia msg panel-toggle launcher /session"; }
 
 	// Notifications history and notifications clear
 	Alt+Escape repeat=false       { spawn-sh "noctalia msg notification-clear-history || qs -c noctalia-shell ipc call notifications clear"; }

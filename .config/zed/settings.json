@@ -7,7 +7,18 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-      "git_panel": {},
+      "collaboration_panel": {
+            "dock": "left",
+      },
+      "agent": {
+            "dock": "right",
+            "favorite_models": [],
+            "model_parameters": [],
+      },
+      "hide_mouse": "on_typing",
+      "git_panel": {
+            "dock": "left",
+      },
       "active_pane_modifiers": {
             "border_size": 0.0,
       },
@@ -20,12 +31,15 @@
       },
       "tab_size": 6,
       "vim": {
+            "cursor_shape": {
+                  "insert": "block",
+            },
             "use_smartcase_find": true,
             "toggle_relative_line_numbers": true,
       },
       "cursor_blink": false,
       "agent_buffer_font_size": 15.0,
-      "agent_ui_font_size": 18.0,
+      "agent_ui_font_size": 16.0,
       "ui_font_family": ".ZedSans",
       "window_decorations": "server",
       "use_system_window_tabs": false,
@@ -44,7 +58,7 @@
       "terminal": {
             "max_scroll_history_lines": 10000,
             "dock": "bottom",
-            "font_size": 15.0,
+            "font_size": 14.0,
             "font_family": "Maple Mono",
       },
       "project_panel": {
@@ -54,9 +68,9 @@
             "scrollbar": {
                   "show": "auto",
             },
-            "bold_folder_labels": true,
-            "indent_size": 10.0,
-            "default_width": 200.0,
+            "bold_folder_labels": false,
+            "indent_size": 13.0,
+            "default_width": 300.0,
             "dock": "left",
             "button": true,
             "git_status": true,
@@ -67,7 +81,7 @@
             "dock": "left",
             "git_status": false,
       },
-      "base_keymap": "VSCode",
+      "base_keymap": "JetBrains",
       "preview_tabs": {
             "enabled": false,
             "enable_preview_from_file_finder": false,
@@ -93,15 +107,15 @@
       },
       "hover_popover_delay": 1500,
       "selection_highlight": false,
-      "cursor_shape": "block",
-      "buffer_font_fallbacks": ["RecMonoCasual", "monospace"],
-      "buffer_font_family": "Maple Mono",
+      "cursor_shape": "bar",
+      "buffer_font_family": "RecMonoSmCasual Nerd Font",
+      "buffer_font_fallbacks": [".ZedSans", ".ZedMono"],
       "file_types": {
             "php": [".php_cs", ".php_cs.dist"],
       },
       "show_whitespaces": "none",
       "show_edit_predictions": false,
-      "ensure_final_newline_on_save": true,
+      "ensure_final_newline_on_save": false,
       "indent_guides": {
             "background_coloring": "disabled",
             "coloring": "fixed",
@@ -113,11 +127,12 @@
             "light": "Zed (Default)",
             "dark": "Material Icon Theme",
       },
-      "ui_font_size": 18.0,
-      "buffer_font_size": 20.0,
+      "ui_font_size": 16.5,
+      "buffer_font_size": 15.5,
       "theme": {
-            "mode": "system",
+            "mode": "dark",
             "light": "One Dark",
             "dark": "Rosé Pine",
       },
+      "format_on_save": "off",
 }
