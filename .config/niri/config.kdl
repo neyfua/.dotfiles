@@ -8,9 +8,9 @@ input {
 		tap
 		dwt
 		natural-scroll
-		accel-speed 0.4
-		// accel-profile "flat"
-		scroll-factor 0.8
+		accel-speed 1.0
+		accel-profile "flat"
+		scroll-factor 0.4
 		disabled-on-external-mouse
 	}
 
@@ -32,7 +32,7 @@ switch-events {
 }
 
 layout {
-	gaps 0
+	// gaps 0
 	center-focused-column "never"
 	always-center-single-column
 	// background-color "#191724"
@@ -58,7 +58,7 @@ layout {
 
 	border {
 		// off
-		width 0
+		width 2.5
 		active-color "#ebbcba"
 		inactive-color "#191724"
 		urgent-color "#eb6f92"
@@ -74,7 +74,10 @@ layout {
 	}
 
 	struts {
-		bottom 2
+		top 15
+		left 15
+		right 15
+		bottom 15
 	}
 }
 
@@ -137,7 +140,7 @@ environment {
 }
 
 cursor {
-	xcursor-theme "BreezeX-RosePineDawn-Linux"
+	xcursor-theme "macOS-White"
 	xcursor-size 32
 	hide-when-typing
 }
@@ -277,16 +280,16 @@ window-rule {
 	}
 }
 
-window-rule {
-	match is-floating=true
+// window-rule {
+// 	match is-floating=true
 
-	border {
-		width 2.5
-		active-color "#ebbcba"
-		inactive-color "#191724"
-		urgent-color "#eb6f92"
-	}
-}
+// 	border {
+// 		width 2.5
+// 		active-color "#ebbcba"
+// 		inactive-color "#191724"
+// 		urgent-color "#eb6f92"
+// 	}
+// }
 
 window-rule {
 	match is-active=false
@@ -541,7 +544,8 @@ binds {
 	Mod+L repeat=false { spawn-sh "noctalia msg session lock || qs -c noctalia-shell ipc call lockScreen lock"; }
 
 	// Launcher, clipboard history and emoji
-	Mod+Return repeat=false { spawn-sh "noctalia msg panel-toggle launcher || qs -c noctalia-shell ipc call launcher toggle"; }
+	// Mod+Return repeat=false { spawn-sh "noctalia msg panel-toggle launcher || qs -c noctalia-shell ipc call launcher toggle"; }
+	Mod+Return repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
 	Alt+C repeat=false      { spawn-sh "noctalia msg panel-toggle clipboard || qs -c noctalia-shell ipc call launcher clipboard"; }
 	Mod+Period repeat=false { spawn-sh "noctalia msg panel-toggle launcher /emo || qs -c noctalia-shell ipc call launcher emoji"; }
 
