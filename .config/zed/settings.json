@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+      "buffer_line_height": {
+            "custom": 1.5
+      },
       "collaboration_panel": {
             "dock": "left",
       },
@@ -58,7 +61,7 @@
       "terminal": {
             "max_scroll_history_lines": 10000,
             "dock": "bottom",
-            "font_size": 14.0,
+            "font_size": 16.0,
             "font_family": "Maple Mono",
       },
       "project_panel": {

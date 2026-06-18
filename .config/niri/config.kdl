@@ -58,7 +58,7 @@ layout {
 
 	border {
 		// off
-		width 2.5
+		width 0
 		active-color "#ebbcba"
 		inactive-color "#191724"
 		urgent-color "#eb6f92"
@@ -74,10 +74,10 @@ layout {
 	}
 
 	struts {
-		top 15
-		left 15
-		right 15
-		bottom 15
+		top 35
+		left 35
+		right 35
+		bottom 35
 	}
 }
 
@@ -280,16 +280,16 @@ window-rule {
 	}
 }
 
-// window-rule {
-// 	match is-floating=true
+window-rule {
+	match is-floating=true
 
-// 	border {
-// 		width 2.5
-// 		active-color "#ebbcba"
-// 		inactive-color "#191724"
-// 		urgent-color "#eb6f92"
-// 	}
-// }
+	border {
+		width 3
+		active-color "#ebbcba"
+		inactive-color "#191724"
+		urgent-color "#eb6f92"
+	}
+}
 
 window-rule {
 	match is-active=false
