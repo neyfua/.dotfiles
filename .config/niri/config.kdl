@@ -6,18 +6,16 @@ input {
 
 	touchpad {
 		tap
-		dwt
+		// dwt
 		natural-scroll
 		accel-speed 1.0
 		accel-profile "flat"
-		scroll-factor 0.4
 		disabled-on-external-mouse
 	}
 
 	mouse {
 		accel-speed -0.13
 		accel-profile "flat"
-		scroll-factor 1.3
 	}
 }
 
@@ -73,12 +71,12 @@ layout {
 		color "#00000070"
 	}
 
-	struts {
-		top 35
-		left 35
-		right 35
-		bottom 35
-	}
+	// struts {
+	// 	top 35
+	// 	left 35
+	// 	right 35
+	// 	bottom 35
+	// }
 }
 
 workspace "main"
@@ -140,8 +138,8 @@ environment {
 }
 
 cursor {
-	xcursor-theme "macOS-White"
-	xcursor-size 32
+	xcursor-theme "Hackneyed-Dark"
+	xcursor-size 30
 	hide-when-typing
 }
 
@@ -318,7 +316,7 @@ window-rule {
 
 // window chat
 window-rule {
-	match app-id="vesktop|^.*telegram.*$|^.*fluxer.*$|Zalo"
+	match app-id="vesktop|^.*telegram.*$|^.*fluxer.*$|Zalo|me.proton.Mail"
 
 	open-on-workspace "chat"
 
@@ -336,7 +334,7 @@ window-rule {
 
 // window game
 window-rule {
-	match app-id="steam|Upload Labs|^.*Sober$"
+	match app-id="steam|Upload Labs|^.*Sober$|^.*PolyMC$"
 
 	open-on-workspace "game"
 }
@@ -351,7 +349,7 @@ window-rule {
 
 // default-column-width 1.0
 window-rule {
-	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|^virt-.*$|firefox|Tor Browser|^.*torbrowser-launcher$|^.*zen$|vesktop|^.*telegram.*$|^.*fluxer.*$|Zalo|^.*telegram.*$|spotify|Spotify|ONLYOFFICE"
+	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|^virt-.*$|firefox|Tor Browser|^.*torbrowser-launcher$|^.*zen$|vesktop|^.*telegram.*$|^.*fluxer.*$|Zalo|^.*telegram.*$|spotify|Spotify|ONLYOFFICE|me.proton.Mail"
 	match app-id="steam" title="Steam"
 	match title="^OBS.*$"
 
@@ -361,7 +359,7 @@ window-rule {
 // open-floating true
 window-rule {
 	match app-id="^.*javac.*$|zenity|^.*waytator$|warp-taskbar"
-	match title="^About.*$|Library|^Pushbullet.*$|^Picture-in.*$|^Picture in.*$|^splash.*$|^Splash.*$|Close Tor Browser|^Welcome to.*$|^.*Setup Wizard$|^.*User Agreement$|^Open File.*$|New Solution|^zoom.*$|^Calculator.*$|^Warning.*$|Open Document|^Select.*$|Friends List|^Myrlyn-.*$|Servers|^Incoming.*$"
+	match title="^About.*$|Library|^Pushbullet.*$|^Picture-in.*$|^Picture in.*$|^splash.*$|^Splash.*$|Close Tor Browser|^Welcome to.*$|^.*Setup Wizard$|^.*User Agreement$|^Open File.*$|New Solution|^zoom.*$|^Calculator.*$|^Warning.*$|Open Document|^Select.*$|Friends List|^Myrlyn-.*$|Servers|^Incoming.*$|Crash Assistant"
 	match app-id="vesktop" title="^vesktop$"
 	match app-id="code" title="^Settings.*$|^Uninstall$"
 	match app-id="virt-manager"
@@ -478,7 +476,7 @@ window-rule {
 	match app-id="^.*Noctalia.Settings$"
 
 	default-column-width { proportion 0.8; }
-	default-window-height { proportion 0.93; }
+	default-window-height { proportion 0.9; }
 
 	open-floating true
 }
