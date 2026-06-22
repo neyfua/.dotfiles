@@ -71,12 +71,12 @@ layout {
 		color "#00000070"
 	}
 
-	// struts {
-	// 	top 35
-	// 	left 35
-	// 	right 35
-	// 	bottom 35
-	// }
+	struts {
+		top 15
+		left 15
+		right 15
+		bottom 15
+	}
 }
 
 workspace "main"
@@ -139,7 +139,7 @@ environment {
 
 cursor {
 	xcursor-theme "Hackneyed-Dark"
-	xcursor-size 30
+	xcursor-size 22
 	hide-when-typing
 }
 
@@ -334,7 +334,7 @@ window-rule {
 
 // window game
 window-rule {
-	match app-id="steam|Upload Labs|^.*Sober$|^.*PolyMC$"
+	match app-id="steam|Upload Labs|^.*Sober$|^.*PolyMC$|^.*Minecraft.*$"
 
 	open-on-workspace "game"
 }

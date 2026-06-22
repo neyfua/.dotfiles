@@ -8,16 +8,14 @@ order = [ "default" ]
     capsule = true
     capsule_opacity = 0.0
     capsule_padding = 4.0
-    center = [ "media" ]
-    end = [ "tray", "battery", "recorder", "notifications", "clock" ]
+    center = []
+    end = [ "tray", "privacy", "network", "battery", "notifications", "clock" ]
     margin_edge = 0
     margin_ends = 0
-    padding = 10
+    padding = 12
     radius = 0
-    radius_bottom_left = -16
-    radius_bottom_right = -16
-    scale = 1.05
-    start = [ "weather", "workspaces", "group:g3", "privacy" ]
+    start = [ "weather", "workspaces", "media" ]
+    thickness = 27
 
         [[bar.default.capsule_group]]
         fill = "surface_variant"
@@ -32,13 +30,6 @@ order = [ "default" ]
         members = [ "network", "volume", "battery" ]
         opacity = 0.0
         padding = 3.0
-
-        [[bar.default.capsule_group]]
-        fill = "surface_variant"
-        id = "g3"
-        members = [ "cpu", "temp", "ram" ]
-        opacity = 0.0
-        padding = 4.0
 
 [battery]
 warning_threshold = 15
@@ -58,7 +49,6 @@ refresh_minutes = 10
 [control_center]
 sidebar = "full"
 sidebar_section = "none"
-width = 720
 
     [[control_center.shortcuts]]
     type = "power_profile"
@@ -113,9 +103,9 @@ sunrise = "07:00"
 sunset = "18:00"
 
 [lockscreen]
-blur_intensity = 0.20000000000000001
+blur_intensity = 0.29999999999999999
 fingerprint = false
-tint_intensity = 0.25
+tint_intensity = 0.45000000000000001
 
 [lockscreen_widgets]
 enabled = true
@@ -234,6 +224,7 @@ time_format = "{:%-I:%M %p}"
     control_center_placement = "floating"
     launcher_categories = false
     launcher_placement = "floating"
+    open_near_click_control_center = true
     session_placement = "floating"
     wallpaper_placement = "floating"
 
@@ -266,6 +257,7 @@ time_format = "{:%-I:%M %p}"
     variant = "destructive"
 
     [shell.shadow]
+    alpha = 0.42999999999999999
     direction = "center"
 
 [system.monitor]
@@ -298,13 +290,13 @@ edge_smoothness = 0.59999998658895493
 transition = [ "disc" ]
 
     [wallpaper.default]
-    path = "/home/neyfua/Pictures/Wallpapers/umeko_j(2).jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/mannequin.jpg"
 
     [wallpaper.last]
-    path = "/home/neyfua/Pictures/Wallpapers/umeko_j(2).jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/mannequin.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/neyfua/Pictures/Wallpapers/umeko_j(2).jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/mannequin.jpg"
 
     [[wallpaper.favorite]]
     builtin_palette = "Rosé Pine"
@@ -347,29 +339,21 @@ type = "noctalia/bongocat:cat"
 
 [widget.clock]
 color = "primary"
-font_weight = 700
-format = "{:%a, %b %d  %I:%M %p}"
+font_weight = 600
+format = "{:%a, %b %d  %-I:%M %p}"
 tooltip_format = "{:%A, %m/%d/%Y}"
 
-[widget.cpu]
-show_label = false
-
-[widget.launcher]
-scale = 1.1000000000000001
-
 [widget.media]
-art_size = 17.0
-font_weight = 600
 hide_when_no_media = true
-max_length = 370
+max_length = 800
 min_length = 0
 title_scroll = "on_hover"
 
+[widget.network]
+show_label = false
+
 [widget.privacy]
 hide_inactive = true
-
-[widget.ram]
-show_label = false
 
 [widget.recorder]
 type = "noctalia/screen_recorder:recorder"
@@ -380,17 +364,8 @@ restore_portal = true
 script = "scripts/screen_recorder.lua"
 type = "scripted"
 
-[widget.temp]
-show_label = false
-
 [widget.tray]
-detached_panel = true
-drawer = true
-drawer_columns = 5
 pinned = [ "Fcitx" ]
-
-[widget.volume]
-scroll_step = 2
 
 [widget.weather]
 show_condition = false
@@ -400,4 +375,4 @@ empty_color = "outline"
 hide_when_empty = true
 minimal = true
 occupied_color = "outline"
-scale = 1.2
+scale = 1.1499999999999999
