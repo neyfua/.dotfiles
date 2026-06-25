@@ -9,11 +9,13 @@ order = [ "default" ]
     capsule_opacity = 0.0
     capsule_padding = 4.0
     center = []
-    end = [ "tray", "privacy", "network", "battery", "notifications", "clock" ]
+    end = [ "tray", "privacy", "network", "recorder_2", "battery", "notifications", "clock" ]
     margin_edge = 0
     margin_ends = 0
     padding = 12
     radius = 0
+    radius_bottom_left = -16
+    radius_bottom_right = -16
     start = [ "weather", "workspaces", "media" ]
     thickness = 27
 
@@ -69,7 +71,45 @@ widget_order = []
     [desktop_widgets.widget]
 
 [dock]
+active_scale = 0.90000000000000002
+auto_hide = true
+background_opacity = 0.78000000000000003
+cross_axis_padding = 0
+enabled = true
+icon_size = 40
+inactive_opacity = 0.82999999999999996
+inactive_scale = 0.90000000000000002
+item_spacing = 0
+magnification_scale = 1.3999999999999999
+main_axis_padding = 0
+margin_edge = 3
 padding = 0
+pinned = [
+    "foot",
+    "zen",
+    "vesktop",
+    "com.spotify.Client",
+    "me.proton.Mail",
+    "zalo",
+    "org.vinegarhq.Sober",
+    "org.polymc.PolyMC",
+    "steam",
+    "dev.zed.Zed",
+    "code",
+    "antigravity",
+    "rider",
+    "org.torproject.torbrowser-launcher",
+    "firefox",
+    "com.obsproject.Studio",
+    "warp-taskbar",
+    "md.obsidian.Obsidian",
+    "io.podman_desktop.PodmanDesktop",
+    "winboat",
+    "virt-manager"
+]
+reserve_space = false
+show_dots = true
+show_instance_count = false
 
 [hooks]
 battery_low_percent_threshold = 15
@@ -171,23 +211,32 @@ use_weather_location = false
 [notification]
 background_opacity = 0.88
 layer = "overlay"
-scale = 0.95000000670552254
+scale = 0.90000000000000002
 
 [osd]
 background_opacity = 0.88
 keyboard_layout = false
 position = "bottom_center"
-scale = 0.90000000596046448
+position_vertical = "center_right"
+scale = 0.84999999999999998
 
     [osd.kinds]
     keyboard_layout = false
     media = false
 
+[plugin_settings."noctalia/mpvpaper"]
+video_directory = "/home/neyfua/Videos/Wallpapers"
+
 [plugin_settings."noctalia/screen_recorder"]
 restore_portal = true
 
+[plugin_settings."noctalia/wallhaven"]
+api_key = "Hg0kvFoaDIrLOdvH3prijbe1ZvGeft9n"
+browser_placement = "floating"
+download_dir = "/home/neyfua/Pictures/Wallpapers"
+
 [plugins]
-enabled = [ "noctalia/screen_recorder", "noctalia/translator", "noctalia/timer" ]
+enabled = [ "noctalia/screen_recorder", "noctalia/translator", "noctalia/wallhaven" ]
 
     [[plugins.source]]
     auto_update = true
@@ -196,13 +245,12 @@ enabled = [ "noctalia/screen_recorder", "noctalia/translator", "noctalia/timer" 
     name = "official"
 
     [[plugins.source]]
-    enabled = false
     kind = "git"
     location = "https://github.com/noctalia-dev/community-plugins"
     name = "community"
 
 [shell]
-avatar_path = "/home/neyfua/Pictures/Saved/giselle.jpg"
+avatar_path = "/var/lib/AccountsService/icons/neyfua"
 clipboard_auto_paste = "off"
 clipboard_history_max_entries = 200
 clipboard_image_action_command = "waytator"
@@ -221,9 +269,11 @@ time_format = "{:%-I:%M %p}"
     [shell.panel]
     borders = false
     clipboard_placement = "floating"
+    clipboard_position = "auto"
     control_center_placement = "floating"
     launcher_categories = false
     launcher_placement = "floating"
+    launcher_position = "auto"
     open_near_click_control_center = true
     session_placement = "floating"
     wallpaper_placement = "floating"
@@ -280,9 +330,13 @@ swap_pct_critical_threshold = 100
 
 [theme]
 builtin = "Rosé Pine"
+community_palette = "Oxocarbon"
+source = "builtin"
+wallpaper_scheme = "m3-content"
 
     [theme.templates]
-    community_ids = [ "zen-browser", "papirus-icons" ]
+    community_ids = [ "zen-browser" ]
+    enable_builtin_templates = false
 
 [wallpaper]
 directory = "/home/neyfua/Pictures/Wallpapers"
@@ -290,13 +344,13 @@ edge_smoothness = 0.59999998658895493
 transition = [ "disc" ]
 
     [wallpaper.default]
-    path = "/home/neyfua/Pictures/Wallpapers/mannequin.jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/mannequin(1).jpg"
 
     [wallpaper.last]
-    path = "/home/neyfua/Pictures/Wallpapers/mannequin.jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/mannequin(1).jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/neyfua/Pictures/Wallpapers/mannequin.jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/mannequin(1).jpg"
 
     [[wallpaper.favorite]]
     builtin_palette = "Rosé Pine"
@@ -313,7 +367,7 @@ transition = [ "disc" ]
     [[wallpaper.favorite]]
     builtin_palette = "Rosé Pine"
     palette_source = "builtin"
-    path = "/home/neyfua/Pictures/Wallpapers/mannequin.jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/mannequin(1).jpg"
     theme_mode = "dark"
 
 [weather]
@@ -356,6 +410,9 @@ show_label = false
 hide_inactive = true
 
 [widget.recorder]
+type = "noctalia/screen_recorder:recorder"
+
+[widget.recorder_2]
 type = "noctalia/screen_recorder:recorder"
 
 [widget.screen_recorder]

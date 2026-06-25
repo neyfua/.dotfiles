@@ -8,8 +8,8 @@ input {
 		tap
 		// dwt
 		natural-scroll
-		accel-speed 1.0
-		accel-profile "flat"
+		accel-speed 0.4
+		accel-profile "adaptive"
 		disabled-on-external-mouse
 	}
 
@@ -56,7 +56,7 @@ layout {
 
 	border {
 		// off
-		width 0
+		width 2.5
 		active-color "#ebbcba"
 		inactive-color "#191724"
 		urgent-color "#eb6f92"
@@ -72,10 +72,10 @@ layout {
 	}
 
 	struts {
-		top 15
-		left 15
-		right 15
-		bottom 15
+		top 20
+		left 20
+		right 20
+		bottom 20
 	}
 }
 
@@ -83,7 +83,6 @@ workspace "main"
 workspace "browser"
 workspace "chat"
 workspace "music"
-workspace "game"
 workspace "misc"
 
 gestures {
@@ -278,16 +277,16 @@ window-rule {
 	}
 }
 
-window-rule {
-	match is-floating=true
+// window-rule {
+// 	match is-floating=true
 
-	border {
-		width 3
-		active-color "#ebbcba"
-		inactive-color "#191724"
-		urgent-color "#eb6f92"
-	}
-}
+// 	border {
+// 		width 3
+// 		active-color "#ebbcba"
+// 		inactive-color "#191724"
+// 		urgent-color "#eb6f92"
+// 	}
+// }
 
 window-rule {
 	match is-active=false
@@ -297,11 +296,10 @@ window-rule {
 
 // window main
 window-rule {
-	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|^virt-.*$"
+	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|^virt-.*$|steam|Upload Labs|^.*Sober$|^.*PolyMC$|^.*Minecraft.*$"
 
 	open-on-workspace "main"
 
-	open-floating false
 	open-focused true
 }
 
@@ -332,13 +330,6 @@ window-rule {
 	open-focused true
 }
 
-// window game
-window-rule {
-	match app-id="steam|Upload Labs|^.*Sober$|^.*PolyMC$|^.*Minecraft.*$"
-
-	open-on-workspace "game"
-}
-
 // window misc
 window-rule {
 	match app-id="winboat"
@@ -359,7 +350,7 @@ window-rule {
 // open-floating true
 window-rule {
 	match app-id="^.*javac.*$|zenity|^.*waytator$|warp-taskbar"
-	match title="^About.*$|Library|^Pushbullet.*$|^Picture-in.*$|^Picture in.*$|^splash.*$|^Splash.*$|Close Tor Browser|^Welcome to.*$|^.*Setup Wizard$|^.*User Agreement$|^Open File.*$|New Solution|^zoom.*$|^Calculator.*$|^Warning.*$|Open Document|^Select.*$|Friends List|^Myrlyn-.*$|Servers|^Incoming.*$|Crash Assistant"
+	match title="^About.*$|Library|^Pushbullet.*$|^Picture-in.*$|^Picture in.*$|^splash.*$|^Splash.*$|Close Tor Browser|^Welcome to.*$|^.*Setup Wizard$|^.*User Agreement$|^Open File.*$|New Solution|^zoom.*$|^Calculator.*$|^Warning.*$|Open Document|^Select.*$|Friends List|^Myrlyn-.*$|Servers|^Incoming.*$"
 	match app-id="vesktop" title="^vesktop$"
 	match app-id="code" title="^Settings.*$|^Uninstall$"
 	match app-id="virt-manager"
@@ -439,7 +430,7 @@ window-rule {
 	match app-id="^xdg-desktop-portal-gtk$"
 	match app-id="^.*Nautilus$" title="^Open File.*$"
 	match app-id="Electron" title="Save"
-	match title="^dialog.*$|^confirm.*$|^Save As.*$|^Save Image.*$|^Open Folder.*$|^File Upload.*$|^Select.*$|^Choose wallpaper.*$|^Choose an image.*$|Choose File|^Locate ISO.*$|^blob.*$|Open project"
+	match title="^dialog.*$|^confirm.*$|^Save As.*$|^Save Image.*$|^Open Folder.*$|^File Upload.*$|^Select.*$|^Choose wallpaper.*$|^Choose an image.*$|Choose File|^Locate ISO.*$|^blob.*$|Open project|datapacks"
 
 	default-column-width { proportion 0.8; }
 	default-window-height { proportion 0.8; }
@@ -534,47 +525,40 @@ binds {
 	// fcitx5
 	Alt+Shift+Z repeat=false { spawn "fcitx5-remote" "-t"; }
 
+	// keyd
+	F2 repeat=false { spawn "~/.local/bin/keyd-suspend"; }
+
 	// Control center & settings
-	Mod+S repeat=false { spawn-sh "noctalia msg panel-toggle control-center || qs -c noctalia-shell ipc call controlCenter toggle"; }
-	Alt+S repeat=false { spawn-sh "noctalia msg settings-toggle || qs -c noctalia-shell ipc call settings open"; }
+	Mod+S repeat=false { spawn "noctalia" "msg" "panel-toggle" "control-center"; }
+	Alt+S repeat=false { spawn "noctalia" "msg" "settings-toggle"; }
 
 	// Lockscreen
-	Mod+L repeat=false { spawn-sh "noctalia msg session lock || qs -c noctalia-shell ipc call lockScreen lock"; }
+	Mod+L repeat=false { spawn "noctalia" "msg" "session" "lock"; }
 
 	// Launcher, clipboard history and emoji
-	// Mod+Return repeat=false { spawn-sh "noctalia msg panel-toggle launcher || qs -c noctalia-shell ipc call launcher toggle"; }
 	Mod+Return repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
-	Alt+C repeat=false      { spawn-sh "noctalia msg panel-toggle clipboard || qs -c noctalia-shell ipc call launcher clipboard"; }
-	Mod+Period repeat=false { spawn-sh "noctalia msg panel-toggle launcher /emo || qs -c noctalia-shell ipc call launcher emoji"; }
+	Alt+C repeat=false      { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
+	Mod+Period repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher" "/emo "; }
 
 	// Session menu
-	Mod+Shift+E repeat=false { spawn-sh "noctalia msg panel-toggle session || qs -c noctalia-shell ipc call sessionMenu toggle"; }
+	Mod+Shift+E repeat=false { spawn "noctalia" "msg" "panel-toggle" "session"; }
 	// Mod+Shift+E repeat=false { spawn-sh "noctalia msg panel-toggle launcher /session"; }
 
 	// Notifications history and notifications clear
-	Alt+Escape repeat=false       { spawn-sh "noctalia msg notification-clear-history || qs -c noctalia-shell ipc call notifications clear"; }
-	Alt+Shift+Escape repeat=false { spawn-sh "noctalia msg notification-clear-active || qs -c noctalia-shell ipc call notifications dismissAll"; }
+	Alt+Escape repeat=false       { spawn "noctalia" "msg" "notification-clear-history"; }
+	Alt+Shift+Escape repeat=false { spawn "noctalia" "msg" "notification-clear-active"; }
 
-	// Wallpaper selector
-	Alt+W repeat=false { spawn-sh "noctalia msg panel-toggle wallpaper || qs -c noctalia-shell ipc call wallpaper toggle"; }
+	// Wallpaper, Wallhaven selector
+	Alt+W repeat=false { spawn "noctalia" "msg" "panel-toggle" "wallpaper"; }
+	Alt+Shift+W repeat=false { spawn "noctalia" "msg" "panel-toggle" "noctalia/wallhaven:browser"; }
 
 	// System controls
-	XF86AudioRaiseVolume allow-when-locked=true       { spawn-sh "noctalia msg volume-up 2 || qs -c noctalia-shell ipc call volume increase"; }
-	XF86AudioLowerVolume allow-when-locked=true       { spawn-sh "noctalia msg volume-down 2 || qs -c noctalia-shell ipc call volume decrease"; }
-	XF86AudioMute allow-when-locked=true repeat=false { spawn-sh "noctalia msg volume-mute || qs -c noctalia-shell ipc call volume muteOutput"; }
-	XF86MonBrightnessUp allow-when-locked=true        {	spawn-sh "noctalia msg brightness-up 5% || qs -c noctalia-shell ipc call brightness increase"; }
-	XF86MonBrightnessDown allow-when-locked=true      { spawn-sh "noctalia msg brightness-down 5% || qs -c noctalia-shell ipc call brightness decrease"; }
-	XF86AudioPlay allow-when-locked=true repeat=false { spawn-sh "noctalia msg media toggle || qs -c noctalia-shell ipc call media playPause"; }
-
-	// Noctalia v4 plugins
-	Alt+N repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:sticky-notes" "toggle"; }
-	Alt+I repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:ip-monitor" "toggle"; }
-	Alt+P repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:shell-profiles" "toggleProfiles"; }
-	Alt+Z repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:notes-scratchpad" "togglePanel"; }
-	Alt+T repeat=false { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "plugin:translator" "toggle"; }
-
-	// Noctalia v5 scripted widgets
-	F9 { spawn "noctalia" "msg" "scripted-widget" "screen_recorder" "focused" "toggle"; }
+	XF86AudioRaiseVolume allow-when-locked=true       { spawn "noctalia" "msg" "volume-up" "2"; }
+	XF86AudioLowerVolume allow-when-locked=true       { spawn "noctalia" "msg" "volume-down" "2"; }
+	XF86AudioMute allow-when-locked=true repeat=false { spawn "noctalia" "msg" "volume-mute"; }
+	XF86MonBrightnessUp allow-when-locked=true        {	spawn "noctalia" "msg" "brightness-up" "5%"; }
+	XF86MonBrightnessDown allow-when-locked=true      { spawn "noctalia" "msg" "brightness-down" "5%"; }
+	XF86AudioPlay allow-when-locked=true repeat=false { spawn "noctalia" "msg" "media" "toggle"; }
 
 	// Close window
 	Mod+C repeat=false { close-window; }

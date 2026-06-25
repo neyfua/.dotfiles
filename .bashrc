@@ -2,37 +2,56 @@
 # ~/.bashrc
 #
 
-# If not running interactively, don't do anything
+## If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+PS1='[\u@\h \W]\$ '
 
-# alias ls='ls --color=auto'
+## Aliases
+alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias nv='nvim'
 alias py='python3'
-alias c='gcc'
-alias cpp='g++'
-PS1='[\u@\h \W]\$ '
 
-##############################################################################
+#################### environment variables ####################
 
-# Envs
-export PATH=/usr/bin:$PATH
-export PATH=/usr/sbin:$PATH
-export PATH=/usr/local/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.cargo/bin:$PATH
-export DOTNET_ROOT=$HOME/.dotnet
-export PATH=$DOTNET_ROOT:$PATH
-export PATH="$HOME/.npm-global:$HOME/.npm-global/bin:$PATH"
-export TERMINAL=foot
+# Base paths
+export PATH="/usr/local/bin:/usr/sbin:/usr/bin:$HOME/.local/bin:$PATH"
+
+## Rust/Cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
+## Golang
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+
+## .NET
+export DOTNET_ROOT="$HOME/.dotnet"
+export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
+
+## npm
+export NPM_HOME="$HOME/.local/share/npm/bin"
+[[ ":$PATH:" != *":$NPM_HOME:"* ]] && export PATH="$NPM_HOME:$PATH"
+
+## pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+[[ ":$PATH:" != *":$PNPM_HOME:"* ]] && export PATH="$PNPM_HOME:$PATH"
+
+## fcitx
+export XMODIFIERS=@im=fcitx
+export QT_IM_MODULE=fcitx
+export QT_IM_MODULES="wayland;fcitx"
+export GLFW_IM_MODULE=ibus
+
+## Editor
 export VISUAL=nvim
-export EDITOR={$VISUAL}
+export EDITOR=${VISUAL}
 
-##############################################################################
+## Misc
+export COMP_WORDBREAKS="${COMP_WORDBREAKS//-}"
 
-# Misc
+#################### miscellaneous ####################
 
-# yazi
+## yazi
 function y() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
     yazi "$@" --cwd-file="$tmp"
@@ -41,12 +60,8 @@ function y() {
     rm -f -- "$tmp"
 }
 
-unset LS_COLORS
-unset EZA_COLORS
+#################### prompt ####################
 
-##############################################################################
-
-# Prompt like my fishy shell
 # Colors
 cyan="\[\e[1;36m\]"
 yellow="\[\e[1;33m\]"
@@ -129,7 +144,3 @@ prompt_command() {
 }
 
 PROMPT_COMMAND=prompt_command
-
-
-# Added by Antigravity CLI installer
-export PATH="/home/neyfua/.local/bin:$PATH"

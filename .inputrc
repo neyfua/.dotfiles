@@ -1,0 +1,16 @@
+set completion-map-case on
+set skip-completed-text on
+set enable-bracketed-paste on
+set bind-tty-special-chars off
+set completion-ignore-case on
+set show-all-if-ambiguous on
+set menu-complete-display-prefix on
+set colored-stats on
+
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+
+"\e[1;2D": backward-word
+"\e[1;2C": forward-word
+
+# "\e\x7f": unix-filename-rubout
