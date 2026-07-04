@@ -1,5 +1,7 @@
 [backdrop]
+blur_intensity = 0.29999999999999999
 enabled = true
+tint_intensity = 0.5
 
 [bar]
 order = [ "default" ]
@@ -9,14 +11,14 @@ order = [ "default" ]
     capsule_opacity = 0.0
     capsule_padding = 4.0
     center = []
-    end = [ "tray", "privacy", "network", "recorder_2", "battery", "notifications", "clock" ]
+    end = [ "tray", "privacy", "network", "recorder_2", "battery", "weather", "notifications", "clock" ]
     margin_edge = 0
     margin_ends = 0
     padding = 12
     radius = 0
-    radius_bottom_left = -16
-    radius_bottom_right = -16
-    start = [ "weather", "workspaces", "media" ]
+    radius_bottom_left = -22
+    radius_bottom_right = -22
+    start = [ "control-center", "workspaces", "media" ]
     thickness = 27
 
         [[bar.default.capsule_group]]
@@ -51,6 +53,7 @@ refresh_minutes = 10
 [control_center]
 sidebar = "full"
 sidebar_section = "none"
+width = 650
 
     [[control_center.shortcuts]]
     type = "power_profile"
@@ -59,7 +62,6 @@ sidebar_section = "none"
     type = "caffeine"
 
 [desktop_widgets]
-enabled = false
 schema_version = 1
 widget_order = []
 
@@ -71,25 +73,24 @@ widget_order = []
     [desktop_widgets.widget]
 
 [dock]
-active_scale = 0.90000000000000002
-auto_hide = true
-background_opacity = 0.78000000000000003
+background_opacity = 0.82999998144805431
 cross_axis_padding = 0
 enabled = true
 icon_size = 40
-inactive_opacity = 0.82999999999999996
-inactive_scale = 0.90000000000000002
+inactive_opacity = 0.96999997831881046
+inactive_scale = 1.0
 item_spacing = 0
-magnification_scale = 1.3999999999999999
-main_axis_padding = 0
-margin_edge = 3
+launcher_custom_image_colorize = true
+magnification_scale = 1.3500000052154064
+main_axis_padding = 5
+margin_edge = 5
 padding = 0
 pinned = [
+    "org.gnome.Nautilus",
     "foot",
     "zen",
     "vesktop",
     "com.spotify.Client",
-    "me.proton.Mail",
     "zalo",
     "org.vinegarhq.Sober",
     "org.polymc.PolyMC",
@@ -101,13 +102,15 @@ pinned = [
     "org.torproject.torbrowser-launcher",
     "firefox",
     "com.obsproject.Studio",
+    "blender-5.1",
     "warp-taskbar",
+    "com.protonvpn.www",
     "md.obsidian.Obsidian",
     "io.podman_desktop.PodmanDesktop",
     "winboat",
-    "virt-manager"
+    "virt-manager",
+    "dev.noctalia.Noctalia.Settings"
 ]
-reserve_space = false
 show_dots = true
 show_instance_count = false
 
@@ -143,14 +146,19 @@ sunrise = "07:00"
 sunset = "18:00"
 
 [lockscreen]
-blur_intensity = 0.29999999999999999
+blur_intensity = 0.40000000000000002
 fingerprint = false
-tint_intensity = 0.45000000000000001
 
 [lockscreen_widgets]
 enabled = true
 schema_version = 1
-widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-0000000000000004", "lockscreen-widget-0000000000000005" ]
+widget_order = [
+    "lockscreen-login-box@eDP-1",
+    "lockscreen-widget-0000000000000004",
+    "lockscreen-widget-0000000000000005",
+    "lockscreen-widget-0000000000000006",
+    "lockscreen-widget-0000000000000007"
+]
 
     [lockscreen_widgets.grid]
     cell_size = 8
@@ -172,7 +180,10 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
         background_radius = 12.0
         input_opacity = 1.0
         input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
         show_login_button = true
+        show_password_hint = true
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000004]
     box_height = 44.0
@@ -202,6 +213,34 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
         color = "primary"
         format = "{:%I:%M %p\\n%A, %B %d}"
 
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000006]
+    box_height = 112.0
+    box_width = 120.0
+    cx = 1236.0
+    cy = 827.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "sticker"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000006.settings]
+        background = false
+        image_path = "/home/neyfua/Pictures/Saved/ryzen7.png"
+        opacity = 1.0
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000007]
+    box_height = 96.0
+    box_width = 136.0
+    cx = 1344.0
+    cy = 827.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "sticker"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000007.settings]
+        background = false
+        image_path = "/home/neyfua/Pictures/Saved/radeon.png"
+        opacity = 1.0
+
 [nightlight]
 enabled = true
 start_time = "18:00"
@@ -223,6 +262,7 @@ scale = 0.84999999999999998
     [osd.kinds]
     keyboard_layout = false
     media = false
+    power_profile = false
 
 [plugin_settings."noctalia/mpvpaper"]
 video_directory = "/home/neyfua/Videos/Wallpapers"
@@ -261,18 +301,22 @@ polkit_agent = true
 screen_time_enabled = true
 settings_show_advanced = true
 telemetry_enabled = true
-time_format = "{:%-I:%M %p}"
+time_format = "{:%I:%M %p}"
+
+    [shell.greeter_sync]
+    auto_sync = true
+
+    [shell.launcher]
+    categories = false
 
     [shell.mpris]
     blacklist = [ "firefox", "Tor Browser" ]
 
     [shell.panel]
     borders = false
-    clipboard_placement = "floating"
     clipboard_position = "auto"
     control_center_placement = "floating"
     launcher_categories = false
-    launcher_placement = "floating"
     launcher_position = "auto"
     open_near_click_control_center = true
     session_placement = "floating"
@@ -283,26 +327,31 @@ time_format = "{:%-I:%M %p}"
 
     [[shell.session.actions]]
     action = "lock"
+    countdown_seconds = 0.0
     enabled = false
     variant = "default"
 
     [[shell.session.actions]]
     action = "logout"
+    countdown_seconds = 0.0
     enabled = true
     variant = "default"
 
     [[shell.session.actions]]
     action = "lock_and_suspend"
+    countdown_seconds = 0.0
     enabled = true
     variant = "default"
 
     [[shell.session.actions]]
     action = "reboot"
+    countdown_seconds = 0.0
     enabled = true
     variant = "default"
 
     [[shell.session.actions]]
     action = "shutdown"
+    countdown_seconds = 0.0
     enabled = true
     variant = "destructive"
 
@@ -344,13 +393,13 @@ edge_smoothness = 0.59999998658895493
 transition = [ "disc" ]
 
     [wallpaper.default]
-    path = "/home/neyfua/Pictures/Wallpapers/mannequin(1).jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/cyberpunk2077(5).jpg"
 
     [wallpaper.last]
-    path = "/home/neyfua/Pictures/Wallpapers/mannequin(1).jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/cyberpunk2077(5).jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/neyfua/Pictures/Wallpapers/mannequin(1).jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/cyberpunk2077(5).jpg"
 
     [[wallpaper.favorite]]
     builtin_palette = "Rosé Pine"
@@ -378,6 +427,47 @@ show_label = false
 stat = "disk_pct"
 type = "sysmon"
 
+[widget.Edit]
+command = "footclient nvim ~/Documents/notes.txt"
+glyph = ""
+label = "Edit"
+type = "custom_button"
+
+[widget.File]
+command = "nautilus"
+glyph = ""
+label = "File"
+type = "custom_button"
+
+[widget.Finder]
+font_weight = 700
+glyph = ""
+label = "Finder"
+type = "custom_button"
+
+[widget.Help]
+command = "xdg-open https://docs.noctalia.dev/v5/"
+glyph = ""
+label = "Help"
+right_command = "xdg-open https://niri-wm.github.io/niri/"
+type = "custom_button"
+
+[widget.View]
+command = "niri msg action toggle-overview"
+glyph = ""
+label = "View"
+type = "custom_button"
+
+[widget.Window]
+command = "niri msg action focus-column-left"
+glyph = ""
+label = "Window"
+middle_command = "niri msg action switch-focus-between-floating-and-tiling"
+right_command = "niri msg action focus-column-right"
+scroll_down_command = "niri msg action focus-workspace-down"
+scroll_up_command = "niri msg action focus-workspace-up"
+type = "custom_button"
+
 [widget.battery]
 display_mode = "graphic"
 
@@ -396,6 +486,10 @@ color = "primary"
 font_weight = 600
 format = "{:%a, %b %d  %-I:%M %p}"
 tooltip_format = "{:%A, %m/%d/%Y}"
+
+[widget.control-center]
+custom_image = "/usr/local/share/noctalia/assets/images/distros/opensuse.svg"
+custom_image_colorize = true
 
 [widget.media]
 hide_when_no_media = true
@@ -432,4 +526,4 @@ empty_color = "outline"
 hide_when_empty = true
 minimal = true
 occupied_color = "outline"
-scale = 1.1499999999999999
+scale = 1.2000000000000002

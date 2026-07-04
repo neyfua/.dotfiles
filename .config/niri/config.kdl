@@ -6,15 +6,15 @@ input {
 
 	touchpad {
 		tap
-		// dwt
+		dwt
 		natural-scroll
-		accel-speed 0.4
+		accel-speed 0.45
 		accel-profile "adaptive"
 		disabled-on-external-mouse
 	}
 
 	mouse {
-		accel-speed -0.13
+		accel-speed -0.1
 		accel-profile "flat"
 	}
 }
@@ -72,10 +72,10 @@ layout {
 	}
 
 	struts {
-		top 20
-		left 20
-		right 20
-		bottom 20
+		top 7
+		left 7
+		right 7
+		bottom -12
 	}
 }
 
@@ -103,7 +103,7 @@ recent-windows {
 // gsettings set org.gnome.desktop.interface text-scaling-factor 1.60
 // gsettings set org.gnome.desktop.wm.preferences button-layout ''
 spawn-at-startup "fcitx5" "-d"
-// spawn-at-startup "warp-taskbar"
+spawn-at-startup "warp-taskbar"
 spawn-at-startup "wl-clip-persist" "-c" "regular" "-e"
 spawn-at-startup "noctalia" "-d"
 // spawn-at-startup "qs" "-c" "noctalia-shell" "-n"
@@ -119,6 +119,7 @@ environment {
 	ELECTRON_OZONE_PLATFORM_HINT "wayland"
 
 	SDL_VIDEODRIVER "wayland"
+	SDL_VIDEO_WAYLAND_SCALE_TO_DISPLAY "1"
 	GDK_BACKEND "wayland,x11,*"
 	CLUTTER_BACKEND "wayland"
 
@@ -158,10 +159,10 @@ hotkey-overlay {
 }
 
 blur {
-  passes 3
-  offset 3.0
-  noise 0.0
-  saturation 1.5
+	passes 3
+	offset 3.0
+	noise 0.0
+	saturation 1.5
 }
 
 animations {
@@ -263,8 +264,8 @@ layer-rule {
 }
 
 layer-rule {
-  match namespace="^noctalia-backdrop"
-  place-within-backdrop true
+	match namespace="^noctalia-backdrop"
+	place-within-backdrop true
 }
 
 window-rule {
@@ -299,7 +300,6 @@ window-rule {
 	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|^virt-.*$|steam|Upload Labs|^.*Sober$|^.*PolyMC$|^.*Minecraft.*$"
 
 	open-on-workspace "main"
-
 	open-focused true
 }
 
@@ -308,7 +308,6 @@ window-rule {
 	match app-id="firefox|Tor Browser|^.*torbrowser-launcher$|^.*zen$"
 
 	open-on-workspace "browser"
-
 	open-focused true
 }
 
@@ -317,7 +316,6 @@ window-rule {
 	match app-id="vesktop|^.*telegram.*$|^.*fluxer.*$|Zalo|me.proton.Mail"
 
 	open-on-workspace "chat"
-
 	open-focused true
 }
 
@@ -326,13 +324,12 @@ window-rule {
 	match app-id="spotify|Spotify"
 
 	open-on-workspace "music"
-
 	open-focused true
 }
 
 // window misc
 window-rule {
-	match app-id="winboat"
+	match app-id="winboat|blender"
 	match title="^OBS.*$"
 
 	open-on-workspace "misc"
@@ -349,11 +346,10 @@ window-rule {
 
 // open-floating true
 window-rule {
-	match app-id="^.*javac.*$|zenity|^.*waytator$|warp-taskbar"
-	match title="^About.*$|Library|^Pushbullet.*$|^Picture-in.*$|^Picture in.*$|^splash.*$|^Splash.*$|Close Tor Browser|^Welcome to.*$|^.*Setup Wizard$|^.*User Agreement$|^Open File.*$|New Solution|^zoom.*$|^Calculator.*$|^Warning.*$|Open Document|^Select.*$|Friends List|^Myrlyn-.*$|Servers|^Incoming.*$"
+	match app-id="^.*javac.*$|zenity|^.*waytator$|warp-taskbar|virt-manager|^.*Sober$"
+	match title="^About.*$|Library|^Pushbullet.*$|^Picture-in.*$|^Picture in.*$|^splash.*$|^Splash.*$|Close Tor Browser|^Welcome to.*$|^.*Setup Wizard$|^.*User Agreement$|^Open File.*$|New Solution|^zoom.*$|^Calculator.*$|^Warning.*$|Open Document|^Select.*$|Friends List|^Myrlyn-.*$|^Incoming.*$"
 	match app-id="vesktop" title="^vesktop$"
 	match app-id="code" title="^Settings.*$|^Uninstall$"
-	match app-id="virt-manager"
 
 	open-floating true
 }
@@ -361,8 +357,9 @@ window-rule {
 // open-floating false
 window-rule {
 	match app-id="winboat"
-	match app-id="virt-manager" title="Virtual Machine Manager|^.*on QEMU/KVM$"
 	match title="^OBS.*$"
+	match app-id="virt-manager" title="Virtual Machine Manager|^.*on QEMU/KVM$"
+	match app-id="^.*Sober$" title="Sober"
 
 	open-floating false
 }
@@ -430,7 +427,7 @@ window-rule {
 	match app-id="^xdg-desktop-portal-gtk$"
 	match app-id="^.*Nautilus$" title="^Open File.*$"
 	match app-id="Electron" title="Save"
-	match title="^dialog.*$|^confirm.*$|^Save As.*$|^Save Image.*$|^Open Folder.*$|^File Upload.*$|^Select.*$|^Choose wallpaper.*$|^Choose an image.*$|Choose File|^Locate ISO.*$|^blob.*$|Open project|datapacks"
+	match title="^dialog.*$|^confirm.*$|^Save As.*$|^Save Image.*$|^Open Folder.*$|^File Upload.*$|^Select.*$|^Choose wallpaper.*$|^Choose an image.*$|Choose File|^Locate ISO.*$|^blob.*$|Open project|datapacks|^(.*)//account.proton.me/(.*)$"
 
 	default-column-width { proportion 0.8; }
 	default-window-height { proportion 0.8; }
@@ -526,7 +523,7 @@ binds {
 	Alt+Shift+Z repeat=false { spawn "fcitx5-remote" "-t"; }
 
 	// keyd
-	F2 repeat=false { spawn "~/.local/bin/keyd-suspend"; }
+	// F1 repeat=false { spawn "keyd-suspend"; }
 
 	// Control center & settings
 	Mod+S repeat=false { spawn "noctalia" "msg" "panel-toggle" "control-center"; }
