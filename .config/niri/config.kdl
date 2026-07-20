@@ -14,7 +14,7 @@ input {
 	}
 
 	mouse {
-		accel-speed -0.1
+		accel-speed 0.05
 		accel-profile "flat"
 	}
 }
@@ -72,10 +72,10 @@ layout {
 	}
 
 	struts {
-		top 7
-		left 7
-		right 7
-		bottom -12
+		top 12
+		left 12
+		right 12
+		bottom -10
 	}
 }
 
@@ -103,10 +103,9 @@ recent-windows {
 // gsettings set org.gnome.desktop.interface text-scaling-factor 1.60
 // gsettings set org.gnome.desktop.wm.preferences button-layout ''
 spawn-at-startup "fcitx5" "-d"
-spawn-at-startup "warp-taskbar"
+spawn-at-startup "nm-applet"
 spawn-at-startup "wl-clip-persist" "-c" "regular" "-e"
 spawn-at-startup "noctalia" "-d"
-// spawn-at-startup "qs" "-c" "noctalia-shell" "-n"
 
 prefer-no-csd
 
@@ -297,7 +296,7 @@ window-rule {
 
 // window main
 window-rule {
-	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|^virt-.*$|steam|Upload Labs|^.*Sober$|^.*PolyMC$|^.*Minecraft.*$"
+	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|^virt-.*$|steam|Upload Labs|^.*Sober$|robloxstudiobeta.exe|^.*PolyMC$|^.*Minecraft.*$"
 
 	open-on-workspace "main"
 	open-focused true
@@ -305,7 +304,7 @@ window-rule {
 
 // window browser
 window-rule {
-	match app-id="firefox|Tor Browser|^.*torbrowser-launcher$|^.*zen$"
+	match app-id="firefox|floorp|^.*zen$|Tor Browser|^.*torbrowser-launcher$"
 
 	open-on-workspace "browser"
 	open-focused true
@@ -337,7 +336,7 @@ window-rule {
 
 // default-column-width 1.0
 window-rule {
-	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|^virt-.*$|firefox|Tor Browser|^.*torbrowser-launcher$|^.*zen$|vesktop|^.*telegram.*$|^.*fluxer.*$|Zalo|^.*telegram.*$|spotify|Spotify|ONLYOFFICE|me.proton.Mail"
+	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|^virt-.*$|firefox|floorp|Tor Browser|^.*torbrowser-launcher$|^.*zen$|vesktop|^.*telegram.*$|^.*fluxer.*$|Zalo|^.*telegram.*$|spotify|Spotify|ONLYOFFICE|me.proton.Mail"
 	match app-id="steam" title="Steam"
 	match title="^OBS.*$"
 
@@ -346,8 +345,8 @@ window-rule {
 
 // open-floating true
 window-rule {
-	match app-id="^.*javac.*$|zenity|^.*waytator$|warp-taskbar|virt-manager|^.*Sober$"
-	match title="^About.*$|Library|^Pushbullet.*$|^Picture-in.*$|^Picture in.*$|^splash.*$|^Splash.*$|Close Tor Browser|^Welcome to.*$|^.*Setup Wizard$|^.*User Agreement$|^Open File.*$|New Solution|^zoom.*$|^Calculator.*$|^Warning.*$|Open Document|^Select.*$|Friends List|^Myrlyn-.*$|^Incoming.*$"
+	match app-id="^.*javac.*$|zenity|^.*waytator$|nm-connection-editor|warp-taskbar|virt-manager|^.*Sober$"
+	match title="^About.*$|Library|^Pushbullet.*$|^Picture-in.*$|^Picture in.*$|^splash.*$|^Splash.*$|Close Tor Browser|^Welcome to.*$|^.*Setup Wizard$|^.*User Agreement$|^Open File.*$|New Solution|^zoom.*$|^Calculator.*$|^Warning.*$|Open Document|^Select.*$|Friends List|^Myrlyn-.*$|^Incoming.*$|Active connection found"
 	match app-id="vesktop" title="^vesktop$"
 	match app-id="code" title="^Settings.*$|^Uninstall$"
 
@@ -412,7 +411,13 @@ window-rule {
 }
 
 window-rule {
-	match app-id="Upload Labs"
+	match title="RobloxStudio"
+
+	default-floating-position x=35 y=91 relative-to="right"
+}
+
+window-rule {
+	match app-id="Upload Labs|winboat"
 	match app-id="^.*Sober$" title="Sober"
 
 	default-column-width { proportion 1.0; }
@@ -427,7 +432,7 @@ window-rule {
 	match app-id="^xdg-desktop-portal-gtk$"
 	match app-id="^.*Nautilus$" title="^Open File.*$"
 	match app-id="Electron" title="Save"
-	match title="^dialog.*$|^confirm.*$|^Save As.*$|^Save Image.*$|^Open Folder.*$|^File Upload.*$|^Select.*$|^Choose wallpaper.*$|^Choose an image.*$|Choose File|^Locate ISO.*$|^blob.*$|Open project|datapacks|^(.*)//account.proton.me/(.*)$"
+	match title="^dialog.*$|^confirm.*$|^Save As.*$|^Save Image.*$|^Open Folder.*$|^File Upload.*$|^Select.*$|^Choose wallpaper.*$|^Choose an image.*$|Choose File|Save Screenshot|^Locate ISO.*$|^blob.*$|Open project|datapacks|^(.*)//account.proton.me/(.*)$"
 
 	default-column-width { proportion 0.8; }
 	default-window-height { proportion 0.8; }
@@ -437,7 +442,7 @@ window-rule {
 
 // Picture-in-Picture
 window-rule {
-	match app-id="firefox|^.*zen$|chromium-browser" title="Picture-in-Picture"
+	match app-id="firefox|floorp|^.*zen$|chromium-browser" title="Picture-in-Picture"
 
 	default-column-width { fixed 354; }
 	default-window-height { fixed 200; }
@@ -451,7 +456,7 @@ window-rule {
 
 // pavucontrol
 window-rule {
-	match app-id="^.*pavucontrol.*$"
+	match app-id="^.*pavucontrol.*$|nm-connection-editor"
 
 	default-column-width { proportion 0.55; }
 	default-window-height { proportion 0.6; }
@@ -461,7 +466,7 @@ window-rule {
 
 // noctalia settings
 window-rule {
-	match app-id="^.*Noctalia.Settings$"
+	match app-id="dev.noctalia.Noctalia"
 
 	default-column-width { proportion 0.8; }
 	default-window-height { proportion 0.9; }
@@ -546,7 +551,7 @@ binds {
 	Alt+Shift+Escape repeat=false { spawn "noctalia" "msg" "notification-clear-active"; }
 
 	// Wallpaper, Wallhaven selector
-	Alt+W repeat=false { spawn "noctalia" "msg" "panel-toggle" "wallpaper"; }
+	Mod+W repeat=false { spawn "noctalia" "msg" "panel-toggle" "wallpaper"; }
 	Alt+Shift+W repeat=false { spawn "noctalia" "msg" "panel-toggle" "noctalia/wallhaven:browser"; }
 
 	// System controls
@@ -556,6 +561,9 @@ binds {
 	XF86MonBrightnessUp allow-when-locked=true        {	spawn "noctalia" "msg" "brightness-up" "5%"; }
 	XF86MonBrightnessDown allow-when-locked=true      { spawn "noctalia" "msg" "brightness-down" "5%"; }
 	XF86AudioPlay allow-when-locked=true repeat=false { spawn "noctalia" "msg" "media" "toggle"; }
+
+	// Plugins
+	Alt+D repeat=false { spawn "noctalia" "msg" "panel-toggle" "8bury/mini-docker:manager"; }
 
 	// Close window
 	Mod+C repeat=false { close-window; }
