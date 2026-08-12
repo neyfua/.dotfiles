@@ -1,4 +1,4 @@
-config_version = 2
+config_version = 12
 
 [backdrop]
 enabled = true
@@ -7,19 +7,17 @@ enabled = true
 order = [ "default" ]
 
     [bar.default]
-    background_opacity = 0.87999998033046722
     capsule = true
     capsule_opacity = 0.0
-    capsule_padding = 5.0
+    capsule_padding = 4.0
     center = []
-    end = [ "tray", "privacy", "network", "todo", "battery", "weather", "notifications", "clock" ]
+    concave_edge_corners = false
+    end = [ "tray", "privacy", "battery", "network", "weather", "notifications", "clock" ]
     margin_ends = 0
+    padding = 10
     radius = 0
-    radius_bottom_left = 16
-    radius_bottom_right = 16
-    scale = 1.0500000081956387
     start = [ "control-center", "workspaces", "media" ]
-    thickness = 28
+    thickness = 26
 
 [battery]
 warning_threshold = 15
@@ -41,31 +39,61 @@ sidebar = "full"
 sidebar_section = "none"
 
     [[control_center.shortcuts]]
-    type = "power_profile"
+    type = "noctalia/screen_recorder:toggle"
 
     [[control_center.shortcuts]]
     type = "caffeine"
 
     [[control_center.shortcuts]]
-    type = "noctalia/screen_recorder:toggle"
+    type = "power_profile"
+
+    [[control_center.shortcuts]]
+    type = "8bury/lid-guard:lid-guard-toggle"
+
+[desktop_widgets]
+schema_version = 2
+widget_order = [ "desktop-widget-0000000000000001" ]
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000001]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 92.0
+    cy = 165.5
+    output = "eDP-1"
+    rotation = 0.0
+    type = "media_player"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
+        background = true
+        background_opacity = 1.0
+        background_radius = 12
+        hide_when_no_media = true
+        layout = "vertical"
 
 [dock]
-active_scale = 0.95000001415610313
+background_opacity = 0.7799999825656414
 cross_axis_padding = 2
 enabled = true
-icon_size = 40
-inactive_opacity = 0.92999997921288013
+icon_size = 42
+inactive_opacity = 0.87999998033046722
 inactive_scale = 0.95000001415610313
 item_spacing = 0
-main_axis_padding = 4
+main_axis_padding = 3
 margin_edge = 3
 pinned = [
     "foot",
     "floorp",
-    "vesktop",
+    "com.discordapp.Discord",
+    "equibop",
     "spotify-launcher",
     "zalo",
     "org.telegram.desktop",
+    "app.fluxer.Fluxer",
     "org.vinegarhq.Sober",
     "org.vinegarhq.Vinegar",
     "steam",
@@ -75,9 +103,9 @@ pinned = [
     "code",
     "org.torproject.torbrowser-launcher",
     "blender-5.1",
+    "us.zoom.Zoom",
     "com.obsproject.Studio",
     "com.cloudflare.WarpTaskbar",
-    "com.protonvpn.www",
     "winboat",
     "io.podman_desktop.PodmanDesktop",
     "virt-manager",
@@ -95,9 +123,10 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
     timeout = 600.0
 
     [idle.behavior.lock-and-suspend]
-    action = "lock_and_suspend"
-    enabled = false
-    timeout = 900.0
+    action = "suspend"
+    enabled = true
+    lock_before_suspend = false
+    timeout = 1800.0
 
     [idle.behavior.screen-off]
     action = "screen_off"
@@ -106,6 +135,9 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
 
 [location]
 auto_locate = true
+custom_schedule = true
+sunrise = "06:00"
+sunset = "18:00"
 
 [lockscreen]
 blur_intensity = 0.29999999329447746
@@ -115,10 +147,10 @@ tint_intensity = 0.44999998994171619
 [lockscreen_widgets]
 enabled = true
 schema_version = 2
-widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-0000000000000001", "lockscreen-widget-0000000000000002" ]
+widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-0000000000000005", "lockscreen-widget-0000000000000001" ]
 
     [lockscreen_widgets.grid]
-    cell_size = 8
+    cell_size = 64
     major_interval = 4
     visible = true
 
@@ -126,7 +158,7 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
     box_height = 70.0
     box_width = 400.0
     cx = 700.0
-    cy = 821.5
+    cy = 792.5
     output = "eDP-1"
     rotation = 0.0
     type = "login_box"
@@ -134,14 +166,18 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
         [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
         background_color = "surface_variant"
         background_opacity = 0.88
-        background_radius = 14.0
+        background_radius = 12.0
         center_password_text = false
         input_opacity = 1.0
         input_radius = 6.0
+        layout = "compact"
         show_caps_lock = true
-        show_keyboard_layout = false
+        show_keyboard_layout = true
         show_login_button = true
-        show_password_hint = false
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = false
+        show_weather = true
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
     box_height = 0.0
@@ -158,16 +194,16 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
         color = "primary"
         format = "{:%I:%M %p\\n%A, %B %d}"
 
-    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
-    box_height = 56.0
-    box_width = 136.0
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000005]
+    box_height = 48.0
+    box_width = 120.0
     cx = 824.0
-    cy = 233.5
+    cy = 237.5
     output = "eDP-1"
     rotation = 0.0
     type = "weather"
 
-        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000005.settings]
         background = false
 
 [nightlight]
@@ -179,7 +215,7 @@ layer = "overlay"
 scale = 0.90000000596046448
 
 [osd]
-background_opacity = 0.87999998033046722
+background_opacity = 0.67999998480081558
 position = "bottom_center"
 position_vertical = "center_right"
 scale = 0.90000000596046448
@@ -191,8 +227,28 @@ scale = 0.90000000596046448
 [plugin_settings."8bury/mini-docker"]
 manager_position = "auto"
 
+[plugin_settings."cleboost/hotspot"]
+panel_placement = "floating"
+panel_position = "auto"
+password = "!0968906049."
+ssid = "inspiron14"
+
+[plugin_settings."neyfua/obs-integration"]
+checkout_dir = "~/Projects/OBS"
+panel_open_near_click = true
+panel_position = "auto"
+
 [plugin_settings."nightwatch75/todo"]
 panel_placement = "floating"
+
+[plugin_settings."nilsonlinux/link-ip-monitor"]
+interval_seconds = 300
+notify_on_recovery = false
+panel_placement = "floating"
+timeout_seconds = 3
+
+[plugin_settings."noctalia/notes"]
+panel_position = "top_right"
 
 [plugin_settings."noctalia/screen_recorder"]
 restore_portal = true
@@ -201,11 +257,16 @@ restore_portal = true
 auto_update = true
 enabled = [
     "noctalia/screen_recorder",
-    "noctalia/translator",
     "nightwatch75/todo",
-    "noctalia/example",
     "noctalia/wallhaven",
-    "8bury/mini-docker"
+    "8bury/mini-docker",
+    "yuuto/calculator",
+    "8bury/lid-guard",
+    "cleboost/hotspot",
+    "noctalia/notes",
+    "neyfua/obs-integration",
+    "nightwatch75/dns-switcher",
+    "nilsonlinux/link-ip-monitor"
 ]
 
     [[plugins.source]]
@@ -220,9 +281,10 @@ enabled = [
 
 [shell]
 button_borders = false
+card_borders = false
 clipboard_auto_paste = "off"
 clipboard_history_max_entries = 1000
-clipboard_image_action_command = "waytator"
+clipboard_image_action_command = "swash"
 date_format = "%A, %B %d %Y"
 font_family = "SF Pro Display"
 password_style = "random"
@@ -244,41 +306,48 @@ time_format = "{:%-I:%M %p}"
     borders = false
     clipboard_position = "auto"
     control_center_placement = "floating"
+    floating_offset = 6
     launcher_position = "auto"
+    list_item_background = true
     open_near_click_control_center = true
     session_placement = "floating"
-    transparency_mode = "soft"
+    session_position = "center_left"
     wallpaper_placement = "floating"
 
-    [[shell.session.actions]]
-    action = "lock"
-    countdown_seconds = 0.0
-    enabled = false
-    variant = "default"
+    [shell.session]
+    grid = true
+    grid_columns = 1
+    show_shortcuts = false
 
-    [[shell.session.actions]]
-    action = "logout"
-    countdown_seconds = 0.0
-    enabled = true
-    variant = "default"
+        [[shell.session.actions]]
+        action = "lock"
+        countdown_seconds = 0.0
+        enabled = false
+        variant = "default"
 
-    [[shell.session.actions]]
-    action = "lock_and_suspend"
-    countdown_seconds = 0.0
-    enabled = true
-    variant = "default"
+        [[shell.session.actions]]
+        action = "logout"
+        countdown_seconds = 0.0
+        enabled = true
+        variant = "default"
 
-    [[shell.session.actions]]
-    action = "reboot"
-    countdown_seconds = 0.0
-    enabled = true
-    variant = "default"
+        [[shell.session.actions]]
+        action = "lock_and_suspend"
+        countdown_seconds = 0.0
+        enabled = true
+        variant = "default"
 
-    [[shell.session.actions]]
-    action = "shutdown"
-    countdown_seconds = 0.0
-    enabled = true
-    variant = "destructive"
+        [[shell.session.actions]]
+        action = "reboot"
+        countdown_seconds = 0.0
+        enabled = true
+        variant = "default"
+
+        [[shell.session.actions]]
+        action = "shutdown"
+        countdown_seconds = 0.0
+        enabled = true
+        variant = "destructive"
 
     [shell.shadow]
     direction = "center"
@@ -288,7 +357,6 @@ cpu_temp_activity_threshold = 80
 cpu_temp_critical_threshold = 100
 cpu_usage_activity_threshold = 80
 cpu_usage_critical_threshold = 100
-disk_pct_critical_threshold = 100
 gpu_poll_seconds = 2
 gpu_temp_activity_threshold = 80
 gpu_temp_critical_threshold = 100
@@ -306,8 +374,8 @@ builtin = "Rosé Pine"
 mode = "dark"
 
     [theme.templates]
-    community_ids = [ "zen-browser" ]
     enable_builtin_templates = false
+    enable_community_templates = false
 
 [wallpaper]
 edge_smoothness = 0.24999999441206455
@@ -315,19 +383,13 @@ transition = [ "disc" ]
 transition_duration = 2000
 
     [wallpaper.default]
-    path = "/home/neyfua/Pictures/Wallpapers/chun_momo(18).jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/maid.png"
 
     [wallpaper.last]
-    path = "/home/neyfua/Pictures/Wallpapers/chun_momo(18).jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/maid.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/neyfua/Pictures/Wallpapers/chun_momo(18).jpg"
-
-    [[wallpaper.favorite]]
-    builtin_palette = "Rosé Pine"
-    palette_source = "builtin"
-    path = "/home/neyfua/Pictures/Wallpapers/mannequin(1).jpg"
-    theme_mode = "dark"
+    path = "/home/neyfua/Pictures/Wallpapers/maid.png"
 
     [[wallpaper.favorite]]
     builtin_palette = "Rosé Pine"
@@ -335,26 +397,55 @@ transition_duration = 2000
     path = "/home/neyfua/Pictures/Wallpapers/motorcycle.jpg"
     theme_mode = "dark"
 
+    [[wallpaper.favorite]]
+    builtin_palette = "Rosé Pine"
+    palette_source = "builtin"
+    path = "/home/neyfua/Pictures/Wallpapers/earrings.jpg"
+    theme_mode = "dark"
+
+    [[wallpaper.favorite]]
+    builtin_palette = "Rosé Pine"
+    palette_source = "builtin"
+    path = "/home/neyfua/Pictures/Wallpapers/violin.jpg"
+    theme_mode = "dark"
+
+    [[wallpaper.favorite]]
+    builtin_palette = "Rosé Pine"
+    palette_source = "builtin"
+    path = "/home/neyfua/Pictures/Wallpapers/chrome-angel(2).jpg"
+    theme_mode = "dark"
+
+[widget.active_window]
+font_weight = 700
+
 [widget.battery]
 display_mode = "graphic"
 
 [widget.clock]
-font_weight = 600
+color = "primary"
+font_weight = 700
 format = "{:%a, %b %d  %-I:%M %p}"
+tooltip_format = "{:%A, %B %-d %Y}"
 
 [widget.control-center]
 custom_image = "/home/neyfua/.local/share/noctalia/assets/images/distros/opensuse.svg"
 custom_image_colorize = true
-interactive = false
 
 [widget.media]
+art_size = 18
 hide_when_no_media = true
 max_length = 800
-min_length = 0
 title_scroll = "on_hover"
+
+    [widget.media.actions]
+    scroll_down = "none"
+    scroll_up = "none"
 
 [widget.network]
 show_label = false
+
+[widget.obs_integrate_2]
+type = "neyfua/obs-integration:obs-integrate"
 
 [widget.privacy]
 hide_inactive = true
@@ -362,14 +453,15 @@ hide_inactive = true
 [widget.todo]
 type = "nightwatch75/todo:todo"
 
-[widget.tray]
-hidden = [ "Network" ]
+[widget.volume]
+mute_color = "outline"
+show_label = false
 
 [widget.weather]
 show_condition = false
 
 [widget.workspaces]
-font_weight = 600
+font_weight = 700
 hide_when_empty = true
-scale = 1.1000000000000001
+scale = 1.05
 style = "focus_hint"

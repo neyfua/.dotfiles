@@ -6,9 +6,9 @@ input {
 
 	touchpad {
 		tap
-		dwt
+		// dwt
 		natural-scroll
-		accel-speed 0.45
+		accel-speed 0.55
 		accel-profile "adaptive"
 		disabled-on-external-mouse
 	}
@@ -30,7 +30,7 @@ switch-events {
 }
 
 layout {
-	// gaps 0
+	gaps 28
 	center-focused-column "never"
 	always-center-single-column
 	// background-color "#191724"
@@ -72,10 +72,10 @@ layout {
 	}
 
 	struts {
-		top 12
-		left 12
-		right 12
-		bottom -10
+		// top 23
+		// left 23
+		// right 23
+		bottom -24
 	}
 }
 
@@ -103,7 +103,6 @@ recent-windows {
 // gsettings set org.gnome.desktop.interface text-scaling-factor 1.60
 // gsettings set org.gnome.desktop.wm.preferences button-layout ''
 spawn-at-startup "fcitx5" "-d"
-spawn-at-startup "nm-applet"
 spawn-at-startup "wl-clip-persist" "-c" "regular" "-e"
 spawn-at-startup "noctalia" "-d"
 
@@ -166,7 +165,7 @@ blur {
 
 animations {
 	// off
-	slowdown 0.88
+	// slowdown 0.88
 
 	// window-open {
 	// 	duration-ms 500
@@ -268,7 +267,7 @@ layer-rule {
 }
 
 window-rule {
-	geometry-corner-radius 12
+	geometry-corner-radius 14
 	clip-to-geometry true
 
 	background-effect {
@@ -281,7 +280,7 @@ window-rule {
 // 	match is-floating=true
 
 // 	border {
-// 		width 3
+// 		width 2.5
 // 		active-color "#ebbcba"
 // 		inactive-color "#191724"
 // 		urgent-color "#eb6f92"
@@ -312,7 +311,7 @@ window-rule {
 
 // window chat
 window-rule {
-	match app-id="vesktop|^.*telegram.*$|^.*fluxer.*$|Zalo|me.proton.Mail"
+	match app-id="discord|equibop|vesktop|^.*telegram.*$|^.*fluxer.*$|Zalo|me.proton.Mail"
 
 	open-on-workspace "chat"
 	open-focused true
@@ -328,7 +327,7 @@ window-rule {
 
 // window misc
 window-rule {
-	match app-id="winboat|blender"
+	match app-id="winboat|blender|zoom"
 	match title="^OBS.*$"
 
 	open-on-workspace "misc"
@@ -336,16 +335,17 @@ window-rule {
 
 // default-column-width 1.0
 window-rule {
-	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|^virt-.*$|firefox|floorp|Tor Browser|^.*torbrowser-launcher$|^.*zen$|vesktop|^.*telegram.*$|^.*fluxer.*$|Zalo|^.*telegram.*$|spotify|Spotify|ONLYOFFICE|me.proton.Mail"
-	match app-id="steam" title="Steam"
+	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|^virt-.*$|firefox|floorp|Tor Browser|^.*torbrowser-launcher$|^.*zen$|discord|equibop|vesktop|^.*telegram.*$|^.*fluxer.*$|Zalo|^.*telegram.*$|spotify|Spotify|ONLYOFFICE|me.proton.Mail"
 	match title="^OBS.*$"
+	match app-id="steam" title="Steam"
+	match app-id="zoom" title="^Zoom Workplace.*$"
 
 	default-column-width { proportion 1.0; }
 }
 
 // open-floating true
 window-rule {
-	match app-id="^.*javac.*$|zenity|^.*waytator$|nm-connection-editor|warp-taskbar|virt-manager|^.*Sober$"
+	match app-id="^.*javac.*$|zenity|^.*waytator$|^.*swash$|nm-connection-editor|warp-taskbar|virt-manager|^.*Sober$"
 	match title="^About.*$|Library|^Pushbullet.*$|^Picture-in.*$|^Picture in.*$|^splash.*$|^Splash.*$|Close Tor Browser|^Welcome to.*$|^.*Setup Wizard$|^.*User Agreement$|^Open File.*$|New Solution|^zoom.*$|^Calculator.*$|^Warning.*$|Open Document|^Select.*$|Friends List|^Myrlyn-.*$|^Incoming.*$|Active connection found"
 	match app-id="vesktop" title="^vesktop$"
 	match app-id="code" title="^Settings.*$|^Uninstall$"
@@ -366,7 +366,7 @@ window-rule {
 // border off
 window-rule {
 	match app-id="zenity"
-	match app-id="vesktop" title="^vesktop$"
+	match app-id="discord|equibop|vesktop" title="^.*Updater$|^equibop$|^vesktop$"
 	match title="^splash.*$|^Splash.*$|zoom|^Updater.*$|^Sign in.*$|^Starting Apache.*$|^Warning.*$"
 
 	border { off; }
@@ -387,10 +387,6 @@ window-rule {
 	open-floating true
 
 	default-floating-position x=42 y=72.5 relative-to="right"
-
-	border {
-		off
-	}
 }
 
 window-rule {
@@ -527,9 +523,6 @@ binds {
 	// fcitx5
 	Alt+Shift+Z repeat=false { spawn "fcitx5-remote" "-t"; }
 
-	// keyd
-	// F1 repeat=false { spawn "keyd-suspend"; }
-
 	// Control center & settings
 	Mod+S repeat=false { spawn "noctalia" "msg" "panel-toggle" "control-center"; }
 	Alt+S repeat=false { spawn "noctalia" "msg" "settings-toggle"; }
@@ -552,7 +545,6 @@ binds {
 
 	// Wallpaper, Wallhaven selector
 	Mod+W repeat=false { spawn "noctalia" "msg" "panel-toggle" "wallpaper"; }
-	Alt+Shift+W repeat=false { spawn "noctalia" "msg" "panel-toggle" "noctalia/wallhaven:browser"; }
 
 	// System controls
 	XF86AudioRaiseVolume allow-when-locked=true       { spawn "noctalia" "msg" "volume-up" "2"; }
@@ -563,7 +555,16 @@ binds {
 	XF86AudioPlay allow-when-locked=true repeat=false { spawn "noctalia" "msg" "media" "toggle"; }
 
 	// Plugins
-	Alt+D repeat=false { spawn "noctalia" "msg" "panel-toggle" "8bury/mini-docker:manager"; }
+	Alt+X repeat=false       { spawn "noctalia" "msg" "panel-toggle" "neyfua/obs-integration:panel"; }
+	Alt+W repeat=false       { spawn "noctalia" "msg" "panel-toggle" "noctalia/wallhaven:browser"; }
+	Alt+N repeat=false       { spawn "noctalia" "msg" "panel-toggle" "noctalia/notes:panel"; }
+	Alt+T repeat=false       { spawn "noctalia" "msg" "panel-toggle" "nightwatch75/todo:panel"; }
+	Alt+Shift+D repeat=false { spawn "noctalia" "msg" "panel-toggle" "nightwatch75/dns-switcher:panel"; }
+	Alt+D repeat=false       { spawn "noctalia" "msg" "panel-toggle" "8bury/mini-docker:manager"; }
+	Alt+Shift+C repeat=false { spawn "noctalia" "msg" "panel-toggle" "yuuto/calculator:panel"; }
+	Alt+H repeat=false       { spawn "noctalia" "msg" "panel-toggle" "cleboost/hotspot:panel"; }
+	Alt+A repeat=false       { spawn "noctalia" "msg" "panel-toggle" "cleboost/anilist:library"; }
+	Alt+L repeat=false       { spawn "noctalia" "msg" "panel-toggle" "nilsonlinux/link-ip-monitor:panel"; }
 
 	// Close window
 	Mod+C repeat=false { close-window; }
