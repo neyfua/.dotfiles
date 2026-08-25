@@ -41,7 +41,7 @@
   "vim": {
     "highlight_on_yank_duration": 100,
     "cursor_shape": {
-      "insert": "bar"
+      "insert": "block"
     },
     "use_smartcase_find": true,
     "toggle_relative_line_numbers": true,

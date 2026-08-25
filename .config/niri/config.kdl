@@ -30,7 +30,7 @@ switch-events {
 }
 
 layout {
-	gaps 28
+	gaps 12
 	center-focused-column "never"
 	always-center-single-column
 	// background-color "#191724"
@@ -72,10 +72,11 @@ layout {
 	}
 
 	struts {
-		// top 23
-		// left 23
-		// right 23
-		bottom -24
+		top 23
+		left 23
+		right 23
+		bottom 23
+		// bottom -10
 	}
 }
 
@@ -103,7 +104,7 @@ recent-windows {
 // gsettings set org.gnome.desktop.interface text-scaling-factor 1.60
 // gsettings set org.gnome.desktop.wm.preferences button-layout ''
 spawn-at-startup "fcitx5" "-d"
-spawn-at-startup "wl-clip-persist" "-c" "regular" "-e"
+// spawn-at-startup "wl-clip-persist" "-c" "regular" "-e"
 spawn-at-startup "noctalia" "-d"
 
 prefer-no-csd
@@ -137,7 +138,7 @@ environment {
 
 cursor {
 	xcursor-theme "Hackneyed-Dark"
-	xcursor-size 22
+	xcursor-size 28
 	hide-when-typing
 }
 
@@ -267,7 +268,7 @@ layer-rule {
 }
 
 window-rule {
-	geometry-corner-radius 14
+	geometry-corner-radius 12
 	clip-to-geometry true
 
 	background-effect {
@@ -378,7 +379,7 @@ window-rule {
 
 	open-floating true
 	
-	default-floating-position x=-73 y=131.5 relative-to="right"
+	default-floating-position x=-83 y=132 relative-to="right"
 }
 
 window-rule {
@@ -386,7 +387,7 @@ window-rule {
 
 	open-floating true
 
-	default-floating-position x=42 y=72.5 relative-to="right"
+	default-floating-position x=0 y=72 relative-to="right"
 }
 
 window-rule {
@@ -395,6 +396,12 @@ window-rule {
 	open-floating true
 
 	default-floating-position x=290 y=53.5 relative-to="right"
+}
+
+window-rule {
+	match app-id="steam" title="Launching..."
+
+	default-floating-position x=44 y=74 relative-to="right"
 }
 
 window-rule {
@@ -428,7 +435,7 @@ window-rule {
 	match app-id="^xdg-desktop-portal-gtk$"
 	match app-id="^.*Nautilus$" title="^Open File.*$"
 	match app-id="Electron" title="Save"
-	match title="^dialog.*$|^confirm.*$|^Save As.*$|^Save Image.*$|^Open Folder.*$|^File Upload.*$|^Select.*$|^Choose wallpaper.*$|^Choose an image.*$|Choose File|Save Screenshot|^Locate ISO.*$|^blob.*$|Open project|datapacks|^(.*)//account.proton.me/(.*)$"
+	match title="^dialog.*$|^All Files$|^confirm.*$|^Save As.*$|^Save Image.*$|^Open Folder.*$|^File Upload.*$|^Select.*$|^Choose wallpaper.*$|^Choose an image.*$|Choose File|Save Screenshot|^Locate ISO.*$|^blob.*$|Open project|datapacks|^(.*)//account.proton.me/(.*)$|Choose photolan"
 
 	default-column-width { proportion 0.8; }
 	default-window-height { proportion 0.8; }
@@ -543,7 +550,7 @@ binds {
 	Alt+Escape repeat=false       { spawn "noctalia" "msg" "notification-clear-history"; }
 	Alt+Shift+Escape repeat=false { spawn "noctalia" "msg" "notification-clear-active"; }
 
-	// Wallpaper, Wallhaven selector
+	// Wallpaper
 	Mod+W repeat=false { spawn "noctalia" "msg" "panel-toggle" "wallpaper"; }
 
 	// System controls
@@ -558,13 +565,14 @@ binds {
 	Alt+X repeat=false       { spawn "noctalia" "msg" "panel-toggle" "neyfua/obs-integration:panel"; }
 	Alt+W repeat=false       { spawn "noctalia" "msg" "panel-toggle" "noctalia/wallhaven:browser"; }
 	Alt+N repeat=false       { spawn "noctalia" "msg" "panel-toggle" "noctalia/notes:panel"; }
-	Alt+T repeat=false       { spawn "noctalia" "msg" "panel-toggle" "nightwatch75/todo:panel"; }
-	Alt+Shift+D repeat=false { spawn "noctalia" "msg" "panel-toggle" "nightwatch75/dns-switcher:panel"; }
 	Alt+D repeat=false       { spawn "noctalia" "msg" "panel-toggle" "8bury/mini-docker:manager"; }
-	Alt+Shift+C repeat=false { spawn "noctalia" "msg" "panel-toggle" "yuuto/calculator:panel"; }
 	Alt+H repeat=false       { spawn "noctalia" "msg" "panel-toggle" "cleboost/hotspot:panel"; }
 	Alt+A repeat=false       { spawn "noctalia" "msg" "panel-toggle" "cleboost/anilist:library"; }
-	Alt+L repeat=false       { spawn "noctalia" "msg" "panel-toggle" "nilsonlinux/link-ip-monitor:panel"; }
+	Alt+T repeat=false       { spawn "noctalia" "msg" "panel-toggle" "davemhammer/tailscale:manager"; }
+	Alt+G repeat=false       { spawn "noctalia" "msg" "panel-toggle" "tphilippot/git_companion:main"; }
+	Alt+Shift+T repeat=false { spawn "noctalia" "msg" "panel-toggle" "nightwatch75/todo:panel"; }
+	Alt+Shift+D repeat=false { spawn "noctalia" "msg" "panel-toggle" "nightwatch75/dns-switcher:panel"; }
+	Alt+Shift+C repeat=false { spawn "noctalia" "msg" "panel-toggle" "yuuto/calculator:panel"; }
 
 	// Close window
 	Mod+C repeat=false { close-window; }

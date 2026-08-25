@@ -1,4 +1,4 @@
-config_version = 12
+config_version = 13
 
 [backdrop]
 enabled = true
@@ -12,7 +12,8 @@ order = [ "default" ]
     capsule_padding = 4.0
     center = []
     concave_edge_corners = false
-    end = [ "tray", "privacy", "battery", "network", "weather", "notifications", "clock" ]
+    enabled = true
+    end = [ "tray", "battery", "network", "weather", "notifications", "clock" ]
     margin_ends = 0
     padding = 10
     radius = 0
@@ -52,37 +53,25 @@ sidebar_section = "none"
 
 [desktop_widgets]
 schema_version = 2
-widget_order = [ "desktop-widget-0000000000000001" ]
+widget_order = []
 
     [desktop_widgets.grid]
-    cell_size = 16
+    cell_size = 8
     major_interval = 4
     visible = true
 
-    [desktop_widgets.widget.desktop-widget-0000000000000001]
-    box_height = 0.0
-    box_width = 0.0
-    cx = 92.0
-    cy = 165.5
-    output = "eDP-1"
-    rotation = 0.0
-    type = "media_player"
-
-        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
-        background = true
-        background_opacity = 1.0
-        background_radius = 12
-        hide_when_no_media = true
-        layout = "vertical"
+    [desktop_widgets.widget]
 
 [dock]
-background_opacity = 0.7799999825656414
+active_scale = 0.95000001415610313
+background_opacity = 0.4999999888241291
 cross_axis_padding = 2
 enabled = true
-icon_size = 42
+icon_size = 41
 inactive_opacity = 0.87999998033046722
 inactive_scale = 0.95000001415610313
 item_spacing = 0
+magnification_scale = 1.4000000059604645
 main_axis_padding = 3
 margin_edge = 3
 pinned = [
@@ -99,7 +88,6 @@ pinned = [
     "steam",
     "org.polymc.PolyMC",
     "dev.zed.Zed",
-    "antigravity",
     "code",
     "org.torproject.torbrowser-launcher",
     "blender-5.1",
@@ -107,12 +95,16 @@ pinned = [
     "com.obsproject.Studio",
     "com.cloudflare.WarpTaskbar",
     "winboat",
+    "com.rustdesk.RustDesk",
     "io.podman_desktop.PodmanDesktop",
     "virt-manager",
     "dev.noctalia.Noctalia"
 ]
+radius = 18
+reserve_space = false
 show_dots = true
 show_instance_count = false
+smart_auto_hide = true
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
@@ -160,6 +152,8 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
     cx = 700.0
     cy = 792.5
     output = "eDP-1"
+    placement_height = 875.0
+    placement_width = 1400.0
     rotation = 0.0
     type = "login_box"
 
@@ -185,6 +179,8 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
     cx = 700.0
     cy = 313.0
     output = "eDP-1"
+    placement_height = 875.0
+    placement_width = 1400.0
     rotation = 0.0
     type = "clock"
 
@@ -200,6 +196,8 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
     cx = 824.0
     cy = 237.5
     output = "eDP-1"
+    placement_height = 875.0
+    placement_width = 1400.0
     rotation = 0.0
     type = "weather"
 
@@ -221,11 +219,17 @@ position_vertical = "center_right"
 scale = 0.90000000596046448
 
     [osd.kinds]
+    keyboard_backlight = false
     keyboard_layout = false
     media = false
 
 [plugin_settings."8bury/mini-docker"]
 manager_position = "auto"
+
+[plugin_settings."cleboost/anilist"]
+client_id = "46918"
+client_secret = "XbpQ3gVoS9zrUWCw8PbAgCw9TqkHQdZqIo7UQamG"
+library_position = "auto"
 
 [plugin_settings."cleboost/hotspot"]
 panel_placement = "floating"
@@ -233,19 +237,16 @@ panel_position = "auto"
 password = "!0968906049."
 ssid = "inspiron14"
 
+[plugin_settings."davemhammer/tailscale"]
+manager_position = "auto"
+ssh_user = "khang"
+
 [plugin_settings."neyfua/obs-integration"]
 checkout_dir = "~/Projects/OBS"
-panel_open_near_click = true
-panel_position = "auto"
+panel_position = "top_center"
 
 [plugin_settings."nightwatch75/todo"]
 panel_placement = "floating"
-
-[plugin_settings."nilsonlinux/link-ip-monitor"]
-interval_seconds = 300
-notify_on_recovery = false
-panel_placement = "floating"
-timeout_seconds = 3
 
 [plugin_settings."noctalia/notes"]
 panel_position = "top_right"
@@ -253,8 +254,10 @@ panel_position = "top_right"
 [plugin_settings."noctalia/screen_recorder"]
 restore_portal = true
 
+[plugin_settings."tphilippot/git_companion"]
+main_placement = "floating"
+
 [plugins]
-auto_update = true
 enabled = [
     "noctalia/screen_recorder",
     "nightwatch75/todo",
@@ -266,7 +269,9 @@ enabled = [
     "noctalia/notes",
     "neyfua/obs-integration",
     "nightwatch75/dns-switcher",
-    "nilsonlinux/link-ip-monitor"
+    "davemhammer/tailscale",
+    "cleboost/anilist",
+    "tphilippot/git_companion"
 ]
 
     [[plugins.source]]
@@ -280,6 +285,7 @@ enabled = [
     name = "community"
 
 [shell]
+avatar_path = "/home/neyfua/Pictures/Pfps/HOPWJNka0AAdgHw_rose-pine.jpeg"
 button_borders = false
 card_borders = false
 clipboard_auto_paste = "off"
@@ -296,9 +302,6 @@ time_format = "{:%-I:%M %p}"
     [shell.launcher]
     categories = false
 
-        [shell.launcher.providers.calculator]
-        global = false
-
     [shell.mpris]
     blacklist = [ "firefox", "Tor Browser" ]
 
@@ -313,6 +316,11 @@ time_format = "{:%-I:%M %p}"
     session_placement = "floating"
     session_position = "center_left"
     wallpaper_placement = "floating"
+
+    [shell.screenshot]
+    confirm_region = true
+    directory = "/home/neyfua/Pictures/Screenshots"
+    remember_last_region = true
 
     [shell.session]
     grid = true
@@ -383,13 +391,13 @@ transition = [ "disc" ]
 transition_duration = 2000
 
     [wallpaper.default]
-    path = "/home/neyfua/Pictures/Wallpapers/maid.png"
+    path = "/home/neyfua/Pictures/Wallpapers/the-maid.png"
 
     [wallpaper.last]
-    path = "/home/neyfua/Pictures/Wallpapers/maid.png"
+    path = "/home/neyfua/Pictures/Wallpapers/the-maid.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/neyfua/Pictures/Wallpapers/maid.png"
+    path = "/home/neyfua/Pictures/Wallpapers/the-maid.png"
 
     [[wallpaper.favorite]]
     builtin_palette = "Rosé Pine"
@@ -420,26 +428,27 @@ font_weight = 700
 
 [widget.battery]
 display_mode = "graphic"
+show_label = false
 
 [widget.clock]
 color = "primary"
 font_weight = 700
-format = "{:%a, %b %d  %-I:%M %p}"
-tooltip_format = "{:%A, %B %-d %Y}"
+format = "{:%a, %b %d %Y  %-I:%M %p}"
+tooltip_format = "{:%A, %B %-d %Y | %-I:%M:%S %p}"
 
 [widget.control-center]
 custom_image = "/home/neyfua/.local/share/noctalia/assets/images/distros/opensuse.svg"
 custom_image_colorize = true
 
+[widget.cpu]
+show_value = false
+
 [widget.media]
 art_size = 18
 hide_when_no_media = true
 max_length = 800
+min_length = 0
 title_scroll = "on_hover"
-
-    [widget.media.actions]
-    scroll_down = "none"
-    scroll_up = "none"
 
 [widget.network]
 show_label = false
@@ -450,8 +459,17 @@ type = "neyfua/obs-integration:obs-integrate"
 [widget.privacy]
 hide_inactive = true
 
+[widget.ram]
+show_value = false
+
+[widget.temp]
+show_value = false
+
 [widget.todo]
 type = "nightwatch75/todo:todo"
+
+[widget.tray]
+drawer_columns = 5
 
 [widget.volume]
 mute_color = "outline"

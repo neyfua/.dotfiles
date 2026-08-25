@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-CLICK_INTERVAL=150000
+CLICK_INTERVAL=2000
 LEFT_BUTTON=272
-CLICKER="$HOME/.cargo/bin/theclicker"
+CLICKER="theclicker"
 
 DEVICES=(
     "/dev/input/by-id/usb-Compx_VGN_Mouse_2.4G_Receiver-if02-event-mouse"

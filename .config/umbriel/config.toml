@@ -1,0 +1,438 @@
+# Umbriel default config
+# Copy this file to ~/.config/umbriel/config.toml to customize it.
+# Changes apply on save. See docs/user/ for the full reference.
+#
+# [include] merges extra files into this one. Included files are parsed first,
+# in list order (later files override earlier ones), then everything in this
+# file overrides all of them. That is why Noctalia's dynamic theming can render
+# its palette into a separate noctalia.toml and still let you override the
+# generated colors here.
+
+[include]
+files = []
+
+[general]
+autostart = ["noctalia -d", "fcitx5 -d", "wl-clip-persist -c regular -e", "gogoani anilist --sync"]
+# mod_key = "Super"            # Mod in keybinds; defaults to Super (Alt when nested)
+xwayland = true                # requires restart to change
+show_cheatsheet = false        # show keybinds overlay on startup
+focus_on_activate = true       # activation requests mark urgent without stealing focus
+
+[environment]
+MOZ_ENABLE_WAYLAND = "1"
+PROTON_ENABLE_WAYLAND = "1"
+OZONE_PLATFORM = "wayland"
+ELECTRON_OZONE_PLATFORM_HINT = "wayland"
+SDL_VIDEODRIVER = "wayland"
+SDL_VIDEO_WAYLAND_SCALE_TO_DISPLAY = "1"
+GDK_BACKEND = "wayland,x11,*"
+CLUTTER_BACKEND = "wayland"
+_JAVA_AWT_WM_NONREPARENTING = "1"
+NO_AT_BRIDGE = "1"
+QT_QPA_PLATFORM = "wayland"
+QT_QPA_PLATFORMTHEME = "qt6ct"
+QT_WAYLAND_DISABLE_WINDOWDECORATION = "1"
+
+[workspaces]
+back_and_forth = false
+
+# Colors ---------------------------------------------------------------------
+
+[colors]
+background = "#191724"
+text_primary = "#e0def4"
+text_muted = "#6e6a86"
+accent_primary = "#ebbcba"
+accent_secondary = "#9ccfd8"
+warning = "#f6c177"
+error = "#eb6f92"
+
+# Appearance -----------------------------------------------------------------
+
+[appearance]
+prefer_no_csd = true
+border_width = 3               # 0-100
+outer_border_width = 0         # 0-100
+corner_radius = 12             # 0-500
+animation_ms = 300             # 1-10000
+border_focused = "#ebbcba"
+border_unfocused = "#191724"
+# scratchpad_border_focused = "#E5C07BFF"
+# scratchpad_border_unfocused = "#5C4A2AFF"
+# outer_border_color = "#1A1A1FFF"
+# insert_hint_color = "#7FC8FF80"
+backdrop_color = "#000000FF"
+
+[appearance.blur]
+enabled = true
+optimized = false
+passes = 3                     # 0-8
+radius = 3                     # 0-100
+noise = 0.02                   # 0.0-1.0
+brightness = 0.9               # 0.0-2.0
+contrast = 0.9                 # 0.0-2.0
+saturation = 1.1               # 0.0-2.0
+
+[appearance.shadow]
+enabled = true
+softness = 40                  # 0-200, 0 = hard edge
+offset_x = 0                   # -200 to 200
+offset_y = 0
+color = "#0000007F"
+
+# Overview -------------------------------------------------------------------
+
+[overview]
+zoom = 0.75                     # 0.1-0.75
+# background_tint = "#10101430"
+# workspace_background = "#00000044" # set alpha to FF for an opaque background
+
+# Hot corners ---------------------------------------------------------------
+
+# [hot_corners.top_left]
+# enabled = false
+# delay_ms = 500                # 0-10000, 0 activates immediately
+# action = "overview-open"
+
+# [hot_corners.top_right]
+# enabled = false
+# delay_ms = 500
+# action = "overview-close"
+
+# [hot_corners.bottom_left]
+# enabled = false
+# delay_ms = 500
+# action = "overview-toggle"
+
+# [hot_corners.bottom_right]
+# enabled = false
+# delay_ms = 500
+# action = "spawn:notify-send 'Bottom right'"
+
+# Layout ---------------------------------------------------------------------
+
+[layout]
+mode = "scrolling"               # "scrolling" or "dwindle"
+gap = 16                         # 0-500
+width_presets = [0.25, 0.5, 0.75, 1.0] # shared by scrolling and dwindle
+
+[layout.scrolling]
+default_width_fraction = 0.5   # 0.1-1.0
+center_underfull_strip = true  # center the strip whenever it is narrower than the viewport
+
+# Workspace layout overrides (see docs/user/outputs.md#workspace-rules)
+# [[workspace]]
+# name = "chat"
+# layout.mode = "dwindle"
+# layout.gap = 4
+# layout.scrolling.center_underfull_strip = false
+
+# Outputs (see docs/user/outputs.md) ----------------------------------------
+
+[output."eDP-1"]
+mode = "2240x1400@60.002"
+# position = [0, 0]
+scale = 1.6
+vrr = "fullscreen"            # "disabled" (default), "always", or "fullscreen"
+enabled = true                # false powers the monitor off and removes it from the desktop
+# Dynamic workspaces are the default; use a count or name list for static workspaces.
+workspaces = 7
+
+# Input ----------------------------------------------------------------------
+
+[input]
+middle_click_paste = false     # primary-selection clipboard, applies on reload
+
+[input.keyboard]
+# layout = ""                    # "us,de" loads both; switch with keyboard-layout-next
+# variant = ""
+# options = ""                   # XKB options, e.g. "grp:alt_shift_toggle"
+repeat_rate = 40               # 0-1000 Hz
+repeat_delay = 200             # 0-10000 ms
+
+[input.touchpad]
+# tap = true
+natural_scroll = true
+
+[input.mouse]
+# natural_scroll = false
+accel_profile = "flat"         # "flat", "adaptive", or "custom <step> <points...>"
+sensitivity = 0.05             # pointer speed, -1.0 to 1.0
+# scroll_wheel_step = 60         # 1-1000
+
+[input.cursor]
+theme = "Hackneyed-Dark"
+size = 27                      # 1-512
+hardware_cursor = true         # false forces software cursor composition
+hide_when_typing = false       # hide after a non-modifier key press
+hide_timeout_ms = 0            # 0-3600000, 0 disables hiding
+
+[input.focus]
+follows_mouse = false
+# Refuse hover focus when revealing the window would scroll further than this,
+# measured in viewport widths (1.0 = one full screen). Omit for no limit.
+# follows_mouse_max_scroll = 0.5
+
+# Keybinds (see docs/user/keybinds.md) --------------------------------------
+
+[keybinds]
+"Mod+Q" = { action = "spawn:foot", repeat = false }
+"Mod+E" = { action = "spawn:nautilus", repeat = false }
+"Alt+Shift+Z" = { action = "spawn:fcitx5-remote -t", repeat = false }
+
+## Noctalia
+### Control center & settings
+"Mod+S" = { action = "spawn:noctalia msg panel-toggle control-center", repeat = false }
+"Alt+S" = { action = "spawn:noctalia msg settings-toggle", repeat = false }
+
+### Lockscreen
+"Mod+L" = { action = "spawn:noctalia msg session lock", repeat = false }
+
+### Launcher, clipboard history and emoji
+"Mod+Return" = { action = "spawn:noctalia msg panel-toggle launcher", repeat = false }
+"Alt+C" = { action = "spawn:noctalia msg panel-toggle clipboard", repeat = false }
+"Mod+Period" = { action = "spawn:noctalia msg panel-toggle launcher \"/emo \"", repeat = false }
+
+### Session menu
+"Mod+Shift+E" = { action = "spawn:noctalia msg panel-toggle session", repeat = false }
+
+### Notifications history and notifications clear
+"Alt+Escape" = { action = "spawn:noctalia msg notification-clear-history", repeat = false }
+"Alt+Shift+Escape" = { action = "spawn:noctalia msg notification-clear-active", repeat = false }
+
+### Wallpaper
+"Mod+W" = { action = "spawn:noctalia msg panel-toggle wallpaper", repeat = false }
+
+### System controls
+"XF86AudioRaiseVolume" = "spawn:noctalia msg volume-up 2"
+"XF86AudioLowerVolume" = "spawn:noctalia msg volume-down 2"
+"XF86AudioMute" = { action = "spawn:noctalia msg volume-mute", repeat = false }
+"XF86MonBrightnessUp" = "spawn:noctalia msg brightness-up 5%"
+"XF86MonBrightnessDown" = "spawn:noctalia msg brightness-down 5%"
+"XF86AudioPlay" = { action = "spawn:noctalia msg media toggle", repeat = false }
+
+### Plugins
+"Alt+X" = { action = "spawn:noctalia msg panel-toggle neyfua/obs-integration:panel", repeat = false }
+"Alt+W" = { action = "spawn:noctalia msg panel-toggle noctalia/wallhaven:browser", repeat = false }
+"Alt+N" = { action = "spawn:noctalia msg panel-toggle noctalia/notes:panel", repeat = false }
+"Alt+D" = { action = "spawn:noctalia msg panel-toggle 8bury/mini-docker:manager", repeat = false }
+"Alt+H" = { action = "spawn:noctalia msg panel-toggle cleboost/hotspot:panel", repeat = false }
+"Alt+A" = { action = "spawn:noctalia msg panel-toggle cleboost/anilist:library", repeat = false }
+"Alt+T" = { action = "spawn:noctalia msg panel-toggle davemhammer/tailscale:manager", repeat = false }
+"Alt+G" = { action = "spawn:noctalia msg panel-toggle tphilippot/git_companion:main", repeat = false }
+"Alt+Shift+T" = { action = "spawn:noctalia msg panel-toggle nightwatch75/todo:panel", repeat = false }
+"Alt+Shift+D" = { action = "spawn:noctalia msg panel-toggle nightwatch75/dns-switcher:panel", repeat = false }
+"Alt+Shift+C" = { action = "spawn:noctalia msg panel-toggle yuuto/calculator:panel", repeat = false }
+
+### Output, workspace, and window movement actions.
+"Mod+C" = { action = "window-close", repeat = false }
+
+"Mod+1" = { action = "workspace-switch:1", repeat = false }
+"Mod+2" = { action = "workspace-switch:2", repeat = false }
+"Mod+3" = { action = "workspace-switch:3", repeat = false }
+"Mod+4" = { action = "workspace-switch:4", repeat = false }
+"Mod+5" = { action = "workspace-switch:5", repeat = false }
+"Mod+6" = { action = "workspace-switch:6", repeat = false }
+"Mod+7" = { action = "workspace-switch:7", repeat = false }
+
+"Mod+G" = { action = "overview-toggle", repeat = false }
+
+"Alt+Up" = { action = "workspace-previous", repeat = false }
+"Alt+Down" = { action = "workspace-next", repeat = false }
+
+"Mod+R" = { action = "window-cycle-width", repeat = false }
+
+"Mod+Left" = { action = "window-focus-left", repeat = false }
+"Mod+Right" = { action = "window-focus-right", repeat = false }
+"Mod+WheelUp" = { action = "window-focus-left", repeat = false }
+"Mod+WheelDown" = { action = "window-focus-right", repeat = false }
+"Mod+Up" = { action = "window-focus-up", repeat = false }
+"Mod+Down" = { action = "window-focus-down", repeat = false }
+
+"Mod+V" = { action = "window-center", repeat = false }
+
+"Mod+Ctrl+Left" = { action = "column-move-left", repeat = false }
+"Mod+Ctrl+Right" = { action = "column-move-right", repeat = false }
+
+"Mod+Shift+Up" = { action = "window-move-up", repeat = false }
+"Mod+Shift+Down" = { action = "window-move-down", repeat = false }
+
+"Mod+Ctrl+Up" = { action = "window-move-to-workspace-previous", repeat = false }
+"Mod+Ctrl+Down" = { action = "window-move-to-workspace-next", repeat = false }
+
+"Mod+BracketLeft" = { action = "window-consume-left", repeat = false }
+"Mod+BracketRight" = { action = "window-expel-right", repeat = false }
+
+"Mod+F" = { action = "window-toggle-fullscreen", repeat = false }
+"Mod+X" = { action = "window-toggle-maximize", repeat = false }
+"Mod+A" = { action = "window-toggle-floating", repeat = false }
+"Mod+P" = { action = "window-toggle-pinned", repeat = false }
+"Alt+F" = { action = "window-toggle-maximize-to-edges", repeat = false }
+
+"Mod+Minus" = { action = "window-modify-width:-0.05", repeat = false }
+"Mod+Equal" = { action = "window-modify-width:+0.05", repeat = false }
+
+### Screenshot
+"Mod+Shift+S" = { action = "spawn:noctalia msg screenshot-region", repeat = false }
+"Print" = { action = "spawn:noctalia msg screenshot-fullscreen", repeat = false }
+
+# Window and layer rules (see docs/user/rules.md) ---------------------------
+[[window_rule]]
+blur = true
+
+[[window_rule]]
+match.app_id = "^(code|.*Zed|jetbrains.*|antigravity|cursor|virt-.*|steam|Upload Labs|.*Sober|robloxstudiobeta.exe|.*PolyMC|.*Minecraft.*)"
+default_workspace = 1
+default_focused = true
+
+[[window_rule]]
+match.app_id = "^(firefox|zen.*|floorp|Tor Browser|.*torbrowser-launcher)$"
+default_workspace	= 2
+default_focused = true
+
+[[window_rule]]
+match.app_id = "discord|equibop|vesktop|^.*telegram.*$|^.*fluxer.*$|Zalo|me.proton.Mail"
+default_workspace = 3
+default_focused = true
+
+[[window_rule]]
+match.app_id = "spotify|Spotify"
+default_workspace = 4
+default_focused = true
+
+[[window_rule]]
+match.app_id = "winboat|blender|zoom"
+default_workspace = 5
+[[window_rule]]
+match.title = "^OBS.*$"
+default_workspace = 5
+
+# default_width = 1.0
+[[window_rule]]
+match.app_id = "^(code|.*Zed|jetbrains.*|antigravity|cursor|virt-.*|firefox|floorp|Tor Browser|.*torbrowser-launcher|.*zen|discord|equibop|vesktop|.*telegram.*|.*fluxer.*|Zalo|.*telegram.*|spotify|Spotify|ONLYOFFICE|me.proton.Mail)"
+default_width = 1.0
+[[window_rule]]
+match.title = "^OBS.*$"
+default_width = 1.0
+[[window_rule]]
+match.app_id = "steam"
+match.title = "Steam"
+default_width = 1.0
+[[window_rule]]
+match.app_id = "zoom"
+match.title = "^Zoom Workplace.*$"
+default_width = 1.0
+
+# default_floating = true
+[[window_rule]]
+match.app_id = "^(.*javac.*|zenity|.*waytator|.*swash|nm-connection-editor|warp-taskbar|virt-manager|.*Sober)$"
+default_floating = true
+[[window_rule]]
+match.app_id = "^(About.*|Library|Pushbullet.*|Picture-in.*|Picture in.*|splash.*|Splash.*|Close Tor Browser|Welcome to.*|.*Setup Wizard|.*User Agreement|Open File.*|New Solution|zoom.*|Calculator.*|Warning.*|Open Document|Select.*|Friends List|Myrlyn-.*|Incoming.*|Active connection found)$"
+default_floating = true
+[[window_rule]]
+match.app_id = "code"
+match.title = "^(Settings.*|Uninstall)$"
+default_floating = true
+
+# default_floating = false
+[[window_rule]]
+match.app_id = "winboat"
+default_floating = false
+[[window_rule]]
+match.app_id = "^OBS.*$"
+default_floating = false
+[[window_rule]]
+match.app_id = "virt-manager"
+match.title = "^(Virtual Machine Manager|.*on QEMU/KVM)$"
+default_floating = false
+[[window_rule]]
+match.app_id = "^.*Sober$"
+match.title = "Sober"
+default_floating = false
+
+# default_floating = true, default_size
+[[window_rule]]
+match.app_id = "^dev.noctalia.UmbrielSharePicker$"
+default_floating = true
+default_size = [1075, 700]
+[[window_rule]]
+match.app_id = "^xdg-desktop-portal-gtk$"
+default_floating = true
+default_size = [1075, 700]
+[[window_rule]]
+match.title = "^(Open File.*|dialog.*|All Files|confirm.*|Save As.*|Save Image.*|Open Folder.*|File Upload.*|Select.*|Choose wallpaper.*|Choose an image.*|Choose File|Save Screenshot|Locate ISO.*|blob.*|Open project|datapacks|.*//account.proton.me/.*)$"
+default_floating = true
+default_size = [1075, 700]
+[[window_rule]]
+match.app_id = "Electron"
+match.title = "Save"
+default_floating = true
+default_size = [1075, 700]
+
+# default_fullscreen = true
+[[window_rule]]
+match.app_id = "Upload Labs|winboat"
+default_floating = false
+default_width = 1.0
+default_fullscreen = true
+
+# default_position
+[[window_rule]]
+match.app_id = "steam"
+match.title = "Friends List"
+default_floating = true
+default_size = [340, 360]
+default_position = { x = 24, y = 24, anchor = "bottom_right" }
+
+# Noctalia
+[[window_rule]]
+match.app_id = "^dev.noctalia.Noctalia$"
+default_floating = true
+default_size = [1075, 775]
+
+# pavucontrol, nm-connection-editor
+[[window_rule]]
+match.app_id = "^(.*pavucontrol.*|nm-connection-editor)$"
+default_floating = true
+default_size = [580, 560]
+
+# lotus settings
+[[window_rule]]
+match.title = "^(Lotus Settings|Fcitx Configuration)$" 
+default_floating = true
+default_size = [840, 620]
+
+# mpv
+[[window_rule]]
+match.app_id = "mpv"
+default_floating = true
+default_size = [1920, 1080]
+
+# media viewer
+[[window_rule]]
+match.title = "^(Media viewer|Zalo Photo)$"
+default_floating = true
+default_size = [1300, 820]
+default_fullscreen = false
+
+# file roller
+[[window_rule]]
+match.app_id = "^.*FileRoller$"
+default_floating = true
+default_size = [500, 720]
+
+# notification toasts
+[[window_rule]]
+match.title = "^notificationtoasts_.+_desktop"
+default_position = { x = 0, y = 0, anchor = "bottom_right" }
+default_focused = false
+default_pinned = true
+
+# Layer rules (see docs/user/rules.md#layer-rules) ---------------------------
+
+[[layer_rule]]
+match.namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
+blur = true
+blur_ignore_alpha = 0.5
+blur_optimized = false
