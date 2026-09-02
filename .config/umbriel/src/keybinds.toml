@@ -1,0 +1,119 @@
+# Keybinds (see docs/user/keybinds.md) --------------------------------------
+
+[keybinds]
+"Mod+Q" = { action = "spawn:foot", repeat = false }
+"Mod+E" = { action = "spawn:nautilus", repeat = false }
+"Alt+Shift+Z" = { action = "spawn:fcitx5-remote -t", repeat = false }
+
+## Noctalia
+### Control center & settings
+"Mod+S" = { action = "spawn:noctalia msg panel-toggle control-center", repeat = false }
+"Alt+S" = { action = "spawn:noctalia msg settings-toggle", repeat = false }
+
+### Lockscreen
+"Mod+L" = { action = "spawn:noctalia msg session lock", repeat = false }
+
+### Launcher, clipboard history and emoji
+"Mod+Return" = { action = "spawn:noctalia msg panel-toggle launcher", repeat = false }
+"Alt+C" = { action = "spawn:noctalia msg panel-toggle clipboard", repeat = false }
+"Mod+Period" = { action = "spawn:noctalia msg panel-toggle launcher \"/emo \"", repeat = false }
+
+### Session menu
+"Mod+Shift+E" = { action = "spawn:noctalia msg panel-toggle session", repeat = false }
+
+### Notifications history and notifications clear
+"Alt+Escape" = { action = "spawn:noctalia msg notification-clear-history", repeat = false }
+"Alt+Shift+Escape" = { action = "spawn:noctalia msg notification-clear-active", repeat = false }
+
+### Wallpaper
+"Mod+W" = { action = "spawn:noctalia msg panel-toggle wallpaper", repeat = false }
+
+### System controls
+"XF86AudioRaiseVolume" = "spawn:noctalia msg volume-up 2"
+"XF86AudioLowerVolume" = "spawn:noctalia msg volume-down 2"
+"XF86AudioMute" = { action = "spawn:noctalia msg volume-mute", repeat = false }
+"XF86MonBrightnessUp" = "spawn:noctalia msg brightness-up 5%"
+"XF86MonBrightnessDown" = "spawn:noctalia msg brightness-down 5%"
+"XF86AudioPlay" = { action = "spawn:noctalia msg media toggle", repeat = false }
+
+### Plugins
+"Alt+X" = { action = "spawn:noctalia msg panel-toggle neyfua/obs-integration:panel", repeat = false }
+"Alt+W" = { action = "spawn:noctalia msg panel-toggle noctalia/wallhaven:browser", repeat = false }
+"Alt+N" = { action = "spawn:noctalia msg panel-toggle noctalia/notes:panel", repeat = false }
+"Alt+D" = { action = "spawn:noctalia msg panel-toggle 8bury/mini-docker:manager", repeat = false }
+"Alt+H" = { action = "spawn:noctalia msg panel-toggle cleboost/hotspot:panel", repeat = false }
+"Alt+A" = { action = "spawn:noctalia msg panel-toggle cleboost/anilist:library", repeat = false }
+"Alt+T" = { action = "spawn:noctalia msg panel-toggle davemhammer/tailscale:manager", repeat = false }
+"Alt+G" = { action = "spawn:noctalia msg panel-toggle tphilippot/git_companion:main", repeat = false }
+"Alt+Shift+T" = { action = "spawn:noctalia msg panel-toggle nightwatch75/todo:panel", repeat = false }
+"Alt+Shift+D" = { action = "spawn:noctalia msg panel-toggle nightwatch75/dns-switcher:panel", repeat = false }
+"Alt+Shift+C" = { action = "spawn:noctalia msg panel-toggle yuuto/calculator:panel", repeat = false }
+
+### Output, workspace, and window movement actions.
+"Mod+C" = { action = "window-close", repeat = false }
+
+"Mod+1" = { action = "workspace-switch:1", repeat = false }
+"Mod+2" = { action = "workspace-switch:2", repeat = false }
+"Mod+3" = { action = "workspace-switch:3", repeat = false }
+"Mod+4" = { action = "workspace-switch:4", repeat = false }
+"Mod+5" = { action = "workspace-switch:5", repeat = false }
+"Mod+6" = { action = "workspace-switch:6", repeat = false }
+"Mod+7" = { action = "workspace-switch:7", repeat = false }
+"Mod+Shift+1" = { action = "window-move-to-workspace:1", repeat = false }
+"Mod+Shift+2" = { action = "window-move-to-workspace:2", repeat = false }
+"Mod+Shift+3" = { action = "window-move-to-workspace:3", repeat = false }
+"Mod+Shift+4" = { action = "window-move-to-workspace:4", repeat = false }
+"Mod+Shift+5" = { action = "window-move-to-workspace:5", repeat = false }
+"Mod+Shift+6" = { action = "window-move-to-workspace:6", repeat = false }
+"Mod+Shift+7" = { action = "window-move-to-workspace:7", repeat = false }
+
+"Mod+G" = { action = "overview-toggle", repeat = false }
+
+"Alt+Up" = { action = "workspace-previous", repeat = false }
+"Alt+Down" = { action = "workspace-next", repeat = false }
+"Mod+Shift+WheelUp" = { action = "workspace-previous", repeat = false }
+"Mod+Shift+WheelDown" = { action = "workspace-next", repeat = false }
+
+"Mod+R" = { action = "window-cycle-width", repeat = false }
+
+"Mod+Left" = { action = "window-focus-left", repeat = false }
+"Mod+Right" = { action = "window-focus-right", repeat = false }
+
+"Mod+WheelUp" = { action = "window-focus-left", repeat = false }
+"Mod+WheelDown" = { action = "window-focus-right", repeat = false }
+"Mod+Alt+WheelUp" = { action = "column-move-to-workspace-previous", repeat = false }
+"Mod+Alt+WheelDown" = { action = "column-move-to-workspace-next", repeat = false }
+
+"Mod+Up" = { action = "window-focus-up", repeat = false }
+"Mod+Down" = { action = "window-focus-down", repeat = false }
+
+"Mod+V" = { action = "window-center", repeat = false }
+
+"Mod+Ctrl+Left" = { action = "column-move-left", repeat = false }
+"Mod+Ctrl+Right" = { action = "column-move-right", repeat = false }
+"Mod+Ctrl+WheelDown" = { action = "column-move-right", repeat = false }
+"Mod+Ctrl+WheelUp" = { action = "column-move-left", repeat = false }
+
+"Mod+Shift+Up" = { action = "window-move-up", repeat = false }
+"Mod+Shift+Down" = { action = "window-move-down", repeat = false }
+
+"Mod+Ctrl+Up" = { action = "window-move-to-workspace-previous", repeat = false }
+"Mod+Ctrl+Down" = { action = "window-move-to-workspace-next", repeat = false }
+
+"Mod+BracketLeft" = { action = "window-consume-or-expel-left", repeat = false }
+"Mod+BracketRight" = { action = "window-consume-or-expel-right", repeat = false }
+
+"Mod+F" = { action = "window-toggle-fullscreen", repeat = false }
+"Mod+X" = { action = "window-toggle-maximize", repeat = false }
+"Mod+A" = { action = "window-toggle-floating", repeat = false }
+"Mod+D" = { action = "window-focus-switch-floating", repeat = false }
+"Mod+P" = { action = "window-toggle-pinned", repeat = false }
+"Alt+F" = { action = "window-toggle-maximize-to-edges", repeat = false }
+
+"Mod+Minus" = { action = "window-modify-width:-0.05", repeat = false }
+"Mod+Equal" = { action = "window-modify-width:+0.05", repeat = false }
+
+### Screenshot
+"Mod+Shift+S" = { action = "spawn:noctalia msg screenshot-region", repeat = false }
+"Print" = { action = "spawn:noctalia msg screenshot-fullscreen", repeat = false }
+

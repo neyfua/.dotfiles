@@ -28,7 +28,6 @@ warning_threshold = 15
 
 [calendar]
 enabled = true
-refresh_minutes = 60
 
     [calendar.account.personal_google]
     color = "primary"
@@ -38,6 +37,9 @@ refresh_minutes = 60
 [control_center]
 sidebar = "full"
 sidebar_section = "none"
+
+    [control_center.calendar]
+    event_time_format = "%I:%M"
 
     [[control_center.shortcuts]]
     type = "noctalia/screen_recorder:toggle"
@@ -63,13 +65,12 @@ widget_order = []
     [desktop_widgets.widget]
 
 [dock]
-active_scale = 0.95000001415610313
 background_opacity = 0.4999999888241291
 cross_axis_padding = 2
 enabled = true
-icon_size = 41
+icon_size = 36
 inactive_opacity = 0.87999998033046722
-inactive_scale = 0.95000001415610313
+inactive_scale = 1.0
 item_spacing = 0
 magnification_scale = 1.4000000059604645
 main_axis_padding = 3
@@ -79,6 +80,7 @@ pinned = [
     "floorp",
     "com.discordapp.Discord",
     "equibop",
+    "vesktop",
     "spotify-launcher",
     "zalo",
     "org.telegram.desktop",
@@ -86,25 +88,23 @@ pinned = [
     "org.vinegarhq.Sober",
     "org.vinegarhq.Vinegar",
     "steam",
-    "org.polymc.PolyMC",
+    "curseforge",
     "dev.zed.Zed",
     "code",
     "org.torproject.torbrowser-launcher",
     "blender-5.1",
     "us.zoom.Zoom",
     "com.obsproject.Studio",
+    "com.github.wwmm.easyeffects",
     "com.cloudflare.WarpTaskbar",
     "winboat",
     "com.rustdesk.RustDesk",
     "io.podman_desktop.PodmanDesktop",
-    "virt-manager",
-    "dev.noctalia.Noctalia"
+    "virt-manager"
 ]
-radius = 18
-reserve_space = false
+radius = 14
 show_dots = true
 show_instance_count = false
-smart_auto_hide = true
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
@@ -342,7 +342,7 @@ time_format = "{:%-I:%M %p}"
         [[shell.session.actions]]
         action = "lock_and_suspend"
         countdown_seconds = 0.0
-        enabled = true
+        enabled = false
         variant = "default"
 
         [[shell.session.actions]]
@@ -380,24 +380,27 @@ swap_pct_critical_threshold = 100
 [theme]
 builtin = "Rosé Pine"
 mode = "dark"
+source = "builtin"
+wallpaper_scheme = "m3-content"
 
     [theme.templates]
     enable_builtin_templates = false
     enable_community_templates = false
 
 [wallpaper]
+directory = "/home/neyfua/Pictures/Wallpapers"
 edge_smoothness = 0.24999999441206455
 transition = [ "disc" ]
 transition_duration = 2000
 
     [wallpaper.default]
-    path = "/home/neyfua/Pictures/Wallpapers/the-maid.png"
+    path = "/home/neyfua/Pictures/Wallpapers/horizon.jpg"
 
     [wallpaper.last]
-    path = "/home/neyfua/Pictures/Wallpapers/the-maid.png"
+    path = "/home/neyfua/Pictures/Wallpapers/horizon.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/neyfua/Pictures/Wallpapers/the-maid.png"
+    path = "/home/neyfua/Pictures/Wallpapers/horizon.jpg"
 
     [[wallpaper.favorite]]
     builtin_palette = "Rosé Pine"

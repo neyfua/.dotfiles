@@ -1,0 +1,167 @@
+# Window rules (see docs/user/rules.md) ---------------------------
+[[window_rule]]
+blur = true
+[[window_rule]]
+match.is_focused = false
+opacity = 0.88
+
+[[window_rule]]
+match.app_id = "^(code|.*Zed|jetbrains.*|antigravity|cursor|virt-.*|steam|Upload Labs|.*Sober|robloxstudiobeta.exe|.*PolyMC|.*Minecraft.*)"
+default_workspace = 1
+default_focused = true
+
+[[window_rule]]
+match.app_id = "^(firefox|zen.*|floorp|Tor Browser|.*torbrowser-launcher)$"
+default_workspace	= 2
+default_focused = true
+
+[[window_rule]]
+match.app_id = "discord|equibop|vesktop|^.*telegram.*$|^.*fluxer.*$|Zalo|me.proton.Mail"
+default_workspace = 3
+default_focused = true
+
+[[window_rule]]
+match.app_id = "spotify|Spotify"
+default_workspace = 4
+default_focused = true
+
+[[window_rule]]
+match.app_id = "winboat|blender|zoom"
+default_workspace = 5
+[[window_rule]]
+match.title = "^OBS.*$"
+default_workspace = 5
+
+# default_width = 1.0
+[[window_rule]]
+match.app_id = "^(code|.*Zed|jetbrains.*|antigravity|cursor|virt-.*|firefox|floorp|Tor Browser|.*torbrowser-launcher|.*zen|discord|equibop|vesktop|.*telegram.*|.*fluxer.*|Zalo|.*telegram.*|spotify|Spotify|ONLYOFFICE|me.proton.Mail)"
+default_width = 1.0
+[[window_rule]]
+match.title = "^OBS.*$"
+default_width = 1.0
+[[window_rule]]
+match.app_id = "steam"
+match.title = "Steam"
+default_width = 1.0
+[[window_rule]]
+match.app_id = "zoom"
+match.title = "^Zoom Workplace.*$"
+default_width = 1.0
+
+# default_floating = true
+[[window_rule]]
+match.app_id = "^(.*javac.*|zenity|.*waytator|.*swash|nm-connection-editor|warp-taskbar|virt-manager|.*Sober)$"
+default_floating = true
+[[window_rule]]
+match.app_id = "^(About.*|Library|Pushbullet.*|Picture-in.*|Picture in.*|splash.*|Splash.*|Close Tor Browser|Welcome to.*|.*Setup Wizard|.*User Agreement|Open File.*|New Solution|zoom.*|Calculator.*|Warning.*|Open Document|Select.*|Friends List|Myrlyn-.*|Incoming.*|Active connection found)$"
+default_floating = true
+[[window_rule]]
+match.app_id = "code"
+match.title = "^(Settings.*|Uninstall)$"
+default_floating = true
+
+# default_floating = false
+[[window_rule]]
+match.app_id = "winboat"
+default_floating = false
+[[window_rule]]
+match.app_id = "^OBS.*$"
+default_floating = false
+[[window_rule]]
+match.app_id = "virt-manager"
+match.title = "^(Virtual Machine Manager|.*on QEMU/KVM)$"
+default_floating = false
+[[window_rule]]
+match.app_id = "^.*Sober$"
+match.title = "Sober"
+default_floating = false
+
+# default_floating = true, default_size
+[[window_rule]]
+match.app_id = "^dev.noctalia.UmbrielSharePicker$"
+default_floating = true
+default_size = [1075, 700]
+[[window_rule]]
+match.app_id = "^xdg-desktop-portal.*$"
+default_floating = true
+default_size = [1075, 700]
+[[window_rule]]
+match.title = "^(Open File.*|dialog.*|All Files|confirm.*|Save As.*|Save Image.*|Open Folder.*|File Upload.*|Select.*|Choose wallpaper.*|Choose an image.*|Choose File|Save Screenshot|Locate ISO.*|blob.*|Open project|datapacks|.*//account.proton.me/.*)$"
+default_floating = true
+default_size = [1075, 700]
+[[window_rule]]
+match.app_id = "Electron"
+match.title = "Save"
+default_floating = true
+default_size = [1075, 700]
+
+# default_fullscreen = true
+[[window_rule]]
+match.app_id = "Upload Labs|winboat"
+default_floating = false
+default_width = 1.0
+default_fullscreen = true
+
+# default_position
+[[window_rule]]
+match.app_id = "steam"
+match.title = "Friends List"
+default_floating = true
+default_size = [340, 360]
+default_position = { x = 24, y = 24, anchor = "bottom_right" }
+
+# Noctalia
+[[window_rule]]
+match.app_id = "^dev.noctalia.Noctalia$"
+default_floating = true
+default_size = [1075, 700]
+
+# pavucontrol, nm-connection-editor
+[[window_rule]]
+match.app_id = "^(.*pavucontrol.*|nm-connection-editor)$"
+default_floating = true
+default_size = [580, 560]
+
+# lotus settings
+[[window_rule]]
+match.title = "^(Lotus Settings|Fcitx Configuration)$" 
+default_floating = true
+default_size = [840, 620]
+
+# mpv
+[[window_rule]]
+match.app_id = "mpv"
+default_floating = true
+default_size = [1920, 1080]
+
+# media viewer
+[[window_rule]]
+match.title = "^(Media viewer|Zalo Photo)$"
+default_floating = true
+default_size = [1300, 820]
+default_fullscreen = false
+
+# file roller
+[[window_rule]]
+match.app_id = "^.*FileRoller$"
+default_floating = true
+default_size = [500, 720]
+
+# notification toasts
+[[window_rule]]
+match.title = "^notificationtoasts_.+_desktop"
+default_position = { x = 0, y = 0, anchor = "bottom_right" }
+default_focused = false
+default_pinned = true
+
+# match.content_type = "game"
+[[window_rule]]
+match.content_type = "game"
+match.xdg_tag = "^proton-game$"
+default_fullscreen = true
+[[window_rule]]
+match.content_type = "game"
+vrr = "always"
+[[window_rule]]
+match.app_id = "^steam_app_[0-9]+$"
+hdr = "fullscreen"

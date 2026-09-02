@@ -8,8 +8,8 @@ input {
 		tap
 		// dwt
 		natural-scroll
-		accel-speed 0.55
-		accel-profile "adaptive"
+		accel-speed 0.9
+		accel-profile "flat"
 		disabled-on-external-mouse
 	}
 
@@ -30,7 +30,7 @@ switch-events {
 }
 
 layout {
-	gaps 12
+	gaps 0
 	center-focused-column "never"
 	always-center-single-column
 	// background-color "#191724"
@@ -56,7 +56,7 @@ layout {
 
 	border {
 		// off
-		width 2.5
+		width 0
 		active-color "#ebbcba"
 		inactive-color "#191724"
 		urgent-color "#eb6f92"
@@ -71,13 +71,13 @@ layout {
 		color "#00000070"
 	}
 
-	struts {
-		top 23
-		left 23
-		right 23
-		bottom 23
-		// bottom -10
-	}
+	// struts {
+	// 	top 23
+	// 	left 23
+	// 	right 23
+	// 	bottom 23
+	// 	bottom -6
+	// }
 }
 
 workspace "main"
@@ -104,8 +104,9 @@ recent-windows {
 // gsettings set org.gnome.desktop.interface text-scaling-factor 1.60
 // gsettings set org.gnome.desktop.wm.preferences button-layout ''
 spawn-at-startup "fcitx5" "-d"
-// spawn-at-startup "wl-clip-persist" "-c" "regular" "-e"
+spawn-at-startup "wl-clip-persist" "-c" "regular" "-e"
 spawn-at-startup "noctalia" "-d"
+spawn-at-startup "gogoani" "anilist" "--sync"
 
 prefer-no-csd
 
@@ -138,7 +139,7 @@ environment {
 
 cursor {
 	xcursor-theme "Hackneyed-Dark"
-	xcursor-size 28
+	xcursor-size 24
 	hide-when-typing
 }
 
@@ -268,7 +269,7 @@ layer-rule {
 }
 
 window-rule {
-	geometry-corner-radius 12
+	geometry-corner-radius 14
 	clip-to-geometry true
 
 	background-effect {
@@ -277,16 +278,16 @@ window-rule {
 	}
 }
 
-// window-rule {
-// 	match is-floating=true
+window-rule {
+	match is-floating=true
 
-// 	border {
-// 		width 2.5
-// 		active-color "#ebbcba"
-// 		inactive-color "#191724"
-// 		urgent-color "#eb6f92"
-// 	}
-// }
+	border {
+		width 2.5
+		active-color "#ebbcba"
+		inactive-color "#191724"
+		urgent-color "#eb6f92"
+	}
+}
 
 window-rule {
 	match is-active=false
@@ -340,6 +341,7 @@ window-rule {
 	match title="^OBS.*$"
 	match app-id="steam" title="Steam"
 	match app-id="zoom" title="^Zoom Workplace.*$"
+	match app-id="modrinth-app-wrapped" title="Modrinth App"
 
 	default-column-width { proportion 1.0; }
 }
@@ -347,7 +349,7 @@ window-rule {
 // open-floating true
 window-rule {
 	match app-id="^.*javac.*$|zenity|^.*waytator$|^.*swash$|nm-connection-editor|warp-taskbar|virt-manager|^.*Sober$"
-	match title="^About.*$|Library|^Pushbullet.*$|^Picture-in.*$|^Picture in.*$|^splash.*$|^Splash.*$|Close Tor Browser|^Welcome to.*$|^.*Setup Wizard$|^.*User Agreement$|^Open File.*$|New Solution|^zoom.*$|^Calculator.*$|^Warning.*$|Open Document|^Select.*$|Friends List|^Myrlyn-.*$|^Incoming.*$|Active connection found"
+	match title="^About.*$|Library|^Pushbullet.*$|^Picture-in.*$|^Picture in.*$|^splash.*$|^Splash.*$|Close Tor Browser|^Welcome to.*$|^.*Setup Wizard$|^.*User Agreement$|^Open File.*$|New Solution|^zoom.*$|^Calculator.*$|^Warning.*$|Open Document|^Select.*$|Friends List|^Myrlyn-.*$|^Incoming.*$|Active connection found|Sign into Modrinth"
 	match app-id="vesktop" title="^vesktop$"
 	match app-id="code" title="^Settings.*$|^Uninstall$"
 
@@ -435,7 +437,7 @@ window-rule {
 	match app-id="^xdg-desktop-portal-gtk$"
 	match app-id="^.*Nautilus$" title="^Open File.*$"
 	match app-id="Electron" title="Save"
-	match title="^dialog.*$|^All Files$|^confirm.*$|^Save As.*$|^Save Image.*$|^Open Folder.*$|^File Upload.*$|^Select.*$|^Choose wallpaper.*$|^Choose an image.*$|Choose File|Save Screenshot|^Locate ISO.*$|^blob.*$|Open project|datapacks|^(.*)//account.proton.me/(.*)$|Choose photolan"
+	match title="^dialog.*$|^All Files$|^confirm.*$|^Save As.*$|^Save Image.*$|^Open Folder.*$|^File Upload.*$|^Select.*$|^Choose wallpaper.*$|^Choose an image.*$|Choose File|Save Screenshot|^Locate ISO.*$|^blob.*$|Open project|datapacks|^(.*)//account.proton.me/(.*)$|Choose photolan|^Find Java.*$"
 
 	default-column-width { proportion 0.8; }
 	default-window-height { proportion 0.8; }
