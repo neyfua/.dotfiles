@@ -2,6 +2,7 @@ return {
 	{
 		"nvim-mini/mini.nvim",
 		version = "*",
+		cond = not vim.g.vscode and not vim.g.antigravity,
 		config = function()
 			require("mini.snippets").setup()
 

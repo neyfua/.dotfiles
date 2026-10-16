@@ -14,7 +14,7 @@ input {
 	}
 
 	mouse {
-		accel-speed 0.05
+		accel-speed 0.07
 		accel-profile "flat"
 	}
 }
@@ -24,13 +24,13 @@ output "eDP-1" {
 	scale 1.6
 }
 
-switch-events {
-	lid-close { spawn "noctalia" "msg" "session" "lock"; }
-	lid-open { spawn "noctalia" "msg" "session" "lock"; }
-}
+// switch-events {
+// 	lid-close { spawn "noctalia" "msg" "session" "lock"; }
+// 	lid-open { spawn "noctalia" "msg" "session" "lock"; }
+// }
 
 layout {
-	gaps 0
+	gaps 25
 	center-focused-column "never"
 	always-center-single-column
 	// background-color "#191724"
@@ -56,7 +56,7 @@ layout {
 
 	border {
 		// off
-		width 0
+		width 3
 		active-color "#ebbcba"
 		inactive-color "#191724"
 		urgent-color "#eb6f92"
@@ -269,7 +269,7 @@ layer-rule {
 }
 
 window-rule {
-	geometry-corner-radius 14
+	geometry-corner-radius 16
 	clip-to-geometry true
 
 	background-effect {
@@ -278,16 +278,16 @@ window-rule {
 	}
 }
 
-window-rule {
-	match is-floating=true
+// window-rule {
+// 	match is-floating=true
 
-	border {
-		width 2.5
-		active-color "#ebbcba"
-		inactive-color "#191724"
-		urgent-color "#eb6f92"
-	}
-}
+// 	border {
+// 		width 2.5
+// 		active-color "#ebbcba"
+// 		inactive-color "#191724"
+// 		urgent-color "#eb6f92"
+// 	}
+// }
 
 window-rule {
 	match is-active=false
@@ -297,7 +297,7 @@ window-rule {
 
 // window main
 window-rule {
-	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|^virt-.*$|steam|Upload Labs|^.*Sober$|robloxstudiobeta.exe|^.*PolyMC$|^.*Minecraft.*$"
+	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|Chatgpt|^virt-.*$|steam|Upload Labs|^.*Sober$|robloxstudiobeta.exe|^.*PolyMC$|CurseForge|^.*PrismLauncher$|^.*Minecraft.*$"
 
 	open-on-workspace "main"
 	open-focused true
@@ -313,7 +313,7 @@ window-rule {
 
 // window chat
 window-rule {
-	match app-id="discord|equibop|vesktop|^.*telegram.*$|^.*fluxer.*$|Zalo|me.proton.Mail"
+	match app-id="discord|equibop|vesktop|^.*telegram.*$|^.*fluxer.*$|zalo|Zalo|me.proton.Mail"
 
 	open-on-workspace "chat"
 	open-focused true
@@ -337,20 +337,19 @@ window-rule {
 
 // default-column-width 1.0
 window-rule {
-	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|^virt-.*$|firefox|floorp|Tor Browser|^.*torbrowser-launcher$|^.*zen$|discord|equibop|vesktop|^.*telegram.*$|^.*fluxer.*$|Zalo|^.*telegram.*$|spotify|Spotify|ONLYOFFICE|me.proton.Mail"
-	match title="^OBS.*$"
+	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|Chatgpt|^virt-.*$|firefox|floorp|Tor Browser|^.*torbrowser-launcher$|^.*zen$|discord|equibop|vesktop|^.*telegram.*$|^.*fluxer.*$|zalo|Zalo|^.*telegram.*$|spotify|Spotify|ONLYOFFICE|me.proton.Mail"
+	match title="^OBS.*$|CurseForge|^.*PrismLauncher$"
 	match app-id="steam" title="Steam"
 	match app-id="zoom" title="^Zoom Workplace.*$"
-	match app-id="modrinth-app-wrapped" title="Modrinth App"
 
 	default-column-width { proportion 1.0; }
 }
 
 // open-floating true
 window-rule {
-	match app-id="^.*javac.*$|zenity|^.*waytator$|^.*swash$|nm-connection-editor|warp-taskbar|virt-manager|^.*Sober$"
-	match title="^About.*$|Library|^Pushbullet.*$|^Picture-in.*$|^Picture in.*$|^splash.*$|^Splash.*$|Close Tor Browser|^Welcome to.*$|^.*Setup Wizard$|^.*User Agreement$|^Open File.*$|New Solution|^zoom.*$|^Calculator.*$|^Warning.*$|Open Document|^Select.*$|Friends List|^Myrlyn-.*$|^Incoming.*$|Active connection found|Sign into Modrinth"
-	match app-id="vesktop" title="^vesktop$"
+	match app-id="^.*javac.*$|zenity|^.*waytator$|^.*swash$|nm-connection-editor|warp-taskbar|virt-manager|^.*Sober$|GTK Application"
+	match title="^About.*$|Library|^Pushbullet.*$|^Picture-in.*$|^Picture in.*$|^splash.*$|^Splash.*$|Close Tor Browser|^Welcome to.*$|^.*Setup Wizard$|^.*User Agreement$|^Open File.*$|New Solution|^zoom.*$|^Calculator.*$|^Warning.*$|Open Document|^Select.*$|Friends List|^Myrlyn-.*$|^Incoming.*$|Active connection found|Sign into Modrinth|^.*Updater$"
+	// match app-id="vesktop" title="^vesktop$"
 	match app-id="code" title="^Settings.*$|^Uninstall$"
 
 	open-floating true
@@ -434,10 +433,10 @@ window-rule {
 
 // default-column-width default-window-height open-floating true
 window-rule {
-	match app-id="^xdg-desktop-portal-gtk$"
+	match app-id="^xdg-desktop-portal-gtk$|Electron"
 	match app-id="^.*Nautilus$" title="^Open File.*$"
 	match app-id="Electron" title="Save"
-	match title="^dialog.*$|^All Files$|^confirm.*$|^Save As.*$|^Save Image.*$|^Open Folder.*$|^File Upload.*$|^Select.*$|^Choose wallpaper.*$|^Choose an image.*$|Choose File|Save Screenshot|^Locate ISO.*$|^blob.*$|Open project|datapacks|^(.*)//account.proton.me/(.*)$|Choose photolan|^Find Java.*$"
+	match title="^dialog.*$|^All Files$|^confirm.*$|^Save As.*$|^Save Image.*$|^Open Folder.*$|^File Upload.*$|^Select.*$|^Choose wallpaper.*$|^Choose an image.*$|Choose File|Save Screenshot|^Locate ISO.*$|^blob.*$|Open project|datapacks|^(.*)//account.proton.me/(.*)$|Choose photolan|^Find Java.*$|^Choose Projectless.*$"
 
 	default-column-width { proportion 0.8; }
 	default-window-height { proportion 0.8; }
@@ -564,17 +563,19 @@ binds {
 	XF86AudioPlay allow-when-locked=true repeat=false { spawn "noctalia" "msg" "media" "toggle"; }
 
 	// Plugins
-	Alt+X repeat=false       { spawn "noctalia" "msg" "panel-toggle" "neyfua/obs-integration:panel"; }
-	Alt+W repeat=false       { spawn "noctalia" "msg" "panel-toggle" "noctalia/wallhaven:browser"; }
-	Alt+N repeat=false       { spawn "noctalia" "msg" "panel-toggle" "noctalia/notes:panel"; }
-	Alt+D repeat=false       { spawn "noctalia" "msg" "panel-toggle" "8bury/mini-docker:manager"; }
-	Alt+H repeat=false       { spawn "noctalia" "msg" "panel-toggle" "cleboost/hotspot:panel"; }
-	Alt+A repeat=false       { spawn "noctalia" "msg" "panel-toggle" "cleboost/anilist:library"; }
-	Alt+T repeat=false       { spawn "noctalia" "msg" "panel-toggle" "davemhammer/tailscale:manager"; }
-	Alt+G repeat=false       { spawn "noctalia" "msg" "panel-toggle" "tphilippot/git_companion:main"; }
-	Alt+Shift+T repeat=false { spawn "noctalia" "msg" "panel-toggle" "nightwatch75/todo:panel"; }
-	Alt+Shift+D repeat=false { spawn "noctalia" "msg" "panel-toggle" "nightwatch75/dns-switcher:panel"; }
-	Alt+Shift+C repeat=false { spawn "noctalia" "msg" "panel-toggle" "yuuto/calculator:panel"; }
+	Alt+X repeat=false                { spawn "noctalia" "msg" "panel-toggle" "neyfua/obs-integration:panel"; }
+	Alt+W repeat=false                { spawn "noctalia" "msg" "panel-toggle" "noctalia/wallhaven:browser"; }
+	Alt+N repeat=false                { spawn "noctalia" "msg" "panel-toggle" "noctalia/notes:panel"; }
+	Alt+D repeat=false                { spawn "noctalia" "msg" "panel-toggle" "8bury/mini-docker:manager"; }
+	Alt+H repeat=false                { spawn "noctalia" "msg" "panel-toggle" "cleboost/hotspot:panel"; }
+	Alt+T repeat=false                { spawn "noctalia" "msg" "panel-toggle" "davemhammer/tailscale:manager"; }
+	Alt+G repeat=false                { spawn "noctalia" "msg" "panel-toggle" "hy4ri/github-notifications:panel"; }
+	Alt+Apostrophe repeat=false       { spawn "noctalia" "msg" "panel-toggle" "umedbazarov/crashes:panel";}
+	Alt+Shift+T repeat=false          { spawn "noctalia" "msg" "panel-toggle" "nightwatch75/todo:panel"; }
+	Alt+Shift+D repeat=false          { spawn "noctalia" "msg" "panel-toggle" "nightwatch75/dns-switcher:panel"; }
+	Alt+Shift+W repeat=false          { spawn "noctalia" "msg" "panel-toggle" "setyvii/niri-rules-studio:panel"; }
+	Alt+Shift+G repeat=false          { spawn "noctalia" "msg" "panel-toggle" "tphilippot/git_companion:main"; }
+	Alt+Shift+Apostrophe repeat=false { spawn "noctalia" "msg" "panel-toggle" "thaer99ob/default-apps:manager"; }
 
 	// Close window
 	Mod+C repeat=false { close-window; }
