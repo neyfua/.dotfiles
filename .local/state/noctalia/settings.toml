@@ -13,12 +13,12 @@ order = [ "default" ]
     center = []
     concave_edge_corners = false
     enabled = true
-    end = [ "tray", "warp", "battery", "network", "notifications", "clock" ]
+    end = [ "tray", "battery", "network", "weather", "notifications", "clock" ]
     margin_ends = 0
-    padding = 10
+    padding = 8
     radius = 0
-    start = [ "weather", "workspaces", "media" ]
-    thickness = 26
+    start = [ "workspaces", "media" ]
+    thickness = 27
 
 [battery]
 warning_threshold = 15
@@ -69,41 +69,29 @@ widget_order = []
     [desktop_widgets.widget]
 
 [dock]
-background_opacity = 0.4999999888241291
+background_opacity = 0.67999998480081558
 cross_axis_padding = 2
 enabled = true
 icon_size = 36
-inactive_opacity = 0.87999998033046722
+inactive_opacity = 0.7799999825656414
 inactive_scale = 1.0
 item_spacing = 0
-magnification_scale = 1.4000000059604645
-main_axis_padding = 3
+magnification_scale = 1.3000000044703484
+main_axis_padding = 4
 margin_edge = 3
 pinned = [
     "foot",
-    "firefox",
-    "com.discordapp.Discord",
-    "dev.vencord.Vesktop",
+    "floorp",
+    "discord",
+    "vesktop",
     "spotify-launcher",
     "zalo",
-    "org.telegram.desktop",
     "org.vinegarhq.Sober",
-    "steam_app_robloxstudio",
-    "org.prismlauncher.PrismLauncher",
     "dev.zed.Zed",
-    "com.microsoft.VSCode",
-    "chatgpt",
-    "org.torproject.torbrowser-launcher",
-    "blender-5.1",
-    "org.onlyoffice.desktopeditors",
-    "us.zoom.Zoom",
-    "com.obsproject.Studio",
-    "com.cloudflare.WarpTaskbar",
-    "winboat",
-    "com.rustdesk.RustDesk",
-    "virt-manager"
+    "onlyoffice-desktopeditors",
+    "com.protonvpn.www"
 ]
-radius = 14
+radius = 8
 show_dots = true
 show_instance_count = false
 
@@ -277,14 +265,15 @@ layer = "overlay"
 scale = 0.90000000596046448
 
 [osd]
-background_opacity = 0.59999998658895493
+background_opacity = 0.7799999825656414
 hide_delay_ms = 1000
-offset_y = 2
 position = "bottom_center"
 position_vertical = "center_right"
 scale = 0.90000000596046448
 
     [osd.kinds]
+    custom = false
+    dnd = false
     keyboard_backlight = false
     keyboard_layout = false
     media = false
@@ -293,6 +282,7 @@ scale = 0.90000000596046448
 manager_position = "auto"
 
 [plugin_settings."cleboost/hotspot"]
+autostart = false
 panel_placement = "floating"
 panel_position = "auto"
 password = "!0968906049."
@@ -303,9 +293,6 @@ manager_position = "auto"
 ssh_user = "khang"
 
 [plugin_settings."hy4ri/github-notifications"]
-panel_placement = "floating"
-
-[plugin_settings."levi/warp"]
 panel_placement = "floating"
 
 [plugin_settings."neyfua/obs-integration"]
@@ -352,7 +339,6 @@ enabled = [
     "nightwatch75/dns-switcher",
     "davemhammer/tailscale",
     "tphilippot/git_companion",
-    "levi/warp",
     "hy4ri/github-notifications",
     "noctalia/wallhaven",
     "umedbazarov/crashes",
@@ -391,6 +377,7 @@ time_format = "{:%-I:%M %p}"
     categories = false
     category_icons_only = true
     default_view = "all"
+    search_position = "top"
     show_session_button = false
     show_settings_button = false
     width = 560
@@ -486,13 +473,13 @@ transition = [ "disc" ]
 transition_duration = 2000
 
     [wallpaper.default]
-    path = "/home/neyfua/Pictures/Wallpapers/snow-pine-forest.png"
+    path = "/home/neyfua/Pictures/Wallpapers/honda-s2000.jpg"
 
     [wallpaper.last]
-    path = "/home/neyfua/Pictures/Wallpapers/snow-pine-forest.png"
+    path = "/home/neyfua/Pictures/Wallpapers/honda-s2000.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/neyfua/Pictures/Wallpapers/snow-pine-forest.png"
+    path = "/home/neyfua/Pictures/Wallpapers/honda-s2000.jpg"
 
     [[wallpaper.favorite]]
     builtin_palette = "Rosé Pine"
@@ -505,6 +492,12 @@ transition_duration = 2000
 
     [[wallpaper.favorite]]
     path = "/home/neyfua/Pictures/Wallpapers/yotsuba-koiwai.jpg"
+
+    [[wallpaper.favorite]]
+    builtin_palette = "Rosé Pine"
+    palette_source = "builtin"
+    path = "/home/neyfua/Pictures/Wallpapers/seaside-bus-stop-view.png"
+    theme_mode = "dark"
 
 [widget.active_window]
 font_weight = 700
@@ -545,18 +538,18 @@ type = "nightwatch75/todo:todo"
 
 [widget.tray]
 drawer_columns = 5
-hidden = [ "warp-taskbar" ]
 
 [widget.volume]
 mute_color = "outline"
 show_label = false
-
-[widget.warp]
-type = "levi/warp:warp"
 
 [widget.weather]
 show_condition = false
 
 [widget.workspaces]
 hide_when_empty = true
-style = "focus_hint"
+style = "minimal"
+
+    [widget.workspaces.actions]
+    scroll_down = "none"
+    scroll_up = "none"

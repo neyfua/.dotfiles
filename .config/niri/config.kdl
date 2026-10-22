@@ -30,7 +30,7 @@ output "eDP-1" {
 // }
 
 layout {
-	gaps 25
+	gaps 10
 	center-focused-column "never"
 	always-center-single-column
 	// background-color "#191724"
@@ -71,13 +71,13 @@ layout {
 		color "#00000070"
 	}
 
-	// struts {
-	// 	top 23
-	// 	left 23
-	// 	right 23
-	// 	bottom 23
-	// 	bottom -6
-	// }
+	struts {
+		// top 23
+		// left 23
+		// right 23
+		// bottom 23
+		bottom -6
+	}
 }
 
 workspace "main"
@@ -269,7 +269,7 @@ layer-rule {
 }
 
 window-rule {
-	geometry-corner-radius 16
+	geometry-corner-radius 12
 	clip-to-geometry true
 
 	background-effect {

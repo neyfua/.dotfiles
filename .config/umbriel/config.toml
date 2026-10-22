@@ -9,10 +9,7 @@
 # generated colors here.
 
 [include]
-files = [
-	"/usr/share/umbriel/effects/border/pulse/effect.toml",
-	"/usr/share/umbriel/effects/animation/workspace_wipe/effect.toml"
-]
+files = []
 
 #=======================#
 #==== Configuration ====# (https://docs.noctalia.dev/umbriel/configuration/)
@@ -25,13 +22,13 @@ xwayland_native_resolution = true
 xwayland_xsettings = true
 show_cheatsheet = false
 focus_on_activate = true
-honor_restored_maximize = true
+honor_restored_maximize = false
 
 [environment]
 MOZ_ENABLE_WAYLAND = "1"
 PROTON_ENABLE_WAYLAND = "1"
 OZONE_PLATFORM = "wayland"
-ELECTRON_OZONE_PLATFORM_HINT = "wayland"
+ELECTRON_OZONE_PLATFORM_HINT = "auto"
 SDL_VIDEODRIVER = "wayland"
 SDL_VIDEO_WAYLAND_SCALE_TO_DISPLAY = "1"
 CLUTTER_BACKEND = "wayland"
@@ -44,8 +41,6 @@ QT_WAYLAND_DISABLE_WINDOWDECORATION = "1"
 [events]
 lid_close = "umbriel msg output-disable:eDP-1"
 lid_open = "umbriel msg output-enable:eDP-1"
-# lid_close = "noctalia msg session lock"
-# lid_open = "noctalia msg session lock"
 
 [screencast]
 disable_dynamic_confirmation = false
@@ -55,11 +50,11 @@ disable_dynamic_confirmation = false
 #=================#
 [output."eDP-1"]
 mode = "2240x1400@60.002"
-position = [0, 0]
+# position = [0, 0]
 scale = 1.6
 # transform = "normal"
 vrr = "fullscreen"            # "disabled" (default), "always", or "fullscreen"
-tearing = true
+tearing = false
 direct_scanout = true
 hdr = "auto"
 # sdr_white = 203
@@ -189,6 +184,7 @@ workspaces = 6
 
 ## Screenshot
 "Mod+Shift+S" = { action = "spawn:noctalia msg screenshot-region", repeat = false }
+"Mod+Shift+W" = { action = "spawn:noctalia msg screenshot-window", repeat = false }
 "Print" = { action = "spawn:noctalia msg screenshot-fullscreen", repeat = false }
 
 # [hot_corners.top_left]
@@ -247,14 +243,14 @@ disable_on_external_mouse = true
 # natural_scroll = false
 # left_handed = false
 accel_profile = "flat"
-sensitivity = 0.0
+sensitivity = 0.1
 # scroll_wheel_step = 60
 # scroll_button = "MouseBack"
 # scroll_button_lock = false
 
 [input.cursor]
-theme = "Hackneyed-Dark"
-size = 24
+theme = "macOS"
+size = 28
 hardware_cursor = true
 follows_focus = false
 hide_when_typing = false
@@ -392,7 +388,7 @@ dim = 0.0
 enabled = false
 
 [animation.windows_drag]
-physics = true
+physics = false
 
 #================#
 #==== Layout ====# (https://docs.noctalia.dev/umbriel/layout/)
@@ -457,7 +453,7 @@ shortcuts = false
 blur = true
 [[window_rule]]
 match.is_focused = false
-opacity = 0.88
+opacity = 0.97
 [[window_rule]]
 match.is_alone = true
 default_maximize = true
@@ -465,7 +461,7 @@ border_width = 0
 outer_border_width = 0
 
 [[window_rule]]
-match.app_id = "code|^.*Zed$|^jetbrains.*$|antigravity|cursor|Chatgpt|^virt-.*$|steam|Upload Labs|^.*Sober$|robloxstudiobeta.exe|^.*PolyMC$|CurseForge|^.*PrismLauncher$|^.*Minecraft.*$"
+match.app_id = "code|^.*Zed$|^jetbrains.*$|antigravity|cursor|Chatgpt|^virt-.*$|steam|Upload Labs|^.*Sober$|^.*robloxstudio$|^.*PolyMC$|CurseForge|^.*PrismLauncher$|^.*Minecraft.*$"
 default_workspace = 1
 default_focused = true
 
@@ -475,7 +471,7 @@ default_workspace	= 2
 default_focused = true
 
 [[window_rule]]
-match.app_id = "discord|equibop|vesktop|^.*telegram.*$|^.*fluxer.*$|zalo|Zalo|me.proton.Mail"
+match.app_id = "discord|equibop|vesktop|^.*Cressida$|^.*telegram.*$|^.*fluxer.*$|zalo|Zalo|me.proton.Mail"
 default_workspace = 3
 default_focused = true
 
@@ -493,7 +489,7 @@ default_workspace = 5
 
 # default_maximize = true
 [[window_rule]]
-match.app_id = "code|^.*Zed$|^jetbrains.*$|antigravity|cursor|Chatgpt|^virt-.*$|firefox|floorp|Tor Browser|^.*torbrowser-launcher$|^.*zen$|discord|equibop|vesktop|^.*telegram.*$|^.*fluxer.*$|zalo|Zalo|^.*telegram.*$|spotify|Spotify|ONLYOFFICE|me.proton.Mail"
+match.app_id = "code|^.*Zed$|^jetbrains.*$|antigravity|cursor|^.*robloxstudio$|Chatgpt|^virt-.*$|firefox|floorp|Tor Browser|^.*torbrowser-launcher$|^.*zen$|discord|equibop|vesktop|^.*Cressida$|^.*telegram.*$|^.*fluxer.*$|zalo|Zalo|^.*telegram.*$|spotify|Spotify|ONLYOFFICE|me.proton.Mail"
 default_maximize = true
 [[window_rule]]
 match.title = "^OBS.*$|CurseForge|^.*PrismLauncher$"
@@ -507,13 +503,13 @@ match.app_id = "zoom"
 match.title = "^Zoom Workplace.*$"
 default_maximize = true
 
-# default_floating = true
+# default_floating = true, default_position
 [[window_rule]]
 match.app_id = "^.*javac.*$|zenity|^.*waytator$|^.*swash$|nm-connection-editor|warp-taskbar|virt-manager|^.*Sober$|GTK Application"
 default_floating = true
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
-match.title = "^About.*$|Library|^Pushbullet.*$|^Picture-in.*$|^Picture in.*$|^splash.*$|^Splash.*$|Close Tor Browser|^Welcome to.*$|^.*Setup Wizard$|^.*User Agreement$|New Solution|^zoom.*$|^Calculator.*$|^Warning.*$|Friends List|^Myrlyn-.*$|^Incoming.*$|Active connection found|Sign into Modrinth|^.*Updater$"
+match.title = "Library|^Pushbullet.*$|^Picture-in.*$|^Picture in.*$|^splash.*$|^Splash.*$|Close Tor Browser|^Welcome to.*$|^.*Setup Wizard$|^.*User Agreement$|New Solution|^zoom.*$|^Calculator.*$|^Warning.*$|Friends List|^Myrlyn-.*$|^Incoming.*$|Active connection found|Sign into Modrinth|^.*Updater$"
 default_floating = true
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
@@ -533,12 +529,13 @@ default_floating = false
 match.app_id = "virt-manager"
 match.title = "Virtual Machine Manager|^.*on QEMU/KVM$"
 default_floating = false
-[[window_rule]]
-match.app_id = "^.*Sober$"
-match.title = "Sober"
-default_floating = false
 
-# default_floating = true, default_floating_size_px
+# default_floating = true, default_floating_size_px, default_position
+[[window_rule]]
+match.title = "^About.*$"
+default_floating = true
+default_floating_size_px = { width = 700, height = 375 }
+default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
 match.app_id = "^dev.noctalia.UmbrielSharePicker$"
 default_floating = true
@@ -573,7 +570,7 @@ border_width = 0
 match.title = "^splash.*$|^Splash.*$|zoom|^Updater.*$|^Sign in.*$|^Starting Apache.*$|^Warning.*$"
 border_width = 0
 
-# default_fullscreen = true
+# default_floating, default_maximize, default_fullscreen
 [[window_rule]]
 match.app_id = "Upload Labs|winboat"
 default_floating = false
@@ -583,7 +580,7 @@ default_fullscreen = true
 match.app_id = "^.*Sober$"
 match.title = "Sober"
 default_floating = false
-default_maximize = false
+default_maximize = true
 default_fullscreen = true
 
 # default_position
