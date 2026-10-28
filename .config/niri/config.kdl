@@ -139,7 +139,7 @@ environment {
 
 cursor {
 	xcursor-theme "Hackneyed-Dark"
-	xcursor-size 24
+	xcursor-size 28
 	hide-when-typing
 }
 

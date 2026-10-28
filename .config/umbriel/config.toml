@@ -51,7 +51,7 @@ disable_dynamic_confirmation = false
 [output."eDP-1"]
 mode = "2240x1400@60.002"
 # position = [0, 0]
-scale = 1.6
+scale = 1.75
 # transform = "normal"
 vrr = "fullscreen"            # "disabled" (default), "always", or "fullscreen"
 tearing = false
@@ -108,10 +108,13 @@ workspaces = 6
 "Alt+H" = { action = "spawn:noctalia msg panel-toggle cleboost/hotspot:panel", repeat = false }
 "Alt+T" = { action = "spawn:noctalia msg panel-toggle davemhammer/tailscale:manager", repeat = false }
 "Alt+G" = { action = "spawn:noctalia msg panel-toggle hy4ri/github-notifications:panel", repeat = false }
+"Alt+U" = { action = "spawn:noctalia msg panel-toggle noctalia/umbriel-companion:panel", repeat = false }
+"Alt+P" = { action = "spawn:noctalia msg plugin oldirtty/color_picker:service all pick", repeat = false }
 "Alt+Apostrophe" = { action = "spawn:noctalia msg panel-toggle umedbazarov/crashes:panel", repeat = false }
 "Alt+Shift+T" = { action = "spawn:noctalia msg panel-toggle nightwatch75/todo:panel", repeat = false }
 "Alt+Shift+D" = { action = "spawn:noctalia msg panel-toggle nightwatch75/dns-switcher:panel", repeat = false }
 "Alt+Shift+G" = { action = "spawn:noctalia msg panel-toggle tphilippot/git_companion:main", repeat = false }
+"Alt+Shift+P" = { action = "spawn:noctalia msg panel-toggle oldirtty/color_picker:panel", repeat = false }
 "Alt+Shift+Apostrophe" = { action = "spawn:noctalia msg panel-toggle thaer99ob/default-apps:manager", repeat = false }
 
 ## Output, workspace, and window movement actions
@@ -232,7 +235,7 @@ tap = true
 natural_scroll = true
 left_handed = false
 accel_profile = "flat"
-sensitivity = 0.9
+sensitivity = 0.85
 scroll_factor = 0.45
 disable_while_typing = true
 disable_on_external_mouse = true
@@ -243,7 +246,7 @@ disable_on_external_mouse = true
 # natural_scroll = false
 # left_handed = false
 accel_profile = "flat"
-sensitivity = 0.1
+sensitivity = -0.05
 # scroll_wheel_step = 60
 # scroll_button = "MouseBack"
 # scroll_button_lock = false
@@ -299,7 +302,7 @@ urgent_text = "#191724"
 prefer_no_csd = true
 border_width = 3
 outer_border_width = 0
-corner_radius = 12
+corner_radius = 10
 drag_opacity = 0.75
 opaque_fullscreen = true
 
@@ -517,6 +520,11 @@ match.app_id = "code"
 match.title = "^Settings.*$|^Uninstall$"
 default_floating = true
 default_position = { x = 0, y = 0, anchor = "center" }
+[[window_rule]]
+match.app_id = "zen"
+match.title = "^Welcome!.*$"
+default_floating = true
+default_position = { x = 0, y = 0, anchor = "center" }
 
 # default_floating = false
 [[window_rule]]
@@ -529,33 +537,36 @@ default_floating = false
 match.app_id = "virt-manager"
 match.title = "Virtual Machine Manager|^.*on QEMU/KVM$"
 default_floating = false
+[[window_rule]]
+match.app_id = "^org[.]kde[.]kdenlive$"
+default_floating = false
 
 # default_floating = true, default_floating_size_px, default_position
 [[window_rule]]
 match.title = "^About.*$"
 default_floating = true
-default_floating_size_px = { width = 700, height = 375 }
+default_floating_size_px = { width = 600, height = 475 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
 match.app_id = "^dev.noctalia.UmbrielSharePicker$"
 default_floating = true
-default_floating_size_px = { width = 1050, height = 625 }
+default_floating_size_px = { width = 1000, height = 625 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
 match.app_id = "^xdg-desktop-portal.*$|Electron"
 default_floating = true
-default_floating_size_px = { width = 1050, height = 625 }
+default_floating_size_px = { width = 1000, height = 625 }
+default_position = { x = 0, y = 0, anchor = "center" }
+[[window_rule]]
+match.title = "^dialog.*$|^All Files$|^confirm.*$|^Save As.*$|^Save Image.*$|^Open Folder.*$|^Open File.*$|^File Upload.*$|^Select.*$|^Choose wallpaper.*$|^Choose an image.*$|Choose File|Projects Folder|Save Screenshot|^Locate ISO.*$|^blob.*$|Open project|Open Document|datapacks|^(.*)//account.proton.me/(.*)$|Choose photolan|^Find Java.*$|^Choose Projectless.*$"
+default_floating = true
+default_floating_size_px = { width = 1000, height = 625 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
 match.app_id = "Electron"
 match.title = "Save"
 default_floating = true
-default_floating_size_px = { width = 1050, height = 625 }
-default_position = { x = 0, y = 0, anchor = "center" }
-[[window_rule]]
-match.title = "^dialog.*$|^All Files$|^confirm.*$|^Save As.*$|^Save Image.*$|^Open Folder.*$|^Open File.*$|^File Upload.*$|^Select.*$|^Choose wallpaper.*$|^Choose an image.*$|Choose File|Save Screenshot|^Locate ISO.*$|^blob.*$|Open project|Open Document|datapacks|^(.*)//account.proton.me/(.*)$|Choose photolan|^Find Java.*$|^Choose Projectless.*$"
-default_floating = true
-default_floating_size_px = { width = 1050, height = 625 }
+default_floating_size_px = { width = 950, height = 625 }
 default_position = { x = 0, y = 0, anchor = "center" }
 
 # border_width = 0
@@ -567,7 +578,7 @@ match.app_id = "discord|equibop|vesktop"
 match.title = "^.*Updater$|^equibop$|^vesktop$"
 border_width = 0
 [[window_rule]]
-match.title = "^splash.*$|^Splash.*$|zoom|^Updater.*$|^Sign in.*$|^Starting Apache.*$|^Warning.*$"
+match.title = "^splash.*$|^Splash.*$|zoom|^Updater.*$|^Starting Apache.*$|^Warning.*$"
 border_width = 0
 
 # default_floating, default_maximize, default_fullscreen
@@ -588,14 +599,14 @@ default_fullscreen = true
 match.app_id = "steam"
 match.title = "Friends List"
 default_floating = true
-default_floating_size_px = { width = 340, height = 360 }
-default_position = { x = 24, y = 24, anchor = "bottom_right" }
+default_floating_size_px = { width = 225, height = 250 }
+default_position = { x = 16, y = 16, anchor = "bottom_right" }
 
 # Noctalia
 [[window_rule]]
 match.app_id = "^dev.noctalia.Noctalia$"
 default_floating = true
-default_floating_size_px = { width = 1175, height = 725 }
+default_floating_size_px = { width = 1100, height = 700 }
 
 # pavucontrol, nm-connection-editor
 [[window_rule]]
@@ -613,14 +624,13 @@ default_floating_size_px = { width = 950, height = 625 }
 [[window_rule]]
 match.app_id = "mpv"
 default_floating = true
-default_floating_size_px = { width = 2000, height = 1175 }
+default_floating_size_px = { width = 1680, height = 946 }
 
 # media viewer
 [[window_rule]]
-match.title = "^Media viewer.*$|Zalo Photo"
+match.title = "^Media viewer.*$|^Zalo Photo$"
 default_floating = true
-default_floating_size_px = { width = 1300, height = 825 }
-default_fullscreen = false
+default_floating_size_px = { width = 800, height = 625 }
 
 # file roller
 [[window_rule]]
