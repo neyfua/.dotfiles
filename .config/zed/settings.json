@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "cli_default_open_behavior": "existing_window",
   "word_diff_enabled": true,
   "minimum_contrast_for_highlights": 65.0,
   "rounded_selection": true,

@@ -7,7 +7,7 @@ enabled = true
 order = [ "top-bar", "left-bar" ]
 
     [bar.left-bar]
-    background_opacity = 0.84999998100101948
+    background_opacity = 0.7799999825656414
     center = []
     concave_edge_corners = false
     enabled = true
@@ -23,17 +23,17 @@ order = [ "top-bar", "left-bar" ]
     [bar.top-bar]
     capsule = true
     capsule_opacity = 0.0
-    capsule_padding = 2.0
+    capsule_padding = 1.0
     center = [ "weather", "clock" ]
     concave_edge_corners = false
     enabled = true
     end = [ "tray", "notifications", "network", "volume", "battery" ]
     hover_highlight = false
     margin_ends = 0
-    padding = 10
+    padding = 12
     radius = 0
     start = [ "workspaces", "media" ]
-    thickness = 26
+    thickness = 24
 
 [battery]
 warning_threshold = 15
@@ -54,7 +54,6 @@ event_time_format = "%I:%M %p"
     type = "google"
 
 [control_center]
-sidebar = "full"
 sidebar_section = "none"
 width = 680
 
@@ -192,7 +191,7 @@ widget_order = [
     box_height = 70.0
     box_width = 400.0
     cx = 640.0
-    cy = 724.571533203125
+    cy = 724.57159423828125
     output = "eDP-1"
     placement_height = 800.0
     placement_width = 1280.0
@@ -236,8 +235,8 @@ widget_order = [
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000005]
     box_height = 48.0
     box_width = 120.0
-    cx = 757.0286865234375
-    cy = 239.08575439453125
+    cx = 757.02874755859375
+    cy = 239.08576965332031
     output = "eDP-1"
     placement_height = 800.0
     placement_width = 1280.0
@@ -380,10 +379,16 @@ telemetry_enabled = true
 time_format = "{:%-I:%M %p}"
 umbriel_overview_close_on_launch_enabled = true
 
+    [shell.animation]
+    speed = 1.2500000186264515
+
     [shell.launcher]
     auto_paste = "off"
-    categories = false
-    layout = "simple"
+    category_icons_only = true
+    default_view = "all"
+    show_session_button = false
+    show_settings_button = false
+    width = 560
 
     [shell.mpris]
     blacklist = [ "firefox", "Tor Browser" ]
@@ -474,13 +479,13 @@ transition = [ "disc" ]
 transition_duration = 2000
 
     [wallpaper.default]
-    path = "/home/neyfua/Pictures/Wallpapers/honda-s2000.jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/guitar.jpg"
 
     [wallpaper.last]
-    path = "/home/neyfua/Pictures/Wallpapers/honda-s2000.jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/guitar.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/neyfua/Pictures/Wallpapers/honda-s2000.jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/guitar.jpg"
 
     [[wallpaper.favorite]]
     builtin_palette = "Rosé Pine"
@@ -510,8 +515,8 @@ transition_duration = 2000
 font_weight = 700
 
 [widget.clock]
-format = "{:%b %d  %-I:%M %p}"
-tooltip_format = "{:%A, %B %d %Y - %-I:%M:%S %p}"
+format = "{:%b %-d  %-I:%M %p}"
+tooltip_format = "{:%I:%M:%S %p\\n%A, %B %d %Y}"
 
 [widget.launcher]
 glyph = "grid-dots"
@@ -522,7 +527,6 @@ hide_when_no_media = true
 max_length = 800
 min_length = 0
 rotate_album_art = true
-show_progress = true
 title_scroll = "on_hover"
 
 [widget.network]
@@ -539,18 +543,15 @@ show_value = false
 
 [widget.taskbar]
 icon_scale = 2.0
-item_spacing = 10
-pinned = [ "org.gnome.Nautilus", "zalo", "spotify-launcher", "discord", "vesktop", "floorp", "foot" ]
-pinned_opacity = 0.68000000000000005
+inactive_opacity = 0.88
+item_spacing = 6
+pinned = [ "org.gnome.Nautilus", "dev.zed.Zed", "zalo", "discord", "vesktop", "spotify-launcher", "floorp", "foot" ]
 
 [widget.temp]
 show_value = false
 
 [widget.todo]
 type = "nightwatch75/todo:todo"
-
-[widget.tray]
-hide_passive = false
 
 [widget.volume]
 mute_color = "hover"
@@ -560,13 +561,10 @@ show_label = false
 show_condition = false
 
 [widget.workspaces]
-active_pill_size = 3.75
+active_pill_size = 4.0
 empty_color = "hover"
 focused_color = "on_surface"
+hide_when_empty = true
 occupied_color = "hover"
 pill_scale = 0.5
 show_labels = false
-
-    [widget.workspaces.actions]
-    scroll_down = "none"
-    scroll_up = "none"

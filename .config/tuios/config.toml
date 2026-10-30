@@ -118,12 +118,12 @@
 
 [startup]
 tiled = true
-daemon = false
+daemon = true
 layout = "scrolling"
 start_in_terminal_mode = true
 
 [agents]
-enabled = true
+enabled = false
 
 [appearance]
 theme = "rose_pine"
@@ -147,7 +147,7 @@ motion = "basic"
 animation_speed = 100
 theme_transition = "none"
 border_focused_color_terminal = "#ebbcba"
-border_unfocused_color = "#6e6a86"
+border_unfocused_color = "#403d52"
 border_gradient_angle = 45
 gap = 0
 master_count = 1
@@ -155,7 +155,7 @@ master_grid = true
 scroll_column_width = 50
 scroll_column_max = 90
 dim_unfocused = 30
-border_focused_color = "#f6c177"
+border_focused_color = "#c4a7e7"
 
 [appearance.scrollbar]
 style = "thin"
@@ -164,6 +164,9 @@ tint = "#908caa"
 [keybindings]
 leader_key = "ctrl+space"
 preset = "tmux"
+repeat = [
+  "resize_pane_left_5", "resize_pane_right_5", "resize_pane_up_5", "resize_pane_down_5",
+]
 
 [keybindings.prefix_mode]
 prefix_selection = ["v", "up", "down", "left", "right"]

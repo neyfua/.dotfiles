@@ -23,6 +23,7 @@ xwayland_xsettings = true
 show_cheatsheet = false
 focus_on_activate = true
 honor_restored_maximize = false
+attach_modal_dialogs = false
 
 [environment]
 MOZ_ENABLE_WAYLAND = "1"
@@ -66,56 +67,57 @@ workspaces = 6
 #==== Keybinds ====# (https://docs.noctalia.dev/umbriel/keybinds/)
 #==================#
 [keybinds]
-"Mod+Q" = { action = "spawn:foot", repeat = false }
-"Mod+E" = { action = "spawn:nautilus", repeat = false }
-"Alt+Shift+Z" = { action = "spawn:fcitx5-remote -t", repeat = false }
+"Mod+Q" = { action = "spawn foot", repeat = false }
+"Mod+E" = { action = "spawn nautilus", repeat = false }
+"Alt+Shift+Z" = { action = "spawn fcitx5-remote -t", repeat = false }
 
 ## Control center & settings
-"Mod+S" = { action = "spawn:noctalia msg panel-toggle control-center", repeat = false }
-"Alt+S" = { action = "spawn:noctalia msg settings-toggle", repeat = false }
+"Mod+S" = { action = "spawn noctalia msg panel-toggle control-center", repeat = false }
+"Alt+S" = { action = "spawn noctalia msg settings-toggle", repeat = false }
 
 ## Lockscreen
-"Mod+L" = { action = "spawn:noctalia msg session lock", repeat = false }
+"Mod+L" = { action = "spawn noctalia msg session lock", repeat = false }
 
 ## Launcher, clipboard history and emoji
-"Mod+Return" = { action = "spawn:noctalia msg panel-toggle launcher", repeat = false }
-"Alt+C" = { action = "spawn:noctalia msg panel-toggle clipboard", repeat = false }
-"Mod+Period" = { action = "spawn:noctalia msg panel-toggle launcher \"/emo \"", repeat = false }
+"Mod+Return" = { action = "spawn noctalia msg panel-toggle launcher", repeat = false }
+# "Mod+T" = { action = "spawn:noctalia msg panel-toggle launcher", repeat = false }
+"Alt+C" = { action = "spawn noctalia msg panel-toggle clipboard", repeat = false }
+"Mod+Period" = { action = "spawn noctalia msg panel-toggle launcher \"/emo \"", repeat = false }
 
 ## Session menu
-"Mod+Shift+E" = { action = "spawn:noctalia msg panel-toggle session", repeat = false }
+"Mod+Shift+E" = { action = "spawn noctalia msg panel-toggle session", repeat = false }
 
 ## Notifications history and notifications clear
-"Alt+Escape" = { action = "spawn:noctalia msg notification-clear-history", repeat = false }
-"Alt+Shift+Escape" = { action = "spawn:noctalia msg notification-clear-active", repeat = false }
+"Alt+Escape" = { action = "spawn noctalia msg notification-clear-history", repeat = false }
+"Alt+Shift+Escape" = { action = "spawn noctalia msg notification-clear-active", repeat = false }
 
 ## Wallpaper
-"Mod+W" = { action = "spawn:noctalia msg panel-toggle wallpaper", repeat = false }
+"Mod+W" = { action = "spawn noctalia msg panel-toggle wallpaper", repeat = false }
 
 ## System controls
-"XF86AudioRaiseVolume" = { action = "spawn:noctalia msg volume-up 2", allow_when_locked = true }
-"XF86AudioLowerVolume" = { action = "spawn:noctalia msg volume-down 2", allow_when_locked = true }
-"XF86AudioMute" = { action = "spawn:noctalia msg volume-mute", repeat = false }
-"XF86MonBrightnessUp" = { action = "spawn:noctalia msg brightness-up 5%", allow_when_locked = true }
-"XF86MonBrightnessDown" = { action = "spawn:noctalia msg brightness-down 5%", allow_when_locked = true }
-"XF86AudioPlay" = { action = "spawn:noctalia msg media toggle", repeat = false }
+"XF86AudioRaiseVolume" = { action = "spawn noctalia msg volume-up 2", allow_when_locked = true }
+"XF86AudioLowerVolume" = { action = "spawn noctalia msg volume-down 2", allow_when_locked = true }
+"XF86AudioMute" = { action = "spawn noctalia msg volume-mute", repeat = false }
+"XF86MonBrightnessUp" = { action = "spawn noctalia msg brightness-up 5%", allow_when_locked = true }
+"XF86MonBrightnessDown" = { action = "spawn noctalia msg brightness-down 5%", allow_when_locked = true }
+"XF86AudioPlay" = { action = "spawn noctalia msg media toggle", repeat = false }
 
 ## Plugins
-"Alt+X" = { action = "spawn:noctalia msg panel-toggle neyfua/obs-integration:panel", repeat = false }
-"Alt+W" = { action = "spawn:noctalia msg panel-toggle noctalia/wallhaven:browser", repeat = false }
-"Alt+N" = { action = "spawn:noctalia msg panel-toggle noctalia/notes:panel", repeat = false }
-"Alt+D" = { action = "spawn:noctalia msg panel-toggle 8bury/mini-docker:manager", repeat = false }
-"Alt+H" = { action = "spawn:noctalia msg panel-toggle cleboost/hotspot:panel", repeat = false }
-"Alt+T" = { action = "spawn:noctalia msg panel-toggle davemhammer/tailscale:manager", repeat = false }
-"Alt+G" = { action = "spawn:noctalia msg panel-toggle hy4ri/github-notifications:panel", repeat = false }
-"Alt+U" = { action = "spawn:noctalia msg panel-toggle noctalia/umbriel-companion:panel", repeat = false }
-"Alt+P" = { action = "spawn:noctalia msg plugin oldirtty/color_picker:service all pick", repeat = false }
-"Alt+Apostrophe" = { action = "spawn:noctalia msg panel-toggle umedbazarov/crashes:panel", repeat = false }
-"Alt+Shift+T" = { action = "spawn:noctalia msg panel-toggle nightwatch75/todo:panel", repeat = false }
-"Alt+Shift+D" = { action = "spawn:noctalia msg panel-toggle nightwatch75/dns-switcher:panel", repeat = false }
-"Alt+Shift+G" = { action = "spawn:noctalia msg panel-toggle tphilippot/git_companion:main", repeat = false }
-"Alt+Shift+P" = { action = "spawn:noctalia msg panel-toggle oldirtty/color_picker:panel", repeat = false }
-"Alt+Shift+Apostrophe" = { action = "spawn:noctalia msg panel-toggle thaer99ob/default-apps:manager", repeat = false }
+"Alt+X" = { action = "spawn noctalia msg panel-toggle neyfua/obs-integration:panel", repeat = false }
+"Alt+W" = { action = "spawn noctalia msg panel-toggle noctalia/wallhaven:browser", repeat = false }
+"Alt+N" = { action = "spawn noctalia msg panel-toggle noctalia/notes:panel", repeat = false }
+"Alt+D" = { action = "spawn noctalia msg panel-toggle 8bury/mini-docker:manager", repeat = false }
+"Alt+H" = { action = "spawn noctalia msg panel-toggle cleboost/hotspot:panel", repeat = false }
+"Alt+T" = { action = "spawn noctalia msg panel-toggle davemhammer/tailscale:manager", repeat = false }
+"Alt+G" = { action = "spawn noctalia msg panel-toggle hy4ri/github-notifications:panel", repeat = false }
+"Alt+U" = { action = "spawn noctalia msg panel-toggle noctalia/umbriel-companion:panel", repeat = false }
+"Alt+P" = { action = "spawn noctalia msg plugin oldirtty/color_picker:service all pick", repeat = false }
+"Alt+Apostrophe" = { action = "spawn noctalia msg panel-toggle umedbazarov/crashes:panel", repeat = false }
+"Alt+Shift+T" = { action = "spawn noctalia msg panel-toggle nightwatch75/todo:panel", repeat = false }
+"Alt+Shift+D" = { action = "spawn noctalia msg panel-toggle nightwatch75/dns-switcher:panel", repeat = false }
+"Alt+Shift+G" = { action = "spawn noctalia msg panel-toggle tphilippot/git_companion:main", repeat = false }
+"Alt+Shift+P" = { action = "spawn noctalia msg panel-toggle oldirtty/color_picker:panel", repeat = false }
+"Alt+Shift+Apostrophe" = { action = "spawn noctalia msg panel-toggle thaer99ob/default-apps:manager", repeat = false }
 
 ## Output, workspace, and window movement actions
 "Mod+C" = { action = "window-close", repeat = false }
@@ -153,27 +155,27 @@ workspaces = 6
 "Mod+Ctrl+Up" = { action = "window-move-to-workspace-previous", repeat = false }
 "Mod+Ctrl+Down" = { action = "window-move-to-workspace-next", repeat = false }
 
-"Mod+1" = { action = "workspace-switch:1", repeat = false }
-"Mod+2" = { action = "workspace-switch:2", repeat = false }
-"Mod+3" = { action = "workspace-switch:3", repeat = false }
-"Mod+4" = { action = "workspace-switch:4", repeat = false }
-"Mod+5" = { action = "workspace-switch:5", repeat = false }
-"Mod+6" = { action = "workspace-switch:6", repeat = false }
-"Mod+7" = { action = "workspace-switch:7", repeat = false }
-"Mod+8" = { action = "workspace-switch:8", repeat = false }
-"Mod+9" = { action = "workspace-switch:9", repeat = false }
-"Mod+0" = { action = "workspace-switch:10", repeat = false }
+"Mod+1" = { action = "workspace-switch 1", repeat = false }
+"Mod+2" = { action = "workspace-switch 2", repeat = false }
+"Mod+3" = { action = "workspace-switch 3", repeat = false }
+"Mod+4" = { action = "workspace-switch 4", repeat = false }
+"Mod+5" = { action = "workspace-switch 5", repeat = false }
+"Mod+6" = { action = "workspace-switch 6", repeat = false }
+"Mod+7" = { action = "workspace-switch 7", repeat = false }
+"Mod+8" = { action = "workspace-switch 8", repeat = false }
+"Mod+9" = { action = "workspace-switch 9", repeat = false }
+"Mod+0" = { action = "workspace-switch 10", repeat = false }
 
-"Mod+Shift+1" = { action = "window-move-to-workspace:1", repeat = false }
-"Mod+Shift+2" = { action = "window-move-to-workspace:2", repeat = false }
-"Mod+Shift+3" = { action = "window-move-to-workspace:3", repeat = false }
-"Mod+Shift+4" = { action = "window-move-to-workspace:4", repeat = false }
-"Mod+Shift+5" = { action = "window-move-to-workspace:5", repeat = false }
-"Mod+Shift+6" = { action = "window-move-to-workspace:6", repeat = false }
-"Mod+Shift+7" = { action = "window-move-to-workspace:7", repeat = false }
-"Mod+Shift+8" = { action = "window-move-to-workspace:8", repeat = false }
-"Mod+Shift+9" = { action = "window-move-to-workspace:9", repeat = false }
-"Mod+Shift+0" = { action = "window-move-to-workspace:10", repeat = false }
+"Mod+Shift+1" = { action = "window-move-to-workspace 1", repeat = false }
+"Mod+Shift+2" = { action = "window-move-to-workspace 2", repeat = false }
+"Mod+Shift+3" = { action = "window-move-to-workspace 3", repeat = false }
+"Mod+Shift+4" = { action = "window-move-to-workspace 4", repeat = false }
+"Mod+Shift+5" = { action = "window-move-to-workspace 5", repeat = false }
+"Mod+Shift+6" = { action = "window-move-to-workspace 6", repeat = false }
+"Mod+Shift+7" = { action = "window-move-to-workspace 7", repeat = false }
+"Mod+Shift+8" = { action = "window-move-to-workspace 8", repeat = false }
+"Mod+Shift+9" = { action = "window-move-to-workspace 9", repeat = false }
+"Mod+Shift+0" = { action = "window-move-to-workspace 10", repeat = false }
 
 "Mod+BracketLeft" = { action = "window-consume-or-expel-left", repeat = false }
 "Mod+BracketRight" = { action = "window-consume-or-expel-right", repeat = false }
@@ -186,9 +188,9 @@ workspaces = 6
 "Alt+F" = { action = "window-toggle-maximize-to-edges", repeat = false }
 
 ## Screenshot
-"Mod+Shift+S" = { action = "spawn:noctalia msg screenshot-region", repeat = false }
-"Mod+Shift+W" = { action = "spawn:noctalia msg screenshot-window", repeat = false }
-"Print" = { action = "spawn:noctalia msg screenshot-fullscreen", repeat = false }
+"Mod+Shift+S" = { action = "spawn noctalia msg screenshot-region", repeat = false }
+"Mod+Shift+W" = { action = "spawn noctalia msg screenshot-window", repeat = false }
+"Print" = { action = "spawn noctalia msg screenshot-fullscreen", repeat = false }
 
 # [hot_corners.top_left]
 # enabled = false
@@ -215,7 +217,7 @@ workspaces = 6
 #===============#
 [input]
 middle_click_paste = false
-client_window_drag = false
+client_window_drag = true
 window_drag_toggle = "none"
 
 [input.keyboard]
@@ -224,7 +226,7 @@ window_drag_toggle = "none"
 # options = ""
 # model = ""
 repeat_rate = 40
-repeat_delay = 200
+repeat_delay = 250
 # numlock_toggle = true
 # track_layout = "global"
 # layout = "us,de"
@@ -298,11 +300,20 @@ active_unfocused_text = "#e0def4"
 urgent = "#eb6f92"
 urgent_text = "#191724"
 
+[colors.title_bar]
+background = "#1f1d2e"
+background_unfocused = "#191724"
+text = "#e0def4"
+text_unfocused = "#6e6a86"
+close = "#eb6f92"
+maximize = "#9ccfd8"
+minimize = "#f6c177"
+
 [appearance]
 prefer_no_csd = true
 border_width = 3
 outer_border_width = 0
-corner_radius = 10
+corner_radius = 12
 drag_opacity = 0.75
 opaque_fullscreen = true
 
@@ -320,6 +331,14 @@ visible = true
 hide_when_single = false
 max_tabs = 0
 overflow = "scroll"
+
+[appearance.title_bar]
+mode = "off"
+height = 26
+font = "SF Display Pro 11"
+button_position = "right"
+buttons = ["minimize", "maximize", "close"]
+button_corner_radius = -1
 
 [appearance.blur]
 enabled = true
@@ -342,33 +361,33 @@ offset_y = 0
 #===================#
 [animation]
 enabled = true
-duration_ms = 200
-curve = "easeout"
+duration_ms = 175
+curve = "ease"
 
 [animation.windows_in]
 enabled = true
-curve = "linear"
+curve = "ease"
 style = "slide"
 scale = 0.5
 
 [animation.windows_out]
 enabled = true
-curve = "linear"
+curve = "ease"
 style = "slide"
-scale = 0.8
+scale = 0.5
 
 [animation.windows_move]
 enabled = true
-curve = "easeout"
+curve = "ease"
 
 [animation.workspaces]
 style = "slide"
 enabled = true
-curve = "easeout"
+curve = "ease"
 
 [animation.overview]
 enabled = true
-curve = "easeout"
+curve = "ease"
 
 # [animation.scratchpad]
 # enabled = true
@@ -381,7 +400,7 @@ curve = "easeout"
 
 [animation.border]
 enabled = true
-curve = "spring:1,900"
+curve = "ease"
 
 [animation.dim_unfocused]
 enabled = false
@@ -397,16 +416,16 @@ physics = false
 #==== Layout ====# (https://docs.noctalia.dev/umbriel/layout/)
 #================#
 [layout]
-mode = "scrolling"                   # "scrolling", "dwindle", or "master"
-gap = 10                             # 0-500
+mode = "scrolling"
+gap = 14
 extent_presets = [0.25, 0.5, 0.75, 1.0]
 # new_exits_fullscreen = []  # "tiled", "floating", "pinned", "all", or an array such as ["tiled", "floating"]
 
-[layout.struts]
+# [layout.struts]
 # left = 0
 # right = 0
 # top = 0
-bottom = -6
+# bottom = 0
 
 [layout.scrolling]
 default_extent_fraction = 0.5
@@ -422,6 +441,9 @@ position = "left"
 default_width_fraction = 0.55
 new_on_top = true
 new_becomes_master = false
+
+[layout.stacking]
+drop_zones = true
 
 [layout.tabs]
 default_display = "normal"
@@ -456,7 +478,7 @@ shortcuts = false
 blur = true
 [[window_rule]]
 match.is_focused = false
-opacity = 0.97
+opacity = 0.93
 [[window_rule]]
 match.is_alone = true
 default_maximize = true
@@ -464,17 +486,17 @@ border_width = 0
 outer_border_width = 0
 
 [[window_rule]]
-match.app_id = "code|^.*Zed$|^jetbrains.*$|antigravity|cursor|Chatgpt|^virt-.*$|steam|Upload Labs|^.*Sober$|^.*robloxstudio$|^.*PolyMC$|CurseForge|^.*PrismLauncher$|^.*Minecraft.*$"
+match.app_id = "^(code|.*Zed|jetbrains.*|antigravity|cursor|Chatgpt|virt-.*|steam|Upload Labs|.*Sober|.*robloxstudio|.*PolyMC|CurseForge|.*PrismLauncher|.*Minecraft.*)$"
 default_workspace = 1
 default_focused = true
 
 [[window_rule]]
-match.app_id = "firefox|floorp|^.*zen$|Tor Browser|^.*torbrowser-launcher$"
+match.app_id = "^(firefox|floorp|.*zen|Tor Browser|.*torbrowser-launcher)$"
 default_workspace	= 2
 default_focused = true
 
 [[window_rule]]
-match.app_id = "discord|equibop|vesktop|^.*Cressida$|^.*telegram.*$|^.*fluxer.*$|zalo|Zalo|me.proton.Mail"
+match.app_id = "^(discord|equibop|vesktop|.*Cressida|.*telegram.*|.*fluxer.*|zalo|Zalo|me.proton.Mail)$"
 default_workspace = 3
 default_focused = true
 
@@ -492,10 +514,10 @@ default_workspace = 5
 
 # default_maximize = true
 [[window_rule]]
-match.app_id = "code|^.*Zed$|^jetbrains.*$|antigravity|cursor|^.*robloxstudio$|Chatgpt|^virt-.*$|firefox|floorp|Tor Browser|^.*torbrowser-launcher$|^.*zen$|discord|equibop|vesktop|^.*Cressida$|^.*telegram.*$|^.*fluxer.*$|zalo|Zalo|^.*telegram.*$|spotify|Spotify|ONLYOFFICE|me.proton.Mail"
+match.app_id = "^(code|.*Zed|jetbrains.*|Chatgpt|virt-.*|firefox|floorp|Tor Browser|.*torbrowser-launcher|.*zen|discord|equibop|vesktop|.*Cressida|.*telegram.*|.*fluxer.*|zalo|Zalo|spotify|Spotify|ONLYOFFICE|me.proton.Mail)$"
 default_maximize = true
 [[window_rule]]
-match.title = "^OBS.*$|CurseForge|^.*PrismLauncher$"
+match.title = "^OBS.*$"
 default_maximize = true
 [[window_rule]]
 match.app_id = "steam"
@@ -508,16 +530,12 @@ default_maximize = true
 
 # default_floating = true, default_position
 [[window_rule]]
-match.app_id = "^.*javac.*$|zenity|^.*waytator$|^.*swash$|nm-connection-editor|warp-taskbar|virt-manager|^.*Sober$|GTK Application"
-default_floating = true
-default_position = { x = 0, y = 0, anchor = "center" }
-[[window_rule]]
-match.title = "Library|^Pushbullet.*$|^Picture-in.*$|^Picture in.*$|^splash.*$|^Splash.*$|Close Tor Browser|^Welcome to.*$|^.*Setup Wizard$|^.*User Agreement$|New Solution|^zoom.*$|^Calculator.*$|^Warning.*$|Friends List|^Myrlyn-.*$|^Incoming.*$|Active connection found|Sign into Modrinth|^.*Updater$"
+match.app_id = "^(.*javac.*|zenity|.*waytator|.*swash|nm-connection-editor|warp-taskbar|virt-manager|.*Sober|GTK Application)$"
 default_floating = true
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
 match.app_id = "code"
-match.title = "^Settings.*$|^Uninstall$"
+match.title = "^(Settings.*|Uninstall)$"
 default_floating = true
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
@@ -526,21 +544,6 @@ match.title = "^Welcome!.*$"
 default_floating = true
 default_position = { x = 0, y = 0, anchor = "center" }
 
-# default_floating = false
-[[window_rule]]
-match.app_id = "winboat"
-default_floating = false
-[[window_rule]]
-match.app_id = "^OBS.*$"
-default_floating = false
-[[window_rule]]
-match.app_id = "virt-manager"
-match.title = "Virtual Machine Manager|^.*on QEMU/KVM$"
-default_floating = false
-[[window_rule]]
-match.app_id = "^org[.]kde[.]kdenlive$"
-default_floating = false
-
 # default_floating = true, default_floating_size_px, default_position
 [[window_rule]]
 match.title = "^About.*$"
@@ -548,19 +551,34 @@ default_floating = true
 default_floating_size_px = { width = 600, height = 475 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
-match.app_id = "^dev.noctalia.UmbrielSharePicker$"
+match.app_id = "^(.*noctalia.*|xdg-desktop-portal.*|Electron)$"
+default_floating = true
+default_floating_size_px = { width = 1075, height = 650 }
+default_position = { x = 0, y = 0, anchor = "center" }
+[[window_rule]]
+match.app_id = "^(.*pavucontrol.*|nm-connection-editor)$"
+default_floating = true
+default_floating_size_px = { width = 675, height = 550 }
+default_position = { x = 0, y = 0, anchor = "center" }
+[[window_rule]]
+match.app_id = "mpv"
+default_floating = true
+default_floating_size_px = { width = 1680, height = 946 }
+default_position = { x = 0, y = 0, anchor = "center" }
+[[window_rule]]
+match.app_id = "^.*FileRoller$"
+default_floating = true
+default_floating_size_px = { width = 500, height = 650 }
+default_position = { x = 0, y = 0, anchor = "center" }
+[[window_rule]]
+match.title = "^(dialog.*|All Files|confirm.*|Save As.*|Save Image.*|Save File.*|.*save the video?|blob:file:///.*|Open Folder.*|Open File.*|File Upload.*|Select.*|Choose wallpaper.*|Choose an image.*|Choose File|Projects Folder|Save Screenshot|Locate ISO.*|blob.*|Open project|Open Document|datapacks|.*//account.proton.me/.*|Choose photolan|Find Java.*|Choose Projectless.*)$"
 default_floating = true
 default_floating_size_px = { width = 1000, height = 625 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
-match.app_id = "^xdg-desktop-portal.*$|Electron"
+match.title = "Lotus Settings|Fcitx Configuration" 
 default_floating = true
-default_floating_size_px = { width = 1000, height = 625 }
-default_position = { x = 0, y = 0, anchor = "center" }
-[[window_rule]]
-match.title = "^dialog.*$|^All Files$|^confirm.*$|^Save As.*$|^Save Image.*$|^Open Folder.*$|^Open File.*$|^File Upload.*$|^Select.*$|^Choose wallpaper.*$|^Choose an image.*$|Choose File|Projects Folder|Save Screenshot|^Locate ISO.*$|^blob.*$|Open project|Open Document|datapacks|^(.*)//account.proton.me/(.*)$|Choose photolan|^Find Java.*$|^Choose Projectless.*$"
-default_floating = true
-default_floating_size_px = { width = 1000, height = 625 }
+default_floating_size_px = { width = 950, height = 625 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
 match.app_id = "Electron"
@@ -569,79 +587,58 @@ default_floating = true
 default_floating_size_px = { width = 950, height = 625 }
 default_position = { x = 0, y = 0, anchor = "center" }
 
+# default_maximize = false
+[[window_rule]]
+match.title = "^(Library|Pushbullet.*|Picture-in.*|Picture in.*|splash.*|Splash.*|Close Tor Browser|Welcome to.*|.*Setup Wizard|.*User Agreement|New Solution|zoom.*|Calculator.*|Warning.*|Friends List|Myrlyn-.*|Incoming.*|Active connection found|Sign into Modrinth|.*Updater)$"
+default_floating = true
+default_maximize = false
+default_floating_size_px = { width = 1000, height = 625 }
+default_position = { x = 0, y = 0, anchor = "center" }
+[[window_rule]]
+match.title = "^(.*Media viewer.*|.*Zalo Photo.*|blob:file:///.*)$"
+default_maximize = false
+default_floating = true
+default_floating_size_px = { width = 1100, height = 675 }
+default_position = { x = 0, y = 0, anchor = "center" }
+
+# default_floating = false
+[[window_rule]]
+match.app_id = "^(winboat|OBS.*)$"
+default_floating = false
+[[window_rule]]
+match.app_id = "virt-manager"
+match.title = "^(Virtual Machine Manager|.*on QEMU/KVM)$"
+default_floating = false
+
+# default_floating = false
+[[window_rule]]
+match.app_id = "^(winboat|OBS.*)$"
+default_floating = false
+
 # border_width = 0
 [[window_rule]]
 match.app_id = "zenity"
 border_width = 0
 [[window_rule]]
 match.app_id = "discord|equibop|vesktop"
-match.title = "^.*Updater$|^equibop$|^vesktop$"
+match.title = "^(.*Updater|equibop|vesktop)$"
 border_width = 0
 [[window_rule]]
-match.title = "^splash.*$|^Splash.*$|zoom|^Updater.*$|^Starting Apache.*$|^Warning.*$"
+match.title = "^(splash.*|Splash.*|zoom|Updater.*|Starting Apache.*|Warning.*)$"
 border_width = 0
 
-# default_floating, default_maximize, default_fullscreen
-[[window_rule]]
-match.app_id = "Upload Labs|winboat"
-default_floating = false
-default_maximize = false
-default_fullscreen = true
-[[window_rule]]
-match.app_id = "^.*Sober$"
-match.title = "Sober"
-default_floating = false
-default_maximize = true
-default_fullscreen = true
-
-# default_position
+# steam
 [[window_rule]]
 match.app_id = "steam"
 match.title = "Friends List"
 default_floating = true
-default_floating_size_px = { width = 225, height = 250 }
-default_position = { x = 16, y = 16, anchor = "bottom_right" }
-
-# Noctalia
-[[window_rule]]
-match.app_id = "^dev.noctalia.Noctalia$"
-default_floating = true
-default_floating_size_px = { width = 1100, height = 700 }
-
-# pavucontrol, nm-connection-editor
-[[window_rule]]
-match.app_id = "^.*pavucontrol.*$|nm-connection-editor"
-default_floating = true
-default_floating_size_px = { width = 675, height = 550 }
-
-# lotus settings
-[[window_rule]]
-match.title = "^(Lotus Settings|Fcitx Configuration)$" 
-default_floating = true
-default_floating_size_px = { width = 950, height = 625 }
-
-# mpv
-[[window_rule]]
-match.app_id = "mpv"
-default_floating = true
-default_floating_size_px = { width = 1680, height = 946 }
-
-# media viewer
-[[window_rule]]
-match.title = "^Media viewer.*$|^Zalo Photo$"
-default_floating = true
-default_floating_size_px = { width = 800, height = 625 }
-
-# file roller
-[[window_rule]]
-match.app_id = "^.*FileRoller$"
-default_floating = true
-default_floating_size_px = { width = 500, height = 700 }
+default_floating_size_px = { width = 275, height = 450 }
+default_position = { x = 20, y = 14, anchor = "bottom_right" }
 
 # notification toasts
 [[window_rule]]
 match.title = "^notificationtoasts_.+_desktop"
-default_position = { x = 0, y = 0, anchor = "bottom_right" }
+default_position = { x = 2, y = 2, anchor = "bottom_right" }
 default_focused = false
 default_pinned = true
 

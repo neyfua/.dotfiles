@@ -1,7 +1,7 @@
 input {
 	keyboard {
-		repeat-delay 200
-		repeat-rate 40
+		repeat-delay 300
+		repeat-rate 30
 	}
 
 	touchpad {
@@ -14,14 +14,14 @@ input {
 	}
 
 	mouse {
-		accel-speed 0.07
+		accel-speed 0.0
 		accel-profile "flat"
 	}
 }
 
 output "eDP-1" {
 	mode "2240x1400@60.002"
-	scale 1.6
+	scale 1.75
 }
 
 // switch-events {
@@ -337,7 +337,7 @@ window-rule {
 
 // default-column-width 1.0
 window-rule {
-	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|Chatgpt|^virt-.*$|firefox|floorp|Tor Browser|^.*torbrowser-launcher$|^.*zen$|discord|equibop|vesktop|^.*telegram.*$|^.*fluxer.*$|zalo|Zalo|^.*telegram.*$|spotify|Spotify|ONLYOFFICE|me.proton.Mail"
+	match app-id="code|^.*Zed$|^jetbrains.*$|antigravity|cursor|Chatgpt|^virt-.*$|firefox|floorp|Tor Browser|^.*torbrowser-launcher$|^.*zen$|discord|equibop|vesktop|^.*telegram.*$|^.*fluxer.*$|zalo|Zalo|spotify|Spotify|ONLYOFFICE|me.proton.Mail"
 	match title="^OBS.*$|CurseForge|^.*PrismLauncher$"
 	match app-id="steam" title="Steam"
 	match app-id="zoom" title="^Zoom Workplace.*$"
@@ -500,12 +500,13 @@ window-rule {
 
 // media viewer
 window-rule {
-	match title="^Media viewer.*$|Zalo Photo"
+	match title="^Media viewer.*$|^Zalo Photo.*$"
 
 	default-column-width { proportion 0.9; }
 	default-window-height { proportion 0.9; }
 
 	open-fullscreen false
+	open-maximized false
 	open-floating true
 
 	border { off; }
@@ -539,7 +540,8 @@ binds {
 	Mod+L repeat=false { spawn "noctalia" "msg" "session" "lock"; }
 
 	// Launcher, clipboard history and emoji
-	Mod+Return repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+	// Mod+Return repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+	Mod+T repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
 	Alt+C repeat=false      { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
 	Mod+Period repeat=false { spawn "noctalia" "msg" "panel-toggle" "launcher" "/emo "; }
 

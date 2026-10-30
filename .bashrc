@@ -145,3 +145,5 @@ prompt_command() {
 
 PROMPT_COMMAND=prompt_command
 . "$HOME/.aftman/env"
+
+. "$HOME/.local/share/../bin/env"

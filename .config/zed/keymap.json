@@ -130,25 +130,55 @@
   {
     "context": "Editor",
     "bindings": {
-      "\\ r": "editor::Format"
-    }
+      "\\ r": "editor::Format",
+    },
   },
   {
     "context": "Editor",
     "unbind": {
-      "ctrl-alt-l": "editor::Format"
-    }
+      "ctrl-alt-l": "editor::Format",
+    },
   },
   {
     "context": "ProjectPanel && not_editing",
     "bindings": {
-      "a": "project_panel::NewFile"
-    }
+      "a": "project_panel::NewFile",
+    },
   },
   {
     "context": "ProjectPanel && not_editing",
     "unbind": {
-      "%": "project_panel::NewFile"
-    }
-  }
+      "%": "project_panel::NewFile",
+    },
+  },
+  {
+    "context": "(vim_mode == normal || vim_mode == insert || vim_mode == visual || vim_mode == helix_normal) && !menu",
+    "bindings": {
+      "alt-left": "pane::ActivatePreviousItem",
+      "alt-right": "pane::ActivateNextItem",
+    },
+  },
+  {
+    "context": "(vim_mode == normal || vim_mode == insert || vim_mode == visual || vim_mode == helix_normal) && !menu",
+    "unbind": {
+      "ctrl-pageup": "pane::ActivatePreviousItem",
+      "ctrl-pagedown": "pane::ActivateNextItem",
+    },
+  },
+  {
+    "context": "Editor && !menu",
+    "bindings": {
+      "alt-shift-left": "pane::SwapItemLeft",
+      "alt-shift-right": "pane::SwapItemRight",
+    },
+  },
+  {
+    "context": "Editor && !menu",
+    "bindings": {
+      "alt-shift-left": "pane::SwapItemLeft",
+      "alt-shift-right": "pane::SwapItemRight",
+      "ctrl-shift-pageup": null,
+      "ctrl-shift-pagedown": null,
+    },
+  },
 ]
