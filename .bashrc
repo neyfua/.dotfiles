@@ -11,6 +11,9 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias nv='nvim'
 alias py='python3'
+alias 9r='9router'
+alias t='tuios'
+alias rm='rm -i'
 
 #################### environment variables ####################
 

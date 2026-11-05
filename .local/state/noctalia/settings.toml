@@ -1,4 +1,4 @@
-config_version = 16
+config_version = 19
 
 [backdrop]
 enabled = true
@@ -54,6 +54,7 @@ event_time_format = "%I:%M %p"
     type = "google"
 
 [control_center]
+sidebar = "full"
 sidebar_section = "none"
 width = 680
 
@@ -102,18 +103,18 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
     timeout = 660.0
 
 [location]
-auto_locate = true
+address = "Ho Chi Minh City, Vietnam"
 custom_schedule = true
-sunrise = "06:00"
-sunset = "18:00"
+sunrise = "07:00"
+sunset = "19:00"
 
 [lockscreen]
 blur_intensity = 0.29999999329447746
 edge_smoothness = 0.19999999552965164
 fingerprint = false
 tint_intensity = 0.44999998994171619
-transition = []
-transition_duration = 500
+transition = [ "fade" ]
+transition_duration = 300
 
 [lockscreen_widgets]
 enabled = true
@@ -154,6 +155,7 @@ widget_order = [
         show_keyboard_layout = true
         show_login_button = true
         show_media = true
+        show_media_controls = true
         show_password_reveal = true
         show_session_buttons = true
         show_unlock_hint = true
@@ -162,11 +164,11 @@ widget_order = [
     [lockscreen_widgets.widget."lockscreen-login-box@WL-1"]
     box_height = 196.0
     box_width = 720.0
-    cx = 700.0
-    cy = 612.0
+    cx = 604.0
+    cy = 582.7103271484375
     output = "WL-1"
-    placement_height = 794.0
-    placement_width = 1400.0
+    placement_height = 756.0
+    placement_width = 1208.0
     rotation = 0.0
     type = "login_box"
 
@@ -182,6 +184,7 @@ widget_order = [
         show_keyboard_layout = true
         show_login_button = true
         show_media = true
+        show_media_controls = true
         show_password_reveal = true
         show_session_buttons = true
         show_unlock_hint = true
@@ -210,6 +213,7 @@ widget_order = [
         show_keyboard_layout = true
         show_login_button = true
         show_media = true
+        show_media_controls = true
         show_password_reveal = true
         show_session_buttons = true
         show_unlock_hint = false
@@ -284,15 +288,13 @@ ssid = "inspiron14"
 manager_position = "auto"
 ssh_user = "khang"
 
-[plugin_settings."hy4ri/github-notifications"]
-panel_placement = "floating"
-
 [plugin_settings."neyfua/obs-integration"]
 checkout_dir = "~/Projects/OBS"
-panel_position = "top_center"
+panel_position = "auto"
 
 [plugin_settings."nightwatch75/dns-switcher"]
 panel_placement = "floating"
+providers = "cloudflare,opendns,adguard,quad9"
 
 [plugin_settings."nightwatch75/todo"]
 panel_placement = "floating"
@@ -304,30 +306,18 @@ panel_position = "top_right"
 [plugin_settings."noctalia/screen_recorder"]
 restore_portal = true
 
-[plugin_settings."noctalia/umbriel-companion"]
-panel_layer = "overlay"
-panel_open_near_click = false
-panel_placement = "floating"
-
 [plugin_settings."oldirtty/color_picker"]
 hyprpicker-disable-preview = true
 lowercase-hex = true
-panel_layer = "overlay"
-panel_position = "auto"
-
-[plugin_settings."setyvii/niri-rules-studio"]
 panel_position = "auto"
 
 [plugin_settings."thaer99ob/default-apps"]
 manager_position = "auto"
 
-[plugin_settings."tphilippot/git_companion"]
-main_placement = "floating"
-
 [plugin_settings."umedbazarov/crashes"]
 agent_cmd = "opencode --prompt"
 notify = false
-panel_position = "top_center"
+panel_position = "auto"
 poll_seconds = 30
 terminal_cmd = "footclient"
 
@@ -341,14 +331,10 @@ enabled = [
     "neyfua/obs-integration",
     "nightwatch75/dns-switcher",
     "davemhammer/tailscale",
-    "tphilippot/git_companion",
-    "hy4ri/github-notifications",
     "noctalia/wallhaven",
     "umedbazarov/crashes",
     "thaer99ob/default-apps",
     "cleboost/hotspot",
-    "setyvii/niri-rules-studio",
-    "noctalia/umbriel-companion",
     "oldirtty/color_picker"
 ]
 
@@ -367,8 +353,9 @@ avatar_path = "/home/neyfua/Pictures/Pfps/HOPWJNka0AAdgHw_rose-pine.jpeg"
 button_borders = false
 card_borders = false
 clipboard_auto_paste = "off"
-clipboard_history_max_entries = 1000
-clipboard_image_action_command = "swash"
+clipboard_confirm_clear_history = false
+clipboard_history_max_entries = 200
+clipboard_image_action_command = "noctalia msg annotate {path}"
 date_format = "%A, %B %d %Y"
 font_family = "SF Pro Display"
 panel_anchor_bar = "top-bar"
@@ -377,18 +364,13 @@ polkit_agent = true
 screen_time_enabled = true
 telemetry_enabled = true
 time_format = "{:%-I:%M %p}"
+umbriel_logout_wait_for_clients_enabled = false
 umbriel_overview_close_on_launch_enabled = true
-
-    [shell.animation]
-    speed = 1.2500000186264515
 
     [shell.launcher]
     auto_paste = "off"
-    category_icons_only = true
-    default_view = "all"
-    show_session_button = false
-    show_settings_button = false
-    width = 560
+    categories = false
+    layout = "simple"
 
     [shell.mpris]
     blacklist = [ "firefox", "Tor Browser" ]
@@ -406,6 +388,8 @@ umbriel_overview_close_on_launch_enabled = true
     [shell.screenshot]
     confirm_region = true
     directory = "/home/neyfua/Pictures/Screenshots"
+    region_dim_opacity = 0.34999999217689037
+    skip_annotate_on_copy_save = true
 
     [shell.session]
     grid = true
@@ -476,34 +460,19 @@ wallpaper_scheme = "m3-content"
 directory = "/home/neyfua/Pictures/Wallpapers"
 edge_smoothness = 0.24999999441206455
 transition = [ "disc" ]
-transition_duration = 2000
+transition_duration = 2500
 
     [wallpaper.default]
-    path = "/home/neyfua/Pictures/Wallpapers/guitar.jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/forza-6.png"
 
     [wallpaper.last]
-    path = "/home/neyfua/Pictures/Wallpapers/guitar.jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/forza-6.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/neyfua/Pictures/Wallpapers/guitar.jpg"
-
-    [[wallpaper.favorite]]
-    builtin_palette = "Rosé Pine"
-    palette_source = "builtin"
-    path = "/home/neyfua/Pictures/Wallpapers/motorcycle.jpg"
-    theme_mode = "dark"
+    path = "/home/neyfua/Pictures/Wallpapers/forza-6.png"
 
     [[wallpaper.favorite]]
     path = "/home/neyfua/Pictures/Wallpapers/snow-pine-forest.png"
-
-    [[wallpaper.favorite]]
-    path = "/home/neyfua/Pictures/Wallpapers/yotsuba-koiwai.jpg"
-
-    [[wallpaper.favorite]]
-    builtin_palette = "Rosé Pine"
-    palette_source = "builtin"
-    path = "/home/neyfua/Pictures/Wallpapers/seaside-bus-stop-view.png"
-    theme_mode = "dark"
 
     [[wallpaper.favorite]]
     builtin_palette = "Rosé Pine"
@@ -515,7 +484,7 @@ transition_duration = 2000
 font_weight = 700
 
 [widget.clock]
-format = "{:%b %-d  %-I:%M %p}"
+format = "{:%b %d  %-I:%M %p}"
 tooltip_format = "{:%I:%M:%S %p\\n%A, %B %d %Y}"
 
 [widget.launcher]
@@ -545,13 +514,27 @@ show_value = false
 icon_scale = 2.0
 inactive_opacity = 0.88
 item_spacing = 6
-pinned = [ "org.gnome.Nautilus", "dev.zed.Zed", "zalo", "discord", "vesktop", "spotify-launcher", "floorp", "foot" ]
+pinned = [
+    "org.gnome.Nautilus",
+    "chatgpt",
+    "roblox-studio",
+    "dev.zed.Zed",
+    "zalo",
+    "discord",
+    "vesktop",
+    "spotify-launcher",
+    "floorp",
+    "foot"
+]
 
 [widget.temp]
 show_value = false
 
 [widget.todo]
 type = "nightwatch75/todo:todo"
+
+[widget.tray]
+hide_passive = false
 
 [widget.volume]
 mute_color = "hover"

@@ -15,13 +15,13 @@ files = []
 #==== Configuration ====# (https://docs.noctalia.dev/umbriel/configuration/)
 #=======================#
 [general]
-autostart = ["noctalia -d", "fcitx5 -d", "wl-clip-persist -c regular -e", "gogoani anilist --sync"]
+autostart = ["noctalia -d", "fcitx5 -d", "gogoani anilist --sync"]
 # mod_key = "Super"
 xwayland = true
 xwayland_native_resolution = true
 xwayland_xsettings = true
 show_cheatsheet = false
-focus_on_activate = true
+focus_on_activate = false
 honor_restored_maximize = false
 attach_modal_dialogs = false
 
@@ -111,12 +111,13 @@ workspaces = 6
 "Alt+T" = { action = "spawn noctalia msg panel-toggle davemhammer/tailscale:manager", repeat = false }
 "Alt+G" = { action = "spawn noctalia msg panel-toggle hy4ri/github-notifications:panel", repeat = false }
 "Alt+U" = { action = "spawn noctalia msg panel-toggle noctalia/umbriel-companion:panel", repeat = false }
-"Alt+P" = { action = "spawn noctalia msg plugin oldirtty/color_picker:service all pick", repeat = false }
 "Alt+Apostrophe" = { action = "spawn noctalia msg panel-toggle umedbazarov/crashes:panel", repeat = false }
 "Alt+Shift+T" = { action = "spawn noctalia msg panel-toggle nightwatch75/todo:panel", repeat = false }
 "Alt+Shift+D" = { action = "spawn noctalia msg panel-toggle nightwatch75/dns-switcher:panel", repeat = false }
 "Alt+Shift+G" = { action = "spawn noctalia msg panel-toggle tphilippot/git_companion:main", repeat = false }
 "Alt+Shift+P" = { action = "spawn noctalia msg panel-toggle oldirtty/color_picker:panel", repeat = false }
+"Alt+Shift+9" = { action = "spawn noctalia msg panel-toggle bardiz12/9router-monitor:panel", repeat = false }
+"Alt+Shift+C" = { action = "spawn noctalia msg plugin oldirtty/color_picker:service all pick", repeat = false }
 "Alt+Shift+Apostrophe" = { action = "spawn noctalia msg panel-toggle thaer99ob/default-apps:manager", repeat = false }
 
 ## Output, workspace, and window movement actions
@@ -149,8 +150,8 @@ workspaces = 6
 "Mod+Ctrl+WheelDown" = { action = "column-move-right", repeat = false }
 "Mod+Ctrl+WheelUp" = { action = "column-move-left", repeat = false }
 
-# "Mod+Shift+Up" = { action = "window-move-up", repeat = false }
-# "Mod+Shift+Down" = { action = "window-move-down", repeat = false }
+"Alt+Shift+Up" = { action = "window-move-up", repeat = false }
+"Alt+Shift+Down" = { action = "window-move-down", repeat = false }
 
 "Mod+Ctrl+Up" = { action = "window-move-to-workspace-previous", repeat = false }
 "Mod+Ctrl+Down" = { action = "window-move-to-workspace-next", repeat = false }
@@ -186,6 +187,10 @@ workspaces = 6
 "Mod+D" = { action = "window-focus-switch-floating", repeat = false }
 "Mod+P" = { action = "window-toggle-pinned", repeat = false }
 "Alt+F" = { action = "window-toggle-maximize-to-edges", repeat = false }
+
+"Alt+Tab" = { action = "spawn noctalia msg window-switcher", repeat = false }
+
+"Mod+Escape" = { action = "shortcuts-inhibit-toggle", allow_when_inhibited = true, repeat = false }
 
 ## Screenshot
 "Mod+Shift+S" = { action = "spawn noctalia msg screenshot-region", repeat = false }
@@ -226,7 +231,7 @@ window_drag_toggle = "none"
 # options = ""
 # model = ""
 repeat_rate = 40
-repeat_delay = 250
+repeat_delay = 200
 # numlock_toggle = true
 # track_layout = "global"
 # layout = "us,de"
@@ -248,7 +253,7 @@ disable_on_external_mouse = true
 # natural_scroll = false
 # left_handed = false
 accel_profile = "flat"
-sensitivity = -0.05
+sensitivity = 0
 # scroll_wheel_step = 60
 # scroll_button = "MouseBack"
 # scroll_button_lock = false
@@ -417,7 +422,7 @@ physics = false
 #================#
 [layout]
 mode = "scrolling"
-gap = 14
+gap = 10
 extent_presets = [0.25, 0.5, 0.75, 1.0]
 # new_exits_fullscreen = []  # "tiled", "floating", "pinned", "all", or an array such as ["tiled", "floating"]
 
@@ -486,35 +491,37 @@ border_width = 0
 outer_border_width = 0
 
 [[window_rule]]
-match.app_id = "^(code|.*Zed|jetbrains.*|antigravity|cursor|Chatgpt|virt-.*|steam|Upload Labs|.*Sober|.*robloxstudio|.*PolyMC|CurseForge|.*PrismLauncher|.*Minecraft.*)$"
+match.app_id = "^(code|.*Zed|jetbrains.*|antigravity|cursor|Chatgpt|steam|Upload Labs|.*Sober|.*Vinegar|.*robloxstudio.*|.*PolyMC|CurseForge|.*PrismLauncher|.*Minecraft.*)$"
 default_workspace = 1
-default_focused = true
+default_focused = false
 
 [[window_rule]]
 match.app_id = "^(firefox|floorp|.*zen|Tor Browser|.*torbrowser-launcher)$"
 default_workspace	= 2
-default_focused = true
+default_focused = false
 
 [[window_rule]]
 match.app_id = "^(discord|equibop|vesktop|.*Cressida|.*telegram.*|.*fluxer.*|zalo|Zalo|me.proton.Mail)$"
 default_workspace = 3
-default_focused = true
+default_focused = false
 
 [[window_rule]]
 match.app_id = "spotify|Spotify"
 default_workspace = 4
-default_focused = true
+default_focused = false
 
 [[window_rule]]
-match.app_id = "winboat|blender|zoom"
+match.app_id = "^(winboat|blender|zoom|virt-.*)$"
 default_workspace = 5
+default_focused = false
 [[window_rule]]
 match.title = "^OBS.*$"
 default_workspace = 5
+default_focused = false
 
 # default_maximize = true
 [[window_rule]]
-match.app_id = "^(code|.*Zed|jetbrains.*|Chatgpt|virt-.*|firefox|floorp|Tor Browser|.*torbrowser-launcher|.*zen|discord|equibop|vesktop|.*Cressida|.*telegram.*|.*fluxer.*|zalo|Zalo|spotify|Spotify|ONLYOFFICE|me.proton.Mail)$"
+match.app_id = "^(code|.*Zed|jetbrains.*|Chatgpt|firefox|floorp|Tor Browser|.*torbrowser-launcher|.*zen|discord|equibop|vesktop|.*Cressida|.*telegram.*|.*fluxer.*|zalo|Zalo|spotify|Spotify|ONLYOFFICE|.*Obsidian|me.proton.Mail)$"
 default_maximize = true
 [[window_rule]]
 match.title = "^OBS.*$"
@@ -530,7 +537,7 @@ default_maximize = true
 
 # default_floating = true, default_position
 [[window_rule]]
-match.app_id = "^(.*javac.*|zenity|.*waytator|.*swash|nm-connection-editor|warp-taskbar|virt-manager|.*Sober|GTK Application)$"
+match.app_id = "^(.*javac.*|zenity|.*waytator|.*swash|nm-connection-editor|warp-taskbar|virt-manager|.*Sober|.*Vinegar|GTK Application)$"
 default_floating = true
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
@@ -546,19 +553,14 @@ default_position = { x = 0, y = 0, anchor = "center" }
 
 # default_floating = true, default_floating_size_px, default_position
 [[window_rule]]
-match.title = "^About.*$"
-default_floating = true
-default_floating_size_px = { width = 600, height = 475 }
-default_position = { x = 0, y = 0, anchor = "center" }
-[[window_rule]]
 match.app_id = "^(.*noctalia.*|xdg-desktop-portal.*|Electron)$"
 default_floating = true
-default_floating_size_px = { width = 1075, height = 650 }
+default_floating_size = { width = 0.85, height = 0.85 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
 match.app_id = "^(.*pavucontrol.*|nm-connection-editor)$"
 default_floating = true
-default_floating_size_px = { width = 675, height = 550 }
+default_floating_size = { width = 0.55, height = 0.65 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
 match.app_id = "mpv"
@@ -566,39 +568,52 @@ default_floating = true
 default_floating_size_px = { width = 1680, height = 946 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
-match.app_id = "^.*FileRoller$"
+match.title = "New VM"
 default_floating = true
-default_floating_size_px = { width = 500, height = 650 }
+default_floating_size = { width = 0.8, height = 0.85 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
-match.title = "^(dialog.*|All Files|confirm.*|Save As.*|Save Image.*|Save File.*|.*save the video?|blob:file:///.*|Open Folder.*|Open File.*|File Upload.*|Select.*|Choose wallpaper.*|Choose an image.*|Choose File|Projects Folder|Save Screenshot|Locate ISO.*|blob.*|Open project|Open Document|datapacks|.*//account.proton.me/.*|Choose photolan|Find Java.*|Choose Projectless.*)$"
+match.app_id = "^.*FileRoller$"
 default_floating = true
-default_floating_size_px = { width = 1000, height = 625 }
+default_floating_size = { width = 0.4, height = 0.75 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
 match.title = "Lotus Settings|Fcitx Configuration" 
 default_floating = true
-default_floating_size_px = { width = 950, height = 625 }
+default_floating_size = { width = 0.85, height = 0.8 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
 match.app_id = "Electron"
 match.title = "Save"
 default_floating = true
-default_floating_size_px = { width = 950, height = 625 }
+default_floating_size = { width = 0.75, height = 0.8 }
 default_position = { x = 0, y = 0, anchor = "center" }
 
 # default_maximize = false
 [[window_rule]]
-match.title = "^(Library|Pushbullet.*|Picture-in.*|Picture in.*|splash.*|Splash.*|Close Tor Browser|Welcome to.*|.*Setup Wizard|.*User Agreement|New Solution|zoom.*|Calculator.*|Warning.*|Friends List|Myrlyn-.*|Incoming.*|Active connection found|Sign into Modrinth|.*Updater)$"
+match.title = "^(Library|Pushbullet.*|Picture-in.*|Picture in.*|splash.*|Splash.*|Close Tor Browser|Welcome to.*|.*Setup Wizard|.*User Agreement|New Solution|zoom.*|Calculator.*|Warning.*|Friends List|Myrlyn-.*|Incoming.*|Active connection found|Sign into Modrinth|.*Updater|dialog.*|All Files|confirm.*|Save As.*|Save Image.*|Save File.*|.*save the video?|blob:file:///.*|Open Folder.*|Open File.*|File Upload.*|Select.*|Choose wallpaper.*|Choose an image.*|Choose File|Projects Folder|Save Screenshot|Locate ISO.*|blob.*|Open project|Open Document|datapacks|.*//account.proton.me/.*|Choose photolan|Find Java.*|Choose Projectless.*|Location)$"
 default_floating = true
 default_maximize = false
-default_floating_size_px = { width = 1000, height = 625 }
+default_floating_size = { width = 0.75, height = 0.8 }
+default_position = { x = 0, y = 0, anchor = "center" }
+[[window_rule]]
+match.title = "^About.*$"
+default_floating = true
+default_maximize = false
+default_floating_size = { width = 0.5, height = 0.6 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
 match.title = "^(.*Media viewer.*|.*Zalo Photo.*|blob:file:///.*)$"
-default_maximize = false
 default_floating = true
-default_floating_size_px = { width = 1100, height = 675 }
+default_maximize = false
+default_floating_size = { width = 0.9, height = 0.9 }
+default_position = { x = 0, y = 0, anchor = "center" }
+[[window_rule]]
+match.app_id = "^.*Obsidian$"
+match.title = "^(Settings -.*|Community themes -.*)$"
+default_floating = true
+default_maximize = false
+default_floating_size = { width = 0.8, height = 0.85}
 default_position = { x = 0, y = 0, anchor = "center" }
 
 # default_floating = false
@@ -609,11 +624,18 @@ default_floating = false
 match.app_id = "virt-manager"
 match.title = "^(Virtual Machine Manager|.*on QEMU/KVM)$"
 default_floating = false
-
-# default_floating = false
 [[window_rule]]
 match.app_id = "^(winboat|OBS.*)$"
 default_floating = false
+[[window_rule]]
+match.app_id = ".*Sober"
+match.title = "Sober"
+default_floating = false
+
+# default_floating_size_px
+[[window_rule]]
+match.title = "^Active connection found$"
+default_floating_size = { width = 0.1, height = 0.1 }
 
 # border_width = 0
 [[window_rule]]
@@ -634,6 +656,13 @@ match.title = "Friends List"
 default_floating = true
 default_floating_size_px = { width = 275, height = 450 }
 default_position = { x = 20, y = 14, anchor = "bottom_right" }
+
+# roblox studio
+[[window_rule]]
+match.app_id = ".*robloxstudio.*"
+match.is_floating = true
+default_position = { x = 0, y = 0, anchor = "center" }
+border_width = 0
 
 # notification toasts
 [[window_rule]]
