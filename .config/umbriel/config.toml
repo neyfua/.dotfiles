@@ -312,14 +312,14 @@ background_unfocused = "#191724"
 text = "#e0def4"
 text_unfocused = "#6e6a86"
 close = "#eb6f92"
-maximize = "#31748f"
+maximize = "#9ccfd8"
 minimize = "#f6c177"
 
 [appearance]
 prefer_no_csd = true
 border_width = 0
 outer_border_width = 0
-corner_radius = 10
+corner_radius = 12
 drag_opacity = 0.75
 opaque_fullscreen = true
 
@@ -340,13 +340,13 @@ opaque_fullscreen = true
 
 [appearance.title_bar]
 mode = "on"
-height = 28
+height = 32
 font = "sans 0"
 button_position = "right"
 buttons = ["minimize", "maximize", "close"]
-button_size = 12
-button_gap = 8
-button_padding = 12
+button_size = 15
+button_gap = 6
+button_padding = 10
 button_corner_radius = -1
 button_glyph = "never"
 button_background = true

@@ -1,3 +1,9 @@
+local library = { vim.env.VIMRUNTIME }
+-- ponytail: chỉ thêm blink.cmp; đổi thành vim.api.nvim_get_runtime_file("lua", true) nếu cần type cho plugin khác
+for _, path in ipairs(vim.api.nvim_get_runtime_file("lua/blink/cmp/init.lua", false)) do
+	library[#library + 1] = path:match("^(.*)/lua/blink/cmp/init%.lua$")
+end
+
 ---@type vim.lsp.Config
 return {
 	single_file_support = true,
@@ -5,7 +11,7 @@ return {
 		Lua = {
 			workspace = {
 				checkThirdParty = false,
-				library = { vim.env.VIMRUNTIME },
+				library = library,
 			},
 			misc = {
 				parameters = {
