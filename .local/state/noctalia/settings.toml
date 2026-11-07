@@ -364,7 +364,7 @@ enabled = [
     name = "community"
 
 [shell]
-avatar_path = "/home/neyfua/Pictures/Saved/10c1ef522fd6c8c371ec180af9e079c2_rose-pine.jpg"
+avatar_path = "/home/neyfua/Pictures/Saved/285ce5b312cf041f98bd0fcef75b2a4e_rose-pine.jpg"
 button_borders = false
 card_borders = false
 clipboard_auto_paste = "off"
@@ -395,6 +395,7 @@ umbriel_overview_close_on_launch_enabled = true
     clipboard_position = "auto"
     control_center_placement = "floating"
     launcher_position = "auto"
+    open_near_click_control_center = true
     session_placement = "floating"
     session_position = "center_left"
     wallpaper_placement = "floating"

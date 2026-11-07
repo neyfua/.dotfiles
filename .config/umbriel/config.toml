@@ -534,6 +534,11 @@ default_workspace = 5
 match.title = "^OBS.*$"
 default_workspace = 5
 
+# default_focused = true
+[[window_rule]]
+match.app_id = "sober_services"
+default_focused = true
+
 # default_maximize = true
 # [[window_rule]]
 # match.app_id = "^(code|.*Zed|jetbrains.*|Chatgpt|firefox|floorp|Tor Browser|.*torbrowser-launcher|.*zen|discord|equibop|vesktop|.*Cressida|.*telegram.*|.*fluxer.*|zalo|Zalo|spotify|Spotify|ONLYOFFICE|.*Obsidian|me.proton.Mail)$"
@@ -651,6 +656,11 @@ default_floating_size = { width = 0.8, height = 0.85}
 [[window_rule]]
 match.title = "^Active connection found$"
 default_floating_size = { width = 0.1, height = 0.1 }
+
+# title_bar = "off"
+[[window_rule]]
+match.app_id = "^proton.vpn.*$"
+title_bar = "off"
 
 # border_width = 0
 # [[window_rule]]
