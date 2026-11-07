@@ -14,9 +14,10 @@ order = [ "top-bar", "left-bar" ]
     end = [ "launcher" ]
     hover_highlight = false
     margin_ends = 0
-    padding = 8
+    padding = 6
     position = "left"
     radius = 0
+    show_tooltip = false
     start = [ "taskbar" ]
     thickness = 45
 
@@ -27,12 +28,12 @@ order = [ "top-bar", "left-bar" ]
     center = [ "weather", "clock" ]
     concave_edge_corners = false
     enabled = true
-    end = [ "tray", "notifications", "network", "volume", "battery" ]
+    end = [ "tray", "network", "volume", "battery" ]
     hover_highlight = false
     margin_ends = 0
-    padding = 12
+    padding = 6
     radius = 0
-    start = [ "workspaces", "media" ]
+    start = [ "workspaces" ]
     thickness = 24
 
 [battery]
@@ -54,7 +55,6 @@ event_time_format = "%I:%M %p"
     type = "google"
 
 [control_center]
-sidebar = "full"
 sidebar_section = "none"
 width = 680
 
@@ -74,14 +74,28 @@ width = 680
 
 [desktop_widgets]
 schema_version = 2
-widget_order = []
+widget_order = [ "desktop-widget-0000000000000001" ]
 
     [desktop_widgets.grid]
     cell_size = 8
     major_interval = 4
     visible = true
 
-    [desktop_widgets.widget]
+    [desktop_widgets.widget.desktop-widget-0000000000000001]
+    box_height = 248.0
+    box_width = 184.0
+    cx = 216.958740234375
+    cy = 216.41384887695312
+    output = "eDP-1"
+    placement_height = 800.0
+    placement_width = 1280.0
+    rotation = -0.2617993950843811
+    type = "sticker"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
+        background = false
+        image_path = "/home/neyfua/Pictures/Saved/285ce5b312cf041f98bd0fcef75b2a4e_rose-pine.jpg"
+        opacity = 1.0
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
@@ -335,7 +349,8 @@ enabled = [
     "umedbazarov/crashes",
     "thaer99ob/default-apps",
     "cleboost/hotspot",
-    "oldirtty/color_picker"
+    "oldirtty/color_picker",
+    "noctalia/lyrics"
 ]
 
     [[plugins.source]]
@@ -349,7 +364,7 @@ enabled = [
     name = "community"
 
 [shell]
-avatar_path = "/home/neyfua/Pictures/Pfps/HOPWJNka0AAdgHw_rose-pine.jpeg"
+avatar_path = "/home/neyfua/Pictures/Saved/10c1ef522fd6c8c371ec180af9e079c2_rose-pine.jpg"
 button_borders = false
 card_borders = false
 clipboard_auto_paste = "off"
@@ -362,9 +377,9 @@ panel_anchor_bar = "top-bar"
 password_style = "random"
 polkit_agent = true
 screen_time_enabled = true
+show_close_buttons = false
 telemetry_enabled = true
 time_format = "{:%-I:%M %p}"
-umbriel_logout_wait_for_clients_enabled = false
 umbriel_overview_close_on_launch_enabled = true
 
     [shell.launcher]
@@ -382,7 +397,6 @@ umbriel_overview_close_on_launch_enabled = true
     launcher_position = "auto"
     session_placement = "floating"
     session_position = "center_left"
-    transparency_mode = "soft"
     wallpaper_placement = "floating"
 
     [shell.screenshot]
@@ -480,23 +494,13 @@ transition_duration = 2500
     path = "/home/neyfua/Pictures/Wallpapers/honda-s2000.jpg"
     theme_mode = "dark"
 
-[widget.active_window]
-font_weight = 700
-
 [widget.clock]
-format = "{:%b %d  %-I:%M %p}"
-tooltip_format = "{:%I:%M:%S %p\\n%A, %B %d %Y}"
+format = "{:%b %-d  %-I:%M %p}"
+tooltip_format = "{:%-I:%M:%S %p\\n%A, %B %d %Y}"
 
 [widget.launcher]
 glyph = "grid-dots"
 scale = 2.0
-
-[widget.media]
-hide_when_no_media = true
-max_length = 800
-min_length = 0
-rotate_album_art = true
-title_scroll = "on_hover"
 
 [widget.network]
 show_label = false
@@ -512,20 +516,24 @@ show_value = false
 
 [widget.taskbar]
 icon_scale = 2.0
-inactive_opacity = 0.88
-item_spacing = 6
+inactive_opacity = 0.67999999999999994
 pinned = [
     "org.gnome.Nautilus",
     "chatgpt",
-    "roblox-studio",
     "dev.zed.Zed",
+    "roblox-account-manager",
+    "roblox-studio",
     "zalo",
-    "discord",
-    "vesktop",
     "spotify-launcher",
-    "floorp",
+    "vesktop",
+    "discord",
+    "firefox",
     "foot"
 ]
+
+    [widget.taskbar.actions]
+    scroll_down = "none"
+    scroll_up = "none"
 
 [widget.temp]
 show_value = false
@@ -534,11 +542,11 @@ show_value = false
 type = "nightwatch75/todo:todo"
 
 [widget.tray]
+hidden = [ "gpu-screen-recorder-ui" ]
 hide_passive = false
 
 [widget.volume]
 mute_color = "hover"
-show_label = false
 
 [widget.weather]
 show_condition = false
@@ -549,5 +557,9 @@ empty_color = "hover"
 focused_color = "on_surface"
 hide_when_empty = true
 occupied_color = "hover"
-pill_scale = 0.5
+pill_scale = 0.45000000000000007
 show_labels = false
+
+    [widget.workspaces.actions]
+    scroll_down = "none"
+    scroll_up = "none"
