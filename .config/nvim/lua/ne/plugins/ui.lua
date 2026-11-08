@@ -1,6 +1,5 @@
 local icons = Ne.icons
 local lualine_utils = require("ne.utils.lualine")
-local lazygit_utils = require("ne.utils.lazygit")
 
 local cursor_group = vim.api.nvim_create_augroup("CursorColor", { clear = true })
 vim.api.nvim_create_autocmd("ColorScheme", {
@@ -37,21 +36,6 @@ require("snacks").setup({
 	notifier = { enabled = true },
 	statuscolumn = { enabled = true },
 	words = { enabled = true },
-	lazygit = {
-		enabled = true,
-		configure = true, -- auto-sets nvim-remote preset & syncs theme
-		config = {
-			-- Open files selected in lazygit in the pane it was launched from,
-			-- instead of the nvim-remote preset's new tab. See utils/lazygit.lua.
-			os = {
-				edit = lazygit_utils.edit_command(),
-				editAtLine = lazygit_utils.edit_command({ at_line = true }),
-			},
-		},
-		theme = {
-			activeBorderColor = { fg = "WarningMsg", bold = true },
-		},
-	},
 })
 
 require("tiny-cmdline").setup({
@@ -138,25 +122,6 @@ require("lualine").setup({
 		lualine_z = {
 			{ "location", padding = { left = 1, right = 1 } },
 		},
-	},
-})
-
-require("codediff").setup({
-	explorer = {
-		width = 50,
-		auto_open_on_cursor = true,
-		view_mode = "tree", -- "list" or "tree"
-		line_stats = {
-			enabled = true,
-		},
-	},
-	diff = {
-		compact = true,
-		compact_context_lines = 8,
-		compact_sync_folds = true, -- open/close folds in both panes together
-	},
-	keymaps = {
-		view = {},
 	},
 })
 

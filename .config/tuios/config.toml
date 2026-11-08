@@ -180,7 +180,13 @@ terminal_focus_down = []
 terminal_focus_left = []
 terminal_focus_right = []
 
+[keybindings.layout]
+swap_left = ["H", "ctrl+alt+left"]
+swap_right = ["L", "ctrl+alt+right"]
+
 [keybindings.terminal_mode]
+swap_left = ["ctrl+alt+left"]
+swap_right = ["ctrl+alt+right"]
 terminal_scroll_up = ["ctrl+up"]
 terminal_scroll_down = ["ctrl+down"]
 terminal_scroll_page_up = ["shift+up", "shift+pgup"]

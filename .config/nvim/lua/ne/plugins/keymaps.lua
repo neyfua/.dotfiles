@@ -27,13 +27,6 @@ map({
 	},
 })
 
--- Snacks picker (backup used these bindings)
-map({
-	{ "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
-	{ "<leader>fa", function() Snacks.picker.files() end, desc = "Find Files" },
-	{ "<leader>fl", function() Snacks.picker.grep() end, desc = "Grep" },
-})
-
 -- Oil - File explorer
 map({
 	{
@@ -144,10 +137,11 @@ map({
 -- Snacks
 map({
 	{ "<leader>cl", Snacks.picker.lsp_config, desc = "Lsp Info" },
-	{ "<leader>cR", Snacks.rename.rename_file, desc = "Rename File" },
-	{ ";f", Snacks.picker.files, desc = "Find files" },
-	{ ";r", Snacks.picker.grep, desc = "Live grep" },
-	{ ";;", Snacks.picker.resume, desc = "Resume picker" },
+	{ "<leader>R", Snacks.rename.rename_file, desc = "Rename File" },
+  { "<leader>fa", Snacks.picker.files, desc = "Find files" },
+  { "<leader>fl", Snacks.picker.grep, desc = "Live grep" },
+	{ "<leader>fb", Snacks.picker.buffers, desc = "Buffers" },
+	{ "<leader>fr", Snacks.picker.resume, desc = "Resume picker" },
 	{
 		"\\\\",
 		function()
@@ -179,13 +173,6 @@ map({
 	{ ";e", Snacks.picker.diagnostics, desc = "Diagnostics" },
 	{ ";c", Snacks.picker.lsp_incoming_calls, desc = "LSP incoming calls" },
 	{ ";n", Snacks.picker.notifications, desc = "Notifications" },
-	{
-		";g",
-		function()
-			require("ne.utils.lazygit").open()
-		end,
-		desc = "Lazygit",
-	},
 	{
 		";h",
 		Snacks.picker.git_diff,
@@ -326,10 +313,3 @@ map({
 	},
 })
 
--- CodeDiff
-map({
-	{ "<leader>dv", "<cmd>CodeDiff<cr>", desc = "Toggle CodeDiff" },
-	-- File history
-	{ "<leader>dh", "<cmd>CodeDiff history %<cr>", desc = "File history (current file)" },
-	{ "<leader>dH", "<cmd>CodeDiff history<cr>", desc = "File history (repo)" },
-})

@@ -20,7 +20,6 @@ vim.pack.add({
 	{ src = gh("folke/snacks.nvim") },
 	{ src = gh("folke/trouble.nvim") },
 	{ src = gh("nvim-lualine/lualine.nvim") },
-	{ src = gh("esmuellert/codediff.nvim") },
 	{ src = gh("rachartier/tiny-cmdline.nvim") },
 	-- Editor
 	{ src = gh("stevearc/conform.nvim") },

@@ -15,7 +15,7 @@ files = []
 #==== Configuration ====# (https://docs.noctalia.dev/umbriel/configuration/)
 #=======================#
 [general]
-autostart = ["noctalia -d", "fcitx5 -d", "gogoani anilist --sync"]
+autostart = ["noctalia -d", "fcitx5 -d"]
 # mod_key = "Super"
 xwayland = true
 xwayland_native_resolution = true
@@ -23,7 +23,7 @@ xwayland_xsettings = true
 show_cheatsheet = false
 focus_on_activate = true
 honor_restored_maximize = false
-attach_modal_dialogs = false
+attach_modal_dialogs = true
 
 [environment]
 MOZ_ENABLE_WAYLAND = "1"
@@ -264,7 +264,7 @@ theme = "macOS-White"
 size = 28
 hardware_cursor = true
 follows_focus = false
-hide_when_typing = true
+hide_when_typing = false
 hide_timeout_ms = 0
 
 [input.focus]
@@ -340,13 +340,13 @@ opaque_fullscreen = true
 
 [appearance.title_bar]
 mode = "on"
-height = 32
+height = 26
 font = "sans 0"
 button_position = "right"
 buttons = ["minimize", "maximize", "close"]
-button_size = 15
+button_size = 12
 button_gap = 6
-button_padding = 10
+button_padding = 8
 button_corner_radius = -1
 button_glyph = "never"
 button_background = true
@@ -501,6 +501,9 @@ opacity = 0.93
 [[window_rule]]
 match.is_dialog = true
 title_bar = "off"
+[[window_rule]]
+match.layout = "stacking"
+default_position = { x = 0, y = 0, anchor = "center" }
 # [[window_rule]]
 # match.is_alone = true
 # default_maximize = true
@@ -513,7 +516,7 @@ default_workspace = 1
 # default_focused = true
 
 [[window_rule]]
-match.app_id = "^(firefox|floorp|.*zen|Tor Browser|.*torbrowser-launcher)$"
+match.app_id = "^(firefox|librewolf|floorp|.*zen|Tor Browser|.*torbrowser-launcher)$"
 default_workspace	= 2
 # default_focused = true
 
@@ -540,6 +543,9 @@ match.app_id = "sober_services"
 default_focused = true
 
 # default_maximize = true
+[[window_rule]]
+match.app_id = "firefox"
+default_maximize = true
 # [[window_rule]]
 # match.app_id = "^(code|.*Zed|jetbrains.*|Chatgpt|firefox|floorp|Tor Browser|.*torbrowser-launcher|.*zen|discord|equibop|vesktop|.*Cressida|.*telegram.*|.*fluxer.*|zalo|Zalo|spotify|Spotify|ONLYOFFICE|.*Obsidian|me.proton.Mail)$"
 # default_maximize = true
@@ -659,7 +665,11 @@ default_floating_size = { width = 0.1, height = 0.1 }
 
 # title_bar = "off"
 [[window_rule]]
-match.app_id = "^proton.vpn.*$"
+match.app_id = "^(Library|Pushbullet.*|Picture-in.*|Picture in.*|splash.*|Splash.*|Close Tor Browser|Welcome to.*|.*Setup Wizard|.*User Agreement|New Solution|zoom.*|Calculator.*|Warning.*|Friends List|Myrlyn-.*|Incoming.*|Active connection found|Sign into Modrinth|.*Updater|dialog.*|All Files|confirm.*|Save.*|.*save the video?|blob:file:///.*|Open Folder.*|Open File.*|File Upload.*|Select.*|Choose wallpaper.*|Choose an image.*|Choose File|Projects Folder|Locate ISO.*|blob.*|Open project|Open Document|datapacks|.*//account.proton.me/.*|Choose photolan|Find Java.*|Choose Projectless.*|Location|^proton.vpn.*$|zoom|Updater.*|Starting Apache.*|Warning.*)$"
+title_bar = "off"
+[[window_rule]]
+match.app_id = "discord|equibop|vesktop"
+match.title = "^(.*Updater|equibop|vesktop)$"
 title_bar = "off"
 
 # border_width = 0

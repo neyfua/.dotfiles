@@ -86,7 +86,6 @@ require("mini.diff").setup({
 		overlay_style = "hunk",
 	},
 	mappings = {
-		-- same keymaps as codediff.nvim
 		goto_next = "]c",
 		goto_prev = "[c",
 	},
@@ -145,11 +144,16 @@ require("conform").setup({
 		less = oxfmtFormatter,
 		scss = oxfmtFormatter,
 		["markdown.mdx"] = oxfmtFormatter,
-		lua = { "stylua" },
+		lua = { "emmylua_codeformat" },
 		sh = { "shfmt" },
 		fish = { "fish_indent" },
 	},
 	formatters = {
+		emmylua_codeformat = {
+			command = "emmylua-codeformat",
+			args = { "format", "-i", "-d" },
+			stdin = true,
+		},
 		oxfmt = {
 			-- Treat oxfmt as available only when the project has an oxfmt config
 			-- (.oxfmtrc.json / .oxfmtrc.jsonc). Without it, oxfmt is skipped and the

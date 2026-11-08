@@ -15,8 +15,9 @@ require("mason-tool-installer").setup({
 		"html-lsp",
 		"jdtls",
 		"json-lsp",
-		"lua-language-server",
+		"emmylua_ls",
 		"pyright",
+		"tailwindcss-language-server",
 
 		-- formatters
 		"beautysh",
@@ -24,7 +25,7 @@ require("mason-tool-installer").setup({
 		"clang-format",
 		"gofumpt",
 		"prettierd",
-		"stylua",
+		"emmylua-codeformat",
 	},
 	auto_update = true,
 	run_on_start = true,
@@ -58,10 +59,11 @@ vim.lsp.enable({
 	"html",
 	"jdtls",
 	"jsonls",
-	"lua_ls",
+	"emmylua_ls",
 	"oxlint",
 	"pyright",
 	"rust_analyzer",
 	"tailwindcss",
 	"vtsls",
+	"mpls",
 })

@@ -3,7 +3,7 @@ local ok, err = pcall(function()
 	for _, name in ipairs({
 		"ansiblels", "ast_grep", "bashls", "cssls", "docker_compose_language_service",
 		"docker_language_server", "dockerls", "emmet_language_server", "fish_lsp",
-		"gopls", "html", "jdtls", "jsonls", "lua_ls", "pyright",
+		"gopls", "html", "jdtls", "jsonls", "emmylua_ls", "pyright",
 	}) do
 		assert(vim.lsp.is_enabled(name), name .. " is disabled")
 		assert(vim.lsp.config[name].capabilities.textDocument.completion.completionItem.snippetSupport,

@@ -463,16 +463,19 @@ transition = [ "disc" ]
 transition_duration = 2500
 
     [wallpaper.default]
-    path = "/home/neyfua/Pictures/Wallpapers/honda-s2000(2).jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/forza-6(1).png"
 
     [wallpaper.last]
-    path = "/home/neyfua/Pictures/Wallpapers/honda-s2000(2).jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/forza-6(1).png"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/neyfua/Pictures/Wallpapers/honda-s2000(2).jpg"
+    path = "/home/neyfua/Pictures/Wallpapers/forza-6(1).png"
 
     [[wallpaper.favorite]]
     path = "/home/neyfua/Pictures/Wallpapers/snow-pine-forest.png"
+
+    [[wallpaper.favorite]]
+    path = "/home/neyfua/Pictures/Wallpapers/forza-6(1).png"
 
 [widget.clock]
 format = "{:%b %-d  %-I:%M %p}"
@@ -507,7 +510,7 @@ pinned = [
     "spotify-launcher",
     "vesktop",
     "discord",
-    "firefox",
+    "LibreWolf",
     "foot"
 ]
 

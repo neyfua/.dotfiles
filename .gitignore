@@ -1,2 +1,3 @@
+.config/nvim/tests/
 .config/nvim/nvim-pack-lock.json
 .config/fish/fish_*
