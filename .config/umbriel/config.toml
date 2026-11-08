@@ -239,14 +239,18 @@ repeat_delay = 200
 # options = "grp:alt_shift_toggle"
 
 [input.touchpad]
+enabled = true
 tap = true
+# tap_and_drag = false
+drag_lock = "sticky"
 natural_scroll = true
 left_handed = false
 accel_profile = "flat"
-sensitivity = 0.85
-scroll_factor = 0.45
+sensitivity = 0.80
+# scroll_factor = 1.5
 disable_while_typing = true
 disable_on_external_mouse = true
+# scroll_method = "edge"
 # click_method = "clickfinger"
 # tap_button_map = "left_middle_right"
 
