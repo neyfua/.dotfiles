@@ -8384,6 +8384,67 @@ read if you used those and something break with a version upgrade you're on your
 @define-color placeholder_text_color #bfb9bc;
 /* Very contrasty background for text views (@theme_text_color foreground) */
 @define-color text_view_bg #34304b;
+
+/* Nautilus: remove theme highlights at the titlebar/content boundary. */
+.nautilus-window headerbar,
+.nautilus-window headerbar:backdrop,
+.nautilus-window .content-pane {
+  box-shadow: none;
+  border-top: none;
+  border-bottom: none;
+}
+
+/* Slimmer toolbar row (back button -> view options). */
+.nautilus-window headerbar {
+  min-height: 34px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.nautilus-window headerbar button {
+  min-height: 26px;
+}
+
+/* Hide the pathbar's context menu button (New Folder, Reload, etc.). */
+.nautilus-window headerbar .nautilus-pathbar > menubutton,
+.nautilus-window headerbar .nautilus-pathbar > menubutton > button {
+  opacity: 0;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  -gtk-icon-size: 0;
+}
+
+/* Nautilus 51 uses CSS classes, not the older widget IDs. */
+.nautilus-window headerbar .nautilus-pathbar button {
+  min-height: 30px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.nautilus-window headerbar .nautilus-path-button {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+/* ponytail: portal chooser uses GTK's .filechooser style class, not .nautilus-window. */
+.nautilus-window .sidebar-pane headerbar button.toggle,
+.nautilus-window .sidebar-pane headerbar menubutton,
+.nautilus-window .content-pane headerbar box > stack > button.toggle,
+.filechooser .sidebar-pane headerbar button.toggle,
+.filechooser .sidebar-pane headerbar menubutton,
+.filechooser headerbar box > stack > button.toggle {
+  opacity: 0;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  border: none;
+  -gtk-icon-size: 0;
+}
+
 @define-color budgie_tasklist_indicator_color rgba(123, 120, 124, 0.7);
 @define-color budgie_tasklist_indicator_color_active #9ccfd8;
 @define-color budgie_tasklist_indicator_color_active_window rgba(121, 158, 168, 0.816);

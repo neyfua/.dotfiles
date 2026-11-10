@@ -123,7 +123,7 @@ layout = "scrolling"
 start_in_terminal_mode = true
 
 [agents]
-enabled = false
+enabled = true
 
 [appearance]
 theme = "rose_pine"
@@ -156,6 +156,7 @@ scroll_column_width = 50
 scroll_column_max = 90
 dim_unfocused = 30
 border_focused_color = "#c4a7e7"
+scrollback_lines = 50000
 
 [appearance.scrollbar]
 style = "thin"
@@ -185,8 +186,8 @@ swap_left = ["H", "ctrl+alt+left"]
 swap_right = ["L", "ctrl+alt+right"]
 
 [keybindings.terminal_mode]
-swap_left = ["ctrl+alt+left"]
-swap_right = ["ctrl+alt+right"]
+swap_left = ["alt+shift+left"]
+swap_right = ["alt+shift+right"]
 terminal_scroll_up = ["ctrl+up"]
 terminal_scroll_down = ["ctrl+down"]
 terminal_scroll_page_up = ["shift+up", "shift+pgup"]
@@ -198,7 +199,7 @@ enabled = false
 [appearance.selection]
 bg = "#403d52"
 fg = "#e0def4"
-bold = false
+bold = true
 search_bg = "#f6c177"
 search_fg = "#191724"
 match_bg = "#9ccfd8"
@@ -221,4 +222,9 @@ width = 20
 [screensaver]
 enabled = true
 idle_minutes = 15
-effect = "random"
+effect = "blackhole"
+while_busy = true
+
+[daemon]
+window_size = "latest"
+resume_agents = "auto"

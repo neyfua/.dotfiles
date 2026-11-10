@@ -1,4 +1,4 @@
-config_version = 19
+config_version = 20
 
 [backdrop]
 enabled = true
@@ -28,7 +28,7 @@ order = [ "top-bar", "left-bar" ]
     center = [ "weather", "clock" ]
     concave_edge_corners = false
     enabled = true
-    end = [ "tray", "network", "volume", "battery" ]
+    end = [ "tray", "notifications", "network", "volume", "battery" ]
     hover_highlight = false
     margin_ends = 0
     padding = 6
@@ -103,7 +103,7 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
     timeout = 660.0
 
 [location]
-address = "Ho Chi Minh City, Vietnam"
+address = "Thu Duc, Ho Chi Minh City, Vietnam"
 custom_schedule = true
 sunrise = "07:00"
 sunset = "19:00"
@@ -113,8 +113,8 @@ blur_intensity = 0.29999999329447746
 edge_smoothness = 0.19999999552965164
 fingerprint = false
 tint_intensity = 0.44999998994171619
-transition = [ "fade" ]
-transition_duration = 300
+transition = [ "melt" ]
+transition_duration = 500
 
 [lockscreen_widgets]
 enabled = true
@@ -256,8 +256,10 @@ enabled = true
 [notification]
 background_opacity = 0.67999998480081558
 layer = "overlay"
-max_visible = 4
-scale = 0.85000000521540642
+max_visible = 3
+offset_x = 8
+scale = 0.90000000596046448
+width = 280
 
 [osd]
 background_opacity = 0.67999998480081558
@@ -289,7 +291,7 @@ manager_position = "auto"
 ssh_user = "khang"
 
 [plugin_settings."neyfua/obs-integration"]
-checkout_dir = "~/Projects/OBS"
+checkout_dir = "~/Projects/obs"
 panel_position = "auto"
 
 [plugin_settings."nightwatch75/dns-switcher"]
@@ -428,6 +430,11 @@ umbriel_overview_close_on_launch_enabled = true
 
     [shell.shadow]
     direction = "center"
+
+    [shell.window_switcher]
+    mru = true
+    show_count = false
+    style = "icons"
 
 [system.monitor]
 cpu_temp_activity_threshold = 80
