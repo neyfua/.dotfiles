@@ -7,7 +7,7 @@ enabled = true
 order = [ "top-bar", "left-bar" ]
 
     [bar.left-bar]
-    background_opacity = 0.7799999825656414
+    background_opacity = 0.74999998323619366
     center = []
     concave_edge_corners = false
     enabled = true
@@ -17,9 +17,11 @@ order = [ "top-bar", "left-bar" ]
     padding = 6
     position = "left"
     radius = 0
-    show_tooltip = false
     start = [ "taskbar" ]
-    thickness = 45
+    thickness = 40
+
+        [bar.left-bar.dead_zone.actions]
+        right = "none"
 
     [bar.top-bar]
     capsule = true
@@ -28,13 +30,13 @@ order = [ "top-bar", "left-bar" ]
     center = [ "weather", "clock" ]
     concave_edge_corners = false
     enabled = true
-    end = [ "tray", "notifications", "network", "volume", "battery" ]
+    end = [ "tray", "network", "volume", "battery" ]
     hover_highlight = false
     margin_ends = 0
-    padding = 6
+    padding = 8
     radius = 0
-    start = [ "workspaces" ]
-    thickness = 24
+    start = [ "workspaces", "media" ]
+    thickness = 26
 
 [battery]
 warning_threshold = 15
@@ -55,8 +57,9 @@ event_time_format = "%I:%M %p"
     type = "google"
 
 [control_center]
+sidebar = "full"
 sidebar_section = "none"
-width = 680
+width = 650
 
     [control_center.calendar]
 
@@ -193,11 +196,11 @@ widget_order = [
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
     box_height = 70.0
     box_width = 400.0
-    cx = 640.0
-    cy = 724.57159423828125
+    cx = 604.99993896484375
+    cy = 684.72021484375
     output = "eDP-1"
-    placement_height = 800.0
-    placement_width = 1280.0
+    placement_height = 756.0
+    placement_width = 1210.0
     rotation = 0.0
     type = "login_box"
 
@@ -222,11 +225,11 @@ widget_order = [
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
     box_height = 0.0
     box_width = 0.0
-    cx = 640.0
-    cy = 316.80001831054688
+    cx = 604.99993896484375
+    cy = 299.37603759765625
     output = "eDP-1"
-    placement_height = 800.0
-    placement_width = 1280.0
+    placement_height = 756.0
+    placement_width = 1210.0
     rotation = 0.0
     type = "clock"
 
@@ -239,11 +242,11 @@ widget_order = [
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000005]
     box_height = 48.0
     box_width = 120.0
-    cx = 757.02874755859375
-    cy = 239.08576965332031
+    cx = 715.628662109375
+    cy = 225.93605041503906
     output = "eDP-1"
-    placement_height = 800.0
-    placement_width = 1280.0
+    placement_height = 756.0
+    placement_width = 1210.0
     rotation = 0.0
     type = "weather"
 
@@ -313,6 +316,11 @@ hyprpicker-disable-preview = true
 lowercase-hex = true
 panel_position = "auto"
 
+[plugin_settings."samuelskovbakke/calculator-plus"]
+history_size = 64
+panel_placement = "floating"
+panel_position = "bottom_right"
+
 [plugin_settings."thaer99ob/default-apps"]
 manager_position = "auto"
 
@@ -338,7 +346,8 @@ enabled = [
     "thaer99ob/default-apps",
     "cleboost/hotspot",
     "oldirtty/color_picker",
-    "noctalia/lyrics"
+    "noctalia/lyrics",
+    "samuelskovbakke/calculator-plus"
 ]
 
     [[plugins.source]]
@@ -390,7 +399,9 @@ umbriel_overview_close_on_launch_enabled = true
     [shell.screenshot]
     confirm_region = true
     directory = "/home/neyfua/Pictures/Screenshots"
-    region_dim_opacity = 0.34999999217689037
+    region_dim_opacity = 0.19999999552965164
+    region_modifier = "shift"
+    remember_last_region = true
     skip_annotate_on_copy_save = true
 
     [shell.session]
@@ -492,6 +503,13 @@ tooltip_format = "{:%-I:%M:%S %p\\n%A, %B %d %Y}"
 glyph = "grid-dots"
 scale = 2.0
 
+[widget.media]
+hide_when_no_media = true
+max_length = 350
+min_length = 0
+rotate_album_art = true
+title_scroll = "on_hover"
+
 [widget.network]
 show_label = false
 
@@ -507,19 +525,7 @@ show_value = false
 [widget.taskbar]
 icon_scale = 2.0
 inactive_opacity = 0.67999999999999994
-pinned = [
-    "org.gnome.Nautilus",
-    "chatgpt",
-    "dev.zed.Zed",
-    "roblox-account-manager",
-    "roblox-studio",
-    "zalo",
-    "spotify-launcher",
-    "vesktop",
-    "discord",
-    "LibreWolf",
-    "foot"
-]
+pinned = [ "roblox-account-manager", "gg.eldorado.tyche", "zalo", "spotify-launcher", "vesktop", "discord", "firefox", "foot" ]
 
     [widget.taskbar.actions]
     scroll_down = "none"

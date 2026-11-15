@@ -7,6 +7,31 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "agent_servers": {
+    "antigravity-acp": {
+      "favorite_config_option_values": {
+        "model": [
+          "gemini-4-argon",
+          "claude-opus-5-5"
+        ],
+        "mode": [
+          "auto_edit"
+        ],
+        "thinking_level": [
+          "medium"
+        ]
+      },
+      "default_config_options": {
+        "mode": "auto_edit",
+        "thinking_level": "low",
+        "model": "gemini-4-argon"
+      },
+      "type": "registry"
+    },
+    "codex-acp": {
+      "type": "registry"
+    }
+  },
   "cli_default_open_behavior": "existing_window",
   "word_diff_enabled": true,
   "minimum_contrast_for_highlights": 65.0,
@@ -20,6 +45,7 @@
     "dock": "left",
   },
   "agent": {
+    "flexible": true,
     "dock": "right",
     "favorite_models": [],
     "model_parameters": [],
@@ -48,8 +74,8 @@
     "toggle_relative_line_numbers": true,
   },
   "cursor_blink": false,
-  "agent_buffer_font_size": 15.0,
-  "agent_ui_font_size": 16.0,
+  "agent_buffer_font_size": 14.0,
+  "agent_ui_font_size": 17.0,
   "ui_font_family": ".ZedSans",
   "window_decorations": "server",
   "use_system_window_tabs": false,
@@ -68,7 +94,7 @@
   "terminal": {
     "max_scroll_history_lines": 10000,
     "dock": "bottom",
-    "font_size": 16.0,
+    "font_size": 14.0,
     "font_family": "Maple Mono",
   },
   "project_panel": {
@@ -138,8 +164,8 @@
     "light": "Zed (Default)",
     "dark": "Material Icon Theme",
   },
-  "ui_font_size": 16.5,
-  "buffer_font_size": 15.5,
+  "ui_font_size": 17,
+  "buffer_font_size": 15,
   "theme": {
     "mode": "dark",
     "light": "One Dark",

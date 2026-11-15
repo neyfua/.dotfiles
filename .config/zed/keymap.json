@@ -181,4 +181,16 @@
       "ctrl-shift-pagedown": null,
     },
   },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "alt-a": "workspace::ToggleRightDock"
+    }
+  },
+  {
+    "context": "Workspace",
+    "unbind": {
+      "ctrl-alt-b": "workspace::ToggleRightDock"
+    }
+  }
 ]
