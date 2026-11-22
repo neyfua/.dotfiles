@@ -150,3 +150,5 @@ PROMPT_COMMAND=prompt_command
 . "$HOME/.aftman/env"
 
 . "$HOME/.local/share/../bin/env"
+export PONYTAIL_DEFAULT_MODE=ultra
+export CAVEMAN_DEFAULT_MODE=ultra

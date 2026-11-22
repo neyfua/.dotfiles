@@ -33,23 +33,7 @@ require("blink.cmp").setup({
 	--   default = { "lsp", "path", "snippets", "buffer" },
 	-- },
 
-	cmdline = {
-		enabled = true,
-		keymap = {
-			preset = "cmdline",
-			["<Right>"] = false,
-			["<Left>"] = false,
-		},
-		completion = {
-			list = { selection = { preselect = false } },
-			menu = {
-				auto_show = function(ctx)
-					return vim.fn.getcmdtype() == ":"
-				end,
-			},
-			ghost_text = { enabled = true },
-		},
-	},
+	cmdline = { enabled = false },
 
 	keymap = {
 		preset = "enter",
@@ -90,16 +74,17 @@ require("mini.diff").setup({
 		goto_prev = "[c",
 	},
 })
--- Split / TUIOS pane navigation
-require("tuios-nvim-navigator").setup({
-	keymaps = {
-		left = "<C-Left>",
-		down = "<C-Down>",
-		up = "<C-Up>",
-		right = "<C-Right>",
-	},
-	modes = { "n", "i", "v", "x", "s" },
-})
+-- Split / tmux pane navigation
+local nvim_tmux_nav = require("nvim-tmux-navigation")
+nvim_tmux_nav.setup({ disable_when_zoomed = true })
+for lhs, fn in pairs({
+	["<M-Left>"] = nvim_tmux_nav.NvimTmuxNavigateLeft,
+	["<M-Down>"] = nvim_tmux_nav.NvimTmuxNavigateDown,
+	["<M-Up>"] = nvim_tmux_nav.NvimTmuxNavigateUp,
+	["<M-Right>"] = nvim_tmux_nav.NvimTmuxNavigateRight,
+}) do
+	vim.keymap.set({ "n", "i", "v", "x", "s" }, lhs, fn, { silent = true })
+end
 
 require("search-replace").setup({
 	default_replace_single_buffer_options = "gcI",

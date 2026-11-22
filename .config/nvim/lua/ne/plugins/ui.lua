@@ -38,12 +38,6 @@ require("snacks").setup({
 	words = { enabled = true },
 })
 
-require("tiny-cmdline").setup({
-	position = {
-		y = "20%",
-	},
-})
-
 require("lualine").setup({
 	options = {
 		theme = "auto",
@@ -125,18 +119,8 @@ require("lualine").setup({
 	},
 })
 
--- LSP word-reference backgrounds cover diagnostic underlines on matching text.
-local function keep_diagnostic_underlines_visible()
-	for _, group in ipairs({ "LspReferenceText", "LspReferenceRead", "LspReferenceWrite" }) do
-		vim.api.nvim_set_hl(0, group, { bg = "NONE" })
-	end
-end
-
-keep_diagnostic_underlines_visible()
-vim.api.nvim_create_autocmd("ColorScheme", { callback = keep_diagnostic_underlines_visible })
-
 vim.diagnostic.config({
-	underline = true,
+	underline = false,
 	update_in_insert = false,
 	virtual_text = false,
 	severity_sort = true,

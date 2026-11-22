@@ -1,6 +1,13 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
+-- foot forwards C-v; paste from system clipboard in every editing mode
+keymap.set({ "n", "v" }, "<C-v>", '"+p', opts)
+keymap.set("i", "<C-v>", "<C-r>=getreg('+')<CR>", opts)
+keymap.set("c", "<C-v>", "<C-r>=getreg('+')<CR>", { noremap = true })
+-- keep blockwise visual on C-q since C-v now pastes
+keymap.set({ "n", "v" }, "<C-q>", "<C-v>", opts)
+
 -- Do things without updating the registers
 keymap.set("n", "x", '"_x')
 keymap.set("n", "<Leader>p", '"0p')

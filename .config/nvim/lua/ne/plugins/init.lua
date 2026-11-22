@@ -20,7 +20,6 @@ vim.pack.add({
 	{ src = gh("folke/snacks.nvim") },
 	{ src = gh("folke/trouble.nvim") },
 	{ src = gh("nvim-lualine/lualine.nvim") },
-	{ src = gh("rachartier/tiny-cmdline.nvim") },
 	-- Editor
 	{ src = gh("stevearc/conform.nvim") },
 	{ src = gh("nvim-treesitter/nvim-treesitter") },
@@ -41,7 +40,7 @@ vim.pack.add({
 	{ src = gh("WhoIsSethDaniel/mason-tool-installer.nvim") },
 	-- Util
 	{ src = gh("stevearc/oil.nvim") },
-	{ src = gh("Tim4c/tuios-nvim-navigator") },
+	{ src = gh("alexghergh/nvim-tmux-navigation") },
 	{ src = gh("roobert/search-replace.nvim") },
 })
 

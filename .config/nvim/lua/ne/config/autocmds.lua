@@ -34,4 +34,16 @@ vim.filetype.add({
 	extension = {
 		mjml = "html",
 	},
+	-- Files with trailing commas need jsonc, not json (avoids treesitter parse-error render glitch)
+	filename = {
+		["opencode.json"] = "jsonc",
+		[".eslintrc.json"] = "jsonc",
+		["tsconfig.json"] = "jsonc",
+		["jsconfig.json"] = "jsonc",
+		[".vscode/settings.json"] = "jsonc",
+	},
+	pattern = {
+		["tsconfig.*.json"] = "jsonc",
+		[".vscode/*.json"] = "jsonc",
+	},
 })

@@ -7,7 +7,7 @@ enabled = true
 order = [ "top-bar", "left-bar" ]
 
     [bar.left-bar]
-    background_opacity = 0.74999998323619366
+    background_opacity = 0.84999998100101948
     center = []
     concave_edge_corners = false
     enabled = true
@@ -18,10 +18,7 @@ order = [ "top-bar", "left-bar" ]
     position = "left"
     radius = 0
     start = [ "taskbar" ]
-    thickness = 40
-
-        [bar.left-bar.dead_zone.actions]
-        right = "none"
+    thickness = 45
 
     [bar.top-bar]
     capsule = true
@@ -30,10 +27,10 @@ order = [ "top-bar", "left-bar" ]
     center = [ "weather", "clock" ]
     concave_edge_corners = false
     enabled = true
-    end = [ "tray", "network", "volume", "battery" ]
+    end = [ "tray", "notifications", "network", "volume", "battery" ]
     hover_highlight = false
     margin_ends = 0
-    padding = 8
+    padding = 6
     radius = 0
     start = [ "workspaces", "media" ]
     thickness = 26
@@ -196,8 +193,8 @@ widget_order = [
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
     box_height = 70.0
     box_width = 400.0
-    cx = 604.99993896484375
-    cy = 684.72021484375
+    cx = 605.0
+    cy = 684.72027587890625
     output = "eDP-1"
     placement_height = 756.0
     placement_width = 1210.0
@@ -223,10 +220,10 @@ widget_order = [
         show_weather = true
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
-    box_height = 0.0
-    box_width = 0.0
-    cx = 604.99993896484375
-    cy = 299.37603759765625
+    box_height = 200.0
+    box_width = 560.0
+    cx = 605.5
+    cy = 342.49993896484375
     output = "eDP-1"
     placement_height = 756.0
     placement_width = 1210.0
@@ -240,10 +237,10 @@ widget_order = [
         format = "{:%I:%M %p\\n%A, %B %d}"
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000005]
-    box_height = 48.0
+    box_height = 56.0
     box_width = 120.0
-    cx = 715.628662109375
-    cy = 225.93605041503906
+    cx = 709.4998779296875
+    cy = 266.50003051757812
     output = "eDP-1"
     placement_height = 756.0
     placement_width = 1210.0
@@ -319,7 +316,7 @@ panel_position = "auto"
 [plugin_settings."samuelskovbakke/calculator-plus"]
 history_size = 64
 panel_placement = "floating"
-panel_position = "bottom_right"
+panel_position = "top_left"
 
 [plugin_settings."thaer99ob/default-apps"]
 manager_position = "auto"
@@ -361,7 +358,7 @@ enabled = [
     name = "community"
 
 [shell]
-avatar_path = "/home/neyfua/Pictures/Saved/285ce5b312cf041f98bd0fcef75b2a4e_rose-pine.jpg"
+avatar_path = "/home/neyfua/Pictures/Pfps/3225286812c491a8db3234525d5985d5_rose-pine.jpg"
 button_borders = false
 card_borders = false
 clipboard_auto_paste = "off"
@@ -471,7 +468,7 @@ source = "builtin"
 wallpaper_scheme = "m3-content"
 
     [theme.templates]
-    enable_builtin_templates = false
+    builtin_ids = [ "luciole" ]
     enable_community_templates = false
 
 [wallpaper]
@@ -523,9 +520,11 @@ hide_inactive = true
 show_value = false
 
 [widget.taskbar]
+group_unpinned = true
 icon_scale = 2.0
-inactive_opacity = 0.67999999999999994
-pinned = [ "roblox-account-manager", "gg.eldorado.tyche", "zalo", "spotify-launcher", "vesktop", "discord", "firefox", "foot" ]
+inactive_opacity = 0.78000000000000003
+item_spacing = 3
+pinned = [ "zalo", "spotify-launcher", "vesktop", "discord", "firefox" ]
 
     [widget.taskbar.actions]
     scroll_down = "none"
@@ -549,14 +548,10 @@ show_label = false
 show_condition = false
 
 [widget.workspaces]
-active_pill_size = 4.0
+active_pill_size = 3.25
 empty_color = "hover"
 focused_color = "on_surface"
 hide_when_empty = true
 occupied_color = "hover"
-pill_scale = 0.45000000000000007
+pill_scale = 0.5
 show_labels = false
-
-    [widget.workspaces.actions]
-    scroll_down = "none"
-    scroll_up = "none"
