@@ -36,7 +36,7 @@ map({
 			if vim.bo.filetype == "oil" then
 				oil.close()
 			else
-				oil.open_float(nil, { preview = {} })
+				oil.open_float()
 			end
 		end,
 		desc = "Toggle file explorer",

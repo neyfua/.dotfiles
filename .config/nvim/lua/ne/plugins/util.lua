@@ -82,7 +82,7 @@ require("oil").setup({
 		max_width = 200,
 	},
 	preview_win = {
-		update_on_cursor_moved = true,
+		update_on_cursor_moved = false,
 	},
 	lsp_file_methods = {
 		enabled = true,

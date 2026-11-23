@@ -152,3 +152,6 @@ PROMPT_COMMAND=prompt_command
 . "$HOME/.local/share/../bin/env"
 export PONYTAIL_DEFAULT_MODE=ultra
 export CAVEMAN_DEFAULT_MODE=ultra
+
+# Bug-bounty engagement scaffolding (bug-bounty-claude-skills)
+source ~/.claude/scripts/hunt.sh

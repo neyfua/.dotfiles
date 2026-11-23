@@ -82,46 +82,88 @@ local function get_buf_info(bufnr)
 	return filename, icon
 end
 
----Render a single tab
+---Plain title for a tab (no highlight markup)
 ---@param tabnr number
----@param is_active boolean
----@return string
-local function render_tab(tabnr, is_active)
+---@return string?
+local function tab_title(tabnr)
 	local buflist = vim.fn.tabpagebuflist(tabnr)
 	local winnr = vim.fn.tabpagewinnr(tabnr)
 	local bufnr = buflist[winnr]
 
 	if not bufnr then
-		return ""
+		return nil
 	end
 
 	local filename, icon = get_buf_info(bufnr)
 	local modified = vim.bo[bufnr].modified
 
-	-- Build the tab content
-	local title = "   " .. icon .. " " .. filename
 	if modified then
-		title = "   [+] " .. icon .. " " .. filename
+		return "   [+] " .. icon .. " " .. filename .. "   "
 	end
-	title = title .. "   "
+	return "   " .. icon .. " " .. filename .. "   "
+end
 
-	-- Select highlight groups based on active state
-	local tab_hl = is_active and "%#TabLineActive#" or "%#TabLineInactive#"
-	-- Build clickable rectangular tab
-	return string.format("%%%dT%s%s%%T", tabnr, tab_hl, title)
+---Pick the slice of tabs to show so the active tab is always visible
+---@param widths number[] display width per tab
+---@param active number
+---@param avail number
+---@return number first, number last
+local function visible_range(widths, active, avail)
+	local total = 0
+	for _, w in ipairs(widths) do
+		total = total + w
+	end
+	if total <= avail then
+		return 1, #widths
+	end
+
+	-- Leave room for the "<" / ">" overflow markers
+	local budget = avail - 2 - widths[active]
+	local first, last = active, active
+
+	for i = active - 1, 1, -1 do
+		if widths[i] > budget then
+			break
+		end
+		budget = budget - widths[i]
+		first = i
+	end
+	for i = active + 1, #widths do
+		if widths[i] > budget then
+			break
+		end
+		budget = budget - widths[i]
+		last = i
+	end
+
+	return first, last
 end
 
 ---Render the complete tabline
 ---@return string
 function M.render()
 	local ok, result = pcall(function()
-		local parts = {}
 		local current_tab = vim.fn.tabpagenr()
 		local tab_count = vim.fn.tabpagenr("$")
 
+		local titles, widths = {}, {}
 		for tabnr = 1, tab_count do
-			local is_active = tabnr == current_tab
-			parts[#parts + 1] = render_tab(tabnr, is_active)
+			titles[tabnr] = tab_title(tabnr) or ""
+			widths[tabnr] = vim.fn.strdisplaywidth(titles[tabnr])
+		end
+
+		local first, last = visible_range(widths, current_tab, vim.o.columns)
+
+		local parts = {}
+		if first > 1 then
+			parts[#parts + 1] = "%#TabLineInactive#<"
+		end
+		for tabnr = first, last do
+			local tab_hl = tabnr == current_tab and "%#TabLineActive#" or "%#TabLineInactive#"
+			parts[#parts + 1] = string.format("%%%dT%s%s%%T", tabnr, tab_hl, titles[tabnr])
+		end
+		if last < tab_count then
+			parts[#parts + 1] = "%#TabLineInactive#>"
 		end
 
 		return table.concat(parts) .. "%#TabLineFill#"

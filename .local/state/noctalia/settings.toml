@@ -14,23 +14,25 @@ order = [ "top-bar", "left-bar" ]
     end = [ "launcher" ]
     hover_highlight = false
     margin_ends = 0
-    padding = 6
+    padding = 0
     position = "left"
     radius = 0
-    start = [ "taskbar" ]
+    start = [ "spacer_2", "taskbar" ]
     thickness = 45
+
+        [bar.left-bar.dead_zone.actions]
+        right = "none"
 
     [bar.top-bar]
     capsule = true
     capsule_opacity = 0.0
     capsule_padding = 1.0
     center = [ "weather", "clock" ]
-    concave_edge_corners = false
     enabled = true
     end = [ "tray", "notifications", "network", "volume", "battery" ]
     hover_highlight = false
     margin_ends = 0
-    padding = 6
+    padding = 8
     radius = 0
     start = [ "workspaces", "media" ]
     thickness = 26
@@ -257,17 +259,18 @@ enabled = true
 background_opacity = 0.67999998480081558
 layer = "overlay"
 max_visible = 3
-offset_x = 8
-scale = 0.90000000596046448
-width = 280
+newest_on_edge = true
+offset_x = 6
+width = 300
 
 [osd]
-background_opacity = 0.67999998480081558
+background_opacity = 0.57999998703598976
+border = false
 hide_delay_ms = 1000
 offset_y = 10
 position = "bottom_center"
 position_vertical = "center_right"
-scale = 0.85000000521540642
+scale = 0.90000000596046448
 
     [osd.kinds]
     custom = false
@@ -478,13 +481,13 @@ transition = [ "disc" ]
 transition_duration = 2500
 
     [wallpaper.default]
-    path = "/home/neyfua/Pictures/Wallpapers/forza-6(1).png"
+    path = "/home/neyfua/Pictures/Wallpapers/watanabe-you.jpg"
 
     [wallpaper.last]
-    path = "/home/neyfua/Pictures/Wallpapers/forza-6(1).png"
+    path = "/home/neyfua/Pictures/Wallpapers/watanabe-you.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/neyfua/Pictures/Wallpapers/forza-6(1).png"
+    path = "/home/neyfua/Pictures/Wallpapers/watanabe-you.jpg"
 
     [[wallpaper.favorite]]
     path = "/home/neyfua/Pictures/Wallpapers/snow-pine-forest.png"
@@ -492,12 +495,16 @@ transition_duration = 2500
     [[wallpaper.favorite]]
     path = "/home/neyfua/Pictures/Wallpapers/forza-6(1).png"
 
+[widget.battery]
+display_mode = "graphic"
+
 [widget.clock]
-format = "{:%b %-d  %-I:%M %p}"
+format = "{:%b %d  %-I:%M %p}"
 tooltip_format = "{:%-I:%M:%S %p\\n%A, %B %d %Y}"
 
 [widget.launcher]
-glyph = "grid-dots"
+custom_image = "/usr/share/pixmaps/distribution-logos/opensuse.svg"
+custom_image_colorize = true
 scale = 2.0
 
 [widget.media]
@@ -519,12 +526,16 @@ hide_inactive = true
 [widget.ram]
 show_value = false
 
+[widget.spacer_2]
+length = 6
+type = "spacer"
+
 [widget.taskbar]
 group_unpinned = true
 icon_scale = 2.0
 inactive_opacity = 0.78000000000000003
 item_spacing = 3
-pinned = [ "zalo", "spotify-launcher", "vesktop", "discord", "firefox" ]
+pinned = [ "foot", "spotify-launcher", "vesktop", "discord", "firefox" ]
 
     [widget.taskbar.actions]
     scroll_down = "none"

@@ -485,9 +485,6 @@ opacity = 0.95
 [[window_rule]]
 match.is_dialog = true
 title_bar = "off"
-# [[window_rule]]
-# match.is_floating = true
-# border_width = 3
 [[window_rule]]
 match.is_alone = true
 default_maximize = true
@@ -495,42 +492,41 @@ border_width = 0
 outer_border_width = 0
 
 [[window_rule]]
-match.app_id = "^(code|.*Zed|jetbrains.*|antigravity|cursor|.*Claude|Chatgpt|steam|Upload Labs|.*Sober|sober_services|.*[vV]inegar|.*robloxstudio.*|.*PolyMC|CurseForge|.*PrismLauncher|.*Minecraft.*)$"
+match.app_id = ["^code$", "^.*Zed$", "^jetbrains.*$", "^antigravity$", "^cursor$", "^.*Claude$", "^Chatgpt$", "^steam$", "^Upload Labs$", "^.*Sober$", "^sober_services$", "^.*[vV]inegar$", "^.*[rR]oblox[sS]tudio.*$", "^.*PolyMC$", "^CurseForge$", "^.*PrismLauncher$", "^.*Minecraft.*$"]
 default_workspace = 1
 
 [[window_rule]]
-match.app_id = "^(firefox|librewolf|floorp|.*zen|Tor Browser|.*torbrowser-launcher|chromium-browser)$"
+match.app_id = ["^firefox$", "^librewolf$", "^floorp$", "^.*zen$", "^(Tor Browser|.*torbrowser-launcher)$", "^chromium-browser$"]
 default_workspace	= 2
 
 [[window_rule]]
-match.app_id = "^(discord|.*-canary.*|equibop|vesktop|.*cressida|.*telegram.*|.*fluxer.*|zalo|Zalo|me.proton.Mail)$"
+match.app_id = ["^discord$", "^.*-canary.*$", "^equibop$", "^vesktop$", "^.*cressida$", "^.*telegram.*$", "^.*fluxer.*$", "^[zZ]alo$", "^.*proton[.]Mail$"]
 default_workspace = 3
 
 [[window_rule]]
-match.app_id = "^(winboat|blender|zoom|virt-.*)$"
+match.app_id = ["^winboat$", "^blender$", "^zoom$", "^virt-.*$"]
 default_workspace = 4
 [[window_rule]]
 match.title = "^OBS.*$"
 default_workspace = 4
+default_maximize = true
 
 [[window_rule]]
-match.app_id = "spotify|Spotify"
+match.app_id = "[sS]potify"
 default_workspace = 5
+default_focused = true
 
 # default_focused = true
 [[window_rule]]
-match.app_id = "spotify|Spotify|sober_services|.*luciole"
+match.app_id = ["sober_services", ".*luciole"]
 default_focused = true
 
 # default_maximize = true
 [[window_rule]]
-match.app_id = "^(code|.*Zed|jetbrains.*|.*Claude|Chatgpt|firefox|librewolf|floorp|Tor Browser|.*torbrowser-launcher|.*zen|chromium-browser|discord|.*-canary.*|equibop|vesktop|.*Cressida|.*telegram.*|.*fluxer.*|zalo|Zalo|spotify|Spotify|ONLYOFFICE|.*Obsidian|me.proton.Mail)$"
+match.app_id = ["^code$", "^.*Zed$", "^jetbrains.*$", "^.*Claude$", "^Chatgpt$", "^firefox$", "^librewolf$", "^floorp$", "^(Tor Browser|.*torbrowser-launcher)$", "^.*zen$", "^chromium-browser$", "^discord$", "^.*-canary.*$", "^equibop$", "^vesktop$", "^.*Cressida$", "^.*telegram.*$", "^.*fluxer.*$", "^[zZ]alo$", "^[sS]potify$", "^ONLYOFFICE$", "^.*Obsidian$", "^caido$", "^.*proton.Mail$"]
 default_maximize = true
 [[window_rule]]
-match.title = "^OBS.*$"
-default_maximize = true
-[[window_rule]]
-match.app_id = "^virt-.*$"
+match.app_id = "^virt-"
 match.title = "Virtual Machine Manager"
 default_maximize = true
 [[window_rule]]
@@ -542,41 +538,27 @@ match.app_id = "zoom"
 match.title = "^Zoom Workplace.*$"
 default_maximize = true
 [[window_rule]]
-match.app_id = "caido"
-match.title = "Caido"
+match.app_id = "^blender$"
+match.title = "^.*- Blender [0-9]+([.][0-9]+)+$"
+default_floating = false
 default_maximize = true
 
-# default_floating = true
+# default_floating = true,
+# default_maximize = false,
+# default_position
 [[window_rule]]
-match.app_id = "^(.*javac.*|zenity|nm-connection-editor|warp-taskbar|sober_services|.*[vV]inegar|GTK Application)$"
+match.app_id = ["^.*javac.*$", "^zenity$", "^nm-connection-editor$", "^warp-taskbar$", "^sober_services$", "^.*[vV]inegar$", "^GTK Application$"]
 default_floating = true
 default_maximize = false
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
-match.title = "^(Add-ons Manager.*|About.*$|Pushbullet.*|Picture-in.*|Picture in.*|splash.*|Splash.*|Close Tor Browser|Welcome to.*|.*Setup Wizard|.*User Agreement|New Solution|zoom.*|Calculator.*|Warning.*|Myrlyn-.*|Incoming.*|Active connection found|Sign into Modrinth|.*Updater|Discord Setup|.*//account.proton.me/.*|Setup - Burp Suite.*)$"
-default_floating = true
-default_maximize = false
-default_position = { x = 0, y = 0, anchor = "center" }
-[[window_rule]]
-match.title = "New VM"
+match.title = ["^Welcome(?:!| to).*$", "^Add-ons Manager.*$", "^About.*$", "^Pushbullet.*$", "^Picture[ -]in.*$", "^[sS]plash.*$", "^Close Tor Browser$", "^.*Setup Wizard$", "^.*User Agreement$", "^New (?:Solution|VM)$", "^zoom.*$", "^Calculator.*$", "^Warning.*$", "^Myrlyn-.*$", "^Incoming.*$", "^Sign into Modrinth$", "^.*Updater$", "^Discord Setup$", "^.*//account.proton.me/.*$"]
 default_floating = true
 default_maximize = false
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
 match.app_id = "code"
-match.title = "^(Settings.*|Uninstall)$"
-default_floating = true
-default_maximize = false
-default_position = { x = 0, y = 0, anchor = "center" }
-[[window_rule]]
-match.app_id = "zen"
-match.title = "^Welcome!.*$"
-default_floating = true
-default_maximize = false
-default_position = { x = 0, y = 0, anchor = "center" }
-[[window_rule]]
-match.app_id = "^.*-StartBurp$"
-match.title = "^Burp Suite$"
+match.title = ["^Settings.*$", "^Uninstall$"]
 default_floating = true
 default_maximize = false
 default_position = { x = 0, y = 0, anchor = "center" }
@@ -584,17 +566,17 @@ default_position = { x = 0, y = 0, anchor = "center" }
 # default_floating = true,
 # default_floating_size_px
 [[window_rule]]
-match.app_id = "^.*noctalia.*$"
+match.app_id = "^.*Noctalia$"
 default_floating =true
 default_floating_size_px = { width = 650, height = 625 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
-match.app_id = "^(xdg-desktop-portal.*|Electron|blender)$"
+match.app_id = ["^xdg-desktop-portal.*$", "^Electron$", "^blender$"]
 default_floating = true
 default_floating_size = { width = 0.75, height = 0.8 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
-match.app_id = "^(.*pavucontrol.*|nm-connection-editor|nwg-look)$"
+match.app_id = ["pavucontrol", "nm-connection-editor", "nwg-look"]
 default_floating = true
 default_floating_size = { width = 0.55, height = 0.65 }
 default_position = { x = 0, y = 0, anchor = "center" }
@@ -604,12 +586,12 @@ default_floating = true
 default_floating_size_px = { width = 880, height = 546 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
-match.app_id = "^.*FileRoller$"
+match.app_id = "FileRoller$"
 default_floating = true
-default_floating_size = { width = 0.4, height = 0.75 }
+default_floating_size = { width = 0.5, height = 0.85 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
-match.title = "Lotus Settings|Fcitx Configuration|New VM" 
+match.title = ["Lotus Settings", "Fcitx Configuration", "New VM"]
 default_floating = true
 default_floating_size = { width = 0.8, height = 0.8 }
 default_position = { x = 0, y = 0, anchor = "center" }
@@ -618,62 +600,43 @@ match.title = "^Active connection found$"
 default_floating = true
 default_floating_size = { width = 0.1, height = 0.1 }
 default_position = { x = 0, y = 0, anchor = "center" }
-[[window_rule]]
-match.app_id = "Electron"
-match.title = "Save"
-default_floating = true
-default_floating_size = { width = 0.75, height = 0.8 }
-default_position = { x = 0, y = 0, anchor = "center" }
 
 # default_floating = true,
 # default_maximize = false,
 # default_floating_size,
 [[window_rule]]
-match.title = "^(Library|dialog.*|All Files|confirm.*|Save.*|.*save the video?|Open Folder.*|Open File.*|Open project|Open Document|Open workspace|File Upload.*|Select.*|Add folder.*|.*data folder|Choose wallpaper.*|Choose an image.*|Choose File|Projects Folder|Locate ISO.*|blob.*|datapacks|Choose photolan|Find Java.*|Choose Projectless.*|Location)$"
+match.title = ["^Choose (?:wallpaper.*|an image.*|File|a folder.*|photolan|Projectless.*)$", "^Open (?:Folder|File|project|Document|workspace|3D File).*$", "^(?:Add|.*data|Projects) [fF]older.*$", "^dialog.*$", "^confirm.*$", "^Select.*$", "^Find Java.*$", "^blob.*$", "^Locate ISO.*$", "^Library$", "^.*[sS]ave.*$", "^All Files$", "^File Upload.*$", "^datapacks$", "^Location$"]
 default_floating = true
 default_maximize = false
 default_floating_size = { width = 0.75, height = 0.8 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
-match.title = "^About.*$"
-default_maximize = false
-[[window_rule]]
-match.title = "^(.*Media viewer.*|.*Zalo Photo.*|blob:file:///.*|.*- Zalo)$"
+match.title = ["^.*(?:Media viewer|Zalo Photo).*$", "^blob:file:///.*$", "^.*- Zalo$"]
 default_floating = true
 default_maximize = false
 default_floating_size = { width = 0.9, height = 0.9 }
 default_position = { x = 0, y = 0, anchor = "center" }
 [[window_rule]]
 match.app_id = "^.*Obsidian$"
-match.title = "^(Settings -.*|Community themes -.*|Community.*)$"
+match.title = ["^Settings -.*$", "^Community.*$"]
 default_floating = true
 default_maximize = false
 default_floating_size = { width = 0.8, height = 0.8 }
 default_position = { x = 0, y = 0, anchor = "center" }
-
+[[window_rule]]
+match.app_id = "^.*[rR]oblox[sS]tudio.*$"
+match.title = "^Asset Configuration$"
+default_floating = true
+default_maximize = false
+default_floating_size_px = { width = 650, height = 625 }
+default_position = { x = 0, y = 0, anchor = "center" }
 
 # default_floating = false
 [[window_rule]]
-match.app_id = "^(winboat|OBS.*)$"
+match.app_id = ["^winboat$", "^OBS.*$"]
 default_floating = false
 [[window_rule]]
-match.app_id = "virt-.*"
-match.title = "^(Virtual Machine Manager|.*on QEMU/KVM)$"
-default_floating = false
-[[window_rule]]
-match.app_id = "^.*luciole$"
-match.title = "^Luciole$"
-default_floating = false
-[[window_rule]]
-match.app_id = "^(winboat|OBS.*)$"
-default_floating = false
-[[window_rule]]
-match.app_id = ".*Sober"
-match.title = "Sober"
-default_floating = false
-[[window_rule]]
-match.app_id = "blender"
-match.title = ".*- Blender 5.1.2"
+match.title = ["^Luciole$", "Sober", "^Virtual Machine Manager$", "^.*on QEMU/KVM$"]
 default_floating = false
 [[window_rule]]
 match.app_id = "[rR]oblox[sS]tudio"
@@ -691,15 +654,12 @@ default_focused = false
 match.app_id = "zenity"
 border_width = 0
 [[window_rule]]
-match.title = "Picture-in.*"
+match.title = ["^Picture-in.*$", "^[sS]plash.*$", "^zoom$", "^Updater.*$", "^Starting Apache.*$", "^Warning.*$", "^.*Java.*$"]
 border_width = 0
 [[window_rule]]
 match.app_id = "discord|equibop|vesktop|.*-canary.*"
-match.title = "^(.*Updater|equibop|vesktop)$"
+match.title = ["^.*Updater$", "^equibop$", "^vesktop$"]
 default_maximize = false
-border_width = 0
-[[window_rule]]
-match.title = "^(splash.*|Splash.*|zoom|Updater.*|Starting Apache.*|Warning.*|.*Java.*)$"
 border_width = 0
 
 # steam

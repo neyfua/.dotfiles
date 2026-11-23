@@ -20,7 +20,8 @@ set -Ux DOTNET_ROOT $HOME/.dotnet
 set -gx PATH $HOME/.dotnet $HOME/.dotnet/tools $PATH
 
 # bun
-set -gx PATH $HOME/.bun/bin $PATH
+set -Ux BUN_INSTALL "$HOME/.bun"
+set -gx PATH $BUN_INSTALL/bin $PATH
 
 # npm
 set -gx NPM_HOME "$HOME/.local/share/npm/bin"
